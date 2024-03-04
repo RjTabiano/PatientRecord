@@ -30,7 +30,6 @@
         <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
         <li class="nav__item"><a href="#products" class="nav__link">Doctors</a></li>
         <li class="nav__item"><a href="#services" class="nav__link">Services</a></li>
-        <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
         @if (Route::has('login'))
             @auth
                 <li class="nav__item"><a href="{{route('services')}}" class="nav__link">Book Now!</a></li>
@@ -99,37 +98,37 @@
         <div class="portfolio__img">
           <img src="{{ asset('images/1.jpg') }}" alt="">
           <div class="portfolio__link">
-            <a href="" class="portfolio__link-name"><b>1<br><a href="login.html" target="_blank"><button>Book Now!</button></a></b>
+            <a href="" class="portfolio__link-name"><b><br><a href="login.html" target="_blank"><button>Book Now!</button></a></b>
           </div>
         </div>
         <div class="portfolio__img">
           <img src="{{ asset('images/2.jpg') }}" alt="">
           <div class="portfolio__link">
-            <a href="" class="portfolio__link-name"><b>2<br><a href="login.html" target="_blank"><button>Book Now!</button></b></a>
+            <a href="" class="portfolio__link-name"><b><br><a href="login.html" target="_blank"><button>Book Now!</button></b></a>
           </div>
         </div>
         <div class="portfolio__img">
           <img src="{{ asset('images/3.jpg') }}" alt="">
           <div class="portfolio__link">
-            <a href="" class="portfolio__link-name"><b>3<br><a href="login.html" target="_blank"><button>Book Now!</button></a></b>
+            <a href="" class="portfolio__link-name"><b><br><a href="login.html" target="_blank"><button>Book Now!</button></a></b>
           </div>
         </div>
         <div class="portfolio__img">
-          <img src="{{ asset('images/2.jpg') }}" alt="">
+          <img src="{{ asset('images/Intern.jpg') }}" alt="">
           <div class="portfolio__link">
-            <a href="" class="portfolio__link-name"><b>2<br><a href="login.html" target="_blank"><button>Book Now!</button></b></a>
+            <a href="" class="portfolio__link-name"><b><br><a href="login.html" target="_blank"><button>Book Now!</button></b></a>
           </div>
         </div>
         <div class="portfolio__img">
-          <img src="{{ asset('images/2.jpg') }}" alt="">
+          <img src="{{ asset('images/Erness.jpg') }}" alt="">
           <div class="portfolio__link">
-            <a href="" class="portfolio__link-name"><b>2<br><a href="login.html" target="_blank"><button>Book Now!</button></b></a>
+            <a href="" class="portfolio__link-name"><b><br><a href="login.html" target="_blank"><button>Book Now!</button></b></a>
           </div>
         </div>
         <div class="portfolio__img">
-          <img src="{{ asset('images/2.jpg') }}" alt="">
+          <img src="{{ asset('images/Derma.jpg') }}" alt="">
           <div class="portfolio__link">
-            <a href="" class="portfolio__link-name"><b>2<br><a href="login.html" target="_blank"><button>Book Now!</button></b></a>
+            <a href="" class="portfolio__link-name"><b><br><a href="login.html" target="_blank"><button>Book Now!</button></b></a>
           </div>
         </div>
       </div>
@@ -140,45 +139,29 @@
       <h2 class="section-title">Services</h2>
       <div class="portfolios__container bd-grid">
       <div class="portfolio__img">
-      <img src="{{ asset('images/eye.jpg') }}" alt="">
+      <img src="{{ asset('images/Consull.png') }}" alt="">
       <div class="portfolio__link">
-        <a href="" class="portfolio__link-name"><b>4<br><a href="login.html" target="_blank"><button>Book Now!</button></a></b>
+        <a href="" class="portfolio__link-name"><b><br><a href="login.html" target="_blank"><button>Book Now!</button></a></b>
       </div>
     </div>
     <div class="portfolio__img">
       <img src="{{ asset('images/infer.jpg') }}" alt="">
       <div class="portfolio__link">
-        <a href="" class="portfolio__link-name"><b>5<br><a href="login.html" target="_blank"><button>Book Now!</button></a></b>
+        <a href="" class="portfolio__link-name"><b><br><a href="login.html" target="_blank"><button>Book Now!</button></a></b>
       </div>
     </div>
     <div class="portfolio__img">
       <img src="{{ asset('images/obyy.jpg') }}" alt="">
       <div class="portfolio__link">
-        <a href="" class="portfolio__link-name"><b>6<br><a href="login.html" target="_blank"><button>Book Now!</button></a></b>
+        <a href="" class="portfolio__link-name"><b><br><a href="login.html" target="_blank"><button>Book Now!</button></a></b>
       </div>
     </div>
-    <div class="portfolio__img">
-      <img src="{{ asset('images/obyy.jpg') }}" alt="">
-      <div class="portfolio__link">
-        <a href="" class="portfolio__link-name"><b>6<br><a href="login.html" target="_blank"><button>Book Now!</button></a></b>
-      </div>
-    </div>
-    <div class="portfolio__img">
-      <img src="{{ asset('images/obyy.jpg') }}" alt="">
-      <div class="portfolio__link">
-        <a href="" class="portfolio__link-name"><b>6<br><a href="login.html" target="_blank"><button>Book Now!</button></a></b>
-      </div>
-    </div>
-    <div class="portfolio__img">
-      <img src="{{ asset('images/obyy.jpg') }}" alt="">
-      <div class="portfolio__link">
-        <a href="" class="portfolio__link-name"><b>6<br><a href="login.html" target="_blank"><button>Book Now!</button></a></a></b>
-      </div>
+   
     </div>
   </div>
   </section>
         
-    <!--===== CONTACT =====-->
+    <!--===== CONTACT 
     <section class="contact section" id="contact">
       <h2 class="section-title">Contact</h2>
 
@@ -193,7 +176,7 @@
           <h3 class="contact__subtitle">ADRESS</h3>
           <span class="contact__text"> 1190C Quirino Highway Novaliches Quezon City, Philippines</span>
         </div>
-
+=====-->
        <!-- <form action="" class="contact__form">
           <div class="contact__inputs">
             <input type="text" placeholder="Name" class="contact__input">
@@ -215,7 +198,7 @@
         <p class="footer__text"></p>
       </div>
       <div class="footer__data">
-        <h2 class="footer__title">EXPLORE</h2>
+        <h2 class="footer__title">CONTACT</h2>
         <ul>
           <h2 class="footer__title">Business hours: Monday to Sunday 9:00 am - 5:00 pm</h2>
       
