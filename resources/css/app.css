@@ -6,6 +6,11 @@
 
 
 #background {
-  
+  background-image: url("/public/images/bgbg.png");
+  background-position: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+
 }
 
