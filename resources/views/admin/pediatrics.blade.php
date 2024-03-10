@@ -109,7 +109,6 @@
       </div>
     </nav>
     <div class="container">
-    <div class="container">
       <header>Pediatrics Form</header>
       <form method="post" action="{{route('patient.store', ['patient' => $patient])}}" class="form">
         @csrf
@@ -163,32 +162,146 @@
             <input class="form-control" type="number" name="father_phone"  placeholder="Enter phone number" required />
           </div>
         </div>
-        <table border="1">
-            <tr>
-                <th>Vaccine</th>
-                <th>Dose 1</th>
-                <th>Dose 2</th>
-                <th>Dose 3</th>
-                <th>Booster 1</th>
-                <th>Booster 2</th>               
-            </tr>
-            <tr>
-                <td><input for="vaccine" name="vaccine" value="Vaccine" type="hidden">Vaccine</input></td>
-                <td><input id="vaccine" type="checkbox"></td>
-                <td><input id="vaccine" type="checkbox"></td>
-                <td><input id="vaccine" type="checkbox"></td>
-                <td><input id="vaccine" type="checkbox"></td>
-                <td><input id="vaccine" type="checkbox"></td>
-            </tr>
-            <tr>
-                <td>Hepatitis B</td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-            </tr>
-        </table>
+        <table class="vaccine_table">
+          <tr>
+            <th>Vaccine</th>
+            <th>Dose 1</th>
+            <th>Dose 2</th>
+            <th>Dose 3</th>
+            <th>Booster 1</th>
+            <th>Booster 2</th>
+          </tr>
+          <tr>
+            <td>BCG</td>
+            <td><input type="checkbox" name="BCG[]" value="Dose 1"></td>
+            <td><input type="checkbox" name="BCG[]" value="Dose 2"></td>
+            <td><input type="checkbox" name="BCG[]" value="Dose 3"></td>
+            <td><input type="checkbox" name="BCG[]" value="Booster 1"></td>
+            <td><input type="checkbox" name="BCG[]" value="Booster 2"></td>
+          </tr>
+          <tr>
+            <td>Hepatitis B:</td>
+            <td><input type="checkbox" name="Hepatitis_B[]" value="Dose 1"></td>
+            <td><input type="checkbox" name="Hepatitis_B[]" value="Dose 2"></td>
+            <td><input type="checkbox" name="Hepatitis_B[]" value="Dose 3"></td>
+            <td><input type="checkbox" name="Hepatitis_B[]" value="Booster 1"></td>
+            <td><input type="checkbox" name="Hepatitis B[]" value="Booster 2"></td>
+          </tr>
+          <tr>
+            <td>DPT</td>
+            <td><input type="checkbox" name="DPT[]" value="Dose 1"></td>
+            <td><input type="checkbox" name="DPT[]" value="Dose 2"></td>
+            <td><input type="checkbox" name="DPT[]" value="Dose 3"></td>
+            <td><input type="checkbox" name="DPT[]" value="Booster 1"></td>
+            <td><input type="checkbox" name="DPT[]" value="Booster 2"></td>
+          </tr>
+          <tr>
+            <td>Polio-OPU</td>
+            <td><input type="checkbox" name="Polio_OPU[]" value="Dose 1"></td>
+            <td><input type="checkbox" name="Polio_OPU[]" value="Dose 2"></td>
+            <td><input type="checkbox" name="Polio_OPU[]" value="Dose 3"></td>
+            <td><input type="checkbox" name="Polio_OPU[]" value="Booster 1"></td>
+            <td><input type="checkbox" name="Polio_OPU[]" value="Booster 2"></td>
+          </tr>
+          <tr>
+            <td>Polio-IPU</td>
+            <td><input type="checkbox" name="Polio_IPU[]" value="Dose 1"></td>
+            <td><input type="checkbox" name="Polio_IPU[]" value="Dose 2"></td>
+            <td><input type="checkbox" name="Polio_IPU[]" value="Dose 3"></td>
+            <td><input type="checkbox" name="Polio_IPU[]" value="Booster 1"></td>
+            <td><input type="checkbox" name="Polio_IPU[]" value="Booster 2"></td>
+          </tr>
+          <tr>
+            <td>HiB</td>
+            <td><input type="checkbox" name="HiB[]" value="Dose 1"></td>
+            <td><input type="checkbox" name="HiB[]" value="Dose 2"></td>
+            <td><input type="checkbox" name="HiB[]" value="Dose 3"></td>
+            <td><input type="checkbox" name="HiB[]" value="Booster 1"></td>
+            <td><input type="checkbox" name="HiB[]" value="Booster 2"></td>
+          </tr>
+          <tr>
+            <td>PCV</td>
+            <td><input type="checkbox" name="PCV[]" value="Dose 1"></td>
+            <td><input type="checkbox" name="PCV[]" value="Dose 2"></td>
+            <td><input type="checkbox" name="PCV[]" value="Dose 3"></td>
+            <td><input type="checkbox" name="PCV[]" value="Booster 1"></td>
+            <td><input type="checkbox" name="PCV[]" value="Booster 2"></td>
+          </tr>
+          <tr>
+            <td>Measles</td>
+            <td><input type="checkbox" name="Measles[]" value="Dose 1"></td>
+            <td><input type="checkbox" name="Measles[]" value="Dose 2"></td>
+            <td><input type="checkbox" name="Measles[]" value="Dose 3"></td>
+            <td><input type="checkbox" name="Measles[]" value="Booster 1"></td>
+            <td><input type="checkbox" name="Measles[]" value="Booster 2"></td>
+          </tr>
+          <tr>
+            <td>Varicella</td>
+            <td><input type="checkbox" name="Varicella[]" value="Dose 1"></td>
+            <td><input type="checkbox" name="Varicella[]" value="Dose 2"></td>
+            <td><input type="checkbox" name="Varicella[]" value="Dose 3"></td>
+            <td><input type="checkbox" name="Varicella[]" value="Booster 1"></td>
+            <td><input type="checkbox" name="Varicella[]" value="Booster 2"></td>
+          </tr>
+          <tr>
+            <td>mmra</td>
+            <td><input type="checkbox" name="mmra[]" value="Dose 1"></td>
+            <td><input type="checkbox" name="mmra[]" value="Dose 2"></td>
+            <td><input type="checkbox" name="mmra[]" value="Dose 3"></td>
+            <td><input type="checkbox" name="mmra[]" value="Booster 1"></td>
+            <td><input type="checkbox" name="mmra[]" value="Booster 2"></td>
+          </tr>
+          <tr>
+            <td>Hepatitis A</td>
+            <td><input type="checkbox" name="Hepatitis_A[]" value="Dose 1"></td>
+            <td><input type="checkbox" name="Hepatitis_A[]" value="Dose 2"></td>
+            <td><input type="checkbox" name="Hepatitis_A[]" value="Dose 3"></td>
+            <td><input type="checkbox" name="Hepatitis_A[]" value="Booster 1"></td>
+            <td><input type="checkbox" name="Hepatitis_A[]" value="Booster 2"></td>
+          </tr>
+          <tr>
+            <td>Meningo</td>
+            <td><input type="checkbox" name="Meningo[]" value="Dose 1"></td>
+            <td><input type="checkbox" name="Meningo[]" value="Dose 2"></td>
+            <td><input type="checkbox" name="Meningo[]" value="Dose 3"></td>
+            <td><input type="checkbox" name="Meningo[]" value="Booster 1"></td>
+            <td><input type="checkbox" name="Meningo[]" value="Booster 2"></td>
+          </tr>
+          <tr>
+            <td>Typhoid</td>
+            <td><input type="checkbox" name="Typhoid[]" value="Dose 1"></td>
+            <td><input type="checkbox" name="Typhoid[]" value="Dose 2"></td>
+            <td><input type="checkbox" name="Typhoid[]" value="Dose 3"></td>
+            <td><input type="checkbox" name="Typhoid[]" value="Booster 1"></td>
+            <td><input type="checkbox" name="Typhoid[]" value="Booster 2"></td>
+          </tr>
+          <tr>
+            <td>Jap. Enceph</td>
+            <td><input type="checkbox" name="Jap_Enceph[]" value="Dose 1"></td>
+            <td><input type="checkbox" name="Jap_Enceph[]" value="Dose 2"></td>
+            <td><input type="checkbox" name="Jap_Enceph[]" value="Dose 3"></td>
+            <td><input type="checkbox" name="Jap_Enceph[]" value="Booster 1"></td>
+            <td><input type="checkbox" name="Jap_Enceph[]" value="Booster 2"></td>
+          </tr>
+          <tr>
+            <td>HPV</td>
+            <td><input type="checkbox" name="HPV[]" value="Dose 1"></td>
+            <td><input type="checkbox" name="HPV[]" value="Dose 2"></td>
+            <td><input type="checkbox" name="HPV[]" value="Dose 3"></td>
+            <td><input type="checkbox" name="HPV[]" value="Booster 1"></td>
+            <td><input type="checkbox" name="HPV[]" value="Booster 2"></td>
+          </tr>
+          <tr>
+            <td>Flu</td>
+            <td><input type="checkbox" name="Flu[]" value="Dose 1"></td>
+            <td><input type="checkbox" name="Flu[]" value="Dose 2"></td>
+            <td><input type="checkbox" name="Flu[]" value="Dose 3"></td>
+            <td><input type="checkbox" name="Flu[]" value="Booster 1"></td>
+            <td><input type="checkbox" name="Flu[]" value="Booster 2"></td>
+          </tr>
+          </table>
+       
+    </div>
         <div class="input-box">
           <label for="">P.E./History:</label>
           <textarea name="history" id="history" cols="30" rows="10"></textarea>
@@ -200,7 +313,6 @@
         <button type="submit">Submit</button>
       </form>
       </div>
-    </div>
     <section class="overlay"></section>
     <script src="{{ asset('javascript/script_dashboard.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

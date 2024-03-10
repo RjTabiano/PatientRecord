@@ -39,7 +39,22 @@ return new class extends Migration
         Schema::create('vaccines', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('patient_record_id');
-            $table->text('vaccine')->nullable();
+            $table->text('BCG')->nullable();
+            $table->text('Hepatitis_B')->nullable();
+            $table->text('DPT')->nullable();
+            $table->text('Polio_OPU')->nullable();
+            $table->text('Polio_IPU')->nullable();
+            $table->text('HiB')->nullable();
+            $table->text('PCV')->nullable();
+            $table->text('Measles')->nullable();
+            $table->text('Varicella')->nullable();
+            $table->text('mmra')->nullable();
+            $table->text('Hepatitis_A')->nullable();
+            $table->text('Meningo')->nullable();
+            $table->text('Typhoid')->nullable();
+            $table->text('Jap_Enceph')->nullable();
+            $table->text('HPV')->nullable();
+            $table->text('Flu')->nullable();
             $table->timestamps();
             $table->foreign('patient_record_id')
                     ->references('id')

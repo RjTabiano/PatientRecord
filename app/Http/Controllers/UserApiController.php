@@ -69,4 +69,21 @@ class UserApiController extends Controller
 
         return response()->json(['token' => $token], 200);
     }
+
+
+    public function show($id)
+    {
+        $user = User::find($id);
+        if($user){
+            return response()->json([
+                'status' => 200,
+                'user' => $user
+            ], 200);
+        }else{
+            return response()->json([
+                'status' => 404,
+                'message' => "No user found"
+            ], 404);
+        }
+    }
 }

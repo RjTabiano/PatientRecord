@@ -80,6 +80,7 @@ class ScannerController extends Controller
                             $apiUrl = 'https://pbem2315rk.execute-api.ap-southeast-1.amazonaws.com/Dev/patient-record-scanner/' . $file_name;
                             $response = Http::get($apiUrl);
                             $patient = json_decode($response, true);
+                           
                         }else{ 
                             $statusMsg = $api_error; 
                         } 

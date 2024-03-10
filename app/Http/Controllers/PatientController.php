@@ -57,12 +57,24 @@ class PatientController extends Controller
         
         $newVaccine = new Vaccine();
         $newVaccine->patient_record_id = $newPatientRecord->id;
-        $newVaccine = [
-            'vaccine' => [
-                'Vaccine' => 'dose'
-            ]
-        ];
-        $serVaccine=serialize($newVaccine);
+        $newVaccine->BCG = $request->input("BCG");
+        $newVaccine->Hepatitis_B = $request->input("Hepatitis B");
+        $newVaccine->DPT = $request->input("DPT");
+        $newVaccine->Polio_OPU = $request->input("Polio_OPU");
+        $newVaccine->Polio_IPU = $request->input("Polio_IPU");
+        $newVaccine->HiB = $request->input("HiB");
+        $newVaccine->PCV = $request->input("PCV");
+        $newVaccine->Measles = $request->input("Measles");
+        $newVaccine->Varicella = $request->input("Varicella");
+        $newVaccine->Hepatitis_A = $request->input("Hepatitis_A");
+        $newVaccine->Meningo = $request->input("Meningo");
+        $newVaccine->Typhoid = $request->input("Typhoid");
+        $newVaccine->Jap_Enceph = $request->input("Jap_Enceph");
+        $newVaccine->HPV = $request->input("HPV");
+        $newVaccine->Flu = $request->input("Flu");
+        $newVaccine->save();
+
+
         $history = $request->history;
 
         $dom = new DOMDocument();
@@ -120,7 +132,7 @@ class PatientController extends Controller
 
         $newHistory = new medicalHistory();
         $newHistory->obgyne_id = $newObgyne->id;
-        $newHistory->history = json_encode($request->input("history"));
+        $newHistory->history = json_decode($request->input("history"));
         $newHistory->save();
 
         
