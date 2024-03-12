@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Booking;
+use App\Models\Schedule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -86,4 +88,79 @@ class UserApiController extends Controller
             ], 404);
         }
     }
+
+    public function getLoggedInUser(Request $request)
+    {
+        if ($request->user()) {
+            $user = $request->user();
+            return response()->json([
+                'name' => $user->name,
+                'email' => $user->email
+            ], 200);
+        } else {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+    }
+
+    public function booking(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'services' => 'required|string',
+            'date' => 'required|date',
+            'time' => 'required|date_format:H:i', // Assuming time format is HH:MM
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 422,
+                'errors' => $validator->messages()
+            ], 422);
+        }
+
+        $user = Auth::user(); 
+
+        if (!$user) {
+            return response()->json([
+                'status' => 401,
+                'message' => 'Unauthorized'
+            ], 401);
+        }
+
+        $booking = $user->bookings()->create([
+            'services' => $request->services,
+            'date' => $request->date,
+            'time' => $request->time,
+        ]);
+
+        if ($booking) {
+            return response()->json([
+                'status' => 200,
+                'message' => 'Booking created successfully'
+            ], 200);
+        } else {
+            return response()->json([
+                'status' => 500,
+                'message' => 'Something went wrong'
+            ], 500);
+        }
+    }
+
+
+    public function getSchedules()
+    {
+        $schedules = Schedule::all();
+
+        if ($schedules->isEmpty()) {
+            return response()->json([
+                'status' => 200,
+                'message' => 'Schedule is empty'
+            ], 200);
+        }
+
+        return response()->json([
+            'status' => 200,
+            'schedules' => $schedules
+        ], 200);
+    }
+    
 }

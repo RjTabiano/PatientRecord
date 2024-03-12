@@ -18,6 +18,12 @@ Route::get('/index', [UserApiController::class, 'index']);
 Route::post('/register', [UserApiController::class, 'register']);
 Route::post('/login', 'App\Http\Controllers\UserApiController@login');
 Route::get('/show/{id}', [UserApiController::class, 'show']);
+Route::post('/book', [UserApiController::class, 'booking']);
+Route::get('/schedules', [UserApiController::class, 'getSchedules']);
+Route::get('/user_account', [UserApiController::class, 'getLoggedInUser'])->middleware(['auth:api']);
+
+
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
