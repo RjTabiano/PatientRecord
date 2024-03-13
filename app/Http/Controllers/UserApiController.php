@@ -24,52 +24,91 @@ class UserApiController extends Controller
 
     public function register(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|string',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|min:6',
-        ]);
-        if($validator->fails()){
-            return response()->json([
-                'status' => 422,
-                'errors' => $validator->messages()
-            ], 422);
-        }else {
-            $user = User::create([
-                'name' => $request->name,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
+        try{
+            $validator = Validator::make($request->all(), [
+                'name' => 'required|string',
+                'email' => 'required|email|unique:users,email',
+                'password' => 'required|string|min:6',
             ]);
-
-            if ($user){
+            if($validator->fails()){
                 return response()->json([
-                    'status' => 200,
-                    'message' => "User registered successfully"
-                ], 200);
+                    'status' => 422,
+                    'errors' => $validator->messages()
+                ], 422);
             }else {
-                return response()->json([
-                    'status' => 500,
-                    'message' => "Something went wrong"
-                ], 500);
-            }
+                $user = User::create([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'password' => Hash::make($request->password),
+                ]);
+
+                if ($user){
+                    return response()->json([
+                        'status' => 200,
+                        'message' => "User registered successfully",
+                        'token' => $user->createToken("token")->plainTextToken
+                    ], 200);
+                }else {
+                    return response()->json([
+                        'status' => 500,
+                        'message' => "Something went wrong"
+                    ], 500);
+                    }
+                }
+
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
         }
     }
 
     public function login(Request $request)
     {
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required|string',
-        ]);
+        try{
+            $validateUser = Validator::make($request->all(), 
+            [
+                'email' => 'required|email',
+                'password' => 'required'
+            ]);
 
-        if (!Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            return response()->json(['message' => 'Unauthorized'], 401);
+            if($validateUser->fails()){
+                return response()->json([
+                    'status' => false,
+                    'message' => 'validation error',
+                    'errors' => $validateUser->errors()
+                ], 401);
+            }
+
+        
+            if(!Auth::attempt($request->only(['email', 'password']))){
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Email & Password does not match with our record.',
+                ], 401);
+            }
+            
+            $user = User::where('email', $request->email)->first();
+            
+        
+            /*
+            $token = $user->createToken("token")->plainTextToken;
+            return response()
+                ->json(['user' => $user])
+                ->header('Authorization', 'Bearer ' . $token);*/
+            return response()->json([
+                'status' => true,
+                'message' => 'User Logged In Successfully',
+                'token' => $user->createToken("token")->plainTextToken
+            ], 200);
+
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
         }
-
-        $user = $request->user();
-        $token = $user->createToken('authToken')->accessToken;
-
-        return response()->json(['token' => $token], 200);
     }
 
 
@@ -89,25 +128,29 @@ class UserApiController extends Controller
         }
     }
 
-    public function getLoggedInUser(Request $request)
+    public function getLoggedInUser()
     {
-        if ($request->user()) {
-            $user = $request->user();
-            return response()->json([
-                'name' => $user->name,
-                'email' => $user->email
-            ], 200);
-        } else {
-            return response()->json(['error' => 'Unauthorized'], 401);
+        $user = auth()->user();
+
+        if (!$user) {
+            return response()->json(['message' => 'Unauthorized'], 401);
         }
+
+        $name = $user->name;
+        $email = $user->email;
+
+        return response()->json([
+            'name' => $name,
+            'email' => $email
+        ]);
     }
 
     public function booking(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'services' => 'required|string',
-            'date' => 'required|date',
-            'time' => 'required|date_format:H:i', // Assuming time format is HH:MM
+            'service' => 'required|string',
+            'date' => 'required|string',
+            'time' => 'required|date_format:H:i',
         ]);
 
         if ($validator->fails()) {
@@ -117,7 +160,7 @@ class UserApiController extends Controller
             ], 422);
         }
 
-        $user = Auth::user(); 
+        $user = auth()->user(); 
 
         if (!$user) {
             return response()->json([
@@ -126,8 +169,9 @@ class UserApiController extends Controller
             ], 401);
         }
 
-        $booking = $user->bookings()->create([
-            'services' => $request->services,
+        $booking = $user->booking()->create([
+            'user_id' => $user->id,
+            'service' => $request->service,
             'date' => $request->date,
             'time' => $request->time,
         ]);
@@ -160,6 +204,25 @@ class UserApiController extends Controller
         return response()->json([
             'status' => 200,
             'schedules' => $schedules
+        ], 200);
+    }
+
+    public function getBooking()
+    {
+        $user = auth()->user(); 
+
+        if (!$user) {
+            return response()->json([
+                'status' => 401,
+                'message' => 'Unauthorized'
+            ], 401);
+        }
+
+        $bookings = $user->booking()->get(); 
+
+        return response()->json([
+            'status' => 200,
+            'booked' => $bookings,
         ], 200);
     }
     

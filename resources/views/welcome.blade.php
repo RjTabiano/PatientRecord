@@ -35,11 +35,7 @@
                 <li class="nav__item"><a href="{{route('services')}}" class="nav__link">Book Now!</a></li>
                 <li class="nav__item"><a href="{{route('profile.edit')}}" class="nav__link">{{ Auth::user()->name }}</a></li>
             @else
-                <li class="nav__item"><a href="{{ route('login') }}" class="nav__link">Log in</a></li>
-
-                @if (Route::has('register'))
-                <li class="nav__item"><a href="{{ route('register') }}" class="nav__link">Register</a></li>
-                @endif
+                <li class="nav__item"><a href="{{ route('login') }}" class="nav__link">Sign In/Sign Up</a></li>
             @endauth
     @endif
 

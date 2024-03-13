@@ -18,13 +18,14 @@ Route::get('/index', [UserApiController::class, 'index']);
 Route::post('/register', [UserApiController::class, 'register']);
 Route::post('/login', 'App\Http\Controllers\UserApiController@login');
 Route::get('/show/{id}', [UserApiController::class, 'show']);
-Route::post('/book', [UserApiController::class, 'booking']);
-Route::get('/schedules', [UserApiController::class, 'getSchedules']);
-Route::get('/user_account', [UserApiController::class, 'getLoggedInUser'])->middleware(['auth:api']);
+Route::post('/book', [UserApiController::class, 'booking'])->middleware('auth:sanctum');
+Route::get('/schedules', [UserApiController::class, 'getSchedules'])->middleware('auth:sanctum');
+Route::get('/user_account', [UserApiController::class, 'getLoggedInUser'])->middleware('auth:sanctum');
+Route::get('/booked', [UserApiController::class, 'getBooking'])->middleware('auth:sanctum');
 
 
 
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::get('/user', function (Request $request) {
     return $request->user();
-});
+})->middleware('auth:sanctum');
