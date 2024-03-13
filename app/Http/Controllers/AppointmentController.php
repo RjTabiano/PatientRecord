@@ -55,5 +55,5 @@ class AppointmentController extends Controller
         $doctors = User::with('doctor')->where('usertype', '=', 'doctor')->get();
         return view('admin.appointments', ['doctors' => $doctors], ['patients' => $patients]);
     }
-    
+    //asdad/
 }
