@@ -55,6 +55,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Booking::class,'user_id');
     }
 
+    
+    public function patient(){
+        return $this->hasMany(Patient::class,'user_id');
+    }
+
     public function schedule(){
         return $this->hasManyThrough(
             Schedule::class,
@@ -76,4 +81,8 @@ class User extends Authenticatable implements MustVerifyEmail
             'id'
         );
     }
+
+
+
+    
 }

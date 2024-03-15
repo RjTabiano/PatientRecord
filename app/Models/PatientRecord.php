@@ -9,7 +9,7 @@ class PatientRecord extends Model
 {
     use HasFactory;
 
-    protected $table = 'patient_records';
+    protected $table = 'pediatrics';
 
     protected $primaryKey = 'id';
 

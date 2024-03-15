@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Booking;
 use App\Models\Schedule;
+use App\Models\Image;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -208,22 +209,49 @@ class UserApiController extends Controller
     }
 
     public function getBooking()
-    {
-        $user = auth()->user(); 
+{
+    $user = auth()->user();
 
-        if (!$user) {
-            return response()->json([
-                'status' => 401,
-                'message' => 'Unauthorized'
-            ], 401);
-        }
-
-        $bookings = $user->booking()->get(); 
-
+    if (!$user) {
         return response()->json([
-            'status' => 200,
-            'booked' => $bookings,
-        ], 200);
+            'status' => 401,
+            'message' => 'Unauthorized'
+        ], 401);
     }
-    
+
+    $bookings = $user->booking()->get();
+
+    $filteredBookings = $bookings->map(function ($booking) {
+        return [
+            'service' => $booking->service,
+            'date' => $booking->date,
+            'time' => $booking->time,
+        ];
+    });
+
+    return $filteredBookings;
+}
+
+
+
+    public function storeImage(Request $request)
+    {
+        
+       
+        try {
+            $base64ImageData = $request->input('imageData');
+
+            $base64ImageData = substr($base64ImageData, strpos($base64ImageData, ',') + 1);
+
+            $image = new Image();
+            $image->data = $base64ImageData;
+            $image->save();
+
+            return response()->json(['message' => 'Image data stored successfully'], 200);
+        } catch (Exception $e) {
+            logger()->error('Error storing image data: ' . $e->getMessage());
+
+            return response()->json(['error' => 'Failed to store image data'], 500);
+        }
+    }
 }

@@ -13,12 +13,17 @@ return new class extends Migration
     {
         Schema::create('patients', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('user_id')->nullable();
             $table->string('name');
             $table->string('email');
             $table->timestamps();
+            $table->foreign('user_id')
+                    ->references('id')
+                    ->on('users')
+                    ->onDelete('cascade');
         });
 
-        Schema::create('patient_records', function (Blueprint $table) {
+        Schema::create('pediatrics', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('patient_id');
             $table->string('type');
@@ -30,6 +35,8 @@ return new class extends Migration
             $table->integer('mother_phone');
             $table->string('father_name');
             $table->integer('father_phone');
+            $table->longText('history')->nullable();
+            $table->longText('orders')->nullable();
             $table->timestamps();
             $table->foreign('patient_id')
                     ->references('id')
@@ -58,7 +65,7 @@ return new class extends Migration
             $table->timestamps();
             $table->foreign('patient_record_id')
                     ->references('id')
-                    ->on('patient_records')
+                    ->on('pediatrics')
                     ->onDelete('cascade');
         });
         
@@ -129,7 +136,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('patients');
-        Schema::dropIfExists('patient_records');
+        Schema::dropIfExists('pediatrics');
         Schema::dropIfExists('obgyne');
         Schema::dropIfExists('vaccines');
         Schema::dropIfExists('medical_history');

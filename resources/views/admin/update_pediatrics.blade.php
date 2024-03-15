@@ -126,7 +126,7 @@
             </div>
             <div class="input-box">
                 <label>Age</label>
-                <input type="number" name="age" value="{{$patient->age}}" placeholder="Enter Age" value="" required />
+                <input type="number" name="age" value="{{$patient['age']}}" placeholder="Enter Age" value="" required />
             </div>
             <div class="gender-box">
             <h3>Gender</h3>

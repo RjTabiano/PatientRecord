@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserApiController;
+use App\Models\Image;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,7 +15,7 @@ use App\Http\Controllers\UserApiController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
+Route::post('/store-image', [UserApiController::class, 'storeImage'])->name('store.image');
 Route::get('/index', [UserApiController::class, 'index']);
 Route::post('/register', [UserApiController::class, 'register']);
 Route::post('/login', 'App\Http\Controllers\UserApiController@login');
@@ -24,7 +26,18 @@ Route::get('/user_account', [UserApiController::class, 'getLoggedInUser'])->midd
 Route::get('/booked', [UserApiController::class, 'getBooking'])->middleware('auth:sanctum');
 
 
+Route::get('/images/{imageId}', function ($imageId) {
+    $image = Image::find($imageId);
+    
+    if (!$image) {
+        return Response::json(['error' => 'Image not found'], 404);
+    }
 
+    return Response::make(base64_decode($image->data), 200, [
+        'Content-Type' => 'image/png',
+        'Content-Length' => strlen(base64_decode($image->data)),
+    ]);
+});
 
 Route::get('/user', function (Request $request) {
     return $request->user();

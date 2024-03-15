@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="" href="{{ asset('images/logocircle.png') }}" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
    <title>The Queen's</title>
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}" />
@@ -110,87 +112,92 @@
       </div>
     </nav>
     <div class="container">
-    <header class="heading">Patient Records</header>
-        @if($errors->any())
-        <ul>
-            @foreach($errors->all() as $error)
-            <li>{{$error}}</li>
-            @endforeach
-        </ul>
-        @endif
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Add Patient Record
-            </button>
-            <div class="input-group">
-            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-            <button type="button" class="btn btn-outline-primary" data-mdb-ripple-init>search</button>
-        </div>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="{{route('patient.pediatrics', ['patient' => $patient])}}">Pediatrics</a>
-                <a class="dropdown-item" href="{{route('patient.obgyne', ['patient' => $patient])}}">Obgyne</a>
-            </div>
-        </div>
-        <div class="table-wrapper">  
-        <table class="fl-table" >
-            <thead>
-            <tr>
-                <th>Record</th>
-                <th>Full Name</th>
-                <th>Email</th>
-                <th></th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach ($patient->patientRecord as $patientRecords)
-                <tr >
-                    
-                        <td>{{$patientRecords['type']}}</td>
-                        <td>{{$patient->name}}</td>
-                        <td>{{$patient->email}}</td>
-                        <td>
-                        <a href="{{route('patient.viewPediatrics', ['patient' => $patientRecords['id']])}}">View</a>
-                        </td>
-                        <td><a href="{{route('patient.update', ['patient' => $patient])}}">Edit</a></td>
-                        <td>
-                        <button  type="button" data-toggle="modal" data-target="#deletePatient">
-                        Delete
-                        </button>
-                        <!-- DELETE Modal -->
-                        <div class="modal fade" id="deletePatient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Delete {{$patient->name}}?</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                    </button>
+    <header class="heading"></header>
+    <div class="patient-view">
+                                    <h1>Patient Information</h1>
+                                    <div class="info-box">
+                                        <label>Type:</label>
+                                        <span>{{ $patient[0]->type }}</span>
+                                    </div>
+                                    <div class="info-box">
+                                        <label>Birth Date:</label>
+                                        <span>{{ $patient[0]->birthdate }}</span>
+                                    </div>
+                                    <div class="info-box">
+                                        <label>Age:</label>
+                                        <span>{{ $patient[0]->age }}</span>
+                                    </div>
+                                    <div class="info-box">
+                                        <label>Gender:</label>
+                                        <span>{{ $patient[0]->sex }}</span>
+                                    </div>
+                                    <div class="info-box">
+                                        <label>Address:</label>
+                                        <span>{{ $patient[0]->address }}</span>
+                                    </div>
+                                    <div class="info-box">
+                                        <label>Mother's Name:</label>
+                                        <span>{{ $patient[0]->mother_name }}</span>
+                                    </div>
+                                    <div class="info-box">
+                                        <label>Mother's Phone Number:</label>
+                                        <span>{{ $patient[0]->mother_phone }}</span>
+                                    </div>
+                                    <div class="info-box">
+                                        <label>Father's Name:</label>
+                                        <span>{{ $patient[0]->father_name }}</span>
+                                    </div>
+                                    <div class="info-box">
+                                        <label>Father's Phone Number:</label>
+                                        <span>{{ $patient[0]->father_phone }}</span>
+                                    </div>
+                                    <table class="vaccine-table">
+                                        
+                                    </table>
+                                    <div class="info-box">
+                                        <label>P.E./History:</label>
+                                        <span></span>
+                                    </div>
+                                    <div class="info-box">
+                                        <label>Orders:</label>
+                                        <span></span>
+                                    </div>
+                                    <button id="publishButton">Publish</button>
                                 </div>
-                                <div class="modal-body">
-                                    <form method="post" action="{{route('patient.delete', ['patient' => $patient])}}" class="form">
-                                    @csrf
-                                    @method('delete')
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" valaue="Delete" class="btn btn-primary">Delete Patient</button>
-                                </div>
-                                </form>
-                            </div>
-                        </div>
-                        </div>
-        <!-- END DELETE MODAL -->
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
     <section class="overlay"></section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        document.getElementById('publishButton').addEventListener('click', function() {
+            html2canvas(document.querySelector(".container")).then(canvas => {
+                var imageData = canvas.toDataURL();
+                sendDataToBackend(imageData);
+            });
+        });
+
+        function sendDataToBackend(imageData) {
+            fetch('/api/store-image', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-Token': csrfToken,
+                },
+                body: JSON.stringify({ imageData: imageData }),
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log('Image data sent successfully');
+                } else {
+                    console.error('Failed to send image data to the backend');
+                }
+            })
+            .catch(error => {
+                console.error('Error occurred while sending image data:', error);
+            });
+        }
+    </script>
     <script src="{{ asset('javascript/script_dashboard.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
   </body>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+   
 </html>

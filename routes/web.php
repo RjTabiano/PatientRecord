@@ -50,6 +50,7 @@ Route::post('/patient/storePatients', [PatientController::class, 'store_patients
 Route::post('/patient/{patient}/storeObgyne', [PatientController::class, 'storeObgyne'])->middleware(['auth', 'admin'])->name('patient.storeObgyne');
 Route::get('/patient/{patient}/edit', [PatientController::class, 'edit'])->middleware(['auth', 'admin'])->name('patient.edit');
 Route::get('/patient/{patient}/viewRecords', [PatientController::class, 'viewRecords'])->middleware(['auth', 'admin'])->name('patient.viewRecords');
+Route::get('/patient/{patient}/viewRecords/viewPediatrics', [PatientController::class, 'viewPediatrics'])->middleware(['auth', 'admin'])->name('patient.viewPediatrics');
 Route::get('/patient/{patient}/update', [PatientController::class, 'update'])->middleware(['auth', 'admin'])->name('patient.update');
 Route::put('/patient/{patient}/updatePatient', [PatientController::class, 'update_patient'])->middleware(['auth', 'admin'])->name('patient.updatePatient');
 Route::put('/patient/{patient}/updateObgyne', [PatientController::class, 'update_obgyne'])->middleware(['auth', 'admin'])->name('patient.updateObgyne');

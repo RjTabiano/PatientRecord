@@ -18,6 +18,10 @@ class Patient extends Model
         'email',
     ];
 
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
     public function patientRecord(){
         return $this->hasMany(PatientRecord::class, 'patient_id');
     }

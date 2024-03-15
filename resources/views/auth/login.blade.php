@@ -31,7 +31,10 @@
                     <x-input-error :messages="$errors->get('password')" class="mt-2" />
                 </div>
             <input type="submit" value="{{ __('Log in') }}" class="btn solid" onclick=""/>
+            <a href="{{ route('password.request') }}"><p class="social-text">Forgot password?</p></a>
           </form>
+          
+
           <form method="POST" action="{{ route('register') }}" class="sign-up-form"  onsubmit="checkErrors()">
             @csrf
             <h2 class="title">Sign up</h2>
@@ -52,11 +55,12 @@
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" name="password-confirmation"placeholder="Confirm Password" required/>
+              <input type="password" name="password_confirmation" required/>
               <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
             </div>
             <input type="submit" class="btn" value="{{ __('Register') }}" />
           </form>
+
         </div>
       </div>
 

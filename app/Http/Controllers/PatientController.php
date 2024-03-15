@@ -147,7 +147,13 @@ class PatientController extends Controller
 
     }
 
- 
+    public function viewPediatrics($patient) {
+        $patient = patientRecord::where('id', $patient)->get();
+        if($patient[0]->type == 'Pediatrics'){
+            return view('admin.viewPediatrics', ['patient' => $patient]);
+        }
+        return view('admin.viewRecords');
+    }
 
     public function store_patients(Request $request){
         $newPatient = new patient();
@@ -170,6 +176,11 @@ class PatientController extends Controller
 
     }
 
+
+
+
+
+//FIX THHIS SHIT DAWG 
     public function update(Patient $patient, patientRecord $patientRecord){
         $patients = Patient::with('patientRecord', 'obgyne')->get();
         
@@ -181,6 +192,8 @@ class PatientController extends Controller
         
     }
 
+
+    
     public function update_patient(Patient $patient, Request $request){
         $data = $request->validate([
             'name' => 'required',
