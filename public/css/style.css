@@ -484,14 +484,17 @@ body {
 .modal-content {
   background-color: #fefefe;
   margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
+  padding: 30px;
+  border-radius: 10px;
   border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+  width: 50%; /* Could be more or less, depending on screen size */
 }
 
 .close {
   color: #aaa;
   float: right;
+  margin-top: -3%;
+  margin-left: 4%;
   font-size: 28px;
   font-weight: bold;
 }
@@ -548,6 +551,7 @@ button[type="submit"] {
   color: #fff;
   padding: 10px 20px;
   border: none;
+  margin-left: 5%;
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
