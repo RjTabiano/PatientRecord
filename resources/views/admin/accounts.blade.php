@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Queen's Clinc</title>
     <!-- ======= Styles ====== -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 
 <body>
@@ -117,11 +117,48 @@
                 <div class="user">
                     
                 </div>
-        </div>
 
+        </div>
+    
+        <h1 class="heading">Accounts</h1>
+                <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Add Account
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="{{route('staff.staff')}}">Staff</a>
+                            <a class="dropdown-item" href="{{route('doctor.doctor')}}">Doctor</a>
+                        </div>
+                    </div>
+                <div class="table_container">
+                    <div class="row">
+                        <div class="col-12">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Account Type</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($accounts as $account)                         
+                            <tr>
+                                <td>{{$account->name}}</td>
+                                <td>{{$account->email}}</td>
+                                <td>{{$account->usertype}}</td>
+                                <td>
+                                <button  type="button" class="btn btn-danger" data-toggle="modal" data-target="">
+                                    <i class="far fa-trash-alt">Delete</i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
            
     <!-- =========== Scripts =========  -->
-    <script src="assets/js/main.js"></script>
+    <script src="{{ asset('javascript/main.js') }}"></script>
 
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

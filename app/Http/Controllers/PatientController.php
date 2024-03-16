@@ -11,6 +11,7 @@ use App\Models\vaccine;
 use App\Models\medicalHistory;
 use App\Models\consultationPediatrics;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 use DOMDocument;
 
 class PatientController extends Controller
@@ -22,8 +23,8 @@ class PatientController extends Controller
     }
 
     public function patient_record_history(){
-        $patients = Patient::all();
-        return view('admin.patient_record_history', ['patients' => $patients]);
+        $users = User::where('usertype', '=' , 'user')->get();
+        return view('admin.patient_record_history', ['users' => $users]);
         
     }
 
@@ -146,9 +147,24 @@ class PatientController extends Controller
         return redirect(route('patient.patient-record'))->with('success', 'Added Successfully');
     }
 
-    public function viewRecords(Patient $patient){
-        /*$patients = Patient::with('patientRecord', 'obgyne')->get();
-        return view('admin.viewRecord', ['patients' => $patients]);*/
+    public function viewRecords(User $user){
+        
+        $user_id = $user->id;
+
+        $patient = Patient::where('user_id', $user_id)->first();
+
+
+        if (!$patient) {
+            $user_name = $user->name;
+            $user_email = $user->email;
+    
+            $patient = new Patient();
+            $patient->user_id = $user_id;
+            $patient->name = $user_name;
+            $patient->email = $user_email;
+            $patient->save();
+        }
+
         return view('admin.viewRecord', ['patient' => $patient]);
 
     }

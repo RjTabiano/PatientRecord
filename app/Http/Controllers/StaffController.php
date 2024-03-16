@@ -19,7 +19,7 @@ class StaffController extends Controller
         $newStaff = new Staff();
         $newUser = new User();
         if (User::where('name', $request->input("name"))->exists()) {
-            die("Error: 404");
+            die("Error: User Already Exist");
         } else {
             
             $newUser->name = $request->input("name");

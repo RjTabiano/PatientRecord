@@ -110,46 +110,7 @@
       </div>
     </nav>
     <div class="container">
-    <header class="heading">Patients</header>
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addPatient">
-        Add
-        </button>
-        <div class="input-group">
-            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-            <button type="button" class="btn btn-outline-primary" data-mdb-ripple-init>search</button>
-        </div>
-        <!------------------------------------------- Modal ------------------------------>
-          <div class="modal fade" id="addPatient" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="exampleModalLabel">Add Patient</h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                <form method="post" action="{{route('patient.storePatients')}}" class="form">
-                    @csrf
-                    @method('post')
-                    <div class="input-box">
-                        <input type="hidden" name="type" value="Pediatrics" />
-                        <label for="name">Full Name</label>
-                        <input class="form-control" type="text" name="name" placeholder="Enter full name" required />
-                    </div>
-                    <div class="input-box">
-                        <label for="email">Email Address</label>
-                        <input class="form-control" type="text" name="email" placeholder="Enter email address" required />
-                    </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-primary">Add Patient</button>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-<!------------------------------- Modal------------------------->
+    <header class="heading">User</header>
         <div class="table-wrapper">
             <table class="fl-table">
                 <thead>
@@ -161,41 +122,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($patients as $patient)
+                @foreach($users as $user)
                     <tr>
-                        <td onclick="window.location='{{route('patient.viewRecords', ['patient' => $patient])}}'" style="cursor: pointer;">{{$patient->name}}</td>
-                        <td onclick="window.location='{{route('patient.viewRecords', ['patient' => $patient])}}'" style="cursor: pointer;">{{$patient->email}}</td>
+                        <td onclick="window.location='{{route('patient.viewRecords', ['user' => $user])}}'" style="cursor: pointer;">{{$user->name}}</td>
+                        <td onclick="window.location='{{route('patient.viewRecords', ['user' => $user])}}'" style="cursor: pointer;">{{$user->email}}</td>
                         <td><button  type="button" data-toggle="modal" data-target="#editPatient" data-backdrop="static" data-keyboard="false">
             Edit
             </button></td>
-                        <td>
-                        <button  type="button" data-toggle="modal" data-target="#deletePatient">
-                        Delete
-                        </button>
-                        <!-- DELETE Modal -->
-                        <div class="modal fade" id="deletePatient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Delete {{$patient->name}}?</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <form method="post" action="{{route('patient.delete', ['patient' => $patient])}}" class="form">
-                                    @csrf
-                                    @method('delete')
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" valaue="Delete" class="btn btn-primary">Delete Patient</button>
-                                </div>
-                                </form>
-                            </div>
-                        </div>
-                        </div>
-        <!-- END DELETE MODAL -->
-                        </td>
                     </tr>
                     @endforeach
              </tbody>

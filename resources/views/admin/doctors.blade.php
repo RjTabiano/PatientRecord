@@ -110,19 +110,6 @@
       </div>
     </nav>
     <div class="container">
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addDoctor">
-        Add
-    </button>
-        
-        <!------------------------------------------- Modal ------------------------------>
-        <div class="modal fade" id="addDoctor" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
             <form method="post" action="{{route('doctor.storeDoctor')}}" class="form">
                             @csrf
                             @method('post')
@@ -142,72 +129,12 @@
                             <div class="input-box">
                                 <label for="password">Password</label>
                                 <input type="text" name="password" placeholder="password" required />
-                            </div>           
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                            <div class="input-box">
+                                <label for="password">Confirm Password</label>
+                                <input type="text" placeholder="password" required />
+                            </div>        
                 <button type="submit" class="btn btn-primary">Add Doctor</button>
-            </div>
-            </form>
-            </div>
-        </div>
-        </div>
-<!--------------------------------Modal------------------------------------>
-<div class="table_container">
-        <div class="row">
-            <div class="col-12">
-            <table class="table table-bordered">
-                <thead>
-                <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Specialization</th>
-                    <th scope="col"></th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($doctors as $doctor)
-                    
-                <tr>
-                    <td>{{$doctor->name}}</td>
-                    @foreach($doctor->doctor as $child)
-                    <td>{{$child['specialization']}}</td>
-                    @endforeach
-                    <td>
-                    <button type="button" class="btn btn-success"><a href="{{route('doctor.editDoctor', ['doctor' => $doctor])}}">Edit</a></button>
-                        <button  type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteDoctor">
-                        <i class="far fa-trash-alt">Delete</i>
-                        </button>
-                        <!-- DELETE Modal -->
-                        <div class="modal fade" id="deleteDoctor" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Delete {{$doctor->name}}?</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                            <form method="post" action="{{route('doctor.deleteDoctor', ['doctor' => $doctor])}}" class="form">
-                                    @csrf
-                                    @method('delete')
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" valaue="Delete" class="btn btn-primary">Add</button>
-                            </div>
-                            </form>
-                            </div>
-                        </div>
-                        </div>
-        <!-- END DELETE MODAL -->
-                    </td>
-                </tr>
-                @endforeach
-                </tbody>
-                   
-            </table>
-            </div>
-        </div>
-        </div>        
     </div>
     <section class="overlay"></section>
     <script src="{{ asset('javascript/script_dashboard.js') }}"></script>

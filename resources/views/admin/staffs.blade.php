@@ -110,24 +110,6 @@
       </div>
     </nav>
     <div class="container">
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addStaff">
-        Add
-        </button>
-        <div class="input-group">
-            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-            <button type="button" class="btn btn-outline-primary" data-mdb-ripple-init>search</button>
-        </div>
-        <!-- ADD Modal -->
-        <div class="modal fade" id="addStaff" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add Staff</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
                 <form method="post" action="{{route('staff.storeStaff')}}" class="form">
                     @csrf
                     @method('post')
@@ -145,77 +127,18 @@
                         <input type="text" name="role" placeholder="role" required />
                     </div>
                     <div class="input-box">
-                        <label for="password">Password</label>
-                        <input type="password" name="password" placeholder="password" required />
-                    </div>
+                                <label for="password">Password</label>
+                                <input type="text" name="password" placeholder="password" required />
+                            </div>
+                            <div class="input-box">
+                                <label for="password">Confirm Password</label>
+                                <input type="text" placeholder="password" required />
+                            </div>        
                     <button type="submit">Submit</button>
                         
-                </form>
-            
-            </div>
-        </div>
-        </div>
-        <!-- END ADD MODAL -->
-    
+                </form>    
         </div>
 
-        <div class="table_container">
-        <div class="row">
-            <div class="col-12">
-            <table class="table table-bordered">
-                <thead>
-                <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Role</th>
-                    <th scope="col"></th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($staffs as $staff)
-                    
-                <tr>
-                    <td>{{$staff->name}}</td>
-                    @foreach($staff->staff as $child)
-                    <td>{{$child['role']}}</td>
-                    @endforeach
-                    <td>
-                    <button type="button" class="btn btn-success"><a href="{{route('staff.editStaff', ['staff' => $staff])}}">Edit</a></button>
-                    <button  type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteStaff">
-                        <i class="far fa-trash-alt">Delete</i>
-                        </button>
-                        <!-- DELETE Modal -->
-                        <div class="modal fade" id="deleteStaff" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Delete {{$staff->name}}?</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <form method="post" action="{{route('staff.deleteStaff', ['staff' => $staff])}}" class="form">
-                                    @csrf
-                                    @method('delete')
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" valaue="Delete" class="btn btn-primary">Delete Doctor</button>
-                                </div>
-                                </form>
-                            </div>
-                        </div>
-                        </div>
-        <!-- END DELETE MODAL -->
-                    </td>
-                </tr>
-                @endforeach
-                </tbody>
-                   
-            </table>
-            </div>
-        </div>
-        </div>
-    </div>
     <section class="overlay"></section>
     <script src="{{ asset('javascript/script_dashboard.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>

@@ -10,6 +10,7 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ScannerController;
+use App\Http\Controllers\AccountController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,7 +50,7 @@ Route::post('/patient/{patient}/store', [PatientController::class, 'store'])->mi
 Route::post('/patient/storePatients', [PatientController::class, 'store_patients'])->middleware(['auth', 'admin'])->name('patient.storePatients');
 Route::post('/patient/{patient}/storeObgyne', [PatientController::class, 'storeObgyne'])->middleware(['auth', 'admin'])->name('patient.storeObgyne');
 Route::get('/patient/{patient}/edit', [PatientController::class, 'edit'])->middleware(['auth', 'admin'])->name('patient.edit');
-Route::get('/patient/{patient}/viewRecords', [PatientController::class, 'viewRecords'])->middleware(['auth', 'admin'])->name('patient.viewRecords');
+Route::get('/patient/{user}/viewRecords', [PatientController::class, 'viewRecords'])->middleware(['auth', 'admin'])->name('patient.viewRecords');
 Route::get('/patient/{patient}/viewRecords/viewPediatrics', [PatientController::class, 'viewPediatrics'])->middleware(['auth', 'admin'])->name('patient.viewPediatrics');
 Route::get('/patient/{patient}/update', [PatientController::class, 'update'])->middleware(['auth', 'admin'])->name('patient.update');
 Route::put('/patient/{patient}/updatePatient', [PatientController::class, 'update_patient'])->middleware(['auth', 'admin'])->name('patient.updatePatient');
@@ -71,14 +72,13 @@ Route::delete('/doctor/{doctor}/deleteDoctor', [DoctorController::class, 'delete
 Route::post('/doctor/{doctor}/updateDoctor', [DoctorController::class, 'update_doctor'])->middleware(['auth', 'admin'])->name('doctor.updateDoctor');
 Route::get('/doctor/{doctor}/editDoctor', [DoctorController::class, 'edit_doctor'])->middleware(['auth', 'admin'])->name('doctor.editDoctor');
 
+Route::get('/accounts', [AccountController::class, 'accounts'])->middleware(['auth', 'admin'])->name('accounts');
 
 Route::get('/staff', [StaffController::class, 'staffs'])->middleware(['auth', 'admin'])->name('staff.staff');
 Route::post('/staff/storeStaff', [StaffController::class, 'store_staff'])->middleware(['auth', 'admin'])->name('staff.storeStaff');
 Route::post('/staff/{staff}/updateStaff', [StaffController::class, 'update_staff'])->middleware(['auth', 'admin'])->name('staff.updateStaff');
 Route::get('/staff/{staff}/editStaff', [StaffController::class, 'edit_staff'])->middleware(['auth', 'admin'])->name('staff.editStaff');
 Route::delete('/staff/{staff}/deleteStaff', [StaffController::class, 'delete_staff'])->middleware(['auth', 'admin'])->name('staff.deleteStaff');
-
-
 
 Route::get('/appointment', [AppointmentController::class, 'appointments'])->middleware(['auth', 'admin'])->name('appointment.appointment');
 Route::post('/appointment/storeAppointment', [AppointmentController::class, 'store_appointment'])->middleware(['auth', 'admin'])->name('appointment.storeAppointment');
