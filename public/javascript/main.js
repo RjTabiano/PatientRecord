@@ -21,3 +21,20 @@ toggle.onclick = function () {
 };
 
 
+// Open the modal
+function openModal() {
+  document.getElementById("myModal").style.display = "block";
+}
+
+// Close the modal
+function closeModal() {
+  document.getElementById("myModal").style.display = "none";
+}
+
+// Close the modal when clicking outside of it
+window.onclick = function(event) {
+  var modal = document.getElementById("myModal");
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
