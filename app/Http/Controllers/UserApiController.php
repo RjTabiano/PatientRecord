@@ -7,9 +7,11 @@ use App\Models\User;
 use App\Models\Booking;
 use App\Models\Schedule;
 use App\Models\Image;
+use App\Models\PatientRecord;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Log;
 
 
 class UserApiController extends Controller
@@ -240,11 +242,15 @@ class UserApiController extends Controller
        
         try {
             $base64ImageData = $request->input('imageData');
-
+            $patientId = $request->input('patientId');
             $base64ImageData = substr($base64ImageData, strpos($base64ImageData, ',') + 1);
-
+            Log::info('Patient ID' . $patientId);
             $image = new Image();
             $image->data = $base64ImageData;
+            $patientRecord = PatientRecord::find($patientId);
+            $userId = $patientRecord->patient->user_id;
+            Log::info('Image data stored successfully. User ID: ' . $userId);
+            $image->user_id = $userId;
             $image->save();
 
             return response()->json(['message' => 'Image data stored successfully'], 200);
@@ -254,4 +260,25 @@ class UserApiController extends Controller
             return response()->json(['error' => 'Failed to store image data'], 500);
         }
     }
+
+
+    public function getUserImage()
+{
+    try {
+        $user = Auth::user(); 
+        $image = Image::where('user_id', $user->id)->first();
+
+        if (!$image) {
+            return response()->json(['error' => 'Image not found for the logged-in user'], 404);
+        }
+
+        return response()->json(['imageData' => $image->data], 200);
+    } catch (\Exception $e) {
+        logger()->error('Error retrieving user image: ' . $e->getMessage());
+        return response()->json(['error' => 'Failed to retrieve user image'], 500);
+    }
+}
+
+
+
 }

@@ -63,7 +63,6 @@
 
         </div>
       </div>
-
       <div class="panels-container">
         <div class="panel left-panel">
           <div class="content">

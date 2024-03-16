@@ -47,6 +47,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Staff::class, 'user_id');
     }
 
+    public function images(){
+        return $this->hasMany(Image::class, 'user_id');
+    }
+
     public function doctor(){
         return $this->hasMany(Doctor::class,'user_id');
     }

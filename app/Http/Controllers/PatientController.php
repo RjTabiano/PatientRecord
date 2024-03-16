@@ -53,6 +53,38 @@ class PatientController extends Controller
         $newPatientRecord->mother_phone = $request->input("mother_phone");
         $newPatientRecord->father_name = $request->input("father_name");
         $newPatientRecord->father_phone = $request->input("father_phone");
+        $history = $request->input("history");
+        $orders = $request->input("orders");
+
+        $dom = new DOMDocument();
+        $dom->loadHTML($history,9);
+        $images = $dom->getElementsByTagName('img');
+        foreach ($images as $key => $img) {
+            $data = base64_decode(explode(',',explode(';',$img->getAttribute('src'))[1])[1]);
+            $image_name = "/uplade/" . time(). $key.'png';
+            file_put_contents(public_path().$image_name,$data);
+
+            $img->removeAttribute('src');
+            $img->setAttribute('src',$image_name);
+        }
+        $description = $dom->saveHTML();
+
+        $newPatientRecord->history = $history;
+
+        $dom2 = new DOMDocument();
+        $dom2->loadHTML($orders,9);
+        $images2 = $dom2->getElementsByTagName('img');
+        foreach ($images2 as $key2 => $img2) {
+            $data2 = base64_decode(explode(',',explode(';',$img2->getAttribute('src'))[1])[1]);
+            $image_name2 = "/uplade/" . time(). $key2.'png';
+            file_put_contents(public_path().$image_name2,$data2);
+
+            $img2->removeAttribute('src');
+            $img2->setAttribute('src',$image_name2);
+        }
+        $description2 = $dom2->saveHTML();
+        $newPatientRecord->orders = $orders;
+
         $newPatientRecord->save();
         
         $newVaccine = new Vaccine();
@@ -74,32 +106,6 @@ class PatientController extends Controller
         $newVaccine->Flu = $request->input("Flu");
         $newVaccine->save();
 
-
-        $history = $request->history;
-
-        $dom = new DOMDocument();
-        $dom->loadHTML($history,9);
-        $images = $dom->getElementsByTagName('img');
-        foreach ($images as $key => $img) {
-            $data = base64_decode(explode(',',explode(';',$img->getAttribute('src'))[1])[1]);
-            $image_name = "/uplade/" . time(). $key.'png';
-            file_put_contents(public_path().$image_name,$data);
-
-            $img->removeAttribute('src');
-            $img->setAttribute('src',$image_name);
-        }
-        $description = $dom->saveHTML();
-        $newConsultationPediatrics = new consultationPediatrics();
-        
-        $newConsultationPediatrics->patient_id = $patient->id;;
-        $newConsultationPediatrics->dateTime = $request->dateTime;
-        $newConsultationPediatrics->history = $history;
-        $newConsultationPediatrics->orders = $request->orders;
-        $newConsultationPediatrics->created_by = $user->name;
-        $newConsultationPediatrics->save();
-
-
-    
 
         return view('admin.viewRecord', ['patient' => $patient]);
     }

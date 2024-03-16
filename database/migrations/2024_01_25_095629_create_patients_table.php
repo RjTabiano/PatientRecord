@@ -101,9 +101,7 @@ return new class extends Migration
         Schema::create('consultation_pediatrics', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('patient_id');
-            $table->dateTime('dateTime')->nullable();
-            $table->longText('history')->nullable();
-            $table->longText('orders')->nullable();
+            $table->longText('consultation')->nullable();
             $table->string('created_by');
             $table->timestamps();
             $table->foreign('patient_id')

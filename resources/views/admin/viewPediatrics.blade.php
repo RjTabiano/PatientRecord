@@ -162,27 +162,34 @@
                                         <label>Orders:</label>
                                         <span></span>
                                     </div>
-                                    <button id="publishButton">Publish</button>
                                 </div>
+                                <button id="publishButton" data-patient-id="{{ $patient[0]->patient_id }}">Publish</button>
     <section class="overlay"></section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script>
         const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
         document.getElementById('publishButton').addEventListener('click', function() {
+            var patientId = this.getAttribute('data-patient-id');
+            
             html2canvas(document.querySelector(".container")).then(canvas => {
                 var imageData = canvas.toDataURL();
-                sendDataToBackend(imageData);
+                sendDataToBackend(imageData, patientId);
             });
+            
         });
-
-        function sendDataToBackend(imageData) {
+        
+  
+        function sendDataToBackend(imageData, patientId) {
             fetch('/api/store-image', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'X-CSRF-Token': csrfToken,
                 },
-                body: JSON.stringify({ imageData: imageData }),
+                body: JSON.stringify({ 
+                  imageData: imageData,
+                  patientId: patientId
+                }),
             })
             .then(response => {
                 if (response.ok) {
