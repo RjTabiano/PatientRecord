@@ -139,22 +139,25 @@
       <div class="portfolio__link">
         <a href="" class="portfolio__link-name"><b><br><a href="login.html" target="_blank"><button>Book Now!</button></a></b>
       </div>
+      <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Consultation</h2>
     </div>
     <div class="portfolio__img">
       <img src="{{ asset('images/infer.jpg') }}" alt="">
       <div class="portfolio__link">
         <a href="" class="portfolio__link-name"><b><br><a href="login.html" target="_blank"><button>Book Now!</button></a></b>
       </div>
+      <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pediatrics</h2>
     </div>
     <div class="portfolio__img">
       <img src="{{ asset('images/obyy.jpg') }}" alt="">
       <div class="portfolio__link">
         <a href="" class="portfolio__link-name"><b><br><a href="login.html" target="_blank"><button>Book Now!</button></a></b>
       </div>
+      <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Obygyn</h2>
     </div>
+    
    
-    </div>
-  </div>
+
   </section>
         
     <!--===== CONTACT 
@@ -189,7 +192,7 @@
   <footer class="footer section">
     <div class="footer__container bd-grid">
       <div class="footer__data">
-        <h2 class="footer__title">About Us <br>
+        <h2 class="footer__title">About Us <br> <br>
          The Obstetrics and Gynecology (OBGYN) clinic is dedicated to the healthcare of women, focusing on reproductive health, pregnancy, and childbirth. Services provided include routine gynecological examinations, prenatal care, family planning, fertility consultations, and managing various women's health issues.</h2>
         <p class="footer__text"></p>
       </div>
@@ -202,15 +205,13 @@
             Quezon City, Philippines</a></li>
             <br>
             <h2 class="footer__title">Email: samwanasenrazon@gmail.com</h2>
-          <br>
           <h2 class="footer__title">Contact: 0926-0993874</h2>
         </ul>
       </div>
 
       <div class="footer__data">
         <h2 class="footer__title">FOLLOW</h2>
-        <a href="https://www.facebook.com/thequeensobgyn" target="_blank" class="footer__social"><i class='bx bxl-facebook'></i></a>
-        <br>
+        <a href="https://www.facebook.com/thequeensobgyn" target="_blank" class="footer__social"><i class='bx bxl-facebook'></i></a><br>
         <h2 class="footer__title">Newsletter</h2>
         <h2 class="footer__title">This month, we focus on Vision Correction, shedding light on key aspects and providing valuable insights. Stay informed and take charge of your health!  </h2>
       </div>
