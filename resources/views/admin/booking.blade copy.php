@@ -128,58 +128,7 @@
 
     <!-- =========== CONTAINER =========  -->
 
-    <h1 class="heading">Patient Consultation Records</h1>
-        <a href="{{route('patient.addConsultation')}}" class="btn btn-md btn-primary">Add Consultation Record</a>
-        <hr>
 
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Created By</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($consultationPediatrics as $consultationPediatric)
-                <tr>
-                    @foreach($patients as $patient)
-                    <th scope="row">{{$patient->name}}</th>
-                    @endforeach
-                    <td>{{$consultationPediatric->created_by}}</td>
-                    <td>
-                        <a href="/patient/show/{{$consultationPediatric->id}}" class="btn btn-sucess">Show</a>
-                        <a href="{{route('patient.edit_consultationRecord', ['consultationPediatrics' => $consultationPediatric], ['patient' => $patient])}}" class="btn btn-info">Edit</a>
-                        <button  type="button" data-toggle="modal" data-target="#deletePatient" class="btn btn-danger">
-                        Delete
-                        </button>
-                        <!-- DELETE Modal -->
-                        <div class="modal fade" id="deletePatient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <form method="post" action="{{route('patient.deleteConsultation', ['consultationPediatrics' => $consultationPediatric])}}" class="form">
-                                    @csrf
-                                    @method('delete')
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" valaue="Delete" class="btn btn-primary">Delete Patient</button>
-                                </div>
-                                </form>
-                            </div>
-                        </div>
-                        </div>
-        <!-- END DELETE MODAL -->
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
 
 
     <!-- =========== CONTAINER =========  -->

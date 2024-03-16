@@ -503,4 +503,97 @@ body {
   cursor: pointer;
 }
 
+.form_container {
+  max-width: 600px;
+  margin: 50px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+header {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.form {
+  display: grid;
+  grid-gap: 20px;
+}
+
+.input-box {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+textarea,
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.vaccine_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.checkbox-container {
+  width: 27%; /* Adjust the width as needed */
+  margin-bottom: 30px; /* Adjust spacing between checkbox containers */
+  display: flex;
+  flex-direction: column;
+}
+.checkbox-container label {
+  margin-bottom: 15px; /* Adjust spacing between label and checkboxes */
+}
+.checkbox-container input {
+  margin-bottom: 5px; /* Adjust spacing between checkboxes */
+}
+@media only screen and (max-width: 768px) {
+  /* Adjust layout for smaller screens */
+  .checkbox-container {
+      width: 100%; /* Full width on smaller screens */
+  }
+}
+
+
+.vaccine_table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.vaccine_table th, .vaccine_table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.vaccine_table th {
+  background-color: #f2f2f2;
+}
 
