@@ -89,7 +89,7 @@
                 @endcannot
                 @cannot('staff')
                 <li>
-                    <a href="#">
+                    <a href="{{route('schedule.schedule')}}">
                         <span class="icon">
                             <ion-icon name="calendar-number-outline"></ion-icon>
                         </span>
