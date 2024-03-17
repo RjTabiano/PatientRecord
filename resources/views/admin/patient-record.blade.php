@@ -26,7 +26,6 @@
                         <span class="title">Admin Panel</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="{{route('home')}}">
                         <span class="icon">
