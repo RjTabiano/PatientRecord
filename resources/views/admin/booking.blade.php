@@ -49,7 +49,7 @@
                 <li>
                     <a href="{{route('scanner')}}">
                         <span class="icon">
-                            <ion-icon name="people-outline"></ion-icon>
+                        <ion-icon name="scan-circle-outline"></ion-icon>
                         </span>
                         <span class="title">OCR Scanner</span>
                     </a>
@@ -153,7 +153,7 @@
                     <td>{{$booked->date}}</td>
                     <td>{{$booked->time}}</td>
                     <td>{{$booked->status}}</td>
-                    @if($booked->status == "Unconfirmed" || $booked->status == "Cancelled")
+                    @if($booked->status == "Unconfirm" || $booked->status == "Cancelled")
                     <td>
                     <button class="but1"onclick="openModal()">
                         Confirm
@@ -175,7 +175,7 @@
                     @else
                     <td>
                     <button class="uncon1"onclick="openModal()">
-                        Unconfirmed
+                        Unconfirm
                     </button>
                     <!-- =========== CONFIRM MODAL  =========  -->
                     <div class="modal" id="myModal">

@@ -50,7 +50,7 @@
                 <li>
                     <a href="{{route('scanner')}}">
                         <span class="icon">
-                            <ion-icon name="people-outline"></ion-icon>
+                        <ion-icon name="scan-circle-outline"></ion-icon>
                         </span>
                         <span class="title">OCR Scanner</span>
                     </a>
@@ -127,7 +127,8 @@
 
 
     <!-- =========== CONTAINER =========  -->
-    <button onclick="openModal()">
+    <h1 class="heading">Appointments</h1><br>
+    <button class="modals" onclick="openModal()">
         Add
     </button>
         

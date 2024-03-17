@@ -61,22 +61,25 @@
       <h2 class="section-title">Services</h2>
       <div class="portfolios__container bd-grid">
       <div class="portfolio__img">
-      <img src="{{ asset('images/pediatrics.jpg') }}" alt="">
+      <img src="{{ asset('images/Consull.png') }}" alt="">
       <div class="portfolio__link">
-        <a class="portfolio__link-name"><b><br><a href="{{route('bookPediatrics')}}" ><button>Pediatrics</button></a></b>
+        <a class="portfolio__link-name"><b><br><a href="{{route('bookPediatrics')}}" ><button>Consultation</button></a></b>
       </div>
+      <h2 class="h22">Consultation</h2>
     </div>
     <div class="portfolio__img">
-      <img src="{{ asset('images/consultation.jpg') }}" alt="">
+    <img src="{{ asset('images/infer.jpg') }}" alt="">
       <div class="portfolio__link">
-        <a  class="portfolio__link-name"><b><br><a href="{{route('bookConsultation')}}" ><button>Consultation</button></a></b>
+        <a  class="portfolio__link-name"><b><br><a href="{{route('bookConsultation')}}" ><button>Pediatrics</button></a></b>
       </div>
+      <h2 class="h22">Pediatrics</h2>
     </div>
     <div class="portfolio__img">
       <img src="{{ asset('images/obyy.jpg') }}" alt="">
       <div class="portfolio__link">
         <a  class="portfolio__link-name"><b><br><a href="{{route('bookObgyne')}}" ><button>Obgyne</button></a></b>
     </div>
+    <h2 class="h22">Obygyn</h2>
   </section>
   </main>
   <script src="{{ asset('javascript/js.js') }}"></script>

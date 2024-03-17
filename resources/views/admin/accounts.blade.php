@@ -44,7 +44,7 @@
                 <li>
                     <a href="{{route('scanner')}}">
                         <span class="icon">
-                            <ion-icon name="people-outline"></ion-icon>
+                        <ion-icon name="scan-circle-outline"></ion-icon>
                         </span>
                         <span class="title">OCR Scanner</span>
                     </a>
@@ -119,11 +119,11 @@
 
         </div>
         
-        <h1 class="heading">Accounts</h1>
+        <h1 class="heading">Accounts</h1><br>
                 <div class="dropdown">
                     <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
                         Add Account
-                    </button>
+                   </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="{{route('staff.staff')}}">Staff</a>
                         <a class="dropdown-item" href="{{route('doctor.doctor')}}">Doctor</a>
@@ -138,6 +138,7 @@
                                 <th scope="col">Name</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Account Type</th>
+                                <th scope="col"></th>
                             </tr>
                             </thead>
                             <tbody>

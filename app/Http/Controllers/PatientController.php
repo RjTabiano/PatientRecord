@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\PatientRecord;
 use App\Models\Obgyne;
 use App\Models\Vaccine;
-use App\Models\mMdicalHistory;
+use App\Models\MedicalHistory;
 use App\Models\consultationPediatrics;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;

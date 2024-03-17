@@ -770,6 +770,8 @@ tr:hover {
 .dropdown {
   position: relative;
   display: inline-block;
+  padding-left: 30px;
+  padding-bottom: 20px;
 }
 
 .dropdown-menu {
@@ -798,4 +800,80 @@ tr:hover {
 
 .dropdown:hover .dropdown-toggle {
   background-color: #f1f1f1;
+}
+.table-wrapper{
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.doctorid{
+  padding-left: 30px;
+}
+
+.form-control{
+  padding-left: 30px;
+}
+
+.custom-button {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.custom-button:hover {
+  background-color: #0056b3;
+}
+
+.custom-button:active {
+  background-color: #0056b3;
+  transform: translateY(1px);
+}
+
+.btn_c{
+  padding-top: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.modals{
+  margin-left: 30px;
+  margin-bottom: 10px;
+}
+
+/* Modal overlay style */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Button Style */
+.modals {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modals:hover {
+  background-color: #0056b3;
+}
+
+.h22{
+  margin-left: 20px;
 }

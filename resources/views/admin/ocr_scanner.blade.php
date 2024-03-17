@@ -49,7 +49,7 @@
                 <li>
                     <a href="{{route('scanner')}}">
                         <span class="icon">
-                            <ion-icon name="people-outline"></ion-icon>
+                        <ion-icon name="scan-circle-outline"></ion-icon>
                         </span>
                         <span class="title">OCR Scanner</span>
                     </a>
@@ -130,18 +130,19 @@
         @if(!empty($statusMsg))
             <div class="alert alert-success">{{$statusMsg}}</div>
         @endif
-          <label for="doctor_id">Select Patient Record Type:</label>
-          <select name="doctor_id"  id="specialty" class="form-select" aria-label="Default select example" onchange="showForm()">
+          <label class="doctorid" for="doctor_id">Select Patient Record Type:</label>
+          <select name="doctor_id"  id="specialty" class="doctorid1" aria-label="Default select example" style="width: 200px;" onchange="showForm()">
                 <option disabled selected required>Select Record Type</option>
                 <option  value="pediatrics">Pediatrics</option>
                 <option  value="obgyne">Obgyne</option>
             </select>
-        <form action="{{ route('scanner.upload') }}" method="post" accept="image/*" enctype="multipart/form-data">
-            @csrf
-            @method('PUT')
-            <input type="file" class="form-control" name="image" accept="image/*">
-            <input type="submit" class="form-control" name="submit" value="Upload">
-        </form>
+            <form action="{{ route('scanner.upload') }}" method="post" accept="image/*" enctype="multipart/form-data">
+                @csrf
+               @method('PUT')
+                  <input type="file" class="form-control" name="image" accept="image/*">
+                  <input type="submit" class="custom-button" name="submit" value="Upload">
+              </form>
+
         
         <div id="pediatricsForm" style="display:none;">
           <h2>Pediatrics Form</h2>
