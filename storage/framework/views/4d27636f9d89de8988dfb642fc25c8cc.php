@@ -141,9 +141,7 @@
                     <tr>
                         <td onclick="window.location='<?php echo e(route('patient.viewRecords', ['user' => $user])); ?>'" style="cursor: pointer;"><?php echo e($user->name); ?></td>
                         <td onclick="window.location='<?php echo e(route('patient.viewRecords', ['user' => $user])); ?>'" style="cursor: pointer;"><?php echo e($user->email); ?></td>
-                        <td><button  type="button" data-toggle="modal" data-target="#editPatient" data-backdrop="static" data-keyboard="false">
-            Edit
-            </button></td>
+                        
                     </tr>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
              </tbody>

@@ -142,7 +142,12 @@
                             </div>
                             <div class="input-box">
                                 <label for="specialization">Specialization</label>
-                                <input type="text" name="specialization" placeholder="specialization" required />
+                                <select name="specialization" id="specialization" required>
+                                    <option value="">Select Specialization</option>
+                                    <option value="Obgyne">Obgyne</option>
+                                    <option value="Pediatrics">Pediatrics</option>
+                                    <option value="Surgery">Surgery</option>
+                                </select>
                             </div>
                             <div class="input-box">
                                 <label for="password">Password</label>

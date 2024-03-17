@@ -148,15 +148,27 @@
                                 <td>{{$account->email}}</td>
                                 <td>{{$account->usertype}}</td>
                                 <td>
-                                <button  type="button" class="btn btn-danger" data-toggle="modal" data-target="">
-                                    <i class="far fa-trash-alt">Delete</i>
-                                        </button>
+                                <button class="btn btn-danger"onclick="openModal()">
+                                    Delete
+                                </button>
+                                
                                     </td>
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
-           
+                        <div class="modal" id="myModal">
+                                <div class="modal-content">
+                                    <span class="close" onclick="closeModal()">&times;</span>
+                                    <form method="post" action="{{route('deleteAccount', ['account' => $account])}}" class="form">
+                                            @csrf
+                                            @method('delete')
+                                        <div class="modal-footer">
+                                            <button type="submit" valaue="Delete" class="btn btn-primary">Delete</button>
+                                        </div>
+                                        </form>
+                                </div>
+                                </div>
     <!-- =========== Scripts =========  -->
     <script src="{{ asset('javascript/main.js') }}"></script>
 

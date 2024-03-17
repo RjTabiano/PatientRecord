@@ -72,6 +72,8 @@ Route::post('/doctor/{doctor}/updateDoctor', [DoctorController::class, 'update_d
 Route::get('/doctor/{doctor}/editDoctor', [DoctorController::class, 'edit_doctor'])->middleware(['auth', 'admin'])->name('doctor.editDoctor');
 
 Route::get('/accounts', [AccountController::class, 'accounts'])->middleware(['auth', 'admin'])->name('accounts');
+Route::delete('/accounts/{account}/deleteAccount', [AccountController::class, 'delete_account'])->middleware(['auth', 'admin'])->name('deleteAccount');
+
 
 Route::get('/staff', [StaffController::class, 'staffs'])->middleware(['auth', 'admin'])->name('staff.staff');
 Route::post('/staff/storeStaff', [StaffController::class, 'store_staff'])->middleware(['auth', 'admin'])->name('staff.storeStaff');

@@ -60,7 +60,26 @@ window.onclick = function(event) {
 }
 // ---------------------------- END OF MODAL
 
+// ---------------------------- Open the modaldel
+function openModalDel(accountId) {
+  var modalId = "myModalDel_" + accountId;
+  var modal = document.getElementById(modalId);
+  document.getElementById("myModalDel").style.display = "block";
+}
 
+//----------------------------- Close the modaldel
+function closeModalDel() {
+  document.getElementById("myModalDel").style.display = "none";
+}
+
+// ---------------------------- Close the modaldel when clicking outside of it
+window.onclick = function(event) {
+  var modal = document.getElementById("myModalDel");
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+// ---------------------------- END OF modaldel
 function showForm() {
   var specialty = document.getElementById("specialty").value;
   var pediatricsForm = document.getElementById("pediatricsForm");
