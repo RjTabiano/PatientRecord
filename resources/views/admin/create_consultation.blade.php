@@ -138,7 +138,7 @@
                 </option>
             @endforeach
         </select>
-                    <div class="input-box">
+                    <div class="input-boxs">
                         <label for="">Description:</label>
                         <textarea name="history" id="history" cols="30" rows="10"></textarea>
                     </div>

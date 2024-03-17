@@ -137,34 +137,33 @@
           <div class="input-box">
             
           
-          <div class="input-box">
-            <label  >Birth Date</label>
-            <input class="form-control" style="width:100%" type="date" name="birthdate" placeholder="Enter birth date"/>
-          </div>
-        </div>
+          
         <div class="input-box"> 
             <label >Age</label>
             <input class="form-control"style="width:100%" type="number" name="age" placeholder="Enter Age" required />
           </div>
-      
-
+        <div class="input-box">
+            <label >Birth Date</label>
+            <input class="form-control" style="width:100%" type="date" name="birthdate" placeholder="Enter birth date"/>
+          </div>
+        </div>
         <div class="input-box address">
           <label  >Address</label>
-          <input class="form-control" style="width:100%" type="text" name="address" placeholder="Enter address" required />
+          <input class="form-control" style="width:100%" type="text" name="address" placeholder="Enter address" required /><br>
           <div class="input-box">
-            <label  >Mother's Name</label>
+            <label >Mother's Name</label>
             <input class="form-control" style="width:100%" type="text" name="mother_name" placeholder="Enter Name" required />
           </div>
           <div class="input-box">
-            <label >Phone Number</label>
+            <label>Mother's Phone Number</label>
             <input class="form-control" style="width:100%" type="number" name="mother_phone" placeholder="Enter phone number" required />
           </div>
           <div class="input-box">
-            <label  >Father's Name</label>
+            <label>Father's Name</label>
             <input class="form-control" style="width:100%" type="text" name="father_name" placeholder="Enter Name" required />
           </div>
           <div class="input-box">
-            <label  >Phone Number</label>
+            <label>Father's Phone Number</label>
             <input class="form-control" style="width:100%" type="number" name="father_phone"  placeholder="Enter phone number" required />
           </div>
         </div>
@@ -324,13 +323,13 @@
     </div>
         <div class="input-box">
           <label for="">P.E./History:</label>
-          <textarea name="history" style="width: 80;%" id="history" cols="30" rows="10"></textarea>
+          <textarea name="history" style="width: 100;%" id="history" cols="30" rows="10"></textarea>
         </div>
         <div class="input-box">
           <label for="">Orders:</label>
-          <textarea name="orders" style="width: 80;%" id="orders" cols="30" rows="10"></textarea>
+          <textarea name="orders" style="width: 100;%" id="orders" cols="30" rows="10"></textarea>
         </div>
-        <button style="width:40%" type="submit">Submit</button>
+        <button style="width:100%" type="submit">Submit</button>
       </form>
 
 
