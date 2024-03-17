@@ -21,3 +21,5 @@ yarn-error.log
 /storage/framework
 /node_modules
 /storage
+/storage/framework/views
+/storage

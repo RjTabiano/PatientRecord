@@ -221,7 +221,7 @@ class UserApiController extends Controller
         ], 401);
     }
 
-    $bookings = $user->booking()->get();
+    $bookings = $user->booking()->where('status', 'Confirmed')->get();
 
     $filteredBookings = $bookings->map(function ($booking) {
         return [
@@ -278,7 +278,4 @@ class UserApiController extends Controller
         return response()->json(['error' => 'Failed to retrieve user image'], 500);
     }
 }
-
-
-
 }

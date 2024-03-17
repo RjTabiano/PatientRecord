@@ -95,7 +95,7 @@ Route::get('/schedule/{schedule}/editSchedule', [ScheduleController::class, 'edi
 Route::post('/schedule/{schedule}/updateSchedule', [ScheduleController::class, 'update_schedule'])->middleware(['auth', 'admin'])->name('schedule.updateSchedule');
 
 route::get('/booking', [BookingController::class, 'view_booking'])->middleware(['auth', 'admin'])->name('viewBooking');
-route::get('/booking/{booking}/cancelBooking', [BookingController::class, 'confirm_booking'])->middleware(['auth', 'admin'])->name('confirmBooking');
+route::get('/booking/{booking}/confirmBooking', [BookingController::class, 'confirm_booking'])->middleware(['auth', 'admin'])->name('confirmBooking');
 
 
 Route::get('/scanner', [ScannerController::class, 'index'])->middleware(['auth', 'admin'])->name('scanner');
