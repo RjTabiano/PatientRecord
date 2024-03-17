@@ -16,11 +16,7 @@ use DOMDocument;
 
 class PatientController extends Controller
 {
-    public function patientRecord(){
-        $patients = Patient::all();
-        return view('admin.patient-record', ['patients' => $patients]);
-        
-    }
+    
 
     public function patient_record_history(){
         $users = User::where('usertype', '=' , 'user')->get();
