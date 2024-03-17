@@ -74,13 +74,14 @@ return new class extends Migration
             $table->string('type');
             $table->unsignedInteger('patient_id');
             $table->integer('age');
-            $table->string('civil_status');
+            $table->date('birthdate')->nullable();
+            $table->text('civil_status');
             $table->string('address');
             $table->integer('contact_number');
             $table->string('occupation');
             $table->string('religion');
-            $table->string('referred_by');
-            $table->integer('emergency_contact_no');
+            $table->string('referred_by')->nullable();
+            $table->integer('emergency_contact_no')->nullable();
             $table->timestamps();
             $table->foreign('patient_id')
                     ->references('id')
@@ -90,7 +91,69 @@ return new class extends Migration
         Schema::create('medical_history', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('obgyne_id');
-            $table->text('history')->nullable();
+            $table->boolean('Hypertension')->nullable();
+            $table->boolean('Bronchial_Asthma')->nullable();
+            $table->boolean('Thyroid_Disease')->nullable();
+            $table->boolean('Heart_Disease')->nullable();
+            $table->boolean('Previous_Surgery')->nullable();
+            $table->boolean('Allergy')->nullable();
+            $table->text('Family_History')->nullable();
+            $table->timestamps();
+            $table->foreign('obgyne_id')
+                    ->references('id')
+                    ->on('obgyne')
+                    ->onDelete('cascade');
+        });
+
+        Schema::create('baseline_diagnostics', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('obgyne_id');
+            $table->string('CBC_HgB')->nullable();
+            $table->string('plt')->nullable();
+            $table->string('DPT')->nullable();
+            $table->string('Hct')->nullable();
+            $table->string('WBC')->nullable();
+            $table->string('Blood_Type')->nullable();
+            $table->string('FBS')->nullable();
+            $table->string('HBsAg')->nullable();
+            $table->string('VDRL')->nullable();
+            $table->string('HiV')->nullable();
+            $table->string('TT')->nullable();
+            $table->string('Urinalysis')->nullable();
+            $table->string('Other')->nullable();
+            $table->timestamps();
+            $table->foreign('obgyne_id')
+                    ->references('id')
+                    ->on('obgyne')
+                    ->onDelete('cascade');
+        });
+
+
+        Schema::create('Obgyne_History', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('obgyne_id');
+            $table->string('gravitiy')->nullable();
+            $table->string('parity')->nullable();
+            $table->string('OB_score')->nullable();
+            $table->string('table')->nullable();
+            $table->string('Blood_Type')->nullable();
+            $table->string('LMP')->nullable();
+            $table->string('PMP')->nullable();
+            $table->string('AOG')->nullable();
+            $table->string('EDD')->nullable();
+            $table->string('early_ultrasound')->nullable();
+            $table->string('AOG_by_eutz')->nullable();
+            $table->string('EDD_by_eutz')->nullable();
+            $table->string('TT1')->nullable();
+            $table->string('TT2')->nullable();
+            $table->string('TT3')->nullable();
+            $table->string('TDAP')->nullable();
+            $table->string('Flu')->nullable();
+            $table->string('HPV')->nullable();
+            $table->string('PCV')->nullable();
+            $table->string('covid19_brand')->nullable();
+            $table->string('primary')->nullable();
+            $table->string('booster')->nullable();
             $table->timestamps();
             $table->foreign('obgyne_id')
                     ->references('id')
