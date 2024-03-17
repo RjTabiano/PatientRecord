@@ -30,6 +30,7 @@ class BookingController extends Controller
         $booking->service = $request->input("service");
         $booking->date = $request->input("date");
         $booking->time= $request->input("time");
+        $booking->status = "Unconfirmed";
         $booking->save();
         
         return view('welcome');

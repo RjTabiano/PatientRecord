@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('service');
             $table->date('date');
             $table->time('time');
+            $table->string('status');
             $table->foreign('user_id')
                     ->references('id')
                     ->on('users')

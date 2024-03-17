@@ -17,5 +17,6 @@ class Booking extends Model
         'service',
         'date',
         'time',
+        'status'
     ];
 }
