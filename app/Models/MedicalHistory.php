@@ -14,11 +14,18 @@ class MedicalHistory extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'history',  
+        'Hypertension',
+        'Bronchial_Asthma',
+        'Thyroid_Disease',
+        'Heart_Disease',
+        'Previous_Surgery',
+        'Allergy',
+        'Family_History',
     ];
     
-    protected $casts = ['history' => 'array'];
-
+    protected $casts = [
+        'Family_History' => 'array'
+    ];
     public function obgyne(){
         return $this->belongsTo(Obgyne::class);
     }

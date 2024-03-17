@@ -128,7 +128,7 @@
 
     <!-- =========== CONTAINER =========  -->
     <header>Obgyne Form</header>
-      <form method="post" action="{{route('patient.storeObgyne')}}" class="form">
+      <form method="post" action="{{route('patient.storeObgyne' , ['patient' => $patient])}}" class="form">
         @csrf
         @method('post')
         <div class="input-box">
@@ -190,27 +190,223 @@
             <input class="form-control" type="text" placeholder="Referred by:" name="referred_by" required />
           </div>
           <div class="input-box">
-            <label class="form-control" >Emergency Contact Number</label>
+            <label class="form-control" >Emergency Contact Number: </label>
             <input class="form-control" type="number" placeholder="" name="emergency_contact_no" required />
           </div>
         </div>
-        <div>
-            <input type="checkbox" placeholder="" name="history[]" value="Hypertension"  /> Hypertension
-            <input type="checkbox" placeholder="" name="history[]" value="Diabetes"  /> Diabetes
-            <input type="checkbox" placeholder="" name="history[]" value="Thyroid Disease"  /> Thyroid Disease
-            <input type="checkbox" placeholder="" name="history[]" value="Heart Disease"  /> Heart Disease
-            <input type="checkbox" placeholder="" name="history[]" value="Bronchial Ashtma"  /> Bronchial Ashtma
-            <input type="checkbox" placeholder="" name="history[]" value="Previous Surgery"  /> Previous Surgery
-            <input type="checkbox" placeholder="" name="history[]" value="Allergies"  /> Allergies
-            <input type="checkbox" placeholder="" name="history[]" value="Smoker"  /> Smoker
-            <input type="checkbox" placeholder="" name="history[]" value="Alcohol"  /> Alcohol
-            <input type="checkbox" placeholder="" name="history[]" value="Drugs"  /> Drugs
-        </div>
+        <div class="form-group">
+        <label for="Hypertension">Hypertension</label>
+        <input type="checkbox" id="Hypertension" name="Hypertension" value="1">
+    </div>
+
+    <div class="form-group">
+        <label for="Bronchial_Asthma">Bronchial Asthma</label>
+        <input type="checkbox" id="Bronchial_Asthma" name="Bronchial_Asthma" value="1">
+    </div>
+
+    <div class="form-group">
+        <label for="Thyroid_Disease">Thyroid Disease</label>
+        <input type="checkbox" id="Thyroid_Disease" name="Thyroid_Disease" value="1">
+    </div>
+
+    <div class="form-group">
+        <label for="Heart_Disease">Heart Disease</label>
+        <input type="checkbox" id="Heart_Disease" name="Heart_Disease" value="1">
+    </div>
+
+    <div class="form-group">
+        <label for="Previous_Surgery">Previous Surgery</label>
+        <input type="checkbox" id="Previous_Surgery" name="Previous_Surgery" value="1">
+    </div>
+
+    <div class="form-group">
+        <label for="Allergy">Allergy</label>
+        <input type="checkbox" id="Allergy" name="Allergy" value="1">
+    </div>
+
+    <div class="form-group">
+        <label for="Family_History">Family History</label>
+        <input type="text" id="Family_History" name="Family_History">
+    </div>
+
+    <h2>Baseline Diagnostics</h2>
+    <div class="form-group">
+        <label for="CBC_HgB">CBC HgB</label>
+        <input type="text" id="CBC_HgB" name="CBC_HgB">
+    </div>
+
+    <div class="form-group">
+        <label for="plt">Platelet Count (plt)</label>
+        <input type="text" id="plt" name="plt">
+    </div>
+
+    <div class="form-group">
+        <label for="DPT">DPT</label>
+        <input type="text" id="DPT" name="DPT">
+    </div>
+
+    <div class="form-group">
+        <label for="Hct">Hct</label>
+        <input type="text" id="Hct" name="Hct">
+    </div>
+
+    <div class="form-group">
+        <label for="WBC">WBC</label>
+        <input type="text" id="WBC" name="WBC">
+    </div>
+
+    <div class="form-group">
+        <label for="Blood_Type">Blood Type</label>
+        <input type="text" id="Blood_Type" name="Blood_Type">
+    </div>
+
+    <div class="form-group">
+        <label for="FBS">Fasting Blood Sugar (FBS)</label>
+        <input type="text" id="FBS" name="FBS">
+    </div>
+
+    <div class="form-group">
+        <label for="HBsAg">HBsAg</label>
+        <input type="text" id="HBsAg" name="HBsAg">
+    </div>
+
+    <div class="form-group">
+        <label for="VDRL">VDRL</label>
+        <input type="text" id="VDRL" name="VDRL">
+    </div>
+
+    <div class="form-group">
+        <label for="HiV">HIV</label>
+        <input type="text" id="HiV" name="HiV">
+    </div>
+
+    <div class="form-group">
+        <label for="75g_OTT">75g OTT</label>
+        <input type="text" id="75g_OTT" name="75g_OTT">
+    </div>
+
+    <div class="form-group">
+        <label for="Urinalysis">Urinalysis</label>
+        <input type="text" id="Urinalysis" name="Urinalysis">
+    </div>
+
+    <div class="form-group">
+        <label for="Other">Other</label>
+        <input type="text" id="Other" name="Other">
+    </div>
+    <!-- Obgyne History -->
+    <h2>Obgyne History</h2>
+    <div class="form-group">
+        <label for="gravitiy">Gravitiy</label>
+        <input type="text" id="gravitiy" name="gravitiy">
+    </div>
+
+    <div class="form-group">
+        <label for="parity">Parity</label>
+        <input type="text" id="parity" name="parity">
+    </div>
+
+    <div class="form-group">
+        <label for="OB_score">OB Score</label>
+        <input type="text" id="OB_score" name="OB_score">
+    </div>
+
+    <div class="form-group">
+        <label for="table">Table</label>
+        <input type="text" id="table" name="table">
+    </div>
+
+    <div class="form-group">
+        <label for="Blood_Type">Blood Type</label>
+        <input type="text" id="Blood_Type" name="Blood_Type">
+    </div>
+
+    <div class="form-group">
+        <label for="LMP">LMP</label>
+        <input type="text" id="LMP" name="LMP">
+    </div>
+
+    <div class="form-group">
+        <label for="PMP">PMP</label>
+        <input type="text" id="PMP" name="PMP">
+    </div>
+
+    <div class="form-group">
+        <label for="AOG">AOG</label>
+        <input type="text" id="AOG" name="AOG">
+    </div>
+
+    <div class="form-group">
+        <label for="EDD">EDD</label>
+        <input type="text" id="EDD" name="EDD">
+    </div>
+
+    <div class="form-group">
+        <label for="early_ultrasound">Early Ultrasound</label>
+        <input type="text" id="early_ultrasound" name="early_ultrasound">
+    </div>
+
+    <div class="form-group">
+        <label for="AOG_by_eutz">AOG by EUTZ</label>
+        <input type="text" id="AOG_by_eutz" name="AOG_by_eutz">
+    </div>
+
+    <div class="form-group">
+        <label for="EDD_by_eutz">EDD by EUTZ</label>
+        <input type="text" id="EDD_by_eutz" name="EDD_by_eutz">
+    </div>
+
+    <div class="form-group">
+        <label for="TT1">TT1</label>
+        <input type="text" id="TT1" name="TT1">
+    </div>
+
+    <div class="form-group">
+        <label for="TT2">TT2</label>
+        <input type="text" id="TT2" name="TT2">
+    </div>
+
+    <div class="form-group">
+        <label for="TT3">TT3</label>
+        <input type="text" id="TT3" name="TT3">
+    </div>
+
+    <div class="form-group">
+        <label for="TDAP">TDAP</label>
+        <input type="text" id="TDAP" name="TDAP">
+    </div>
+
+    <div class="form-group">
+        <label for="Flu">Flu</label>
+        <input type="text" id="Flu" name="Flu">
+    </div>
+
+    <div class="form-group">
+        <label for="HPV">HPV</label>
+        <input type="text" id="HPV" name="HPV">
+    </div>
+
+    <div class="form-group">
+        <label for="PCV">PCV</label>
+        <input type="text" id="PCV" name="PCV">
+    </div>
+
+    <div class="form-group">
+        <label for="covid19_brand">COVID-19 Vaccine Brand</label>
+        <input type="text" id="covid19_brand" name="covid19_brand">
+    </div>
+
+    <div class="form-group">
+        <label for="primary">Primary</label>
+        <input type="text" id="primary" name="primary">
+    </div>
+
+    <div class="form-group">
+        <label for="booster">Booster</label>
+        <input type="text" id="booster" name="booster">
+    </div>
         <button type="submit">Submit</button>
       </form>
-
-
-
     <!-- =========== CONTAINER =========  -->
 
 

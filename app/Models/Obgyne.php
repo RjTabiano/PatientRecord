@@ -32,4 +32,12 @@ class Obgyne extends Model
     public function medicalHistory(){
         return $this->hasMany(MedicalHistory::class);
     }
+
+    public function baselineDiagnostics(){
+        return $this->hasMany(BaselineDiagnostics::class);
+    }
+
+    public function obgyneHistory(){
+        return $this->hasMany(ObgyneHistory::class);
+    }
 }
