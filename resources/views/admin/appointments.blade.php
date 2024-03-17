@@ -123,7 +123,7 @@
                 </div>
 
         </div>
-    <br>
+
         <h1 class="heading">Appointments</h1>
     <button onclick="openModal()">
         Add

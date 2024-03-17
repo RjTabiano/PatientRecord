@@ -127,6 +127,7 @@
 
     <!-- =========== CONTAINER =========  -->
     <h1 class="heading">Booking List</h1>
+    <br>
     <div class="table_container">
         <div class="row">
             <div class="col-12">
@@ -138,7 +139,8 @@
                     <th scope="col">Date</th>
                     <th scope="col">Time</th>
                     <th scope="col">Status</th>
-                  
+                    <th scope="col">Confirmation</th>
+                    <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -153,7 +155,7 @@
                     <td>{{$booked->status}}</td>
                     @if($booked->status == "Unconfirmed" || $booked->status == "Cancelled")
                     <td>
-                    <button onclick="openModal()">
+                    <button class="but1"onclick="openModal()">
                         Confirm
                     </button>
                     <!-- =========== CONFIRM MODAL  =========  -->
@@ -164,7 +166,7 @@
                             <form method="put" action="{{route('confirmBooking', ['booking' => $booked])}}">
                                 @csrf
                                 <input type="hidden" name="status" value="Confirmed"></input>
-                                <button type="submit">Save</button>
+                                <button class="save1" type="submit">Save</button>
                             </form>
                     </div>
                     </div>
@@ -172,7 +174,7 @@
                     </td>
                     @else
                     <td>
-                    <button onclick="openModal()">
+                    <button class="uncon1"onclick="openModal()">
                         Unconfirmed
                     </button>
                     <!-- =========== CONFIRM MODAL  =========  -->
@@ -183,7 +185,7 @@
                             <form method="put" action="{{route('confirmBooking', ['booking' => $booked])}}">
                                 @csrf
                                 <input type="hidden" name="status" value="Unconfirmed"></input>
-                                <button type="submit">Save</button>
+                                <button class="save1" type="submit">Save</button>
                             </form>
                     </div>
                     </div>
@@ -192,7 +194,7 @@
                     @endif
                     <td>
                     @if($booked->status != "Cancelled")
-                                        <button onclick="openModal2()">Cancel</button>
+                                        <button class="can1"onclick="openModal2()">Cancel</button>
                                         <!-- =========== CANCEL MODAL  =========  -->
                                         <div class="modal2" id="myModal2">
                                             <div class="modal2-content2">
@@ -202,7 +204,7 @@
                                                     @csrf
                                                     @method('PUT')
                                                     <input type="hidden" name="status" value="Cancelled">
-                                                    <button type="submit">Save</button>
+                                                    <button class="save1" type="submit">Save</button>
                                                 </form>
                                             </div>
                                         </div>
