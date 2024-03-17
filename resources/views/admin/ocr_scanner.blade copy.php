@@ -132,7 +132,7 @@
             <div class="alert alert-success">{{$statusMsg}}</div>
         @endif
           <label for="doctor_id">Select Patient Record Type:</label>
-          <select name="doctor_id"  id="specialty" class="form-select" aria-label="Default select example" onchange="showForm()">
+          <select name="doctor_id" id="specialty" class="form-select" aria-label="Default select example" onchange="showForm()">
                 <option disabled selected required>Select Record Type</option>
                 <option  value="pediatrics">Pediatrics</option>
                 <option  value="obgyne">Obgyne</option>
@@ -361,7 +361,7 @@
 
 
     <!-- =========== CONTAINER =========  -->
-        
+
 
     <!-- =========== Scripts =========  -->
     <script src="{{ asset('javascript/main.js') }}"></script>

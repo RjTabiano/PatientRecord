@@ -21,7 +21,7 @@
         <div class="navigation">
             <ul>
                 <li>
-                    <a href="{{route('patient.patient-record')}}">
+                    <a href="{{route('home')}}">
                         <span class="icon">
                             <ion-icon name="medkit-outline"></ion-icon>
                         </span>
@@ -30,7 +30,7 @@
                 </li>
 
                 <li>
-                    <a href="{{route('patient.patient-record')}}">
+                    <a href="{{route('home')}}">
                         <span class="icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </span>

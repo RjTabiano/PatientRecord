@@ -151,20 +151,21 @@
                     <td>{{$booked->date}}</td>
                     <td>{{$booked->time}}</td>
                     <td>
-                    <button  type="button" class="btn btn-danger" data-toggle="modal" data-target="">
-                        <i class="far fa-trash-alt">Delete</i>
-                            </button>
+                    <button onclick="openModal()">
+                        Confirm
+                    </button>
                         </td>
+                    <td>
+                    <button onclick="openModal()">
+                        Cancel
+                    </button>
+                    </td>
                     </tr>
                     @endforeach
                 @endforeach
                 </tbody>
 
             </table>
-
-
-
-
 
     <!-- =========== CONTAINER =========  -->
 

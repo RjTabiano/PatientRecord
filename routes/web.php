@@ -39,7 +39,6 @@ route::post('/services/storeBooking', [BookingController::class, 'store_booking'
 route::get('/home', [HomeController::class, 'index'])->middleware(['auth', 'admin'])->name('home');
 
 
-Route::get('/patient', [PatientController::class, 'patientRecord'])->middleware(['auth', 'admin'])->name('patient.patient-record');
 Route::get('/patientRecords', [PatientController::class, 'patient_record_history'])->middleware(['auth', 'admin'])->name('patient.patient_record_history');
 Route::get('/addConsultation', [PatientController::class, 'add_consultation'])->middleware(['auth', 'admin'])->name('patient.addConsultation');
 
@@ -96,6 +95,8 @@ Route::get('/schedule/{schedule}/editSchedule', [ScheduleController::class, 'edi
 Route::post('/schedule/{schedule}/updateSchedule', [ScheduleController::class, 'update_schedule'])->middleware(['auth', 'admin'])->name('schedule.updateSchedule');
 
 route::get('/booking', [BookingController::class, 'view_booking'])->middleware(['auth', 'admin'])->name('viewBooking');
+route::get('/booking/{booking}/cancelBooking', [BookingController::class, 'confirm_booking'])->middleware(['auth', 'admin'])->name('confirmBooking');
+
 
 Route::get('/scanner', [ScannerController::class, 'index'])->middleware(['auth', 'admin'])->name('scanner');
 Route::put('/scanner/upload', [ScannerController::class, 'uploadImage'])->middleware(['auth', 'admin'])->name('scanner.upload');
