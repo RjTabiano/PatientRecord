@@ -132,7 +132,7 @@
         <a href="{{route('patient.addConsultation')}}" class="btn btn-md btn-primary">Add Consultation Record</a>
         <hr>
 
-        <table class="table table-striped">
+        <table >
             <thead>
                 <tr>
                     <th scope="col">Name</th>
@@ -182,7 +182,7 @@
         </table>
 
 
-    <!-- =========== CONTAINER =========  -->
+    <!-- =========== END CONTAINER =========  -->
 
 
     <!-- =========== Scripts =========  -->

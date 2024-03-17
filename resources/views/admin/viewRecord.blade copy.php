@@ -110,25 +110,78 @@
       </div>
     </nav>
     <div class="container">
-<!------------------------------------------- Modal ------------------------------>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!------------------------------- Modal------------------------->
+    <header class="heading">Patient Records</header>
+        @if($errors->any())
+        <ul>
+            @foreach($errors->all() as $error)
+            <li>{{$error}}</li>
+            @endforeach
+        </ul>
+        @endif
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Add Patient Record
+            </button>
+            
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="{{route('patient.pediatrics', ['patient' => $patient])}}">Pediatrics</a>
+                <a class="dropdown-item" href="{{route('patient.obgyne', ['patient' => $patient])}}">Obgyne</a>
+            </div>
+        </div>
+        <div class="table-wrapper">  
+        <table class="fl-table" >
+            <thead>
+            <tr>
+                <th>Record</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach ($patient->patientRecord as $patientRecords)
+                <tr >
+                    
+                        <td>{{$patientRecords['type']}}</td>
+                        <td>{{$patient->name}}</td>
+                        <td>{{$patient->email}}</td>
+                        <td>
+                        <a href="{{route('patient.viewPediatrics', ['patient' => $patientRecords['id']])}}">View</a>
+                        </td>
+                        <td><a href="{{route('patient.update', ['patient' => $patient])}}">Edit</a></td>
+                        <td>
+                        <button  type="button" data-toggle="modal" data-target="#deletePatient">
+                        Delete
+                        </button>
+                        <!-- DELETE Modal -->
+                        <div class="modal fade" id="deletePatient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Delete {{$patient->name}}?</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="post" action="{{route('patient.delete', ['patient' => $patient])}}" class="form">
+                                    @csrf
+                                    @method('delete')
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" valaue="Delete" class="btn btn-primary">Delete Patient</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                        </div>
+                          <!-- END DELETE MODAL -->
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
     <section class="overlay"></section>
     <script src="{{ asset('javascript/script_dashboard.js') }}"></script>
