@@ -138,7 +138,8 @@
                     <th scope="col">Service</th>
                     <th scope="col">Date</th>
                     <th scope="col">Time</th>
-                    <th scope="col">Action</th>
+                    <th scope="col">Status</th>
+                  
                 </tr>
                 </thead>
                 <tbody>
@@ -150,16 +151,64 @@
                     <td>{{$booked->service}}</td>
                     <td>{{$booked->date}}</td>
                     <td>{{$booked->time}}</td>
+                    <td>{{$booked->status}}</td>
+                    @if($booked->status == "Unconfirmed" || $booked->status == "Cancelled")
                     <td>
                     <button onclick="openModal()">
                         Confirm
                     </button>
-                        </td>
+                    <!-- =========== CONFIRM MODAL  =========  -->
+                    <div class="modal" id="myModal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeModal()">&times;</span>
+                            <h1>Confirm Booking?</h1>
+                            <form method="put" action="{{route('confirmBooking', ['booking' => $booked])}}">
+                                @csrf
+                                <input type="hidden" name="status" value="Confirmed"></input>
+                                <button type="submit">Save</button>
+                            </form>
+                    </div>
+                    </div>
+                    <!-- =========== END CONFIRM MODAL  =========  -->
+                    </td>
+                    @else
                     <td>
                     <button onclick="openModal()">
-                        Cancel
+                        Unconfirmed
                     </button>
+                    <!-- =========== CONFIRM MODAL  =========  -->
+                    <div class="modal" id="myModal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeModal()">&times;</span>
+                            <h1>Unconfirm Booking?</h1>
+                            <form method="put" action="{{route('confirmBooking', ['booking' => $booked])}}">
+                                @csrf
+                                <input type="hidden" name="status" value="Unconfirmed"></input>
+                                <button type="submit">Save</button>
+                            </form>
+                    </div>
+                    </div>
+                    <!-- =========== END CONFIRM MODAL  =========  -->
                     </td>
+                    @endif
+                    <td>
+                    @if($booked->status != "Cancelled")
+                                        <button onclick="openModal2()">Cancel</button>
+                                        <!-- =========== CANCEL MODAL  =========  -->
+                                        <div class="modal2" id="myModal2">
+                                            <div class="modal2-content2">
+                                                <span class="close2" onclick="closeModal2()">&times;</span>
+                                                <h1>Cancel Booking?</h1>
+                                                <form method="put" action="{{route('confirmBooking', ['booking' => $booked])}}">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" name="status" value="Cancelled">
+                                                    <button type="submit">Save</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <!-- =========== END CANCEL MODAL  =========  -->
+                    @endif
                     </tr>
                     @endforeach
                 @endforeach
