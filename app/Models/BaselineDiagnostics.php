@@ -24,7 +24,7 @@ class BaselineDiagnostics extends Model
         'HBsAg',
         'VDRL',
         'HiV',
-        '75g_OTT',
+        'TT',
         'Urinalysis',
         'Other',
     ];

@@ -281,8 +281,8 @@
     </div>
 
     <div class="form-group">
-        <label for="75g_OTT">75g OTT</label>
-        <input type="text" id="75g_OTT" name="75g_OTT">
+        <label for="TT">75g OTT</label>
+        <input type="text" id="75g_OTT" name="TT">
     </div>
 
     <div class="form-group">

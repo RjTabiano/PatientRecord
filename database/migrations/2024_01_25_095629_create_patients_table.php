@@ -118,7 +118,7 @@ return new class extends Migration
             $table->string('HBsAg')->nullable();
             $table->string('VDRL')->nullable();
             $table->string('HiV')->nullable();
-            $table->string('75g_OTT')->nullable();
+            $table->string('TT')->nullable();
             $table->string('Urinalysis')->nullable();
             $table->string('Other')->nullable();
             $table->timestamps();
