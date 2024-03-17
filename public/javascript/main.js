@@ -21,27 +21,44 @@ toggle.onclick = function () {
 };
 
 
-// Open the modal
+// ---------------------------- Open the modal
 function openModal() {
   document.getElementById("myModal").style.display = "block";
 }
 
-// Close the modal
+//----------------------------- Close the modal
 function closeModal() {
   document.getElementById("myModal").style.display = "none";
 }
 
-// Close the modal when clicking outside of it
+// ---------------------------- Close the modal when clicking outside of it
 window.onclick = function(event) {
   var modal = document.getElementById("myModal");
   if (event.target == modal) {
     modal.style.display = "none";
   }
 }
+// ---------------------------- END OF MODAL
 
 
+// ---------------------------- Open the modal#2
+function openModal2() {
+  document.getElementById("myModal2").style.display = "block";
+}
 
+//----------------------------- Close the modal
+function closeModal2() {
+  document.getElementById("myModal2").style.display = "none";
+}
 
+// ---------------------------- Close the modal when clicking outside of it
+window.onclick = function(event) {
+  var modal = document.getElementById("myModal2");
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+// ---------------------------- END OF MODAL
 
 
 function showForm() {

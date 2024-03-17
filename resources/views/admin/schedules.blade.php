@@ -127,27 +127,15 @@
 
 
     <!-- =========== CONTAINER =========  -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addSchedule">
+    <button onclick="openModal()">
         Add
-        </button>
-        <div class="input-group">
-            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-            <button type="button" class="btn btn-outline-primary" data-mdb-ripple-init>search</button>
-            
-        </div>
+    </button>
         
         <!-- ADD Modal -->
-        <div class="modal fade" id="addSchedule" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Add Schedule</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                    <form method="post" action="{{route('schedule.storeSchedule')}}" class="form">
+        <div class="modal" id="myModal">
+          <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <form method="post" action="{{route('schedule.storeSchedule')}}" class="form">
                         @csrf
                         @method('post')
                         <select name="doctor_id"class="form-select" aria-label="Default select example">
@@ -197,13 +185,10 @@
                             <input name="end_time"type="time" />
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary">Add Schedule</button>
                         </div>
                     </form>
-                    </div>
-                </div>
-                </div>
+          </div>
         </div>
         <!-- END ADD Modal -->
         <div class="table_container">
@@ -231,30 +216,21 @@
                     
                     <td>
                     <button type="button" class="btn btn-success"><a href="{{route('schedule.editSchedule', ['schedule' => $schedule])}}">Edit</a></button>
-                    <button  type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteSchedule">
-                        <i class="far fa-trash-alt">Delete</i>
-                        </button>
+                    <button onclick="openModal2()">
+                        Delete
+                    </button>
                         <!-- DELETE Modal -->
-                        <div class="modal fade" id="deleteSchedule" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Delete?</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <form method="post" action="{{route('schedule.deleteSchedule', ['schedule' => $schedule])}}" class="form">
+                        <div class="modal2" id="myModal2">
+                          <div class="modal2-content2">
+                            <span class="close2" onclick="closeModal2()">&times;</span>
+                            <form method="post" action="{{route('schedule.deleteSchedule', ['schedule' => $schedule])}}" class="form">
                                     @csrf
                                     @method('delete')
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                     <button type="submit" valaue="Delete" class="btn btn-primary">Delete</button>
                                 </div>
                                 </form>
-                            </div>
-                        </div>
+                          </div>
                         </div>
         <!-- END DELETE MODAL -->
                     </td>
