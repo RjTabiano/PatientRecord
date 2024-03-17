@@ -128,9 +128,16 @@
 
     <!-- =========== CONTAINER =========  -->
 
+    <button onclick="openModal()">
+        Add
+    </button>
 
-
-
+    <div class="modal" id="myModal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    
+  </div>
+</div>
     <!-- =========== CONTAINER =========  -->
 
 

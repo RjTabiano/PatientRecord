@@ -124,117 +124,152 @@
                 </div>
 
         </div>
-    <br>
-        <h1 class="heading">Appointments</h1>
-    <button onclick="openModal()">
+
+
+    <!-- =========== CONTAINER =========  -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addSchedule">
         Add
-    </button>
-    <div class="modal" id="myModal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <form method="post" action="{{route('appointment.storeAppointment')}}" class="form">
+        </button>
+        <div class="input-group">
+            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+            <button type="button" class="btn btn-outline-primary" data-mdb-ripple-init>search</button>
+            
+        </div>
+        
+        <!-- ADD Modal -->
+        <div class="modal fade" id="addSchedule" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add Schedule</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    <form method="post" action="{{route('schedule.storeSchedule')}}" class="form">
                         @csrf
                         @method('post')
-                        <div class="input-box">
-                        <label for="doctor_id">Doctor:</label>
                         <select name="doctor_id"class="form-select" aria-label="Default select example">
                             <option disabled selected required>Select Doctor</option>
-                            @foreach($doctors as $doctor)
+                            @foreach($userDoctors as $doctor)
                                 @foreach($doctor->doctor as $doctorer)
                                 <option  value="{{$doctorer['id']}}">{{$doctor->name}}
                                 </option>
                                 @endforeach
                             @endforeach
                         </select>
+                        <div class="input-box">
+                            <h5 class="text-center">Day Available</h5>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input"  name="day[]"type="checkbox" id="inlineCheckbox1" value="Monday">
+                                <label class="form-check-label"  for="inlineCheckbox1">Monday</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="day[]" type="checkbox" id="inlineCheckbox2" value="Tuesday">
+                                <label class="form-check-label" for="inlineCheckbox2">Tuesday</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="day[]" type="checkbox" id="inlineCheckbox3" value="Wednesday">
+                                <label class="form-check-label" for="inlineCheckbox3">Wednesday</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="day[]" type="checkbox" id="inlineCheckbox4" value="Thursday">
+                                <label class="form-check-label" for="inlineCheckbox4">Thursday</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="day[]" type="checkbox" id="inlineCheckbox5" value="Friday">
+                                <label class="form-check-label" for="inlineCheckbox5">Friday</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="day[]" type="checkbox" id="inlineCheckbox6" value="Saturday">
+                                <label class="form-check-label" for="inlineCheckbox6">Saturday</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="day[]" type="checkbox" id="inlineCheckbox7" value="Sunday">
+                                <label class="form-check-label" for="inlineCheckbox7">Sunday</label>
+                            </div>
                         </div>
                         <div class="input-box">
-                        <label for="patient_id">Patient:</label>
-                        <select name="patient_id"class="form-select" aria-label="Default select example">
-                            <option disabled selected required>Select Patient</option>
-                            @foreach($patients as $patient)
-                                <option  value="{{$patient->id}}">{{$patient->name}}
-                                </option>
-                              
-                            @endforeach
-                        </select>
-                        </div>
-                        <div class="input-box">
-                            <label  for="date">Date:</label>
-                            <input class="form-control" name="date" type="date" />                           
-                        </div>
-                        <div class="input-box">
-                            <label  for="time">Time:</label>
-                            <input  class="form-control" name="time" type="time" />
+                            <label for="start_time">Start Time:</label>
+                            <input name="start_time" type="time" />
+                            <label for="end_time">End Time:</label>
+                            <input name="end_time"type="time" />
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">Add Appointment</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Add Schedule</button>
                         </div>
-                            
                     </form>
-  </div>
-</div>
-   
+                    </div>
+                </div>
+                </div>
+        </div>
+        <!-- END ADD Modal -->
         <div class="table_container">
         <div class="row">
             <div class="col-12">
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th scope="col">Patient Name</th>
-                    <th scope="col">With Doctor</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Time</th>
+                    <th scope="col">Doctor Name</th>
+                    <th scope="col">Start Time</th>
+                    <th scope="col">End Time</th>
                     <th scope="col">Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                    
-                @foreach($doctors as $doctor)
-                    
-                        @foreach($doctor->appointment as $appointment)
-                            
+                @foreach($userDoctors as $doctor)
+                    @foreach($doctor->schedule as $schedule)
                 <tr>
-                    <td>{{$appointment->patient['name']}}</td>
+                    
                     <td>{{$doctor->name}}</td>
-                    <td>{{$appointment->date}}</td>
-                    <td>{{$appointment->time}}</td>
+                    
+                    <td>{{$schedule->start_time}}</td>
+                    
+                    <td>{{$schedule->end_time}}</td>
+                    
                     <td>
-                    <button type="button" class="btn btn-success"><a href="{{route('appointment.editAppointment', ['appointment' => $appointment])}}">Edit</a></button>
-                    <button  type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteSchedule-{{$appointment}}">
+                    <button type="button" class="btn btn-success"><a href="{{route('schedule.editSchedule', ['schedule' => $schedule])}}">Edit</a></button>
+                    <button  type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteSchedule">
                         <i class="far fa-trash-alt">Delete</i>
                         </button>
-                        <!-- Modal -->
-                        <div class="modal fade" id="deleteSchedule-{{$appointment}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                          <div class="modal-dialog">
+                        <!-- DELETE Modal -->
+                        <div class="modal fade" id="deleteSchedule" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
                             <div class="modal-content">
-                              <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                              </div>
-                              <div class="modal-body">
-                                <form method="post" action="{{route('appointment.deleteAppointment', ['appointment' => $appointment])}}" class="form">
-                                      @csrf
-                                      @method('delete')
-                                  <div class="modal-footer">
-                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                      <button type="submit" valaue="Delete" class="btn btn-primary">Delete</button>
-                                  </div>
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Delete?</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="post" action="{{route('schedule.deleteSchedule', ['schedule' => $schedule])}}" class="form">
+                                    @csrf
+                                    @method('delete')
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" valaue="Delete" class="btn btn-primary">Delete</button>
+                                </div>
                                 </form>
-                              </div>
                             </div>
-                          </div>
                         </div>
-                        <!-- END Modal -->
+                        </div>
+        <!-- END DELETE MODAL -->
                     </td>
                 </tr>
-                            
-                       
-                    @endforeach
+                @endforeach
                 @endforeach
                 </tbody>
-
+                   
             </table>
-           
+
+
+
+    <!-- =========== CONTAINER =========  -->
+
+
     <!-- =========== Scripts =========  -->
     <script src="{{ asset('javascript/main.js') }}"></script>
 
