@@ -151,7 +151,7 @@
                         <a href="{{route('patient.edit_consultationRecord', ['consultationPediatrics' => $consultationPediatric], ['patient' => $patient])}}" class="btn btn-info">Edit</a>
                         <button  type="button" data-toggle="modal" data-target="#deletePatient" class="btn btn-danger">
                         Delete
-                        </button>
+                         </button>
                         <!-- DELETE Modal -->
                         <div class="modal fade" id="deletePatient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
