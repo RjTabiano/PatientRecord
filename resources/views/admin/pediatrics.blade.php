@@ -136,16 +136,38 @@
         <input type="hidden" name="type" value="Pediatrics"/>
           <div class="input-box">
             
-            
+          
           <div class="input-box">
             <label  >Birth Date</label>
-            <input class="form-control" type="date" name="birthdate" placeholder="Enter birth date"/>
+            <input class="form-control" style="width:100%" type="date" name="birthdate" placeholder="Enter birth date"/>
           </div>
         </div>
-        <div class="input-box">
-            <label  >Age</label>
-            <input class="form-control" type="number" name="age" placeholder="Enter Age" required />
+        <div class="input-box"> 
+            <label >Age</label>
+            <input class="form-control"style="width:100%" type="number" name="age" placeholder="Enter Age" required />
           </div>
+      
+
+        <div class="input-box address">
+          <label  >Address</label>
+          <input class="form-control" style="width:100%" type="text" name="address" placeholder="Enter address" required />
+          <div class="input-box">
+            <label  >Mother's Name</label>
+            <input class="form-control" style="width:100%" type="text" name="mother_name" placeholder="Enter Name" required />
+          </div>
+          <div class="input-box">
+            <label >Phone Number</label>
+            <input class="form-control" style="width:100%" type="number" name="mother_phone" placeholder="Enter phone number" required />
+          </div>
+          <div class="input-box">
+            <label  >Father's Name</label>
+            <input class="form-control" style="width:100%" type="text" name="father_name" placeholder="Enter Name" required />
+          </div>
+          <div class="input-box">
+            <label  >Phone Number</label>
+            <input class="form-control" style="width:100%" type="number" name="father_phone"  placeholder="Enter phone number" required />
+          </div>
+        </div>
         <div class="gender-box">
           <h5>Gender</h5>
           <div class="gender-option">
@@ -160,30 +182,9 @@
 
           </div>
         </div>
-
-        <div class="input-box address">
-          <label  >Address</label>
-          <input class="form-control"  type="text" name="address" placeholder="Enter address" required />
-          <div class="input-box">
-            <label  >Mother's Name</label>
-            <input class="form-control" type="text" name="mother_name" placeholder="Enter Name" required />
-          </div>
-          <div class="input-box">
-            <label >Phone Number</label>
-            <input class="form-control" type="number" name="mother_phone" placeholder="Enter phone number" required />
-          </div>
-          <div class="input-box">
-            <label  >Father's Name</label>
-            <input class="form-control" type="text" name="father_name" placeholder="Enter Name" required />
-          </div>
-          <div class="input-box">
-            <label  >Phone Number</label>
-            <input class="form-control" type="number" name="father_phone"  placeholder="Enter phone number" required />
-          </div>
-        </div>
         <table class="vaccine_table">
           <tr>
-            <th>Vaccine</th>
+            <th >Vaccine</th>
             <th>Dose 1</th>
             <th>Dose 2</th>
             <th>Dose 3</th>
@@ -323,13 +324,13 @@
     </div>
         <div class="input-box">
           <label for="">P.E./History:</label>
-          <textarea name="history" id="history" cols="30" rows="10"></textarea>
+          <textarea name="history" style="width: 80;%" id="history" cols="30" rows="10"></textarea>
         </div>
         <div class="input-box">
           <label for="">Orders:</label>
-          <textarea name="orders" id="orders" cols="30" rows="10"></textarea>
+          <textarea name="orders" style="width: 80;%" id="orders" cols="30" rows="10"></textarea>
         </div>
-        <button type="submit">Submit</button>
+        <button style="width:40%" type="submit">Submit</button>
       </form>
 
 

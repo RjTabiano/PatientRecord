@@ -572,6 +572,9 @@ header {
 
 .input-box {
   margin-bottom: 20px;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
 }
 
 label {
@@ -631,7 +634,7 @@ button[type="submit"]:hover {
 
 
 .vaccine_table {
-  width: 100%;
+  width: 50%;
   border-collapse: collapse;
 }
 
@@ -667,4 +670,65 @@ th {
 tr:hover {
   background-color: #f5f5f5;
 }
+
+.input-box, .gender-box, .input-box address, .vaccine_table{
+  margin: 10px;
+}
+
+.form {
+  max-width: 600px;
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.input-box {
+  margin-bottom: 20px;
+}
+
+.input-box label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.input-box input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.gender-box {
+  margin-bottom: 20px;
+}
+
+.gender-option {
+  display: flex;
+}
+
+.gender {
+  margin-right: 20px;
+}
+
+.gender label {
+  margin-left: 5px;
+}
+
+.btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
 
