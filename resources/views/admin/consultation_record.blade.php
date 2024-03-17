@@ -129,9 +129,9 @@
     <!-- =========== CONTAINER =========  -->
 
     <h1 class="heading">Patient Consultation Records</h1>
+    <div class="btn_c">
         <a href="{{route('patient.addConsultation')}}" class="btn btn-md btn-primary">Add Consultation Record</a>
-        <hr>
-
+    
         <table >
             <thead>
                 <tr>

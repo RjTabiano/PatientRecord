@@ -97,6 +97,9 @@
             @csrf
             <li class="list">
                    
+
+
+            
               <a href="{{route('logout')}}" class="nav-link" 
               onclick="event.preventDefault();
                     this.closest('form').submit();">
