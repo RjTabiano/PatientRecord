@@ -121,14 +121,14 @@
         
         <h1 class="heading">Accounts</h1>
                 <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Add Account
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="{{route('staff.staff')}}">Staff</a>
-                            <a class="dropdown-item" href="{{route('doctor.doctor')}}">Doctor</a>
-                        </div>
+                    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
+                        Add Account
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="{{route('staff.staff')}}">Staff</a>
+                        <a class="dropdown-item" href="{{route('doctor.doctor')}}">Doctor</a>
                     </div>
+                </div>
                 <div class="table_container">
                     <div class="row">
                         <div class="col-12">
