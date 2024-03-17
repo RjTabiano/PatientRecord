@@ -134,8 +134,7 @@
                 <tr>
                     <th>Full Name</th>
                     <th>Email</th>
-                    <th></th>
-                    <th></th>
+                    <th>Contact Number</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -150,9 +149,7 @@
                     @endforeach
              </tbody>
             </table>
-            
         </div>
-
 
 
     <!-- =========== CONTAINER =========  -->
