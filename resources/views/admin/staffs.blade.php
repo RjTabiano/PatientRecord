@@ -141,7 +141,12 @@
                     </div>
                     <div class="input-box">
                         <label for="role">Role</label>
-                        <input type="text" name="role" placeholder="role" required />
+                        <select name="role" id="role" required>
+                            <option value="">Select Role</option>
+                            <option value="Level 1">Level 1</option>
+                            <option value="Level 2">Level 2</option>
+                            <option value="Level 3">Level 3</option>
+                        </select>
                     </div>
                     <div class="input-box">
                                 <label for="password">Password</label>
