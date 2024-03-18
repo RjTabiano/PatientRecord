@@ -40,6 +40,8 @@ route::get('/home', [HomeController::class, 'index'])->middleware(['auth', 'admi
 
 
 Route::get('/patientRecords', [PatientController::class, 'patient_record_history'])->middleware(['auth', 'admin'])->name('patient.patient_record_history');
+Route::get('/searchUser', [PatientController::class, 'search_user'])->middleware(['auth', 'admin'])->name('searchUser');
+
 Route::get('/addConsultation', [PatientController::class, 'add_consultation'])->middleware(['auth', 'admin'])->name('patient.addConsultation');
 
 Route::get('/patient/{patient}/pediatrics', [PatientController::class, 'createPediatrics'])->middleware(['auth', 'admin'])->name('patient.pediatrics');
@@ -73,7 +75,7 @@ Route::get('/doctor/{doctor}/editDoctor', [DoctorController::class, 'edit_doctor
 
 Route::get('/accounts', [AccountController::class, 'accounts'])->middleware(['auth', 'admin'])->name('accounts');
 Route::delete('/accounts/{account}/deleteAccount', [AccountController::class, 'delete_account'])->middleware(['auth', 'admin'])->name('deleteAccount');
-
+Route::get('/searchAccount', [AccountController::class, 'search_account'])->middleware(['auth', 'admin'])->name('searchAccount');
 
 Route::get('/staff', [StaffController::class, 'staffs'])->middleware(['auth', 'admin'])->name('staff.staff');
 Route::post('/staff/storeStaff', [StaffController::class, 'store_staff'])->middleware(['auth', 'admin'])->name('staff.storeStaff');
@@ -98,6 +100,7 @@ Route::post('/schedule/{schedule}/updateSchedule', [ScheduleController::class, '
 
 route::get('/booking', [BookingController::class, 'view_booking'])->middleware(['auth', 'admin'])->name('viewBooking');
 route::get('/booking/{booking}/confirmBooking', [BookingController::class, 'confirm_booking'])->middleware(['auth', 'admin'])->name('confirmBooking');
+route::get('/searchBooking', [BookingController::class, 'search_booking'])->middleware(['auth', 'admin'])->name('searchBooking');
 
 
 Route::get('/scanner', [ScannerController::class, 'index'])->middleware(['auth', 'admin'])->name('scanner');

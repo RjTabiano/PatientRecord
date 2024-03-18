@@ -112,10 +112,12 @@
                 </div>
 
                 <div class="search">
-                    <label>
-                        <input type="text" placeholder="Search here">
-                        <ion-icon name="search-outline"></ion-icon>
-                    </label>
+                    <form action="{{ route('searchBooking') }}" method="GET">
+                        <label>
+                            <input type="text" name="search" placeholder="Search here">
+                            <ion-icon name="search-outline"></ion-icon>
+                        </label>
+                    </form>
                 </div>
 
                 <div class="user">
@@ -153,62 +155,36 @@
                     <td>{{$booked->date}}</td>
                     <td>{{$booked->time}}</td>
                     <td>{{$booked->status}}</td>
-                    @if($booked->status == "Unconfirm" || $booked->status == "Cancelled")
+                    @if($booked->status == "Unconfirmed" || $booked->status == "Cancelled")
                     <td>
-                    <button class="but1"onclick="openModal()">
-                        Confirm
-                    </button>
-                    <!-- =========== CONFIRM MODAL  =========  -->
-                    <div class="modal" id="myModal">
-                    <div class="modal-content">
-                        <span class="close" onclick="closeModal()">&times;</span>
-                            <h1>Confirm Booking?</h1>
-                            <form method="put" action="{{route('confirmBooking', ['booking' => $booked])}}">
+                    
+                            <form class="confirmationForm" method="put" action="{{route('confirmBooking', ['booking' => $booked])}}">
                                 @csrf
                                 <input type="hidden" name="status" value="Confirmed"></input>
-                                <button class="save1" type="submit">Save</button>
+                                <button class="but1" type="submit">Confirm</button>
                             </form>
-                    </div>
                     </div>
                     <!-- =========== END CONFIRM MODAL  =========  -->
                     </td>
                     @else
                     <td>
-                    <button class="uncon1"onclick="openModal()">
-                        Unconfirm
-                    </button>
-                    <!-- =========== CONFIRM MODAL  =========  -->
-                    <div class="modal" id="myModal">
-                    <div class="modal-content">
-                        <span class="close" onclick="closeModal()">&times;</span>
-                            <h1>Unconfirm Booking?</h1>
-                            <form method="put" action="{{route('confirmBooking', ['booking' => $booked])}}">
+                            <form class="confirmationForm" method="put" action="{{route('confirmBooking', ['booking' => $booked])}}">
                                 @csrf
                                 <input type="hidden" name="status" value="Unconfirmed"></input>
-                                <button class="save1" type="submit">Save</button>
+                                <button class="uncon1" type="submit">Unconfirm</button>
                             </form>
-                    </div>
-                    </div>
-                    <!-- =========== END CONFIRM MODAL  =========  -->
                     </td>
                     @endif
                     <td>
                     @if($booked->status != "Cancelled")
-                                        <button class="can1"onclick="openModal2()">Cancel</button>
-                                        <!-- =========== CANCEL MODAL  =========  -->
-                                        <div class="modal2" id="myModal2">
-                                            <div class="modal2-content2">
-                                                <span class="close2" onclick="closeModal2()">&times;</span>
-                                                <h1>Cancel Booking?</h1>
-                                                <form method="put" action="{{route('confirmBooking', ['booking' => $booked])}}">
+                                        
+                                                <form class="cancelForm" method="put" action="{{route('confirmBooking', ['booking' => $booked])}}">
                                                     @csrf
                                                     @method('PUT')
                                                     <input type="hidden" name="status" value="Cancelled">
-                                                    <button class="save1" type="submit">Save</button>
+                                                    <button class="save1" type="submit">Cancel</button>
                                                 </form>
-                                            </div>
-                                        </div>
-                                        <!-- =========== END CANCEL MODAL  =========  -->
+                                            
                     @endif
                     </tr>
                     @endforeach
@@ -222,7 +198,25 @@
 
     <!-- =========== Scripts =========  -->
     <script src="{{ asset('javascript/main.js') }}"></script>
+    <script>
+    document.querySelectorAll(".confirmationForm").forEach(function(form) {
+        form.addEventListener("submit", function(event) {
+            var confirmation = confirm("Are you sure you want to confirm this booking?");
+            if (!confirmation) {
+                event.preventDefault();
+            }
+        });
+    });
 
+    document.querySelectorAll(".cancelForm").forEach(function(form) {
+        form.addEventListener("submit", function(event) {
+            var confirmation = confirm("Are you sure you want to cancel this booking?");
+            if (!confirmation) {
+                event.preventDefault();
+            }
+        });
+    });
+</script>
     <!-- ====== ionicons ======= -->
     
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

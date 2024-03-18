@@ -10,8 +10,10 @@ use App\Models\Obgyne;
 use App\Models\Vaccine;
 use App\Models\MedicalHistory;
 use App\Models\consultationPediatrics;
+use App\Models\BaselineDiagnostics;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\ObgyneHistory;
 use DOMDocument;
 
 class PatientController extends Controller
@@ -22,6 +24,15 @@ class PatientController extends Controller
         $users = User::where('usertype', '=' , 'user')->get();
         return view('admin.patient_record_history', ['users' => $users]);
         
+    }
+
+    public function search_user(Request $request){
+        $search = $request->input('search');
+    
+        $users = User::where('usertype', 'user')
+                        ->where('name', 'like', "%$search%")
+                        ->get();
+        return view('admin.patient_record_history', ['users' => $users]);
     }
 
     public function createPediatrics(Patient $patient){
@@ -138,6 +149,11 @@ class PatientController extends Controller
         $newHistory->Family_History = $request->input("Family_History");
         $newHistory->save();
 
+        $newObgyneHistory = new ObgyneHistory();
+        $newObgyneHistory->obgyne_id = $newObgyne->id;
+        
+
+
         $newBaselineDiagnostics = new BaselineDiagnostics();
         $newBaselineDiagnostics->obgyne_id = $newObgyne->id;
         $newBaselineDiagnostics->CBC_HgB = $request->input("CBC_HgB");
@@ -155,7 +171,7 @@ class PatientController extends Controller
         $newBaselineDiagnostics->Other = $request->input("Other");
         $newBaselineDiagnostics->save();
 
-        return redirect(route('patient.patient-record'))->with('success', 'Added Successfully');
+        return redirect(route('patient.patient_record_history'))->with('success', 'Added Successfully');
     }
 
     public function viewRecords(User $user){
@@ -309,10 +325,10 @@ class PatientController extends Controller
 
     public function create_consultation(Request $request){
         $user = Auth::user();
-        $history = $request->history;
+        $consultation = $request->history;
 
         $dom = new DOMDocument();
-        $dom->loadHTML($history,9);
+        $dom->loadHTML($consultation,9);
 
         $images = $dom->getElementsByTagName('img');
         foreach ($images as $key => $img) {
@@ -330,9 +346,7 @@ class PatientController extends Controller
         $newConsultationPediatrics = new consultationPediatrics();
         
         $newConsultationPediatrics->patient_id = $request->input("patient_id");
-        $newConsultationPediatrics->dateTime = $request->dateTime;
-        $newConsultationPediatrics->history = $history;
-        $newConsultationPediatrics->orders = $request->orders;
+        $newConsultationPediatrics->consultation = $consultation;
         $newConsultationPediatrics->created_by = $user->name;
         $newConsultationPediatrics->save();
 

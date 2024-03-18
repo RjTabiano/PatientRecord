@@ -13,9 +13,7 @@ class consultationPediatrics extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'dateTime',
-        'history',
-        'orders',
+        'consultation',
         'created_by',
     ];
 

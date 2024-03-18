@@ -184,6 +184,7 @@ body {
 .search label ion-icon {
   position: absolute;
   top: 0;
+  padding-top: 10px;
   left: 10px;
   font-size: 1.2rem;
 }
@@ -729,16 +730,7 @@ tr:hover {
   padding-right: 30px;
 }
 
-.but1 {
-  padding: 10px 20px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s;
-}
+
 
 .can1 {
   padding: 10px 20px;
@@ -752,16 +744,6 @@ tr:hover {
 }
 
 
-.uncon1 {
-  padding: 10px 20px;
-  background-color: orange;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s;
-}
 
 .heading{
   margin-top: 20px;
@@ -808,6 +790,10 @@ tr:hover {
 
 .doctorid{
   padding-left: 30px;
+}
+
+.doctorid1{
+  margin-left: 30px;
 }
 
 .form-control{
@@ -906,14 +892,39 @@ textarea {
     resize: vertical;
 }
 
-button[type="submit"] {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
+
+
+.uncon1[type="submit"] {
+  padding: 10px 20px;
+  background-color: orange;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.but1[type="submit"]{
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.save1[type="submit"]{
+  padding: 10px 20px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
 }
 
 button[type="submit"]:hover {

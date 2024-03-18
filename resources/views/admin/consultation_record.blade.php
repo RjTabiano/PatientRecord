@@ -148,24 +148,17 @@
                     <td>
                         <a href="/patient/show/{{$consultationPediatric->id}}" class="btn btn-sucess">Show</a>
                         <a href="{{route('patient.edit_consultationRecord', ['consultationPediatrics' => $consultationPediatric], ['patient' => $patient])}}" class="btn btn-info">Edit</a>
-                        <button  type="button" data-toggle="modal" data-target="#deletePatient" class="btn btn-danger">
-                        Delete
-                         </button>
-                        <!-- DELETE Modal -->
-                        <div class="modal" id="myModal">
-                        <div class="modal-content">
-                            <span class="close" onclick="closeModal()">&times;</span>
-                            <form method="post" action="{{route('patient.deleteConsultation', ['consultationPediatrics' => $consultationPediatric])}}" class="form">
+                       
+                        
+                            
+                     
+                    </td>
+                    <td>
+                    <form class="confirmationForm" method="post" action="{{route('patient.deleteConsultation', ['consultationPediatrics' => $consultationPediatric])}}" class="form">
                                     @csrf
                                     @method('delete')
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" valaue="Delete" class="btn btn-primary">Delete Patient</button>
-                                </div>
+                                    <button class="save1" type="submit" valaue="Delete" >Delete Patient</button>
                                 </form>
-                        </div>
-                        </div>
-        <!-- END DELETE MODAL -->
                     </td>
                 </tr>
                 @endforeach
@@ -180,7 +173,25 @@
     <script src="{{ asset('javascript/main.js') }}"></script>
 
     <!-- ====== ionicons ======= -->
-    
+    <script>
+    document.querySelectorAll(".confirmationForm").forEach(function(form) {
+        form.addEventListener("submit", function(event) {
+            var confirmation = confirm("Are you sure you want to delete this booking?");
+            if (!confirmation) {
+                event.preventDefault();
+            }
+        });
+    });
+
+    document.querySelectorAll(".cancelForm").forEach(function(form) {
+        form.addEventListener("submit", function(event) {
+            var confirmation = confirm("Are you sure you want to cancel this booking?");
+            if (!confirmation) {
+                event.preventDefault();
+            }
+        });
+    });
+</script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>

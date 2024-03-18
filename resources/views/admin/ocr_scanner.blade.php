@@ -126,7 +126,7 @@
 
 
     <!-- =========== CONTAINER =========  -->
-    <h1>Upload Patient Record</h1>
+    <h1>OCR Scanner </h1>
         @if(!empty($statusMsg))
             <div class="alert alert-success">{{$statusMsg}}</div>
         @endif

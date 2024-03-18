@@ -17,6 +17,19 @@ class AccountController extends Controller
         
     }
 
+    public function search_account(Request $request){
+        $search = $request->input('search');
+        $accounts = User::where(function($query) use ($search) {
+            $query->where('usertype', 'doctor')
+                  ->orWhere('usertype', 'staff');
+        })
+        ->where('name', 'like', "%$search%")
+        ->get();
+        
+        return view('admin.accounts', ['accounts' => $accounts]);
+        
+    }
+
 
     public function delete_account($account){
         dd($account);

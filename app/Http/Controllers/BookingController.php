@@ -51,8 +51,17 @@ class BookingController extends Controller
         $booking->update([
             'status' => $status
         ]);
-
+        
         return redirect(route('viewBooking'));
     }
 
+    public function search_booking(Request $request){
+        $search = $request->input('search');
+        $booking = User::whereHas('booking')
+        ->where('name', 'like', "%$search%")
+        ->with('booking')
+        ->get();
+
+        return view('admin.booking', ['booking' => $booking]);
+    }
 }

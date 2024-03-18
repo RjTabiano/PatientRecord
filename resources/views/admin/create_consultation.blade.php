@@ -168,7 +168,7 @@
             placeholder: 'description...',
             tabsize: 2,
             height: 300,
-            width: 1200,
+            width: 500,
             toolbar: [
           ['style', ['style']],
           ['font', ['bold', 'underline', 'clear']],

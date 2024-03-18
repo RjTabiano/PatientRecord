@@ -112,10 +112,12 @@
                 </div>
 
                 <div class="search">
-                    <label>
-                        <input type="text" placeholder="Search here">
-                        <ion-icon name="search-outline"></ion-icon>
-                    </label>
+                    <form action="{{ route('searchUser') }}" method="GET">
+                        <label>
+                            <input type="text" name="search" placeholder="Search here">
+                            <ion-icon name="search-outline"></ion-icon>
+                        </label>
+                    </form>
                 </div>
 
                 <div class="user">

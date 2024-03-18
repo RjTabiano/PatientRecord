@@ -153,6 +153,7 @@
                 <th>Full Name</th>
                 <th>Email</th>
                 <th></th>
+                <th>Email</th>
                 <th></th>
             </tr>
             </thead>

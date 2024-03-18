@@ -107,10 +107,12 @@
                 </div>
 
                 <div class="search">
-                    <label>
-                        <input type="text" placeholder="Search here">
-                        <ion-icon name="search-outline"></ion-icon>
-                    </label>
+                    <form action="{{ route('searchAccount') }}" method="GET">
+                        <label>
+                            <input type="text" name="search" placeholder="Search here">
+                            <ion-icon name="search-outline"></ion-icon>
+                        </label>
+                    </form>
                 </div>
 
                 <div class="user">
@@ -151,13 +153,7 @@
                                 <button class="btn btn-danger"onclick="openModal()">
                                     Delete
                                 </button>
-                                
-                                    </td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                        <div class="modal" id="myModal">
+                                <div class="modal" id="myModal">
                                 <div class="modal-content">
                                     <span class="close" onclick="closeModal()">&times;</span>
                                     <form method="post" action="{{route('deleteAccount', ['account' => $account])}}" class="form">
@@ -169,6 +165,12 @@
                                         </form>
                                 </div>
                                 </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                        
     <!-- =========== Scripts =========  -->
     <script src="{{ asset('javascript/main.js') }}"></script>
 

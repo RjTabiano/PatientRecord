@@ -151,11 +151,11 @@
                             </div>
                             <div class="input-box">
                                 <label for="password">Password</label>
-                                <input type="text" name="password" placeholder="password" required />
+                                <input type="password" name="password" placeholder="password" required />
                             </div>
                             <div class="input-box">
                                 <label for="password">Confirm Password</label>
-                                <input type="text" placeholder="password" required />
+                                <input type="password" placeholder="password" required />
                             </div>        
                 <button type="submit" class="btn btn-primary">Add Doctor</button>
 
