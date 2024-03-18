@@ -27,7 +27,7 @@
         <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
         <li class="nav__item"><a href="#products" class="nav__link">Doctors</a></li>
         <li class="nav__item"><a href="#services" class="nav__link">Services</a></li>
-        <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+        
         @if (Route::has('login'))
             @auth
                 <li class="nav__item"><a href="" class="nav__link">Book Now!</a></li>
@@ -52,7 +52,7 @@
  <body>
   <main class="l-main">
     <section class="portfolios section" id="services">
-        <h2 class="section-title">Pediatrics</h2>
+        <h2 class="section-titles">Consultation</h2>
         <div class="booking_container">
         <form method="post" action="{{route('storeBooking')}}" class="form">
             @csrf
@@ -66,7 +66,9 @@
                 <label for="time">Select Time:</label>
                 <input name="time" type="time" width="270" />
             </div>
+            <div class="books">
             <button type="submit">Book</button>
+            </div>
         </form>
         </div>
     </section>

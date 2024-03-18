@@ -127,12 +127,12 @@
 
 
     <!-- =========== CONTAINER =========  -->
-    <header class="heading">Edit Consultation Record</header>
+    <header class="headings">Edit Consultation Record</header>
         <h1>Created By: {{$consultationPediatrics->created_by}}</h1>
         <form method="post" action="{{route('patient.update_consultationRecord', ['consultationPediatrics' => $consultationPediatrics], ['patient' => $patient])}}" class="form">
         @csrf
         @method('post')
-                    <div class="input-box">
+                    <div class="input-boxs">
                         <label for="">Description:</label>
                         <textarea name="history" id="history" cols="30" rows="10">{{$consultationPediatrics->history}}</textarea>
                     </div>

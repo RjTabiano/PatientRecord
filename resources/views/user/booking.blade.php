@@ -26,11 +26,11 @@
 
       <div class="nav__menu" id="nav-menu">
         <ul class="nav__list">
-        <li class="nav__item"><a href="#home" class="nav__link active">Home</a></li>
-        <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
-        <li class="nav__item"><a href="#products" class="nav__link">Doctors</a></li>
-        <li class="nav__item"><a href="#services" class="nav__link">Services</a></li>
-        <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+        <li class="nav__item"><a href="{{route('login')}}" class="nav__link active">Home</a></li>
+        <li class="nav__item"><a href="{{route('login')}}" class="nav__link">About</a></li>
+        <li class="nav__item"><a href="{{route('login')}}"  class="nav__link">Doctors</a></li>
+        <li class="nav__item"><a href="{{route('login')}}"  class="nav__link">Services</a></li>
+        
         @if (Route::has('login'))
             @auth
                 <li class="nav__item"><a href="" class="nav__link">Book Now!</a></li>

@@ -64,12 +64,9 @@
     <!--===== ABOUT =====-->
     <section class="about section" id="about">
       <h2 class="section-title">About</h2>
-
-
       <div class="about__container bd-grid">
         <div>
           <h2 class="about__subtitle">The Queen's Clinic</h2>
-          
           <span class="about__profession"></span>
           <p class="about__text"><b>At The Queen's Clinic</b>, we believe in the transformative power of nurturing and expert care during the precious moments of childbirth. Established with a commitment to providing a safe and supportive environment, our clinic has earned a renowned reputation as a birthing home where the miracle of life is celebrated with warmth and expertise.
             <br><br>
@@ -138,21 +135,21 @@
       <div class="portfolio__link">
         <a href="" class="portfolio__link-name"><b><br><a href="login.html" target="_blank"><button>Book Now!</button></a></b>
       </div>
-      <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Consultation</h2>
+      <h2 class="h22">Consultation</h2>
     </div>
     <div class="portfolio__img">
       <img src="{{ asset('images/infer.jpg') }}" alt="">
       <div class="portfolio__link">
         <a href="" class="portfolio__link-name"><b><br><a href="login.html" target="_blank"><button>Book Now!</button></a></b>
       </div>
-      <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pediatrics</h2>
+      <h2 class="h22">Pediatrics</h2>
     </div>
     <div class="portfolio__img">
       <img src="{{ asset('images/obyy.jpg') }}" alt="">
       <div class="portfolio__link">
         <a href="" class="portfolio__link-name"><b><br><a href="login.html" target="_blank"><button>Book Now!</button></a></b>
       </div>
-      <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Obygyn</h2>
+      <h2 class="h22">Obygyn</h2>
     </div>
     
    

@@ -125,7 +125,6 @@
 
         </div>
 
-
     <!-- =========== CONTAINER =========  -->
 
     <form method="post" action="{{route('appointment.updateAppointment', ['appointment' => $appointment])}}" class="form">

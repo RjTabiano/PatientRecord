@@ -55,7 +55,7 @@
  <body>
   <main class="l-main">
     <section class="portfolios section" id="services">
-        <h2 class="section-title">Obgyne</h2>
+        <h2 class="section-titles">Obgyne</h2>
         <div class="booking_container">
         <form method="post" action="{{route('storeBooking')}}" class="form">
             @csrf
