@@ -71,9 +71,9 @@
     <!--===== ABOUT =====-->
     <section class="about section" id="about">
       <h2 class="section-title">About</h2>
+      
       <div class="about__container bd-grid">
         <div>
-          <h2 class="about__subtitle">The Queen's Clinic</h2>
           <span class="about__profession"></span>
           <p class="about__text"><b>At The Queen's Clinic</b>, we believe in the transformative power of nurturing and expert care during the precious moments of childbirth. Established with a commitment to providing a safe and supportive environment, our clinic has earned a renowned reputation as a birthing home where the miracle of life is celebrated with warmth and expertise.
             <br><br>
