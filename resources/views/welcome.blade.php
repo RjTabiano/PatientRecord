@@ -17,6 +17,13 @@
 </head>
 
 <body>
+@if(Session::has('success'))
+    <script>
+        window.onload = function() {
+            alert("{{ Session::get('success') }}");
+        }
+    </script>
+@endif
   <!--===== HEADER =====-->
   <header class="l-header">
     <nav class="nav bd-grid">
@@ -38,6 +45,7 @@
                 <li class="nav__item"><a href="{{ route('login') }}" class="nav__link">Sign In/Sign Up</a></li>
             @endauth
     @endif
+
         </ul>
       </div>
 

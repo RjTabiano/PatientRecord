@@ -63,7 +63,7 @@
             <div class="datepicker">
                 <label for="date">Select Date:</label>
                 <input name="service" type="hidden" width="270" value="obgyne" />
-                <input name="date" type="date" width="270" />
+                <input name="date" type="date" width="270" min="{{ date('Y-m-d') }}" />
             </div>
             <div class="timepicker">
                 <label for="time">Select Time:</label>

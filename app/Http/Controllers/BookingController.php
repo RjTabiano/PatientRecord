@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Booking;
 use App\Models\User;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Database\QueryException; 
 
 class BookingController extends Controller
 {
@@ -26,14 +28,23 @@ class BookingController extends Controller
 
     public function store_booking(Request $request)
     {
-        $booking = new Booking();
-        $default_status = "Unconfirmed";
-        $booking->user_id = $request->user()->id;;
-        $booking->service = $request->input("service");
-        $booking->date = $request->input("date");
-        $booking->time= $request->input("time");
-        $booking->status = $default_status;
-        $booking->save();
+        try {
+            $booking = new Booking();
+            $default_status = "Unconfirmed";
+            $booking->user_id = $request->user()->id;
+            $booking->service = $request->input("service");
+            $booking->date = $request->input("date");
+            $booking->time= $request->input("time");
+            $booking->status = $default_status;
+            $booking->save();
+            
+            Session::flash('success', 'Booking has been successfully created!');
+        
+            return redirect()->route('welcome')->with('success', 'Booking has been successfully created! Please wait for a confirmation in your number or email.');
+            
+        } catch (QueryException $e) {
+            Session::flash('error', 'An error occurred while saving the booking. Please try again later.');
+        }
         
         return view('welcome');
     }

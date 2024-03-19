@@ -52,24 +52,24 @@
  <body>
   <main class="l-main">
     <section class="portfolios section" id="services">
-        <h2 class="section-titles">Consultation</h2>
+        <h2 class="section-titles">Pediatrics</h2>
         <div class="booking_container">
-        <form method="post" action="{{route('storeBooking')}}" class="form">
-            @csrf
-            @method('post')
-            <div class="datepicker">
-                <label for="date">Select Date:</label>
-                <input name="service" type="hidden" width="270" value="pediatrics" />
-                <input name="date" type="date" width="270" />
-            </div>
-            <div class="timepicker">
-                <label for="time">Select Time:</label>
-                <input name="time" type="time" width="270" />
-            </div>
-            <div class="books">
-            <button type="submit">Book</button>
-            </div>
-        </form>
+        <form method="post" action="{{ route('storeBooking') }}" class="form">
+          @csrf
+          @method('post')
+          <div class="datepicker">
+              <label for="date">Select Date:</label>
+              <input name="service" type="hidden" width="270" value="pediatrics" />
+              <input name="date" type="date" width="270" min="{{ date('Y-m-d') }}" />
+          </div>
+          <div class="timepicker">
+              <label for="time">Select Time:</label>
+              <input name="time" type="time" width="270" />
+          </div>
+          <div class="books">
+              <button type="submit">Book</button>
+          </div>
+      </form>
         </div>
     </section>
   </main>
