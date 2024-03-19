@@ -1,61 +1,89 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- ===== CSS ===== -->
-  <link rel="stylesheet" href="{{ asset('css/home_style.css') }}">
-  <link rel="icon" type="" href="{{ asset('images/logocircle.png') }}" />
-  <!-- ===== BOX ICONS ===== -->
-  <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<style>
+    /* Shared styles */
+    section {
+        margin-bottom: 20px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
 
-  <title>The Queen's Clinic</title>
-</head>
+    header {
+        margin-bottom: 10px;
+    }
 
-<body>
-@if(Session::has('success'))
-    <script>
-        window.onload = function() {
-            alert("{{ Session::get('success') }}");
-        }
-    </script>
-@endif
-  <!--===== HEADER =====-->
-  <header class="l-header">
-    <nav class="nav bd-grid">
-      <div>
-        <a href="#" class="nav__logo">The Queen's Clinic</a>
-      </div>
+    h2 {
+        font-size: 1.5rem;
+        margin-bottom: 5px;
+    }
 
-      <div class="nav__menu" id="nav-menu">
-        <ul class="nav__list">
-        <li class="nav__item"><a href="#home" class="nav__link active">Home</a></li>
-        <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
-        <li class="nav__item"><a href="#products" class="nav__link">Doctors</a></li>
-        <li class="nav__item"><a href="#services" class="nav__link">Services</a></li>
-        @if (Route::has('login'))
-            @auth
-                <li class="nav__item"><a href="{{route('services')}}" class="nav__link">Book Now!</a></li>
-                <li class="nav__item"><a href="{{route('profile.edit')}}" class="nav__link">{{ Auth::user()->name }}</a></li>
-            @else
-                <li class="nav__item"><a href="{{ route('login') }}" class="nav__link">Sign In/Sign Up</a></li>
-            @endauth
-    @endif
+    p {
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
 
-        </ul>
-      </div>
+    /* Delete Account Section */
+    .delete-account form {
+        margin-top: 10px;
+    }
 
-      <div class="nav__toggle" id="nav-toggle">
-        <i class='bx bx-menu'></i>
-      </div>
-    </nav>
-  </header>
- <body>
- <br><br><br><br>
+    .delete-account label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .delete-account input[type="password"] {
+        width: calc(250px - 10px);
+        margin-bottom: 10px;
+        padding-right: 5px;
+    }
+
+    /* Update Password Section */
+    .update-password input[type="password"] {
+        width: calc(250px - 10px);
+        margin-bottom: 10px;
+        padding: 5px;
+    }
+
+    /* Profile Information Section */
+    .profile-information input[type="text"],
+    .profile-information input[type="email"] {
+        width: calc(250px - 10px);
+        margin-bottom: 10px;
+        padding: 5px;
+    }
+
+    .profile-information button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .profile-information button:hover {
+        background-color: #0056b3;
+    } 
+
+    .profile-information
+    .update-password
+    .delete-account {
+        margin-right: 90px;
+    }
+
+    .lob{
+        margin-right: 550px;
+    }
+
+    .imga{
+        margin-right: 60px;
+    }
+
+</style>
+<x-app-layout>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <br><br><br><br>
 <td style="padding-top: 30px; padding-bottom: 30px;">
     <div class="imga">
     <p style="text-align: center;"></p>
@@ -179,10 +207,6 @@
         </form>
     </x-modal>
 </section>
-  <!--===== SCROLL REVEAL =====-->
-  <script src="https://unpkg.com/scrollreveal"></script>
-  <!--===== MAIN JS =====-->
-  <script src="{{ asset('javascript/js.js') }}"></script>
-</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
-</html>
+</x-app-layout>
