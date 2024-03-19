@@ -101,6 +101,17 @@
                     </a>
                 </li>
                 @endcannot
+                <li>
+                    <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <a href="{{route('logout')}}" class="nav-link" 
+                    onclick="event.preventDefault();
+                            this.closest('form').submit();">
+                        <span class="icon"><ion-icon name="bx bx-log-out icon"></ion-icon></span>
+                        <span class="title">Logout</span>
+                    </a>
+                    </form>
+                </li>
             </ul>
         </div>
 
@@ -163,7 +174,7 @@
             </div>
             <div class="input-box">
                 <label  >Age</label>
-                <input class="form-control" type="number" name="age" placeholder="Enter Age" required value="<?php echo !empty($patient['age:']) ? $patient['age:'] : ''; ?>"/>
+                <input class="form-control" type="number" name="age" placeholder="Enter Age" required value="<?php echo !empty($patient['Age:']) ? $patient['Age:'] : ''; ?>"/>
               </div>
             <div class="gender-box">
               <h5>Gender</h5>
@@ -182,22 +193,22 @@
 
             <div class="input-box address">
               <label  >Address</label>
-              <input class="form-control"  type="text" name="address" placeholder="Enter address" value="<?php echo !empty($patient['address:']) ? $patient['address:'] : ''; ?>" required />
+              <input class="form-control"  type="text" name="address" placeholder="Enter address" value="<?php echo !empty($patient['Address:']) ? $patient['Address:'] : ''; ?>" required />
               <div class="input-box">
                 <label  >Mother's Name</label>
-                <input class="form-control" type="text" name="mother_name" placeholder="Enter Name" value="<?php echo !empty($patient['mother_name:']) ? $patient['mother_name:'] : ''; ?>" required />
+                <input class="form-control" type="text" name="mother_name" placeholder="Enter Name" value="<?php echo !empty($patient["Mother's name:"]) ? $patient["Mother's name:"] : ''; ?>" required />
               </div>
               <div class="input-box">
                 <label >Phone Number</label>
-                <input class="form-control" type="number" name="mother_phone" placeholder="Enter phone number" value="<?php echo !empty($patient['mother_phone:']) ? $patient['mother_phone:'] : ''; ?>" required />
+                <input class="form-control" type="number" name="mother_phone" placeholder="Enter phone number" value="<?php echo !empty($patient['Phone:']) ? $patient['Phone:'] : ''; ?>" required />
               </div>
               <div class="input-box">
                 <label  >Father's Name</label>
-                <input class="form-control" type="text" name="father_name" placeholder="Enter Name" value="<?php echo !empty($patient['father_name:']) ? $patient['father_name:'] : ''; ?>" required />
+                <input class="form-control" type="text" name="father_name" placeholder="Enter Name" value="<?php echo !empty($patient["Father's name:"]) ? $patient["Father's name:"] : ''; ?>" required />
               </div>
               <div class="input-box">
                 <label  >Phone Number</label>
-                <input class="form-control" type="number" name="father_phone"  placeholder="Enter phone number" value="<?php echo !empty($patient['father_phone:']) ? $patient['father_phone:'] : ''; ?>" required />
+                <input class="form-control" type="number" name="father_phone"  placeholder="Enter phone number" value="<?php echo !empty($patient['Phone:']) ? $patient['Phone:'] : ''; ?>" required />
               </div>
             </div>
             <table class="vaccine_table">

@@ -102,6 +102,17 @@
                     </a>
                 </li>
                 @endcannot
+                <li>
+                    <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <a href="{{route('logout')}}" class="nav-link" 
+                    onclick="event.preventDefault();
+                            this.closest('form').submit();">
+                        <span class="icon"><ion-icon name="bx bx-log-out icon"></ion-icon></span>
+                        <span class="title">Logout</span>
+                    </a>
+                    </form>
+                </li>
             </ul>
         </div>
 
@@ -129,7 +140,7 @@
     <!-- =========== CONTAINER =========  -->
     <h1 class="heading">Consultation Record</h1>
                 <div>
-                    {!! $consultationPediatrics->history !!}
+                    {!! $consultationPediatrics->consultation !!}
                 </div>
     </div>
     <section class="overlay"></section>

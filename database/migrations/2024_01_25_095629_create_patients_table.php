@@ -32,9 +32,9 @@ return new class extends Migration
             $table->integer('age');
             $table->string('address');
             $table->string('mother_name');
-            $table->integer('mother_phone');
+            $table->bigInteger('mother_phone')->nullable();;
             $table->string('father_name');
-            $table->integer('father_phone');
+            $table->bigInteger('father_phone')->nullable();
             $table->longText('history')->nullable();
             $table->longText('orders')->nullable();
             $table->timestamps();

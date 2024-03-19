@@ -101,6 +101,17 @@
                     </a>
                 </li>
                 @endcannot
+                <li>
+                    <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <a href="{{route('logout')}}" class="nav-link" 
+                    onclick="event.preventDefault();
+                            this.closest('form').submit();">
+                        <span class="icon"><ion-icon name="bx bx-log-out icon"></ion-icon></span>
+                        <span class="title">Logout</span>
+                    </a>
+                    </form>
+                </li>
             </ul>
         </div>
 
@@ -130,6 +141,7 @@
     <!-- =========== CONTAINER =========  -->
     <header class="heading">User</header>
         <div class="table-wrapper">
+            <p class = "instruction">Note: Click user to add Patient Record</p>
             <table class="fl-table">
                 <thead>
                 <tr>

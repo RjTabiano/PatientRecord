@@ -96,6 +96,17 @@
                     </a>
                 </li>
                 @endcannot
+                <li>
+                    <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <a href="{{route('logout')}}" class="nav-link" 
+                    onclick="event.preventDefault();
+                            this.closest('form').submit();">
+                        <span class="icon"><ion-icon name="bx bx-log-out icon"></ion-icon></span>
+                        <span class="title">Logout</span>
+                    </a>
+                    </form>
+                </li>
             </ul>
         </div>
 
@@ -150,21 +161,14 @@
                                 <td>{{$account->email}}</td>
                                 <td>{{$account->usertype}}</td>
                                 <td>
-                                <button class="btn btn-danger"onclick="openModal()">
-                                    Delete
-                                </button>
-                                <div class="modal" id="myModal">
-                                <div class="modal-content">
-                                    <span class="close" onclick="closeModal()">&times;</span>
-                                    <form method="post" action="{{route('deleteAccount', ['account' => $account])}}" class="form">
+                               
+                                    <form class="cancelForm" method="post" action="{{route('deleteAccount', ['account' => $account])}}" >
                                             @csrf
                                             @method('delete')
-                                        <div class="modal-footer">
-                                            <button type="submit" valaue="Delete" class="btn btn-primary">Delete</button>
-                                        </div>
+                                        
+                                            <button class="save1" type="submit" valaue="Delete" class="btn btn-primary">Delete</button>
                                         </form>
-                                </div>
-                                </div>
+                              
                                     </td>
                                 </tr>
                             @endforeach
@@ -173,7 +177,18 @@
                         
     <!-- =========== Scripts =========  -->
     <script src="{{ asset('javascript/main.js') }}"></script>
+    <script>
+  
 
+    document.querySelectorAll(".cancelForm").forEach(function(form) {
+        form.addEventListener("submit", function(event) {
+            var confirmation = confirm("Are you sure you want to deleete this user?");
+            if (!confirmation) {
+                event.preventDefault();
+            }
+        });
+    });
+</script>
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

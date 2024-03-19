@@ -101,6 +101,17 @@
                     </a>
                 </li>
                 @endcannot
+                <li>
+                    <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <a href="{{route('logout')}}" class="nav-link" 
+                    onclick="event.preventDefault();
+                            this.closest('form').submit();">
+                        <span class="icon"><ion-icon name="bx bx-log-out icon"></ion-icon></span>
+                        <span class="title">Logout</span>
+                    </a>
+                    </form>
+                </li>
             </ul>
         </div>
 
@@ -168,7 +179,7 @@
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary">Add Appointment</button>
                         </div>
-                            
+
                     </form>
   </div>
 </div>
@@ -183,7 +194,8 @@
                     <th scope="col">With Doctor</th>
                     <th scope="col">Date</th>
                     <th scope="col">Time</th>
-                    <th scope="col">Action</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -191,7 +203,6 @@
                 @foreach($doctors as $doctor)
                     
                         @foreach($doctor->appointment as $appointment)
-                            
                 <tr>
                     <td>{{$appointment->patient['name']}}</td>
                     <td>{{$doctor->name}}</td>
@@ -199,44 +210,33 @@
                     <td>{{$appointment->time}}</td>
                     <td>
                     <button type="button" class="btn btn-success"><a href="{{route('appointment.editAppointment', ['appointment' => $appointment])}}">Edit</a></button>
-                    <button  type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteSchedule-{{$appointment}}">
-                        <i class="far fa-trash-alt">Delete</i>
-                        </button>
-                        <!-- Modal -->
-                        <div class="modal fade" id="deleteSchedule-{{$appointment}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                          <div class="modal-dialog">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                              </div>
-                              <div class="modal-body">
-                                <form method="post" action="{{route('appointment.deleteAppointment', ['appointment' => $appointment])}}" class="form">
+                    </td>
+                    <td>
+                                <form class="cancelForm" method="post" action="{{route('appointment.deleteAppointment', ['appointment' => $appointment])}}" >
                                       @csrf
                                       @method('delete')
-                                  <div class="modal-footer">
-                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                      <button type="submit" valaue="Delete" class="btn btn-primary">Delete</button>
-                                  </div>
+                                      <button type="submit" valaue="Delete" class="save1">Delete</button>
                                 </form>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <!-- END Modal -->
-                    </td>
-                </tr>
-                            
-                       
+                            </td>
+                        </tr>
                     @endforeach
                 @endforeach
                 </tbody>
-
-            </table>
-           
+            </table> 
     <!-- =========== Scripts =========  -->
     <script src="{{ asset('javascript/main.js') }}"></script>
+    <script>
+  
 
+    document.querySelectorAll(".cancelForm").forEach(function(form) {
+        form.addEventListener("submit", function(event) {
+            var confirmation = confirm("Are you sure you want to deleete this user?");
+            if (!confirmation) {
+                event.preventDefault();
+            }
+        });
+    });
+</script>
     <!-- ====== ionicons ======= -->
     
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

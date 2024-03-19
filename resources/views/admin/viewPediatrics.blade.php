@@ -102,6 +102,17 @@
                     </a>
                 </li>
                 @endcannot
+                <li>
+                    <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <a href="{{route('logout')}}" class="nav-link" 
+                    onclick="event.preventDefault();
+                            this.closest('form').submit();">
+                        <span class="icon"><ion-icon name="bx bx-log-out icon"></ion-icon></span>
+                        <span class="title">Logout</span>
+                    </a>
+                    </form>
+                </li>
             </ul>
         </div>
 
@@ -131,43 +142,50 @@
                                     <h1>Patient Information</h1>
                                     <div class="info-box">
                                         <label>Type:</label>
-                                        <span>{{ $patient[0]->type }}</span>
+                                        <span>{{ $patient->type }}</span>
                                     </div>
                                     <div class="info-box">
                                         <label>Birth Date:</label>
-                                        <span>{{ $patient[0]->birthdate }}</span>
+                                        <span>{{ $patient->birthdate }}</span>
                                     </div>
                                     <div class="info-box">
                                         <label>Age:</label>
-                                        <span>{{ $patient[0]->age }}</span>
+                                        <span>{{ $patient->age }}</span>
                                     </div>
                                     <div class="info-box">
                                         <label>Gender:</label>
-                                        <span>{{ $patient[0]->sex }}</span>
+                                        <span>{{ $patient->sex }}</span>
                                     </div>
                                     <div class="info-box">
                                         <label>Address:</label>
-                                        <span>{{ $patient[0]->address }}</span>
+                                        <span>{{ $patient->address }}</span>
                                     </div>
                                     <div class="info-box">
                                         <label>Mother's Name:</label>
-                                        <span>{{ $patient[0]->mother_name }}</span>
+                                        <span>{{ $patient->mother_name }}</span>
                                     </div>
                                     <div class="info-box">
                                         <label>Mother's Phone Number:</label>
-                                        <span>{{ $patient[0]->mother_phone }}</span>
+                                        <span>{{ $patient->mother_phone }}</span>
                                     </div>
                                     <div class="info-box">
                                         <label>Father's Name:</label>
-                                        <span>{{ $patient[0]->father_name }}</span>
+                                        <span>{{ $patient->father_name }}</span>
                                     </div>
                                     <div class="info-box">
                                         <label>Father's Phone Number:</label>
-                                        <span>{{ $patient[0]->father_phone }}</span>
+                                        <span>{{ $patient->father_phone }}</span>
                                     </div>
-                                    <table class="vaccine-table">
-                                        
-                                    </table>
+                                    @if($patient->Vaccine->isNotEmpty())
+                                        <div class="info-box">
+                                            <label>Vaccines:</label>
+                                            <ul>
+                                                @foreach($patient->Vaccine as $vaccine)
+                                                    <li>{{ $vaccine }} </li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
                                     <div class="info-box">
                                         <label>P.E./History:</label>
                                         <span></span>
@@ -177,7 +195,7 @@
                                         <span></span>
                                     </div>
                                 </div>
-                                <button id="publishButton" data-patient-id="{{ $patient[0]->patient_id }}">Publish</button>
+                                <button id="publishButton" data-patient-id="{{ $patient->patient_id }}">Publish</button>
     <section class="overlay"></section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script>

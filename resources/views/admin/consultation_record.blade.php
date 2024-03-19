@@ -101,6 +101,17 @@
                     </a>
                 </li>
                 @endcannot
+                <li>
+                    <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <a href="{{route('logout')}}" class="nav-link" 
+                    onclick="event.preventDefault();
+                            this.closest('form').submit();">
+                        <span class="icon"><ion-icon name="bx bx-log-out icon"></ion-icon></span>
+                        <span class="title">Logout</span>
+                    </a>
+                    </form>
+                </li>
             </ul>
         </div>
 
@@ -136,6 +147,9 @@
                 <tr>
                     <th scope="col">Name</th>
                     <th scope="col">Created By</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+
                 </tr>
             </thead>
             <tbody>
@@ -147,17 +161,14 @@
                     <td>{{$consultationPediatric->created_by}}</td>
                     <td>
                         <a href="/patient/show/{{$consultationPediatric->id}}" class="btn btn-sucess">Show</a>
+                    
                         <a href="{{route('patient.edit_consultationRecord', ['consultationPediatrics' => $consultationPediatric], ['patient' => $patient])}}" class="btn btn-info">Edit</a>
-                       
-                        
-                            
-                     
                     </td>
                     <td>
-                    <form class="confirmationForm" method="post" action="{{route('patient.deleteConsultation', ['consultationPediatrics' => $consultationPediatric])}}" class="form">
+                    <form class="confirmationForm" method="post" action="{{route('patient.deleteConsultation', ['consultationPediatrics' => $consultationPediatric])}}">
                                     @csrf
                                     @method('delete')
-                                    <button class="save1" type="submit" valaue="Delete" >Delete Patient</button>
+                                    <button class="save1" type="submit" valaue="Delete" >Delete</button>
                                 </form>
                     </td>
                 </tr>

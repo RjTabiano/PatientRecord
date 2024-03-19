@@ -197,8 +197,8 @@ class PatientController extends Controller
     }
 
     public function viewPediatrics($patient) {
-        $patient = patientRecord::where('id', $patient)->get();
-        if($patient[0]->type == 'Pediatrics'){
+        $patient = PatientRecord::with('Vaccine')->find($patient);
+        if($patient->type == 'Pediatrics'){
             return view('admin.viewPediatrics', ['patient' => $patient]);
         }
         return view('admin.viewRecords');
@@ -359,6 +359,8 @@ class PatientController extends Controller
 
     public function show_consultationRecord($id){
         $consultationPediatrics = consultationPediatrics::find($id);
+
+       
    
         return view('admin.show_consultationRecord', compact('consultationPediatrics'));
     }
