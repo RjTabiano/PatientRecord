@@ -45,10 +45,8 @@
                 <li class="nav__item"><a href="{{ route('login') }}" class="nav__link">Sign In/Sign Up</a></li>
             @endauth
     @endif
-
         </ul>
       </div>
-
       <div class="nav__toggle" id="nav-toggle">
         <i class='bx bx-menu'></i>
       </div>
@@ -60,6 +58,7 @@
     <div class="imga">
     <p style="text-align: center;"></p>
 </td>
+
 <section class="profile-information">
     <header>
         
@@ -95,8 +94,8 @@
                 </div>
             @endif
         </div>
-
-            <button class="lob" >Save</button>
+            
+            <button>Save</button>
 
             @if (session('status') === 'profile-updated')
                 <p>{{ __('Saved.') }}</p>
@@ -137,7 +136,7 @@
 
       
             
-            <button >Save</button>
+            <button>Save</button>
            
             @if (session('status') === 'password-updated')
                 <p>{{ __('Saved.') }}</p>

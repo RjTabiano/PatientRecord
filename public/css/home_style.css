@@ -789,3 +789,91 @@ button[type="submit"]:active {
   margin-left: 260px;
   position: absolute;
 }
+ .profile-information {
+        margin-bottom: 20px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+.delete-account{
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.update-password{
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+
+    /* Delete Account Section */
+    .delete-account form {
+        margin-top: 10px;
+    }
+
+    .delete-account label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .delete-account input[type="password"] {
+        width: calc(250px - 10px);
+        margin-bottom: 10px;
+        padding-right: 5px;
+    }
+
+    /* Update Password Section */
+    .update-password input[type="password"] {
+        width: calc(250px - 10px);
+        margin-bottom: 10px;
+        padding: 5px;
+    }
+
+    /* Profile Information Section */
+    .profile-information input[type="text"],
+    .profile-information input[type="email"] {
+        width: calc(250px - 10px);
+        margin-bottom: 10px;
+        padding: 5px;
+    }
+
+    .profile-information button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+.delete-account button{
+  padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+}
+
+.update-password button{
+  padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+}
+
+    
+    .profile-information button:hover {
+        background-color: #0056b3;
+    } 
+
+    .delete-account{
+      
+    }
