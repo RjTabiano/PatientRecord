@@ -1,35 +1,49 @@
-<x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600">
-        {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
-    </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ asset('css/home_style.css') }}">
+    <link rel="icon" type="" href="{{ asset('images/logocircle.png') }}" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Add CSS here for responsiveness */
+        @media screen and (max-width: 768px) {
+            table {
+                width: 100% !important;
+            }
+        }
+    </style>
+</head>
+<body>
+<table class="container" style="font-family: Helvetica, Arial, sans-serif; background: #fff; margin: 0 auto; width: 90%; max-width: 650px;">
+    <tr>
+  
+        <td style="padding-top: 40px; padding-bottom: 40px;">
+            <p style="text-align: center;"><img src="" alt=""></p>
+        </td>
+    </tr>
+</table>
+<br><br><br><br>
+<table class="container" style="font-family: Helvetica, Arial, sans-serif; background: #fff; margin: 0 auto; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; width: 90%; max-width: 650px;">
+    <tr>
+        <td style="padding-top: 40px; padding-bottom: 40px; padding-left: 10px; padding-right: 10px; text-align: center;">
+            <h1 style="font-size: 40px; font-weight: 100; margin-bottom: 20px; color: #2334d1;">You're almost there</h1>
+            <p style="font-size: 20px; margin-bottom: 30px; line-height: 26px;">Thank you for signing up for Queen's Clinic.<br> Click the button below to verify your email and start conversing.</p>
+            <a href="#" style="margin-bottom: 30px; display: inline-block; background: #2334d1; color: #fff; text-decoration: none; padding: 20px 30px; border-radius: 10px; font-size: 20px;">Verify email address</a><br>
+            <a href="#" style="margin-bottom: 30px; display: inline-block; background: #2334d1; color: #fff; text-decoration: none; padding: 20px 30px; border-radius: 10px; font-size: 15px;">Back</a>
+            <p style="color: #777777;">The Queen's Clinic is currently only supported on desktops.</p>
+        </td>
+    </tr>
+</table>
 
-    @if (session('status') == 'verification-link-sent')
-        <div class="mb-4 font-medium text-sm text-green-600">
-            {{ __('A new verification link has been sent to the email address you provided during registration.') }}
-        </div>
-    @endif
+<table class="container" style="font-family: Helvetica, Arial, sans-serif; background: #fff; margin: 0 auto; width: 90%; max-width: 650px;">
+    <tr>
+        <td style="padding-top: 40px; padding-bottom: 40px; padding-left: 10px; padding-right: 10px; text-align: center;">
+            
+        </td>
+    </tr>
+</table>    
 
-    <div class="mt-4 flex items-center justify-between">
-        <form method="POST" action="{{ route('verification.send') }}">
-            @csrf
-
-            <div>
-                <x-primary-button>
-                    {{ __('Resend Verification Email') }}
-                </x-primary-button>
-            </div>
-        </form>
-        <div>
-            <x-primary-button href="">
-                    Home
-            </x-primary-button>
-        </div>
-        <form method="POST" action="{{ route('logout') }}">
-            @csrf
-
-            <button type="submit" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                {{ __('Log Out') }}
-            </button>
-        </form>
-    </div>
-</x-guest-layout>
+</body>
+</html>
