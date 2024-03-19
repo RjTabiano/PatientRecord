@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
+    public function welcome(){
+        return view('welcome');
+    }
+    
     public function index(){
         if(auth::id())
         {

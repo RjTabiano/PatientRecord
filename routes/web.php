@@ -22,7 +22,7 @@ use App\Http\Controllers\AccountController;
 |
 */
 
-Route::get('/', function () {
+Route::get('/',  [HomeController::class, 'index'], function () {
     return view('welcome');
 });
 
@@ -37,6 +37,8 @@ route::post('/services/storeBooking', [BookingController::class, 'store_booking'
 })->middleware(['auth', 'verified'])->name('dashboard');*/
 
 route::get('/home', [HomeController::class, 'index'])->middleware(['auth', 'admin'])->name('home');
+route::get('/', [HomeController::class, 'welcome'])->name('welcome');
+
 
 
 Route::get('/patientRecords', [PatientController::class, 'patient_record_history'])->middleware(['auth', 'admin'])->name('patient.patient_record_history');
