@@ -33,8 +33,6 @@
             <input type="submit" value="{{ __('Log in') }}" class="btn solid" onclick=""/>
             <a href="{{ route('password.request') }}"><p class="social-text">Forgot password?</p></a>
           </form>
-          
-
           <form method="POST" action="{{ route('register') }}" class="sign-up-form"  onsubmit="checkErrors()">
             @csrf
             <h2 class="title">Sign up</h2>

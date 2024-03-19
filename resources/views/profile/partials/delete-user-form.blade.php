@@ -1,6 +1,6 @@
-<section class="space-y-6">
+<section class="">
     <header>
-        <h2 class="text-lg font-medium text-gray-900">
+        <h2 class="">
             {{ __('Delete Account') }}
         </h2>
 
@@ -41,7 +41,7 @@
                 <x-input-error :messages="$errors->userDeletion->get('password')" class="mt-2" />
             </div>
 
-            <div class="mt-6 flex justify-end">
+            <div class="">
                 <x-secondary-button x-on:click="$dispatch('close')">
                     {{ __('Cancel') }}
                 </x-secondary-button>
