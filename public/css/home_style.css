@@ -781,3 +781,11 @@ button[type="submit"]:active {
   background-color: #0056b3;
 }
 
+.home__imgs{
+  height: 30px;
+}
+
+.imga{
+  margin-left: 260px;
+  position: absolute;
+}
