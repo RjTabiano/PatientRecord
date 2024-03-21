@@ -137,7 +137,6 @@
 
         </div>
 
-
     <!-- =========== CONTAINER =========  -->
     <header class="heading">User</header>
         <div class="table-wrapper">
@@ -161,7 +160,6 @@
              </tbody>
             </table>
         </div>
-
 
     <!-- =========== CONTAINER =========  -->
 

@@ -63,7 +63,6 @@
                         <span class="title">Patient Records</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="{{route('patient.consultations')}}">
                         <span class="icon">

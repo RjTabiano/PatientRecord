@@ -58,7 +58,6 @@
             </div>
             <input type="submit" class="btn" value="{{ __('Register') }}" />
           </form>
-
         </div>
       </div>
       <div class="panels-container">

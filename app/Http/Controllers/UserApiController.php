@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Log;
-
+use HTTP\Request2;
+use Illuminate\Support\Facades\Http;
 
 class UserApiController extends Controller
 {
@@ -228,6 +229,7 @@ class UserApiController extends Controller
             'service' => $booking->service,
             'date' => $booking->date,
             'time' => $booking->time,
+            
         ];
     });
 
@@ -276,6 +278,37 @@ class UserApiController extends Controller
     } catch (\Exception $e) {
         logger()->error('Error retrieving user image: ' . $e->getMessage());
         return response()->json(['error' => 'Failed to retrieve user image'], 500);
-    }
+    }   
 }
+    public function text_message() {
+
+        try {
+            $response = Http::withHeaders([
+                'Authorization' => 'App faa50c6e1e12da877a69e7c5818842a0-31e0a536-9785-45f0-9dc6-1a0ff4a26a67',
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json'
+            ])
+            ->post('https://pp52kl.api.infobip.com/sms/2/text/advanced', [
+                'json' => [
+                    'messages' => [
+                        [
+                            'destinations' => [
+                                ['to' => '639154341492']
+                            ],
+                            'from' => 'ServiceSMS',
+                            'text' => 'Hello,\n\nThis is a test message from Infobip. Have a nice day!'
+                        ]
+                    ]
+                ]
+            ]);
+
+            if ($response->successful()) {
+                return response()->json($response->json());
+            } else {
+                return response()->json(['error' => 'Unexpected HTTP status: ' . $response->status()], 500);
+            }
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Error: ' . $e->getMessage()], 500);
+        }
+    }
 }

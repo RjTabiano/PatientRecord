@@ -28,7 +28,6 @@
                         <span class="title">Admin Panel</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="{{route('patient.patient-record')}}">
                         <span class="icon">

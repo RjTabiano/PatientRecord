@@ -28,7 +28,6 @@
     </tr>
 </table>
 <br><br><br><br>
-
 <table class="container" style="font-family: Helvetica, Arial, sans-serif; background: #fff; margin: 0 auto; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; width: 90%; max-width: 650px;">
     <tr>
         <td style="padding-top: 40px; padding-bottom: 40px; padding-left: 10px; padding-right: 10px; text-align: center;">

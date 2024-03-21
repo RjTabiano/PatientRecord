@@ -115,7 +115,6 @@
                 </li>
             </ul>
         </div>
-
         <!-- ========================= Main ==================== -->
         <div class="main">
             <div class="topbar">
@@ -138,9 +137,15 @@
 
 
     <!-- =========== CONTAINER =========  -->
-
+    <header>OCR Scanner (Optional)</header>
+    <form action="{{ route('scanner.uploadP', ['patient' => $patient]) }}" method="post" accept="image/*" enctype="multipart/form-data">
+                @csrf
+               @method('PUT')
+                  <input type="file" class="form-control" name="image" accept="image/*">
+                  <input type="submit" class="custom-button" name="submit" value="Upload">
+              </form>
     <header>Pediatrics Form</header>
-      <form method="post" action="{{route('patient.store', ['patient' => $patient])}}" class="form">
+      <form method="post" action="{{ route('patient.store', ['patient' => $patient]) }}" class="form">
         @csrf
         @method('post')
         <div class="column">
@@ -151,46 +156,45 @@
           
         <div class="input-box"> 
             <label >Age</label>
-            <input class="form-control"style="width:100%" type="number" name="age" placeholder="Enter Age" required />
+            <input class="form-control"style="width:100%" type="number" name="age" placeholder="Enter Age" value="<?php echo !empty($response['Age:']) ? $response['Age:'] : ''; ?>" required />
           </div>
         <div class="input-box">
             <label >Birth Date</label>
-            <input class="form-control" style="width:100%" type="date" name="birthdate" placeholder="Enter birth date"/>
+            <input class="form-control" style="width:100%" type="date" name="birthdate" value="<?php echo !empty($response['Birthdate:']) ? $response['Birthdate:'] : ''; ?>" placeholder="Enter birth date"/>
           </div>
         </div>
         <div class="input-box address">
           <label  >Address</label>
-          <input class="form-control" style="width:100%" type="text" name="address" placeholder="Enter address" required /><br>
+          <input class="form-control" style="width:100%" type="text" name="address" placeholder="Enter address"  value="<?php echo !empty($response['Address:']) ? $response['Address:'] : ''; ?>" required /><br>
           <div class="input-box">
             <label >Mother's Name</label>
-            <input class="form-control" style="width:100%" type="text" name="mother_name" placeholder="Enter Name" required />
+            <input class="form-control" style="width:100%" type="text" name="mother_name" placeholder="Enter Name" value="<?php echo !empty($response["Mother's name:"]) ? $response["Mother's name:"] : ''; ?>" required />
           </div>
           <div class="input-box">
             <label>Mother's Phone Number</label>
-            <input class="form-control" style="width:100%" type="number" name="mother_phone" placeholder="Enter phone number" required />
+            <input class="form-control" style="width:100%" type="number" name="mother_phone" placeholder="Enter phone number" value="<?php echo !empty($response['Phone:']) ? $response['Phone:'] : ''; ?>" required />
           </div>
           <div class="input-box">
             <label>Father's Name</label>
-            <input class="form-control" style="width:100%" type="text" name="father_name" placeholder="Enter Name" required />
+            <input class="form-control" style="width:100%" type="text" name="father_name" value="<?php echo !empty($response["Father's name:"]) ? $response["Father's name:"] : ''; ?>" placeholder="Enter Name" required />
           </div>
           <div class="input-box">
             <label>Father's Phone Number</label>
-            <input class="form-control" style="width:100%" type="number" name="father_phone"  placeholder="Enter phone number" required />
+            <input class="form-control" style="width:100%" type="number" name="father_phone"  placeholder="Enter phone number" value="<?php echo !empty($response['Phone:']) ? $response['Phone:'] : ''; ?>" required />
           </div>
         </div>
         <div class="gender-box">
-          <h5>Gender</h5>
-          <div class="gender-option">
-            <div class="gender">
-              <input  type="radio" id="check-male" name="sex" value="male" checked />
-              <label  for="check-male">Male</label>
+            <h5>Gender</h5>
+            <div class="gender-option">
+                <div class="gender">
+                    <input type="radio" id="check-male" name="sex" value="male" <?php echo (!empty($response['Sex:']) && strtolower($response['Sex:']) === 'male') ? 'checked' : ''; ?>>
+                    <label for="check-male">Male</label>
+                </div>
+                <div class="gender">
+                    <input type="radio" id="check-female" name="sex" value="female" <?php echo (!empty($response['Sex:']) && strtolower($response['Sex:']) === 'female') ? 'checked' : ''; ?>>
+                    <label for="check-female">Female</label>
+                </div>
             </div>
-            <div class="gender">
-              <input type="radio" id="check-female" name="sex" value="female" />
-              <label for="check-female">Female</label>
-            </div>
-
-          </div>
         </div>
         <table class="vaccine_table">
           <tr>

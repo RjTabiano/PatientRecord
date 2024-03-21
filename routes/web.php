@@ -11,6 +11,8 @@ use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ScannerController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\UserInfoController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,6 +41,7 @@ route::post('/services/storeBooking', [BookingController::class, 'store_booking'
 route::get('/home', [HomeController::class, 'index'])->middleware(['auth', 'admin'])->name('home');
 route::get('/', [HomeController::class, 'welcome'])->name('welcome');
 
+Route::get('/userInfo', [UserInfoController::class, 'user_info'])->middleware(['auth'])->name('userInfo');
 
 
 Route::get('/patientRecords', [PatientController::class, 'patient_record_history'])->middleware(['auth', 'admin'])->name('patient.patient_record_history');
@@ -48,6 +51,8 @@ Route::get('/addConsultation', [PatientController::class, 'add_consultation'])->
 
 Route::get('/patient/{patient}/pediatrics', [PatientController::class, 'createPediatrics'])->middleware(['auth', 'admin'])->name('patient.pediatrics');
 Route::get('/patient/{patient}/obgyne', [PatientController::class, 'createObgyne'])->middleware(['auth', 'admin'])->name('patient.obgyne');
+Route::put('/patient/{patient}/pediatrics/upload', [PatientController::class, 'uploadImagePedia'])->middleware(['auth', 'admin'])->name('scanner.uploadP');
+Route::put('/patient/{patient}/obgyne/upload', [PatientController::class, 'uploadImageOb'])->middleware(['auth', 'admin'])->name('scanner.uploadO');
 
 Route::post('/patient/{patient}/store', [PatientController::class, 'store'])->middleware(['auth', 'admin'])->name('patient.store');
 Route::post('/patient/storePatients', [PatientController::class, 'store_patients'])->middleware(['auth', 'admin'])->name('patient.storePatients');
@@ -106,7 +111,6 @@ route::get('/searchBooking', [BookingController::class, 'search_booking'])->midd
 
 
 Route::get('/scanner', [ScannerController::class, 'index'])->middleware(['auth', 'admin'])->name('scanner');
-Route::put('/scanner/upload', [ScannerController::class, 'uploadImage'])->middleware(['auth', 'admin'])->name('scanner.upload');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

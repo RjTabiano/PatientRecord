@@ -198,8 +198,7 @@
                     <th scope="col"></th>
                 </tr>
                 </thead>
-                <tbody>
-                    
+                <tbody>      
                 @foreach($doctors as $doctor)
                     
                         @foreach($doctor->appointment as $appointment)

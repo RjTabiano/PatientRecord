@@ -28,18 +28,22 @@
   <header class="l-header">
     <nav class="nav bd-grid">
       <div>
-        <a href="#" class="nav__logo">The Queen's Clinic</a>
+        <a href="{{route('welcome')}}" class="nav__logo">The Queen's Clinic</a>
       </div>
 
       <div class="nav__menu" id="nav-menu">
         <ul class="nav__list">
-        <li class="nav__item"><a href="#home" class="nav__link active">Home</a></li>
+        <li class="nav__item"><a href="{{route('welcome')}}" class="nav__link active">Home</a></li>
         <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
         <li class="nav__item"><a href="#products" class="nav__link">Doctors</a></li>
         <li class="nav__item"><a href="#services" class="nav__link">Services</a></li>
         @if (Route::has('login'))
             @auth
                 <li class="nav__item"><a href="{{route('services')}}" class="nav__link">Book Now!</a></li>
+                @cannot('user')
+                  <li class="nav__item"><a href="{{route('home')}}" class="nav__link">Admin Panel</a></li>
+                @endcan
+                <li class="nav__item"><a href="{{route('userInfo')}}" class="nav__link">Account</a></li>
                 <li class="nav__item"><a href="{{route('profile.edit')}}" class="nav__link">{{ Auth::user()->name }}</a></li>
             @else
                 <li class="nav__item"><a href="{{ route('login') }}" class="nav__link">Sign In/Sign Up</a></li>
@@ -190,7 +194,6 @@
       </div>-->
     </section>
   </main>
-
   <!--===== FOOTER =====-->
   <footer class="footer section">
     <div class="footer__container bd-grid">

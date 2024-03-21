@@ -114,7 +114,6 @@
                 </li>
             </ul>
         </div>
-
         <!-- ========================= Main ==================== -->
         <div class="main">
             <div class="topbar">
@@ -130,7 +129,6 @@
                         </label>
                     </form>
                 </div>
-
                 <div class="user">
                     
                 </div>

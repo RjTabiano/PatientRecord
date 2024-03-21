@@ -23,6 +23,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Gate::define('user', fn(User $user) => $user->usertype=='user' );
         Gate::define('admin', fn(User $user) => $user->usertype=='admin' ); 
         Gate::define('staff', fn(User $user) => $user->usertype=='staff' ); 
         Gate::define('doctor', fn(User $user) => $user->usertype=='doctor' ); 

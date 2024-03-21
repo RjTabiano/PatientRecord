@@ -15,7 +15,7 @@ class ScannerController extends Controller
         return view('admin.ocr_scanner');
 
     }
-    public function uploadImage(Request $request)
+    public function uploadImage($patient, Request $request)
     {
         $request->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
@@ -73,13 +73,13 @@ class ScannerController extends Controller
                         } catch (Aws\S3\Exception\S3Exception $e) { 
                             $api_error = $e->getMessage(); 
                         } 
-                        
                         if(empty($api_error)){ 
                             $status = 'success'; 
                             $statusMsg = "File was uploaded and scanned successfully!"; 
                             $apiUrl = 'https://pbem2315rk.execute-api.ap-southeast-1.amazonaws.com/Dev/patient-record-scanner/' . $file_name;
                             $response = Http::get($apiUrl);
-                            $patient = json_decode($response, true);
+                            $response = json_decode($response, true);
+                           
                         }else{ 
                             $statusMsg = $api_error; 
                         } 
@@ -87,13 +87,13 @@ class ScannerController extends Controller
                         $statusMsg = "File upload failed!"; 
                     } 
                 }else{ 
-                    $statusMsg = 'Sorry, only Word/Excel/Image files are allowed to upload.'; 
+                    $statusMsg = 'Sorry, Image files are allowed to upload.'; 
                 } 
             }else{ 
                 $statusMsg = 'Please select a file to upload.'; 
             } 
         } 
 
-        return view('admin.ocr_scanner', ['statusMsg' => $statusMsg], ['patient' => $patient]);
+        return view('admin.pediatrics', ['statusMsg' => $statusMsg], ['response' => $response], ['patient' => $patient]);
     }
 }

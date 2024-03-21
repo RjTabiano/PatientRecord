@@ -115,7 +115,6 @@
                 </li>
             </ul>
         </div>
-
         <!-- ========================= Main ==================== -->
         <div class="main">
             <div class="topbar">
@@ -138,6 +137,13 @@
 
 
     <!-- =========== CONTAINER =========  -->
+    <header>OCR Scanner (Optional)</header>
+    <form action="{{ route('scanner.uploadO', ['patient' => $patient]) }}" method="post" accept="image/*" enctype="multipart/form-data">
+                @csrf
+               @method('PUT')
+                  <input type="file" class="form-control" name="image" accept="image/*">
+                  <input type="submit" class="custom-button" name="submit" value="Upload">
+              </form>
     <header>Obgyne Form</header>
       <form method="post" action="{{route('patient.storeObgyne' , ['patient' => $patient])}}" class="form">
         @csrf
@@ -145,12 +151,12 @@
         <div class="input-box">
           <input type="hidden" name="type" value="Obgyne" />
           <label>Full Name</label>
-          <input type="text" placeholder="Enter full name" name="name" required />
+          <input type="text" placeholder="Enter full name" name="name" value="<?php echo !empty($response["Patient's Name: (Surname, First Name, Middle Name)"]) ? $response["Patient's Name: (Surname, First Name, Middle Name)"] : ''; ?>" required />
         </div>
 
         <div class="input-box">
           <label>Email Address</label>
-          <input type="text" placeholder="Enter email address" name="email" required />
+          <input type="text" placeholder="Enter email address" name="email" value="<?php echo !empty($response["Email:"]) ? $response["Email:"] : ''; ?>" required />
         </div>
 
         <div class="column">
@@ -183,7 +189,7 @@
         
         <div class="input-box address">
           <label class="form-control" >Address</label>
-          <input class="form-control" type="text" placeholder="Enter address" name="address" required />
+          <input class="form-control" type="text" placeholder="Enter address" name="address" value="<?php echo !empty($response['Address:']) ? $response['Address:'] : ''; ?>" required />
           <div class="input-box">
             <label class="form-control">Contact Number</label>
             <input class="form-control" type="number" placeholder="Enter contact number" name="contact_number" required />
