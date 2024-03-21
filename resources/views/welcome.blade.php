@@ -49,7 +49,6 @@
                 <li class="nav__item"><a href="{{ route('login') }}" class="nav__link">Sign In/Sign Up</a></li>
             @endauth
     @endif
-
         </ul>
       </div>
 

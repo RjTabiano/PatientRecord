@@ -124,9 +124,7 @@
                         </label>
                     </form>
                 </div>
-
                 <div class="user">
-                    
                 </div>
 
         </div>
