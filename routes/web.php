@@ -42,6 +42,9 @@ route::get('/home', [HomeController::class, 'index'])->middleware(['auth', 'admi
 route::get('/', [HomeController::class, 'welcome'])->name('welcome');
 
 Route::get('/userInfo', [UserInfoController::class, 'user_info'])->middleware(['auth'])->name('userInfo');
+Route::get('/myAppointment', [UserInfoController::class, 'get_appointment'])->middleware(['auth'])->name('myAppointment');
+Route::get('/myPatientRecord', [UserInfoController::class, 'get_patientRecord'])->middleware(['auth'])->name('myPatientRecord');
+Route::get('/myConsultationRecord', [UserInfoController::class, 'get_consultationRecord'])->middleware(['auth'])->name('myConsultationRecord');
 
 
 Route::get('/patientRecords', [PatientController::class, 'patient_record_history'])->middleware(['auth', 'admin'])->name('patient.patient_record_history');

@@ -64,9 +64,9 @@
             <input type="checkbox" id="toggle-btn">
             <label for="toggle-btn"></label>
             <div class="navs">
-                <a href="#">My Appointment</a>
-                <a href="#">My Patient Record</a>
-                <a href="#">My Consultation Record</a>
+                <a href="{{route('myAppointment')}}">My Appointment</a>
+                <a href="{{route('myPatientRecord')}}">My Patient Record</a>
+                <a href="{{route('myConsultationRecord')}}">My Consultation Record</a>
             </div>
     </div>
     </main>

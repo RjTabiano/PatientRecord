@@ -19,7 +19,6 @@
     
 <table class="container" style="font-family: Helvetica, Arial, sans-serif; background: #fff; margin: 0 auto; width: 90%; max-width: 650px;">
     <tr>
-  
     <td style="padding-top: 40px; padding-bottom: 40px;">
     <div class="imga">
     <p style="text-align: center;"><img src="{{ asset('images/logocircle.png') }}" alt="" style="width: 100px; height: 100px;"></p>
