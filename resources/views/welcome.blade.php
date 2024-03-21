@@ -33,7 +33,7 @@
 
       <div class="nav__menu" id="nav-menu">
         <ul class="nav__list">
-        <li class="nav__item"><a href="{{route('welcome')}}" class="nav__link active">Home</a></li>
+        <li class="nav__item"><a href="{{route('welcome')}}" class="nav__link ">Home</a></li>
         <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
         <li class="nav__item"><a href="#products" class="nav__link">Doctors</a></li>
         <li class="nav__item"><a href="#services" class="nav__link">Services</a></li>
@@ -43,12 +43,22 @@
                 @cannot('user')
                   <li class="nav__item"><a href="{{route('home')}}" class="nav__link">Admin Panel</a></li>
                 @endcan
-                <li class="nav__item"><a href="{{route('userInfo')}}" class="nav__link">Account</a></li>
+                
+<!-- HTML -->
+<li class="nav__item dropdown">
+  <a href="#" class="nav__link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
+  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                 <a href="{{route('myAppointment')}}">Appointment</a><br>
+                <a href="{{route('myPatientRecord')}}">Patient Record</a><br>
+                <a href="{{route('myConsultationRecord')}}">Consultation Record</a>
+  </div>
+</li>
                 <li class="nav__item"><a href="{{route('profile.edit')}}" class="nav__link">{{ Auth::user()->name }}</a></li>
             @else
                 <li class="nav__item"><a href="{{ route('login') }}" class="nav__link">Sign In/Sign Up</a></li>
             @endauth
     @endif
+
         </ul>
       </div>
 
