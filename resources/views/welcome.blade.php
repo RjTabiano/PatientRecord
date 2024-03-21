@@ -75,7 +75,6 @@
     <!--===== ABOUT =====-->
     <section class="about section" id="about">
       <h2 class="section-title">About</h2>
-      
       <div class="about__container bd-grid">
         <div>
           <span class="about__profession"></span>
@@ -206,9 +205,10 @@
         <h2 class="footer__title">CONTACT</h2>
         <ul>
           <h2 class="footer__title">Business hours: Monday to Sunday 9:00 am - 5:00 pm</h2>
-      
+        
           <li><a href="https://www.google.com/maps/place/The+Queens+OBGYN,+Pediatrics,+and+Surgery+Clinic/@14.7337321,121.0499644,17z/data=!3m1!4b1!4m6!3m5!1s0x3397b192d7ba560f:0xf162619ab0e1610c!8m2!3d14.7337269!4d121.0525393!16s%2Fg%2F11qpvt1zrw?entry=ttu" target="_blank" class="footer__link">Address: 1190C Quirino Highway Novaliches, 
             Quezon City, Philippines</a></li>
+          
             <br>
             <h2 class="footer__title">Email: samwanasenrazon@gmail.com</h2>
           <h2 class="footer__title">Contact: 0926-0993874</h2>

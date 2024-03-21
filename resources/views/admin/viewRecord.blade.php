@@ -108,7 +108,11 @@
                     <a href="{{route('logout')}}" class="nav-link" 
                     onclick="event.preventDefault();
                             this.closest('form').submit();">
-                        <span class="icon"><ion-icon name="bx bx-log-out icon"></ion-icon></span>
+                            
+                        <span class="icon">
+                        <ion-icon name="log-out-outline"></ion-icon>
+                        </span>
+                        
                         <span class="title">Logout</span>
                     </a>
                     </form>
