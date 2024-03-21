@@ -938,3 +938,16 @@ button[type="submit"]:active {
     transform: translateY(1px);
 }
 
+.table-container {
+  height: 400px;
+  overflow-y: auto;
+  position: relative;
+}
+
+.fixed-header {
+  position: fixed;
+}
+
+.scrollable-body {
+  margin-top: 30px; /* Adjust this value to match the height of the table header */
+}
