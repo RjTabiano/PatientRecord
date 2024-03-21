@@ -90,4 +90,5 @@
     </div>
     <script src="{{ asset('javascript/login-signup.js') }}"></script>
   </body>
+  
 </html>

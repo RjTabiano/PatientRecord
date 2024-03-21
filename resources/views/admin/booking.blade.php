@@ -143,8 +143,9 @@
     <div class="table_container">
         <div class="row">
             <div class="col-12">
+            <div style="height: 600px; overflow-y: auto;">
             <table class="table table-bordered">
-                <thead>
+                <thead >
                 <tr>
                     <th scope="col">Name</th>
                     <th scope="col">Service</th>
@@ -155,8 +156,7 @@
                     <th scope="col"></th>
                 </tr>
                 </thead>
-                <tbody>
-                    
+                <tbody class="scrollable-body">
                 @foreach($booking as $book)
                     @foreach($book->booking as $booked)                    
                 <tr>
@@ -200,8 +200,8 @@
                     @endforeach
                 @endforeach
                 </tbody>
-
             </table>
+</div>
             </div>
         </div>
     </div>

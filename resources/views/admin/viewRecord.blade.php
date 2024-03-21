@@ -161,7 +161,8 @@
             </div>
         </div>
         <div class="table-wrapper">  
-        <table class="fl-table" >
+        
+        <table>
             <thead>
             <tr>
                 <th>Record</th>
@@ -172,32 +173,33 @@
                 <th></th>
             </tr>
             </thead>
-            <tbody>
-            @foreach ($patient->patientRecord as $patientRecords)
-                <tr >
-                    
+            <tbody style="height: 200x; overflow-y: scroll;">
+                <div style="height: auto; width: 100%;">
+                    @foreach ($patient->patientRecord as $patientRecords)
+                    <tr>
                         <td>{{$patientRecords['type']}}</td>
                         <td>{{$patient->name}}</td>
                         <td>{{$patient->email}}</td>
                         <td>
-                        <a href="{{route('patient.viewPediatrics', ['patient' => $patientRecords['id']])}}">View</a>
+                            <a href="{{route('patient.viewPediatrics', ['patient' => $patientRecords['id']])}}">View</a>
                         </td>
-                        <td><a href="{{route('patient.update', ['patient' => $patient])}}">Edit</a></td>
                         <td>
-                            <form class="cancelForm" method="post" action="{{route('patient.delete', ['patient' => $patient])}}" >
-                                    @csrf
-                                    @method('delete')
-                                
-                                    <button type="submit" valaue="Delete" class="save1">Delete</button>
-                                </form>
-                    </td>
-                </tr>
-                @endforeach
+                            <a href="{{route('patient.update', ['patient' => $patient])}}">Edit</a>
+                        </td>
+                        <td>
+                            <form class="cancelForm" method="post" action="{{route('patient.delete', ['patient' => $patient])}}">
+                                @csrf
+                                @method('delete')
+
+                                <button type="submit" value="Delete" class="save1">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
+                </div>
             </tbody>
         </table>
-
-
-
+</div>
     <!-- =========== CONTAINER =========  -->
 
 

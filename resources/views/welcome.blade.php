@@ -66,7 +66,6 @@
         <div class="home__scroll">
           <a href="#about" class="home__scroll-link"><i class='bx bx-up-arrow-alt'></i>Scroll down</a>
         </div>
-
         <img src="{{ asset('images/logo1.png') }}" alt="" class="home__img">
       </div>
     </section>
