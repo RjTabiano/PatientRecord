@@ -114,6 +114,7 @@ img {
   width: calc(100% - 2rem);
   margin-left: var(--mb-20);
   margin-right: var(--mb-20);
+  margin-left: 20px;
 }
 .l-header {
   width: 100%;
@@ -359,6 +360,8 @@ img {
   border-radius: 0.5rem;
 }
  */
+
+
 .contact__button {
   display: block;
   background-color: var(--first-color);
@@ -431,6 +434,7 @@ img {
     margin-left: var(--mb-4);
     margin-bottom: 0;
   }
+  
   .nav__toggle {
     display: none;
   }
@@ -801,6 +805,7 @@ button[type="submit"]:active {
 .imga{
   margin-left: 260px;
   position: absolute;
+  margin-top: 50px;
 }
  .profile-information {
         margin-bottom: 20px;
@@ -1048,3 +1053,6 @@ tr:hover {
   background-color: #f8f9fa;
 }
 
+.bgbg{
+  background-size: cover;
+}
