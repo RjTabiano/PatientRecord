@@ -127,7 +127,6 @@
 
         </div>
 
-
     <!-- =========== CONTAINER =========  -->
     <header class="headings">Edit Consultation Record</header>
         <h1>Created By: {{$consultationPediatrics->created_by}}</h1>
@@ -140,11 +139,7 @@
                     </div>
                     <button type="submit">Submit</button>
                 </form>
-
-
-
     <!-- =========== CONTAINER =========  -->
-
 
     <!-- =========== Scripts =========  -->
     <script src="{{ asset('javascript/main.js') }}"></script>

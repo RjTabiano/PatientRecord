@@ -181,14 +181,7 @@
         </form>
     </x-modal>
 
-    <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <a href="{{route('logout')}}" class="nav-link" 
-                    onclick="event.preventDefault();
-                            this.closest('form').submit();">
-                        Logout
-                    </a>
-                    </form>
+
 </section>
   <!--===== SCROLL REVEAL =====-->
   <script src="https://unpkg.com/scrollreveal"></script>

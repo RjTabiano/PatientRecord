@@ -37,6 +37,8 @@ body {
   width: 80px;
 }
 
+
+
 .navigation ul {
   position: absolute;
   top: 0;
@@ -826,9 +828,14 @@ tr:hover {
 }
 
 .btn_c{
-  padding-top: 30px;
+  padding-top: 10px;
   padding-left: 30px;
   padding-right: 30px;
+ 
+}
+
+a.btn{
+  text-decoration: none;
 }
 
 .modals{

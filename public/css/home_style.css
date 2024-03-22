@@ -132,6 +132,11 @@ img {
   justify-content: space-between;
   align-items: center;
 }
+
+.nav__menu{
+  margin-top: 15px;
+}
+
 @media screen and (max-width: 768px) {
   .nav__menu {
     position: fixed;
@@ -143,7 +148,6 @@ img {
     background-color: rgba(255, 255, 255, 0.3);
     transition: 0.5s;
     backdrop-filter: blur(10px);
-    
   }
 }
 .nav__item {
@@ -203,6 +207,12 @@ img {
 .home__scroll {
   align-self: flex-end;
   padding-bottom: var(--mb-4);
+}
+
+
+.home__scroll-link:hover {
+  color: var(--white-color);
+
 }
 
 .home__scroll-link {
@@ -332,7 +342,6 @@ img {
   color: var(--dark-color);
 }
 
-
 /* ===== CONTACT =====*/
 .contact__container {
   row-gap: 2rem;
@@ -360,8 +369,6 @@ img {
   border-radius: 0.5rem;
 }
  */
-
-
 .contact__button {
   display: block;
   background-color: var(--first-color);
@@ -388,6 +395,9 @@ img {
     text-align: justify;
     text-decoration: none;
 }
+
+
+
 .footer__title {
   font-size: var(--normal-font-size);
   color: var(--white-color);
@@ -397,7 +407,12 @@ img {
   padding: 0.25rem 0;
 }
 .footer__link:hover {
-  color: var(--first-color);
+  color: var(--white-color);
+  text-decoration: none;
+}
+
+.footer__link{
+  color: white;
 }
 .footer__social {
   font-size: 1.4rem;
@@ -444,10 +459,15 @@ img {
   .nav__link:hover {
     color: var(--white-color);
   }
-  .active:after {
-  
-  }
 
+  .nav__logo:hover {
+    color: var(--white-color);
+    text-decoration: none;
+  }
+ 
+  
+
+  
   .home__container {
     height: 100vh;
     grid-template-rows: 1.7fr 1fr;
@@ -1011,25 +1031,49 @@ tr:hover {
 }
 
 /* Styles for dropdown-menu */
+/* CSS for Dropdown Menu */
 .dropdown-menu {
+  
   position: absolute;
   top: 100%;
   left: 0;
   z-index: 1000;
   display: none;
   float: left;
-  min-width: 10rem;
-  padding: 0.5rem 0;
-  margin: 0.125rem 0 0;
-  font-size: 1rem;
-  color: #212529;
-  text-align: left;
+  min-width: 100px;
+  padding: 0px 0;
+  margin: 1px 0 0;
+  font-size: 14px;
+  text-align: center;
   list-style: none;
   background-color: #fff;
   background-clip: padding-box;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: 0.25rem;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: .25rem;
 }
+
+.dropdown-menu a {
+  display: block;
+  padding: 5px 20px;
+  clear: both;
+  font-weight: 400;
+  color: #333;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f5f5f5;
+  text-decoration: none;
+}
+
+/* Additional styling for active menu item if needed */
+.dropdown-menu a.active {
+  background-color: #007bff;
+  color: #fff;
+  
+}
+
 
 /* Styles for dropdown items */
 .dropdown-item {
@@ -1053,6 +1097,3 @@ tr:hover {
   background-color: #f8f9fa;
 }
 
-.bgbg{
-  background-size: cover;
-}

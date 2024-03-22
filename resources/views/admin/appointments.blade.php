@@ -18,7 +18,7 @@
 <body>
     <!-- =============== Navigation ================ -->
     <div class="container">
-        <div class="navigation">
+        <div class="navigation"> 
             <ul>
                 <li>
                     <a href="{{route('home')}}">
@@ -127,7 +127,7 @@
 
         </div>
 
-        <h1 class="heading">Appointments</h1><br>
+        <h1 class="heading">Appointments</h1>
     <button class="modals" onclick="openModal()">
         Add
     </button>
