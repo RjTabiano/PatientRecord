@@ -25,7 +25,7 @@
         }
     </script>
 @endif
-  <!--===== HEADER =====-->
+  <!--===== HEADER ====-->
   <header class="l-header">
     <nav class="nav bd-grid">
       <div>
@@ -237,5 +237,4 @@
   <!--===== MAIN JS =====-->
   <script src="{{ asset('javascript/js.js') }}"></script>
 </body>
-
 </html>

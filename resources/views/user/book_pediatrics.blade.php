@@ -66,6 +66,10 @@
               <label for="time">Select Time:</label>
               <input name="time" type="time" width="270" />
           </div>
+          <div class="timepicker">
+                <label for="number">Phone Number:</label>
+                <input name="phone_number" type="number" width="270" />
+            </div>
           <div class="books">
               <button type="submit">Book</button>
           </div>

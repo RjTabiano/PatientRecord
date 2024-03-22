@@ -25,7 +25,6 @@
           <i class="bx bx-menu menu-icon"></i>
           <span class="logo-name">Admin Panel</span>
         </div>
-
         <div class="sidebar-content">
           <ul class="lists">
             <li class="list">

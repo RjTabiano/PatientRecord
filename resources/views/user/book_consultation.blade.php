@@ -54,7 +54,7 @@
  <body>
   <main class="l-main">
     <section class="portfolios section" id="services">
-        <h2 class="section-titles">Pediatrics</h2>
+        <h2 class="section-titles">Consultation</h2>
         <div class="booking_container">
         <form method="post" action="{{route('storeBooking')}}" class="form">
             @csrf
@@ -68,16 +68,14 @@
                 <label for="time">Select Time:</label>
                 <input name="time" type="time" width="270" />
             </div>
+            <div class="timepicker">
+                <label for="number">Phone Number:</label>
+                <input name="phone_number" type="number" width="270" />
+            </div>
             <button type="submit">Book</button>
         </form>
         </div>
-        @if($errors->any())
-        <ul>
-            @foreach($errors->all() as $error)
-            <li>{{$error}}</li>
-            @endforeach
-        </ul>
-        @endif
+   
     </section>
   </main>
   <script src="{{ asset('javascript/js.js') }}"></script>
