@@ -266,23 +266,23 @@ class UserApiController extends Controller
 
 
     public function getUserImage()
-{
-    try {
-        $user = auth()->user(); // Assuming you're using Laravel's authentication
-        $images = $user->images; // Retrieve all images associated with the user
+    {
+        try {
+            $user = auth()->user(); 
+            $images = $user->images;
 
-        $imageData = [];
-        foreach ($images as $image) {
-            $imageData[] = ['data' => $image->data];
+            $imageData = [];
+            foreach ($images as $image) {
+                $imageData[] = ['data' => $image->data];
+            }
+
+            return response()->json($imageData);
+        } catch (Exception $e) {
+            logger()->error('Error retrieving user images: ' . $e->getMessage());
+
+            return response()->json(['error' => 'Failed to retrieve user images'], 500);
         }
-
-        return response()->json($imageData);
-    } catch (Exception $e) {
-        logger()->error('Error retrieving user images: ' . $e->getMessage());
-
-        return response()->json(['error' => 'Failed to retrieve user images'], 500);
     }
-}
 
 
 
@@ -317,4 +317,49 @@ class UserApiController extends Controller
             return response()->json(['error' => 'Error: ' . $e->getMessage()], 500);
         }
     }
+
+    public function updateUser(Request $request)
+    {
+        try {
+            $user = auth()->user();
+            
+            $validator = Validator::make($request->all(), [
+                'name' => 'sometimes|required|string',
+                'email' => 'sometimes|required|email|unique:users,email,'.$user->id,
+                'password' => 'sometimes|required_with:confirm_password|string|min:6|same:confirm_password',
+                'confirm_password' => 'sometimes|required_with:password|string|min:6',
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json([
+                    'status' => 422,
+                    'errors' => $validator->messages()
+                ], 422);
+            }
+
+            if ($request->has('name')) {
+                $user->name = $request->name;
+            }
+            if ($request->has('email')) {
+                $user->email = $request->email;
+            }
+            if ($request->has('password')) {
+                $user->password = Hash::make($request->password);
+            }
+
+            $user->save();
+
+            return response()->json([
+                'status' => true,
+                'message' => 'User updated successfully',
+                'user' => $user
+            ], 200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
+    }
+    
 }

@@ -26,6 +26,7 @@ Route::get('/user_account', [UserApiController::class, 'getLoggedInUser'])->midd
 Route::get('/booked', [UserApiController::class, 'getBooking'])->middleware('auth:sanctum');
 Route::get('/getImage', [UserApiController::class, 'getUserImage'])->middleware('auth:sanctum');
 Route::post('/textMsg', [UserApiController::class, 'text_message']);
+Route::post('/updateUser', [UserApiController::class, 'updateUser'])->middleware('auth:sanctum');
 
 Route::get('/images/{imageId}', function ($imageId) {
     $image = Image::find($imageId);
