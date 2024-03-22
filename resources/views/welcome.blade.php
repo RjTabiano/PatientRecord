@@ -52,6 +52,8 @@
                  <a href="{{route('myAppointment')}}">Appointment</a><br>
                 <a href="{{route('myPatientRecord')}}">Patient Record</a><br>
                 <a href="{{route('myConsultationRecord')}}">Consultation Record</a>
+                <br>
+                <a href="{{route('myConsultationRecord')}}">Logout</a>
   </div>
 </li>
 

@@ -18,7 +18,7 @@
 <body>
     <!-- =============== Navigation ================ -->
     <div class="container">
-        <div class="navigation">
+        <div class="navigation"> 
             <ul>
                 <li>
                     <a href="{{route('home')}}">
