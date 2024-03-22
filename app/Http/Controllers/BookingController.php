@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Booking;
 use App\Models\User;
+use App\Models\Schedule;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Database\QueryException; 
 use Illuminate\Support\Facades\Http;
-
+use Carbon\Carbon;
 
 class BookingController extends Controller
 {
@@ -28,18 +29,10 @@ class BookingController extends Controller
         return view('user.book_obgyne');
     }
 
-    public function store_booking(Request $request)
+    /*public function store_booking(Request $request)
     {
         try {
-            $booking = new Booking();
-            $default_status = "Unconfirmed";
-            $booking->user_id = $request->user()->id;
-            $booking->service = $request->input("service");
-            $booking->date = $request->input("date");
-            $booking->time= $request->input("time");
-            $booking->phone_number= $request->input("phone_number");
-            $booking->status = $default_status;
-            $booking->save();
+            
             
             Session::flash('success', 'Booking has been successfully created!');
         
@@ -50,7 +43,53 @@ class BookingController extends Controller
         }
         
         return view('welcome');
+    }*/
+
+    public function store_booking(Request $request)
+{
+    $rules = [
+        'date' => 'required|date',
+        'time' => 'required',
+    ];
+
+    $validatedData = $request->validate($rules);
+    $selectedTime =
+    $allSchedules = Schedule::all();
+    
+    $isWithinDoctorSchedule = false;
+    foreach ($allSchedules as $schedule) {
+        $startTime = Carbon::parse($schedule->start_time);
+        $endTime = Carbon::parse($schedule->end_time);
+        $selectedTime = Carbon::parse($request->input("time"));
+        
+        if ($selectedTime->between($startTime, $endTime)) {
+            $isWithinDoctorSchedule = true;
+            break;
+        }
     }
+
+    if (!$isWithinDoctorSchedule) {
+        return back()->withErrors(['error' => 'Selected time is not within any doctor\'s schedule.'])->withInput();
+    }
+
+    try {
+        $booking = new Booking();
+        $default_status = "Unconfirmed";
+        $booking->user_id = $request->user()->id;
+        $booking->service = $request->input("service");
+        $booking->date = $request->input("date");
+        $booking->time= $request->input("time");
+        $booking->phone_number= $request->input("phone_number");
+        $booking->status = $default_status;
+        $booking->save();
+        
+        return redirect()->route('welcome')->with('success', 'Booking has been successfully created! Please wait for a confirmation in your number or email.');
+    } catch (QueryException $e) {
+        Session::flash('error', 'An error occurred while saving the booking. Please try again later.');
+    }
+    
+    return view('welcome');
+}
 
     public function view_booking()
     {

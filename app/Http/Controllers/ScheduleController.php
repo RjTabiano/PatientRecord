@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Doctor;
 use App\Models\User;
 use App\Models\Schedule;
+use Carbon\Carbon;
 
 class ScheduleController extends Controller
 {
@@ -50,4 +51,8 @@ class ScheduleController extends Controller
         $userDoctors = User::with('doctor')->where('usertype', '=', 'doctor')->get();
         return view('admin.schedules', ['userDoctors' => $userDoctors]);
     }
+
+
+
+
 }

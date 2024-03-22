@@ -26,23 +26,31 @@
 
       <div class="nav__menu" id="nav-menu">
         <ul class="nav__list">
-        <li class="nav__item"><a href="#home" class="nav__link active">Home</a></li>
+        <li class="nav__item"><a href="{{route('welcome')}}" class="nav__link ">Home</a></li>
         <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
         <li class="nav__item"><a href="#products" class="nav__link">Doctors</a></li>
         <li class="nav__item"><a href="#services" class="nav__link">Services</a></li>
-        <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
         @if (Route::has('login'))
             @auth
-                <li class="nav__item"><a href="" class="nav__link">Book Now!</a></li>
+                <li class="nav__item"><a href="{{route('services')}}" class="nav__link">Book Now!</a></li>
+                @cannot('user')
+                  <li class="nav__item"><a href="{{route('home')}}" class="nav__link">Admin Panel</a></li>
+                @endcan
+                
+                <!-- HTML -->
+                <li class="nav__item dropdown">
+                  <a href="#" class="nav__link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a href="{{route('myAppointment')}}">Appointment</a><br>
+                                <a href="{{route('myPatientRecord')}}">Patient Record</a><br>
+                                <a href="{{route('myConsultationRecord')}}">Consultation Record</a>
+                  </div>
+                </li>
                 <li class="nav__item"><a href="{{route('profile.edit')}}" class="nav__link">{{ Auth::user()->name }}</a></li>
             @else
-                <li class="nav__item"><a href="{{ route('login') }}" class="nav__link">Log in</a></li>
-
-                @if (Route::has('register'))
-                <li class="nav__item"><a href="{{ route('register') }}" class="nav__link">Register</a></li>
-                @endif
+                <li class="nav__item"><a href="{{ route('login') }}" class="nav__link">Sign In/Sign Up</a></li>
             @endauth
-    @endif
+        @endif
 
         </ul>
       </div>
@@ -66,9 +74,30 @@
                 <input name="date" type="date" width="270" min="{{ date('Y-m-d') }}" />
             </div>
             <div class="timepicker">
-                <label for="time">Select Time:</label>
-                <input name="time" type="time" width="270" />
-            </div>
+            <select id="timeSelect" name="time">
+              <option value="07:00:00">7:00 AM</option>
+              <option value="07:30:00">7:30 AM</option>
+              <option value="08:00:00">8:00 AM</option>
+              <option value="08:30:00">8:30 AM</option>
+              <option value="09:00:00">9:00 AM</option>
+              <option value="09:30:00">9:30 AM</option>
+              <option value="10:00:00">10:00 AM</option>
+              <option value="10:30:00">10:30 AM</option>
+              <option value="11:00:00">11:00 AM</option>
+              <option value="11:30:00">11:30 AM</option>
+              <option value="12:00:00">12:00 PM</option>
+              <option value="12:30:00">12:30 PM</option>
+              <option value="13:00:00">1:00 PM</option>
+              <option value="13:30:00">1:30 PM</option>
+              <option value="14:00:00">2:00 PM</option>
+              <option value="14:30:00">2:30 PM</option>
+              <option value="15:00:00">3:00 PM</option>
+              <option value="15:30:00">3:30 PM</option>
+              <option value="16:00:00">4:00 PM</option>
+              <option value="16:30:00">4:30 PM</option>
+              <option value="17:00:00">5:00 PM</option>
+            </select>
+          </div>
             <div class="timepicker">
                 <label for="number">Phone Number:</label>
                 <input name="phone_number" type="number" width="270" />
@@ -80,5 +109,4 @@
   </main>
   <script src="{{ asset('javascript/js.js') }}"></script>
 </body>
-
 </html>

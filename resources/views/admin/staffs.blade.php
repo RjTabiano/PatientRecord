@@ -46,14 +46,7 @@
                     </a>
                 </li>
                 @endcan
-                <li>
-                    <a href="{{route('scanner')}}">
-                        <span class="icon">
-                        <ion-icon name="scan-circle-outline"></ion-icon>
-                        </span>
-                        <span class="title">OCR Scanner</span>
-                    </a>
-                </li>
+
                 <li>
                     <a href="{{route('patient.patient_record_history')}}">
                         <span class="icon">
@@ -178,7 +171,7 @@
     <script src="{{ asset('javascript/main.js') }}"></script>
 
     <!-- ========================================================  ionicons  ==========================================-->
-    
+
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>

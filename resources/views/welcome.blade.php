@@ -44,20 +44,20 @@
                   <li class="nav__item"><a href="{{route('home')}}" class="nav__link">Admin Panel</a></li>
                 @endcan
                 
-<!-- HTML -->
-<li class="nav__item dropdown">
-  <a href="#" class="nav__link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
-  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                 <a href="{{route('myAppointment')}}">Appointment</a><br>
-                <a href="{{route('myPatientRecord')}}">Patient Record</a><br>
-                <a href="{{route('myConsultationRecord')}}">Consultation Record</a>
-  </div>
-</li>
+                <!-- HTML -->
+                <li class="nav__item dropdown">
+                  <a href="#" class="nav__link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a href="{{route('myAppointment')}}">Appointment</a><br>
+                                <a href="{{route('myPatientRecord')}}">Patient Record</a><br>
+                                <a href="{{route('myConsultationRecord')}}">Consultation Record</a>
+                  </div>
+                </li>
                 <li class="nav__item"><a href="{{route('profile.edit')}}" class="nav__link">{{ Auth::user()->name }}</a></li>
             @else
                 <li class="nav__item"><a href="{{ route('login') }}" class="nav__link">Sign In/Sign Up</a></li>
             @endauth
-    @endif
+        @endif
 
         </ul>
       </div>
@@ -232,7 +232,7 @@
 
     </div>
   </footer>
-  <!--===== SCROLL REVEAL =====-->
+  <!--===== SCROLL REVEAL  =====-->
   <script src="https://unpkg.com/scrollreveal"></script>
   <!--===== MAIN JS =====-->
   <script src="{{ asset('javascript/js.js') }}"></script>

@@ -142,7 +142,7 @@
             <tbody>
             @foreach ($patient->patientRecord as $patientRecords)
                 <tr >
-                    
+                  
                         <td>{{$patientRecords['type']}}</td>
                         <td>{{$patient->name}}</td>
                         <td>{{$patient->email}}</td>

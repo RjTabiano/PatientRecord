@@ -47,14 +47,7 @@
                     </a>
                 </li>
                 @endcan
-                <li>
-                    <a href="{{route('scanner')}}">
-                        <span class="icon">
-                        <ion-icon name="scan-circle-outline"></ion-icon>
-                        </span>
-                        <span class="title">OCR Scanner</span>
-                    </a>
-                </li>
+
                 <li>
                     <a href="{{route('patient.patient_record_history')}}">
                         <span class="icon">
@@ -134,7 +127,6 @@
                 </div>
 
         </div>
-
 
     <!-- =========== CONTAINER =========  -->
 

@@ -47,14 +47,6 @@
                 </li>
                 @endcan
                 <li>
-                    <a href="{{route('scanner')}}">
-                        <span class="icon">
-                        <ion-icon name="scan-circle-outline"></ion-icon>
-                        </span>
-                        <span class="title">OCR Scanner</span>
-                    </a>
-                </li>
-                <li>
                     <a href="{{route('patient.patient_record_history')}}">
                         <span class="icon">
                             <ion-icon name="newspaper-outline"></ion-icon>
@@ -200,7 +192,6 @@
                 </thead>
                 <tbody>      
                 @foreach($doctors as $doctor)
-                    
                         @foreach($doctor->appointment as $appointment)
                 <tr>
                     <td>{{$appointment->patient['name']}}</td>
