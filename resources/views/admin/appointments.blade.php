@@ -135,7 +135,7 @@
 
         </div>
 
-        <h1 class="heading">Appointments</h1><br>
+        <h1 class="heading">Appointments</h1>
     <button class="modals" onclick="openModal()">
         Add
     </button>

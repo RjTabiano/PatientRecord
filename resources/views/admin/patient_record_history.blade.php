@@ -138,9 +138,9 @@
         </div>
 
     <!-- =========== CONTAINER =========  -->
-    <header class="heading">User</header>
+    <header class="heading">Patient Records</header>
         <div class="table-wrapper">
-            <p class = "instruction">Note: Click user to add Patient Record</p>
+            <p class = "instruction"><b>Note: Click user to add Patient Record</b></p>
             <table class="fl-table">
                 <thead>
                 <tr>

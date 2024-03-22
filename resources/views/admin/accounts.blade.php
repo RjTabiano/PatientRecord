@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Queen's Clinc</title>
+    <link rel="icon" type="" href="{{ asset('images/logocircle.png') }}" />
+
+    <title>The Queen's</title>
     <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
@@ -115,7 +117,6 @@
                 <div class="toggle">
                     <ion-icon name="menu-outline"></ion-icon>
                 </div>
-
                 <div class="search">
                     <form action="{{ route('searchAccount') }}" method="GET">
                         <label>
@@ -128,8 +129,7 @@
                 </div>
 
         </div>
-        
-        <h1 class="heading">Accounts</h1><br>
+        <h1 class="heading">Accounts</h1>
                 <div class="dropdown">
                     <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
                         Add Account

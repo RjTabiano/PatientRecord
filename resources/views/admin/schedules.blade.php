@@ -137,7 +137,7 @@
 
 
     <!-- =========== CONTAINER =========  -->
-    <h1 class="heading">Appointments</h1><br>
+    <h1 class="heading">Schedule</h1>
     <button class="modals" onclick="openModal()">
         Add
     </button>

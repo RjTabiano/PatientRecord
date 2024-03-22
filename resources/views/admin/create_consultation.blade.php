@@ -149,7 +149,7 @@
             @endforeach
         </select>
                     <div class="input-boxs">
-                        <label for="">Description:</label>
+                        <label>Description:</label>
                         <textarea name="history" id="history" cols="30" rows="10"></textarea>
                     </div>
                     <button type="submit">Submit</button>
