@@ -161,47 +161,46 @@
             </div>
         </div>
         <div class="table-wrapper">  
-        
-        <table>
-            <thead>
-            <tr>
-                <th>Record</th>
-                <th>Full Name</th>
-                <th>Email</th>
-                <th></th>
-                <th>Email</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody style="height: 200x; overflow-y: scroll;">
-                <div style="height: auto; width: 100%;">
-                    @foreach ($patient->patientRecord as $patientRecords)
-                    <tr>
-                        <td>{{$patientRecords['type']}}</td>
-                        <td>{{$patient->name}}</td>
-                        <td>{{$patient->email}}</td>
-                        <td>
-                            <a href="{{route('patient.viewPediatrics', ['patient' => $patientRecords['id']])}}">View</a>
-                        </td>
-                        <td>
-                            <a href="{{route('patient.update', ['patient' => $patient])}}">Edit</a>
-                        </td>
-                        <td>
-                            <form class="cancelForm" method="post" action="{{route('patient.delete', ['patient' => $patient])}}">
-                                @csrf
-                                @method('delete')
+            
+            <table>
+                <thead>
+                <tr>
+                    <th>Record</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th></th>
+                    <th>Email</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody style="height: 200x; overflow-y: scroll;">
+                    <div style="height: auto; width: 100%;">
+                        @foreach ($patient->patientRecord as $patientRecords)
+                        <tr>
+                            <td>{{$patientRecords['type']}}</td>
+                            <td>{{$patient->name}}</td>
+                            <td>{{$patient->email}}</td>
+                            <td>
+                                <a href="{{route('patient.viewPediatrics', ['patient' => $patientRecords['id']])}}">View</a>
+                            </td>
+                            <td>
+                                <a href="{{route('patient.update', ['patient' => $patient])}}">Edit</a>
+                            </td>
+                            <td>
+                                <form class="cancelForm" method="post" action="{{route('patient.delete', ['patient' => $patient])}}">
+                                    @csrf
+                                    @method('delete')
 
-                                <button type="submit" value="Delete" class="save1">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                    @endforeach
-                </div>
-            </tbody>
-        </table>
-</div>
+                                    <button type="submit" value="Delete" class="save1">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </div>
+                </tbody>
+            </table>
+    </div>
     <!-- =========== CONTAINER =========  -->
-
 
     <!-- =========== Scripts =========  -->
     <script src="{{ asset('javascript/main.js') }}"></script>

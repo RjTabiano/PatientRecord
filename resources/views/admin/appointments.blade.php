@@ -226,7 +226,6 @@
     <script src="{{ asset('javascript/main.js') }}"></script>
     <script>
   
-
     document.querySelectorAll(".cancelForm").forEach(function(form) {
         form.addEventListener("submit", function(event) {
             var confirmation = confirm("Are you sure you want to deleete this user?");

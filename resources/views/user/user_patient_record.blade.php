@@ -60,8 +60,10 @@
 
         </ul>
       </div>
+      <main class="l-main">
 
-  
+        
+    </main>
   <script src="https://unpkg.com/scrollreveal"></script>
   <!--===== MAIN JS =====-->
   <script src="{{ asset('javascript/js.js') }}"></script>

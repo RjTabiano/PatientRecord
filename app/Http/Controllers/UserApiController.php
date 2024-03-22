@@ -249,6 +249,7 @@ class UserApiController extends Controller
             Log::info('Patient ID' . $patientId);
             $image = new Image();
             $image->data = $base64ImageData;
+            Log::info($base64ImageData);
             $patientRecord = PatientRecord::find($patientId);
             $userId = $patientRecord->patient->user_id;
             Log::info('Image data stored successfully. User ID: ' . $userId);
@@ -267,19 +268,24 @@ class UserApiController extends Controller
     public function getUserImage()
 {
     try {
-        $user = Auth::user(); 
-        $image = Image::where('user_id', $user->id)->first();
+        $user = auth()->user(); // Assuming you're using Laravel's authentication
+        $images = $user->images; // Retrieve all images associated with the user
 
-        if (!$image) {
-            return response()->json(['error' => 'Image not found for the logged-in user'], 404);
+        $imageData = [];
+        foreach ($images as $image) {
+            $imageData[] = ['data' => $image->data];
         }
 
-        return response()->json(['imageData' => $image->data], 200);
-    } catch (\Exception $e) {
-        logger()->error('Error retrieving user image: ' . $e->getMessage());
-        return response()->json(['error' => 'Failed to retrieve user image'], 500);
-    }   
+        return response()->json($imageData);
+    } catch (Exception $e) {
+        logger()->error('Error retrieving user images: ' . $e->getMessage());
+
+        return response()->json(['error' => 'Failed to retrieve user images'], 500);
+    }
 }
+
+
+
     public function text_message() {
 
         try {

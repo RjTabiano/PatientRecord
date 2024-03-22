@@ -167,7 +167,7 @@
                     <td>{{$booked->status}}</td>
                     @if($booked->status == "Unconfirmed" || $booked->status == "Cancelled")
                     <td>
-                    
+                 
                             <form class="confirmationForm" method="put" action="{{route('confirmBooking', ['booking' => $booked])}}">
                                 @csrf
                                 <input type="hidden" name="status" value="Confirmed"></input>

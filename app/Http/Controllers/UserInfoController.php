@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\PatientRecord;
+use App\Models\Patient;
+use App\Models\Obgyne;
 
 class UserInfoController extends Controller
 {
@@ -30,8 +32,9 @@ class UserInfoController extends Controller
 
 
         if ($user) {
-            $patient = $user->patient()->get();
-            
+            $patient = Patient::where('user_id', $user->id)->first();
+            $pediatrics = PatientRecord::where('patient_id', '=' , $patient->id)->get();
+            $obgyne = Obgyne::where('patient_id', '=' , $patient->id)->get();
             return view('user.user_patient_record', ['pediatrics' => $pediatrics]);
         } else {
             return redirect()->route('welcome');
