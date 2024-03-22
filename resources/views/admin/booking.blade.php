@@ -166,8 +166,7 @@
                     <td>{{$booked->time}}</td>
                     <td>{{$booked->status}}</td>
                     @if($booked->status == "Unconfirmed" || $booked->status == "Cancelled")
-                    <td>
-                 
+                    <td>     
                             <form class="confirmationForm" method="put" action="{{route('confirmBooking', ['booking' => $booked])}}">
                                 @csrf
                                 <input type="hidden" name="status" value="Confirmed"></input>
@@ -178,7 +177,7 @@
                     </td>
                     @else
                     <td>
-                            <form class="confirmationForm" method="put" action="{{route('confirmBooking', ['booking' => $booked])}}">
+                            <form class="unconfirmForm" method="put" action="{{route('confirmBooking', ['booking' => $booked])}}">
                                 @csrf
                                 <input type="hidden" name="status" value="Unconfirmed"></input>
                                 <button class="uncon1" type="submit">Unconfirm</button>
@@ -214,6 +213,15 @@
     document.querySelectorAll(".confirmationForm").forEach(function(form) {
         form.addEventListener("submit", function(event) {
             var confirmation = confirm("Are you sure you want to confirm this booking?");
+            if (!confirmation) {
+                event.preventDefault();
+            }
+        });
+    });
+
+    document.querySelectorAll(".unconfirmForm").forEach(function(form) {
+        form.addEventListener("submit", function(event) {
+            var confirmation = confirm("Are you sure you want to unconfirm this booking?");
             if (!confirmation) {
                 event.preventDefault();
             }

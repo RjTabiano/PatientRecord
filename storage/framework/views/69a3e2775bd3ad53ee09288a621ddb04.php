@@ -49,7 +49,7 @@
                 <li>
                     <a href="<?php echo e(route('scanner')); ?>">
                         <span class="icon">
-                            <ion-icon name="people-outline"></ion-icon>
+                        <ion-icon name="scan-circle-outline"></ion-icon>
                         </span>
                         <span class="title">OCR Scanner</span>
                     </a>
@@ -101,9 +101,20 @@
                     </a>
                 </li>
                 <?php endif; ?>
+              
+                <li>
+                    <form method="POST" action="<?php echo e(route('logout')); ?>">
+                    <?php echo csrf_field(); ?>
+                    <a href="<?php echo e(route('logout')); ?>" class="nav-link" 
+                    onclick="event.preventDefault();
+                            this.closest('form').submit();">
+                        <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
+                        <span class="title">Logout</span>
+                    </a>
+                    </form>
+                </li>
             </ul>
         </div>
-
         <!-- ========================= Main ==================== -->
         <div class="main">
             <div class="topbar">
@@ -112,12 +123,13 @@
                 </div>
 
                 <div class="search">
-                    <label>
-                        <input type="text" placeholder="Search here">
-                        <ion-icon name="search-outline"></ion-icon>
-                    </label>
+                    <form action="<?php echo e(route('searchBooking')); ?>" method="GET">
+                        <label>
+                            <input type="text" name="search" placeholder="Search here">
+                            <ion-icon name="search-outline"></ion-icon>
+                        </label>
+                    </form>
                 </div>
-
                 <div class="user">
                     
                 </div>
@@ -127,22 +139,24 @@
 
     <!-- =========== CONTAINER =========  -->
     <h1 class="heading">Booking List</h1>
+    <br>
     <div class="table_container">
         <div class="row">
             <div class="col-12">
+            <div style="height: 600px; overflow-y: auto;">
             <table class="table table-bordered">
-                <thead>
+                <thead >
                 <tr>
                     <th scope="col">Name</th>
                     <th scope="col">Service</th>
                     <th scope="col">Date</th>
                     <th scope="col">Time</th>
                     <th scope="col">Status</th>
-                  
+                    <th scope="col">Confirmation</th>
+                    <th scope="col"></th>
                 </tr>
                 </thead>
-                <tbody>
-                    
+                <tbody class="scrollable-body">
                 <?php $__currentLoopData = $booking; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $book): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <?php $__currentLoopData = $book->booking; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $booked): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>                    
                 <tr>
@@ -152,75 +166,77 @@
                     <td><?php echo e($booked->time); ?></td>
                     <td><?php echo e($booked->status); ?></td>
                     <?php if($booked->status == "Unconfirmed" || $booked->status == "Cancelled"): ?>
-                    <td>
-                    <button onclick="openModal()">
-                        Confirm
-                    </button>
-                    <!-- =========== CONFIRM MODAL  =========  -->
-                    <div class="modal" id="myModal">
-                    <div class="modal-content">
-                        <span class="close" onclick="closeModal()">&times;</span>
-                            <h1>Confirm Booking?</h1>
-                            <form method="put" action="<?php echo e(route('confirmBooking', ['booking' => $booked])); ?>">
+                    <td>     
+                            <form class="confirmationForm" method="put" action="<?php echo e(route('confirmBooking', ['booking' => $booked])); ?>">
                                 <?php echo csrf_field(); ?>
                                 <input type="hidden" name="status" value="Confirmed"></input>
-                                <button type="submit">Save</button>
+                                <button class="but1" type="submit">Confirm</button>
                             </form>
-                    </div>
                     </div>
                     <!-- =========== END CONFIRM MODAL  =========  -->
                     </td>
                     <?php else: ?>
                     <td>
-                    <button onclick="openModal()">
-                        Unconfirmed
-                    </button>
-                    <!-- =========== CONFIRM MODAL  =========  -->
-                    <div class="modal" id="myModal">
-                    <div class="modal-content">
-                        <span class="close" onclick="closeModal()">&times;</span>
-                            <h1>Unconfirm Booking?</h1>
-                            <form method="put" action="<?php echo e(route('confirmBooking', ['booking' => $booked])); ?>">
+                            <form class="unconfirmForm" method="put" action="<?php echo e(route('confirmBooking', ['booking' => $booked])); ?>">
                                 <?php echo csrf_field(); ?>
                                 <input type="hidden" name="status" value="Unconfirmed"></input>
-                                <button type="submit">Save</button>
+                                <button class="uncon1" type="submit">Unconfirm</button>
                             </form>
-                    </div>
-                    </div>
-                    <!-- =========== END CONFIRM MODAL  =========  -->
                     </td>
                     <?php endif; ?>
                     <td>
                     <?php if($booked->status != "Cancelled"): ?>
-                                        <button onclick="openModal2()">Cancel</button>
-                                        <!-- =========== CANCEL MODAL  =========  -->
-                                        <div class="modal2" id="myModal2">
-                                            <div class="modal2-content2">
-                                                <span class="close2" onclick="closeModal2()">&times;</span>
-                                                <h1>Cancel Booking?</h1>
-                                                <form method="put" action="<?php echo e(route('confirmBooking', ['booking' => $booked])); ?>">
+                                        
+                                                <form class="cancelForm" method="put" action="<?php echo e(route('confirmBooking', ['booking' => $booked])); ?>">
                                                     <?php echo csrf_field(); ?>
                                                     <?php echo method_field('PUT'); ?>
                                                     <input type="hidden" name="status" value="Cancelled">
-                                                    <button type="submit">Save</button>
+                                                    <button class="save1" type="submit">Cancel</button>
                                                 </form>
-                                            </div>
-                                        </div>
-                                        <!-- =========== END CANCEL MODAL  =========  -->
+                                            
                     <?php endif; ?>
                     </tr>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
-
             </table>
-
+</div>
+            </div>
+        </div>
+    </div>
     <!-- =========== CONTAINER =========  -->
 
 
     <!-- =========== Scripts =========  -->
     <script src="<?php echo e(asset('javascript/main.js')); ?>"></script>
+    <script>
+    document.querySelectorAll(".confirmationForm").forEach(function(form) {
+        form.addEventListener("submit", function(event) {
+            var confirmation = confirm("Are you sure you want to confirm this booking?");
+            if (!confirmation) {
+                event.preventDefault();
+            }
+        });
+    });
 
+    document.querySelectorAll(".unconfirmForm").forEach(function(form) {
+        form.addEventListener("submit", function(event) {
+            var confirmation = confirm("Are you sure you want to unconfirm this booking?");
+            if (!confirmation) {
+                event.preventDefault();
+            }
+        });
+    });
+
+    document.querySelectorAll(".cancelForm").forEach(function(form) {
+        form.addEventListener("submit", function(event) {
+            var confirmation = confirm("Are you sure you want to cancel this booking?");
+            if (!confirmation) {
+                event.preventDefault();
+            }
+        });
+    });
+</script>
     <!-- ====== ionicons ======= -->
     
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

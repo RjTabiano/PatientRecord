@@ -237,5 +237,4 @@
   <!--===== MAIN JS =====-->
   <script src="{{ asset('javascript/js.js') }}"></script>
 </body>
-
 </html>

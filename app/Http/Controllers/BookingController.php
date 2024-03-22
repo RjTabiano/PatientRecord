@@ -7,6 +7,8 @@ use App\Models\Booking;
 use App\Models\User;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Database\QueryException; 
+use Illuminate\Support\Facades\Http;
+
 
 class BookingController extends Controller
 {
@@ -35,6 +37,7 @@ class BookingController extends Controller
             $booking->service = $request->input("service");
             $booking->date = $request->input("date");
             $booking->time= $request->input("time");
+            $booking->phone_number= $request->input("phone_number");
             $booking->status = $default_status;
             $booking->save();
             
@@ -62,6 +65,36 @@ class BookingController extends Controller
         $booking->update([
             'status' => $status
         ]);
+
+
+        if ($booking->wasChanged('status')) {
+            $user =  User::where('id', '=' , $booking->user_id)->get();
+            if ($user && $user[0]->name) {
+                $apiKey = '57ef71187831988aaf4733eaec787fa2'; 
+                $number = '0' . $booking->phone_number; 
+                if ($status == 'Confirmed') {
+                    $message = 'Hi ' . $user[0]->name . ', this is to inform you that your booking for an appointment on ' . $booking->date . ' - ' . $booking->time . " at The Queen's Clinic has been confirmed. See you soon and please stay safe!";
+                } elseif ($status == 'Cancelled') {
+                    $message = 'Your booking has been cancelled. We apologize for any inconvenience caused.';
+                } else {
+                    $message = 'Your booking status has been updated.';
+                }
+
+                $response = Http::post('https://api.semaphore.co/api/v4/messages', [
+                    'apikey' => $apiKey,
+                    'number' => $number,
+                    'message' => $message,
+                ]);
+    
+                if ($response->successful()) {
+                    \Log::info('Message sent successfully.');
+                } else {
+                    \Log::error('Failed to send message: ' . $response->status());
+                }
+            } else {
+                \Log::error('User or user\'s name not found.');
+            }
+        }
         
         return redirect(route('viewBooking'));
     }
