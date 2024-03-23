@@ -12,6 +12,8 @@ use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ScannerController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\UserInfoController;
+use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\AuditController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +47,11 @@ Route::get('/userInfo', [UserInfoController::class, 'user_info'])->middleware(['
 Route::get('/myAppointment', [UserInfoController::class, 'get_appointment'])->middleware(['auth'])->name('myAppointment');
 Route::get('/myPatientRecord', [UserInfoController::class, 'get_patientRecord'])->middleware(['auth'])->name('myPatientRecord');
 Route::get('/myConsultationRecord', [UserInfoController::class, 'get_consultationRecord'])->middleware(['auth'])->name('myConsultationRecord');
+
+Route::get('/feedback', [FeedbackController::class, 'feedback'])->middleware(['auth', 'admin'])->name('feedback');
+Route::post('/feedback/storeFeedback', [FeedbackController::class, 'store_feedback'])->middleware(['auth', 'admin'])->name('storeFeedback');
+
+Route::get('/audit', [AuditController::class, 'audit'])->middleware(['auth', 'admin'])->name('audit');
 
 
 Route::get('/patientRecords', [PatientController::class, 'patient_record_history'])->middleware(['auth', 'admin'])->name('patient.patient_record_history');

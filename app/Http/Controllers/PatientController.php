@@ -14,6 +14,7 @@ use App\Models\BaselineDiagnostics;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\ObgyneHistory;
+use App\Models\Immunizations;
 use Illuminate\Support\Facades\Http;
 use Aws\S3\S3Client; 
 use DOMDocument;
@@ -127,7 +128,6 @@ class PatientController extends Controller
 
     public function uploadImageOb(Patient $patient, Request $request)
     {
-        $user = Auth::user();
         $request->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
@@ -184,7 +184,6 @@ class PatientController extends Controller
                             $apiUrl = 'https://pbem2315rk.execute-api.ap-southeast-1.amazonaws.com/Dev/patient-record-scanner/' . $file_name;
                             $response = Http::get($apiUrl);
                             $response = json_decode($response, true);
-                           
                         }else{ 
                             $statusMsg = $api_error; 
                         } 
@@ -198,9 +197,9 @@ class PatientController extends Controller
                 $statusMsg = 'Please select a file to upload.'; 
             } 
         } 
-        dd($response);
         return view('admin.obgyne',['response' => $response], ['patient' => $patient]);
     }
+    
 
     public function store(Patient $patient, Request $request){
         $user = Auth::user();
@@ -296,34 +295,66 @@ class PatientController extends Controller
         $newHistory = new MedicalHistory();
         $newHistory->obgyne_id = $newObgyne->id;
         $newHistory->Hypertension = $request->input("Hypertension");
-        $newHistory->Bronchial_Asthma = $request->input("Bronchial_Asthma");
+        $newHistory->Asthma = $request->input("Asthma");
         $newHistory->Thyroid_Disease = $request->input("Thyroid_Disease");
-        $newHistory->Heart_Disease = $request->input("Heart_Disease");
-        $newHistory->Previous_Surgery = $request->input("Previous_Surgery");
+        $newHistory->Allergy = $request->input("Allergy");
+        $newHistory->social_history = $request->input("social_history");
         $newHistory->Family_History = $request->input("Family_History");
         $newHistory->save();
 
-        $newObgyneHistory = new ObgyneHistory();
-        $newObgyneHistory->obgyne_id = $newObgyne->id;
         
 
 
         $newBaselineDiagnostics = new BaselineDiagnostics();
         $newBaselineDiagnostics->obgyne_id = $newObgyne->id;
-        $newBaselineDiagnostics->CBC_HgB = $request->input("CBC_HgB");
-        $newBaselineDiagnostics->plt = $request->input("plt");
-        $newBaselineDiagnostics->DPT = $request->input("DPT");
+        $newBaselineDiagnostics->date = $request->input("date");
+        $newBaselineDiagnostics->blood_type = $request->input("blood_type");
+        $newBaselineDiagnostics->FBS = $request->input("FBS");
+        $newBaselineDiagnostics->Hgb = $request->input("Hgb");
         $newBaselineDiagnostics->Hct = $request->input("Hct");
         $newBaselineDiagnostics->WBC = $request->input("WBC");
-        $newBaselineDiagnostics->Blood_Type = $request->input("Blood_Type");
-        $newBaselineDiagnostics->FBS = $request->input("FBS");
+        $newBaselineDiagnostics->Platelet = $request->input("Platelet");
+        $newBaselineDiagnostics->HIV = $request->input("HIV");
+        $newBaselineDiagnostics->first_hr = $request->input("first_hr");
+        $newBaselineDiagnostics->second_hr = $request->input("second_hr");
         $newBaselineDiagnostics->HBsAg = $request->input("HBsAg");
-        $newBaselineDiagnostics->VDRL = $request->input("VDRL");
-        $newBaselineDiagnostics->HiV = $request->input("HiV");
-        $newBaselineDiagnostics->TT = $request->input("TT");
-        $newBaselineDiagnostics->Urinalysis = $request->input("Urinalysis");
+        $newBaselineDiagnostics->RPR = $request->input("RPR");
+        $newBaselineDiagnostics->protein = $request->input("protein");
+        $newBaselineDiagnostics->sugar = $request->input("sugar");
+        $newBaselineDiagnostics->LMP = $request->input("LMP");
+        $newBaselineDiagnostics->PMP = $request->input("PMP");
+        $newBaselineDiagnostics->AOG = $request->input("AOG");
+        $newBaselineDiagnostics->EDD = $request->input("EDD");
+        $newBaselineDiagnostics->early_ultrasound = $request->input("early_ultrasound");
+        $newBaselineDiagnostics->AOG_by_eutz = $request->input("AOG_by_eutz");
+        $newBaselineDiagnostics->EDD_by_eutz = $request->input("EDD_by_eutz");
         $newBaselineDiagnostics->Other = $request->input("Other");
         $newBaselineDiagnostics->save();
+
+        $newObgyneHistory = new ObgyneHistory();
+        $newObgyneHistory->obgyne_id = $newObgyne->id;
+        $newObgyneHistory->gravidity = $request->input("gravidity");
+        $newObgyneHistory->parity = $request->input("parity");
+        $newObgyneHistory->OB_score = $request->input("OB_score");
+        $newObgyneHistory->table = $request->input("table");
+        $newObgyneHistory->M = $request->input("M");
+        $newObgyneHistory->I = $request->input("I");
+        $newObgyneHistory->D = $request->input("D");
+        $newObgyneHistory->A = $request->input("A");
+        $newObgyneHistory->S = $request->input("S");
+        $newObgyneHistory->save();
+
+        $newImmunizations = new Immunizations();
+        $newImmunizations->obgyne_id = $newObgyne->id;
+        $newImmunizations->TT_1 = $request->input("TT_1");
+        $newImmunizations->TT_2 = $request->input("TT_2");
+        $newImmunizations->TT_3 = $request->input("TT_3");
+        $newImmunizations->TT_4 = $request->input("TT_4");
+        $newImmunizations->TT_5 = $request->input("TT_5");
+        $newImmunizations->flu = $request->input("flu");
+        $newImmunizations->Pneumo = $request->input("Pneumo");
+        $newImmunizations->hepa_b = $request->input("hepa_b");
+        $newImmunizations->save();
 
         return redirect(route('patient.patient_record_history'))->with('success', 'Added Successfully');
     }
@@ -351,10 +382,14 @@ class PatientController extends Controller
 
     public function viewPediatrics($patient) {
         $patient = PatientRecord::with('Vaccine')->find($patient);
-        if($patient->type == 'Pediatrics'){
-            return view('admin.viewPediatrics', ['patient' => $patient]);
+        if ($patient && $patient->type == 'Pediatrics') {
+            $bcgVaccine = $patient->vaccine;
+    
+    
+            return view('admin.viewPediatrics', ['patient' => $patient], ['bcgVaccine' => $bcgVaccine]);
         }
-        return view('admin.viewRecords');
+    
+        return view('admin.viewObgyne', ['patient' => $patient]);
     }
 
     public function store_patients(Request $request){

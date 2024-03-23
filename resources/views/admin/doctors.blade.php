@@ -95,6 +95,24 @@
                 </li>
                 @endcannot
                 <li>
+                    <a href="{{route('feedback')}}">
+                        <span class="icon">
+                            <ion-icon name="folder-open-outline"></ion-icon>
+                        </span>
+                        <span class="title">feedback</span>
+                    </a>
+                </li>
+                @can('admin')
+                <li>
+                    <a href="{{route('audit')}}">
+                        <span class="icon">
+                            <ion-icon name="folder-open-outline"></ion-icon>
+                        </span>
+                        <span class="title">Audit Trail</span>
+                    </a>
+                </li>
+                @endcan
+                <li>
                     <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <a href="{{route('logout')}}" class="nav-link" 
@@ -128,7 +146,6 @@
         </div>
 
     <!-- =========== CONTAINER =========  -->
-
     <form method="post" action="{{route('doctor.storeDoctor')}}" class="form">
                             @csrf
                             @method('post')

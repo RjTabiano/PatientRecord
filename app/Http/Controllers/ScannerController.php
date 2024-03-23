@@ -31,22 +31,16 @@ class ScannerController extends Controller
         $statusMsg = ''; 
         $status = 'danger'; 
         
-        // If file upload form is submitted 
         if(isset($_POST["submit"])){ 
-            // Check whether user inputs are empty 
             if(!empty($_FILES["image"]["name"])) { 
-                // File info 
                 $file_name = basename($_FILES["image"]["name"]); 
                 $file_type = pathinfo($file_name, PATHINFO_EXTENSION); 
                 
-                // Allow certain file formats 
                 $allowTypes = array('pdf','jpg','png','jpeg'); 
                 if(in_array($file_type, $allowTypes)){ 
-                    // File temp source 
                     $file_temp_src = $_FILES["image"]["tmp_name"]; 
                     
                     if(is_uploaded_file($file_temp_src)){ 
-                        // Instantiate an Amazon S3 client 
                         $s3 = new S3Client([ 
                             'version' => $version, 
                             'region'  => $region, 
@@ -79,7 +73,6 @@ class ScannerController extends Controller
                             $apiUrl = 'https://pbem2315rk.execute-api.ap-southeast-1.amazonaws.com/Dev/patient-record-scanner/' . $file_name;
                             $response = Http::get($apiUrl);
                             $response = json_decode($response, true);
-                           
                         }else{ 
                             $statusMsg = $api_error; 
                         } 

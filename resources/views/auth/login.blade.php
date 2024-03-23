@@ -35,7 +35,7 @@
             <a href="{{ route('password.request') }}"><p class="social-text">Forgot password?</p></a>
           </form>
           <form method="POST" action="{{ route('register') }}" class="sign-up-form"  onsubmit="checkErrors()">
-            @csrf
+            @csrf 
             <h2 class="title">Sign up</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
@@ -54,8 +54,8 @@
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" name="password_confirmation" required/>
-              <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+              <input type="password" name="password_confirmation" placeholder="Confirm Password"required/>
+              <x-input-error :messages="$errors->get('password_confirmation')"   class="mt-2" />
             </div>
             <input type="submit" class="btn" value="{{ __('Register') }}" />
           </form>

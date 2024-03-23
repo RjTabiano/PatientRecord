@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="" href="{{ asset('images/logocircle.png') }}" />
+    
    <title>The Queen's</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link
@@ -27,7 +28,6 @@
                         <span class="title">Admin Panel</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="{{route('home')}}">
                         <span class="icon">
@@ -132,73 +132,74 @@
                 </div>
 
                 <div class="search">
-                    <label>
-                        <input type="text" placeholder="Search here">
-                        <ion-icon name="search-outline"></ion-icon>
-                    </label>
+                    <form action="{{ route('searchBooking') }}" method="GET">
+                        <label>
+                            <input type="text" name="search" placeholder="Search here">
+                            <ion-icon name="search-outline"></ion-icon>
+                        </label>
+                    </form>
                 </div>
-
                 <div class="user">
                     
                 </div>
 
         </div>
 
-    <!-- =========== CONTAINER =========  -->
 
-    <header class="heading">{{$user->name}}</header>
-        <form method="post" action="{{route('patient.createConsultation')}}" class="form">
+    <!-- =========== CONTAINER =========  -->
+  
+
+
+
+    <form method="post" action="{{route('storeFeedback')}}" class="form">
         @csrf
         @method('post')
-        <select name="patient_id"class="form-select" aria-label="Default select example">
-            <option disabled selected required>Select Patient Profile</option>
-            @foreach($patients as $patient)
-                <option  value="{{$patient->id}}">{{$patient->name}}
-                </option>
-            @endforeach
-        </select>
+                    <div class="input-box">
+                        <label for="title">Title</label>
+                        <input type="text" name="title" required />
+                    </div>
                     <div class="input-boxs">
-                        <label>Description:</label>
-                        <textarea name="history" id="history" cols="30" rows="10"></textarea>
+                        <label for="">Description:</label>
+                        <textarea name="description" id="history" cols="30" rows="10" placeholder="We'd like to hear your feedback" ></textarea>
                     </div>
                     <button type="submit">Submit</button>
                 </form>
-
-
     <!-- =========== CONTAINER =========  -->
-
 
     <!-- =========== Scripts =========  -->
     <script src="{{ asset('javascript/main.js') }}"></script>
+    <script>
+    document.querySelectorAll(".confirmationForm").forEach(function(form) {
+        form.addEventListener("submit", function(event) {
+            var confirmation = confirm("Are you sure you want to confirm this booking?");
+            if (!confirmation) {
+                event.preventDefault();
+            }
+        });
+    });
 
+    document.querySelectorAll(".unconfirmForm").forEach(function(form) {
+        form.addEventListener("submit", function(event) {
+            var confirmation = confirm("Are you sure you want to unconfirm this booking?");
+            if (!confirmation) {
+                event.preventDefault();
+            }
+        });
+    });
+
+    document.querySelectorAll(".cancelForm").forEach(function(form) {
+        form.addEventListener("submit", function(event) {
+            var confirmation = confirm("Are you sure you want to cancel this booking?");
+            if (!confirmation) {
+                event.preventDefault();
+            }
+        });
+    });
+</script>
     <!-- ====== ionicons ======= -->
     
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-  </body>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-    <script>
-        $('#history').summernote({
-            placeholder: 'description...',
-            tabsize: 2,
-            height: 300,
-            width: 500,
-            toolbar: [
-          ['style', ['style']],
-          ['font', ['bold', 'underline', 'clear']],
-          ['color', ['color']],
-          ['para', ['ul', 'ol', 'paragraph']],
-          ['table', ['table']],
-          ['insert', ['link', 'picture', 'video']],
-          ['view', ['fullscreen', 'codeview', 'help']]
-        ]
-        });
-    </script>
 </body>
 
 </html>

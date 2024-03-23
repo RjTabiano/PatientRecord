@@ -24,13 +24,12 @@
         }
     </script>
 @endif
-  <!--===== HEADER ======-->
+  <!--===== HEADER =====-->
   <header class="l-header">
     <nav class="nav bd-grid">
       <div>
         <a href="{{route('welcome')}}" class="nav__logo">The Queen's Clinic</a>
       </div>
-
       <div class="nav__menu" id="nav-menu">
         <ul class="nav__list">
         <li class="nav__item"><a href="{{route('welcome')}}" class="nav__link ">Home</a></li>
@@ -60,9 +59,36 @@
 
         </ul>
       </div>
-      <main class="l-main">
-
-        
+      <div class="nav__toggle" id="nav-toggle">
+        <i class='bx bx-menu'></i>
+      </div>
+    </nav>
+  </header>
+ <body>
+  <main>
+      <br><br><br><br><br>
+    <div class="table_container">
+        <div class="row">
+            <div class="col-12">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">Type</th>
+                </tr>
+                </thead>
+                <tbody>
+                    
+                @foreach($pediatrics as $pediatric)
+                <tr>
+                    <td>{{$pediatric->type}}</td>
+                   
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
     </main>
   <script src="https://unpkg.com/scrollreveal"></script>
   <!--===== MAIN JS =====-->

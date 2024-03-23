@@ -94,6 +94,24 @@
                 </li>
                 @endcannot
                 <li>
+                    <a href="{{route('feedback')}}">
+                        <span class="icon">
+                            <ion-icon name="folder-open-outline"></ion-icon>
+                        </span>
+                        <span class="title">feedback</span>
+                    </a>
+                </li>
+                @can('admin')
+                <li>
+                    <a href="{{route('audit')}}">
+                        <span class="icon">
+                            <ion-icon name="folder-open-outline"></ion-icon>
+                        </span>
+                        <span class="title">Audit Trail</span>
+                    </a>
+                </li>
+                @endcan
+                <li>
                     <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <a href="{{route('logout')}}" class="nav-link" 
@@ -140,28 +158,32 @@
                     <th scope="col">Created By</th>
                     <th scope="col"></th>
                     <th scope="col"></th>
- 
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($consultationPediatrics as $consultationPediatric)
                 <tr>
                     @foreach($patients as $patient)
-                    <th scope="row">{{$patient->name}}</th>
+                    <td scope="row">{{$patient->name}}</td>
                     @endforeach
                     <td>{{$consultationPediatric->created_by}}</td>
                     <td>
                         <a href="/patient/show/{{$consultationPediatric->id}}" class="btn btn-sucess">Show</a>
-                    
+                        </td>
+                        <td>
                         <a href="{{route('patient.edit_consultationRecord', ['consultationPediatrics' => $consultationPediatric], ['patient' => $patient])}}" class="btn btn-info">Edit</a>
                     </td>
+                    @can('admin')
                     <td>
+                       
                     <form class="confirmationForm" method="post" action="{{route('patient.deleteConsultation', ['consultationPediatrics' => $consultationPediatric])}}">
                                     @csrf
                                     @method('delete')
                                     <button class="save1" type="submit" valaue="Delete" >Delete</button>
                                 </form>
                     </td>
+                    @endcan
                 </tr>
                 @endforeach
             </tbody>

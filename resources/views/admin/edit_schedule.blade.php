@@ -96,6 +96,24 @@
                 </li>
                 @endcannot
                 <li>
+                    <a href="{{route('feedback')}}">
+                        <span class="icon">
+                            <ion-icon name="folder-open-outline"></ion-icon>
+                        </span>
+                        <span class="title">feedback</span>
+                    </a>
+                </li>
+                @can('admin')
+                <li>
+                    <a href="{{route('audit')}}">
+                        <span class="icon">
+                            <ion-icon name="folder-open-outline"></ion-icon>
+                        </span>
+                        <span class="title">Audit Trail</span>
+                    </a>
+                </li>
+                @endcan
+                <li>
                     <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <a href="{{route('logout')}}" class="nav-link" 
@@ -144,35 +162,16 @@
                             @endforeach
                         </select>
                         <div class="input-box">
-                            <h5 class="text-center">Day Available</h5>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input"  name="day[]"type="checkbox" id="inlineCheckbox1" value="Monday">
-                                <label class="form-check-label"  for="inlineCheckbox1">Monday</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="day[]" type="checkbox" id="inlineCheckbox2" value="Tuesday">
-                                <label class="form-check-label" for="inlineCheckbox2">Tuesday</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="day[]" type="checkbox" id="inlineCheckbox3" value="Wednesday">
-                                <label class="form-check-label" for="inlineCheckbox3">Wednesday</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="day[]" type="checkbox" id="inlineCheckbox4" value="Thursday">
-                                <label class="form-check-label" for="inlineCheckbox4">Thursday</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="day[]" type="checkbox" id="inlineCheckbox5" value="Friday">
-                                <label class="form-check-label" for="inlineCheckbox5">Friday</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="day[]" type="checkbox" id="inlineCheckbox6" value="Saturday">
-                                <label class="form-check-label" for="inlineCheckbox6">Saturday</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="day[]" type="checkbox" id="inlineCheckbox7" value="Sunday">
-                                <label class="form-check-label" for="inlineCheckbox7">Sunday</label>
-                            </div>
+                            <select name="day"class="form-select" aria-label="Default select example">
+                                <option disabled selected required>Select Day</option>
+                                    <option  value="Monday">Monday</option>
+                                    <option  value="Tuesday">Tuesday</option>
+                                    <option  value="Wednesday">Wednesday</option>
+                                    <option  value="Thursday">Thursday</option>
+                                    <option  value="Friday">Friday</option>
+                                    <option  value="Saturday">Saturday</option>
+                                    <option  value="Sunday">Sunday</option>
+                            </select>
                         </div>
                         <div class="input-box">
                             <label for="start_time">Start Time:</label>
@@ -180,7 +179,9 @@
                             <label for="end_time">End Time:</label>
                             <input name="end_time"type="time" />
                         </div>
-                        <button type="submit" class="form-control">Submit</button>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Update Schedule</button>
+                        </div>
                     </form>
                 
 

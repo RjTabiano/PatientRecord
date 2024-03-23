@@ -178,6 +178,8 @@ class UserApiController extends Controller
             'service' => $request->service,
             'date' => $request->date,
             'time' => $request->time,
+            'status' => 'Unconfirmed',
+            'phone_number' => $request->phone_number,
         ]);
 
         if ($booking) {

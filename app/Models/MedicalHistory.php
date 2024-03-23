@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 
 class MedicalHistory extends Model
 {
-    use HasFactory;
+    use HasFactory, LogsActivity;
 
     protected $table = 'medical_history';
 
@@ -15,18 +17,23 @@ class MedicalHistory extends Model
 
     protected $fillable = [
         'Hypertension',
-        'Bronchial_Asthma',
+        'Asthma',
         'Thyroid_Disease',
-        'Heart_Disease',
-        'Previous_Surgery',
         'Allergy',
+        'social_history',
         'Family_History',
     ];
     
     protected $casts = [
+        'social_history' => 'array',
         'Family_History' => 'array'
     ];
     public function obgyne(){
         return $this->belongsTo(Obgyne::class);
+    }
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+        ->logOnly(['date', 'time']);
     }
 }

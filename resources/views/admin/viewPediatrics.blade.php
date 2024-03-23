@@ -96,6 +96,24 @@
                 </li>
                 @endcannot
                 <li>
+                    <a href="{{route('feedback')}}">
+                        <span class="icon">
+                            <ion-icon name="folder-open-outline"></ion-icon>
+                        </span>
+                        <span class="title">feedback</span>
+                    </a>
+                </li>
+                @can('admin')
+                <li>
+                    <a href="{{route('audit')}}">
+                        <span class="icon">
+                            <ion-icon name="folder-open-outline"></ion-icon>
+                        </span>
+                        <span class="title">Audit Trail</span>
+                    </a>
+                </li>
+                @endcan
+                <li>
                     <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <a href="{{route('logout')}}" class="nav-link" 
@@ -169,16 +187,17 @@
                                         <label>Father's Phone Number:</label>
                                         <span>{{ $patient->father_phone }}</span>
                                     </div>
-                                    @if($patient->Vaccine->isNotEmpty())
+                                   
                                         <div class="info-box">
                                             <label>Vaccines:</label>
                                             <ul>
-                                                @foreach($patient->Vaccine as $vaccine)
-                                                    <li>{{ $vaccine }} </li>
+                                                @foreach($bcgVaccine as $vaccine)
+                                                   
+                                                    <li>{{ $vaccine->BCG }} </li>
+                                                    
                                                 @endforeach
                                             </ul>
                                         </div>
-                                    @endif
                                     <div class="info-box">
                                         <label>P.E./History:</label>
                                         <span></span>

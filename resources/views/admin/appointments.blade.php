@@ -94,6 +94,24 @@
                 </li>
                 @endcannot
                 <li>
+                    <a href="{{route('feedback')}}">
+                        <span class="icon">
+                            <ion-icon name="folder-open-outline"></ion-icon>
+                        </span>
+                        <span class="title">feedback</span>
+                    </a>
+                </li>
+                @can('admin')
+                <li>
+                    <a href="{{route('audit')}}">
+                        <span class="icon">
+                            <ion-icon name="folder-open-outline"></ion-icon>
+                        </span>
+                        <span class="title">Audit Trail</span>
+                    </a>
+                </li>
+                @endcan
+                <li>
                     <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <a href="{{route('logout')}}" class="nav-link" 
@@ -201,6 +219,7 @@
                     <td>
                     <button type="button" class="btn btn-success"><a href="{{route('appointment.editAppointment', ['appointment' => $appointment])}}">Edit</a></button>
                     </td>
+                    @can('admin')
                     <td>
                                 <form class="cancelForm" method="post" action="{{route('appointment.deleteAppointment', ['appointment' => $appointment])}}" >
                                       @csrf
@@ -208,11 +227,14 @@
                                       <button type="submit" valaue="Delete" class="save1">Delete</button>
                                 </form>
                             </td>
+                            @endcan
                         </tr>
                     @endforeach
                 @endforeach
                 </tbody>
-            </table> 
+            </table>
+</div>
+</div>
     <!-- =========== Scripts =========  -->
     <script src="{{ asset('javascript/main.js') }}"></script>
     <script>

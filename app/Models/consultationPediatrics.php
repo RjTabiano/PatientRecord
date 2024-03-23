@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 
 class consultationPediatrics extends Model
 {
-    use HasFactory;
+    use HasFactory, LogsActivity;
     protected $table = 'consultation_pediatrics';
 
     protected $primaryKey = 'id';
@@ -19,5 +21,10 @@ class consultationPediatrics extends Model
 
     public function patient(){
         return $this->belongsTo(Patient::class);
+    }
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+        ->logOnly(['date', 'time']);
     }
 }

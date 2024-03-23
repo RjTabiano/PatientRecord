@@ -90,6 +90,24 @@
                 </li>
                 @endcannot
                 <li>
+                    <a href="{{route('feedback')}}">
+                        <span class="icon">
+                            <ion-icon name="folder-open-outline"></ion-icon>
+                        </span>
+                        <span class="title">feedback</span>
+                    </a>
+                </li>
+                @can('admin')
+                <li>
+                    <a href="{{route('audit')}}">
+                        <span class="icon">
+                            <ion-icon name="folder-open-outline"></ion-icon>
+                        </span>
+                        <span class="title">Audit Trail</span>
+                    </a>
+                </li>
+                @endcan
+                <li>
                     <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <a href="{{route('logout')}}" class="nav-link" 
@@ -148,16 +166,18 @@
                                 <td>{{$account->name}}</td>
                                 <td>{{$account->email}}</td>
                                 <td>{{$account->usertype}}</td>
+                                @can('admin')
                                 <td>
                                
                                     <form class="cancelForm" method="post" action="{{route('deleteAccount', ['account' => $account])}}" >
                                             @csrf
                                             @method('delete')
                                         
-                                            <button class="save1" type="submit" valaue="Delete" class="btn btn-primary">Delete</button>
+                                            <button class="save1" type="submit" valaue="Delete" >Delete</button>
                                         </form>
                               
                                     </td>
+                                @endcan
                                 </tr>
                             @endforeach
                             </tbody>
@@ -170,7 +190,7 @@
 
     document.querySelectorAll(".cancelForm").forEach(function(form) {
         form.addEventListener("submit", function(event) {
-            var confirmation = confirm("Are you sure you want to deleete this user?");
+            var confirmation = confirm("Are you sure you want to delete this account?");
             if (!confirmation) {
                 event.preventDefault();
             }

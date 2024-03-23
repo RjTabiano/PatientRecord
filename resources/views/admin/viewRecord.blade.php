@@ -96,6 +96,24 @@
                 </li>
                 @endcannot
                 <li>
+                    <a href="{{route('feedback')}}">
+                        <span class="icon">
+                            <ion-icon name="folder-open-outline"></ion-icon>
+                        </span>
+                        <span class="title">feedback</span>
+                    </a>
+                </li>
+                @can('admin')
+                <li>
+                    <a href="{{route('audit')}}">
+                        <span class="icon">
+                            <ion-icon name="folder-open-outline"></ion-icon>
+                        </span>
+                        <span class="title">Audit Trail</span>
+                    </a>
+                </li>
+                @endcan
+                <li>
                     <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <a href="{{route('logout')}}" class="nav-link" 
@@ -112,7 +130,6 @@
                 </li>
             </ul>
         </div>
-
         <!-- ========================= Main ==================== -->
         <div class="main">
             <div class="topbar">
@@ -179,6 +196,7 @@
                             <td>
                                 <a href="{{route('patient.update', ['patient' => $patient])}}">Edit</a>
                             </td>
+                            @can('admin')
                             <td>
                                 <form class="cancelForm" method="post" action="{{route('patient.delete', ['patient' => $patient])}}">
                                     @csrf
@@ -187,6 +205,7 @@
                                     <button type="submit" value="Delete" class="save1">Delete</button>
                                 </form>
                             </td>
+                            @endcan
                         </tr>
                         @endforeach
                     </div>

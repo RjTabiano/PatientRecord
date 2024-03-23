@@ -56,7 +56,6 @@
                         <span class="title">Patient Records</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="{{route('patient.consultations')}}">
                         <span class="icon">
@@ -95,6 +94,24 @@
                     </a>
                 </li>
                 @endcannot
+                <li>
+                    <a href="{{route('feedback')}}">
+                        <span class="icon">
+                            <ion-icon name="folder-open-outline"></ion-icon>
+                        </span>
+                        <span class="title">feedback</span>
+                    </a>
+                </li>
+                @can('admin')
+                <li>
+                    <a href="{{route('audit')}}">
+                        <span class="icon">
+                            <ion-icon name="folder-open-outline"></ion-icon>
+                        </span>
+                        <span class="title">Audit Trail</span>
+                    </a>
+                </li>
+                @endcan
                 <li>
                     <form method="POST" action="{{ route('logout') }}">
                     @csrf
@@ -145,7 +162,7 @@
           <div class="input-box">
             
           
-          
+        
         <div class="input-box"> 
             <label >Age</label>
             <input class="form-control"style="width:100%" type="number" name="age" placeholder="Enter Age" value="<?php echo !empty($response['Age:']) ? $response['Age:'] : ''; ?>" required />
@@ -179,11 +196,11 @@
             <h5>Gender</h5>
             <div class="gender-option">
                 <div class="gender">
-                    <input type="radio" id="check-male" name="sex" value="male" <?php echo (!empty($response['Sex:']) && strtolower($response['Sex:']) === 'male') ? 'checked' : ''; ?>>
+                    <input type="radio" id="check-male" name="sex" value="male" <?php echo (!empty($response['Sex:']) && strtolower($response['Sex:']) === 'male') ? 'checked' : ''; ?>/>
                     <label for="check-male">Male</label>
                 </div>
                 <div class="gender">
-                    <input type="radio" id="check-female" name="sex" value="female" <?php echo (!empty($response['Sex:']) && strtolower($response['Sex:']) === 'female') ? 'checked' : ''; ?>>
+                    <input type="radio" id="check-female" name="sex" value="female" <?php echo (!empty($response['Sex:']) && strtolower($response['Sex:']) === 'female') ? 'checked' : ''; ?>/>
                     <label for="check-female">Female</label>
                 </div>
             </div>

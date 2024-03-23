@@ -7,27 +7,27 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
 
-class Booking extends Model
+class Feedback extends Model
 {
     use HasFactory, LogsActivity;
 
-    protected $table = 'booking';
+
+    protected $table = 'feedbacks';
 
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'service',
-        'date',
-        'time',
-        'phone_number',
-        'status'
+        'title',
+        'description',
     ];
 
-   
 
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-        ->logOnly(['service', 'date']);
+        ->logOnly(['date', 'time']);
     }
 }

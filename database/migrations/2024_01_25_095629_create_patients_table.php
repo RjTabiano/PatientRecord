@@ -92,11 +92,10 @@ return new class extends Migration
             $table->increments('id');
             $table->unsignedInteger('obgyne_id');
             $table->boolean('Hypertension')->nullable();
-            $table->boolean('Bronchial_Asthma')->nullable();
-            $table->boolean('Thyroid_Disease')->nullable();
-            $table->boolean('Heart_Disease')->nullable();
-            $table->boolean('Previous_Surgery')->nullable();
+            $table->boolean('Asthma')->nullable();
+            $table->boolean('Thyroid_disease')->nullable();
             $table->boolean('Allergy')->nullable();
+            $table->text('social_history')->nullable();
             $table->text('Family_History')->nullable();
             $table->timestamps();
             $table->foreign('obgyne_id')
@@ -108,18 +107,27 @@ return new class extends Migration
         Schema::create('baseline_diagnostics', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('obgyne_id');
-            $table->string('CBC_HgB')->nullable();
-            $table->string('plt')->nullable();
-            $table->string('DPT')->nullable();
+            $table->date('date')->nullable();
+            $table->string('blood_type')->nullable();
+            $table->string('FBS')->nullable();
+            $table->string('Hgb')->nullable();
             $table->string('Hct')->nullable();
             $table->string('WBC')->nullable();
-            $table->string('Blood_Type')->nullable();
-            $table->string('FBS')->nullable();
+            $table->string('Platelet')->nullable();
+            $table->string('HIV')->nullable();
+            $table->string('first_hr')->nullable();
+            $table->string('second_hr')->nullable();
             $table->string('HBsAg')->nullable();
-            $table->string('VDRL')->nullable();
-            $table->string('HiV')->nullable();
-            $table->string('TT')->nullable();
-            $table->string('Urinalysis')->nullable();
+            $table->string('RPR')->nullable();
+            $table->string('protein')->nullable();
+            $table->string('sugar')->nullable();
+            $table->string('LMP')->nullable();
+            $table->string('PMP')->nullable();
+            $table->string('AOG')->nullable();
+            $table->string('EDD')->nullable();
+            $table->string('early_ultrasound')->nullable();
+            $table->string('AOG_by_eutz')->nullable();
+            $table->string('EDD_by_eutz')->nullable();
             $table->string('Other')->nullable();
             $table->timestamps();
             $table->foreign('obgyne_id')
@@ -132,28 +140,16 @@ return new class extends Migration
         Schema::create('Obgyne_History', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('obgyne_id');
-            $table->string('gravitiy')->nullable();
+            $table->string('gravidity')->nullable();
             $table->string('parity')->nullable();
             $table->string('OB_score')->nullable();
             $table->string('table')->nullable();
-            $table->string('Blood_Type')->nullable();
-            $table->string('LMP')->nullable();
-            $table->string('PMP')->nullable();
-            $table->string('AOG')->nullable();
-            $table->string('EDD')->nullable();
-            $table->string('early_ultrasound')->nullable();
-            $table->string('AOG_by_eutz')->nullable();
-            $table->string('EDD_by_eutz')->nullable();
-            $table->string('TT1')->nullable();
-            $table->string('TT2')->nullable();
-            $table->string('TT3')->nullable();
-            $table->string('TDAP')->nullable();
-            $table->string('Flu')->nullable();
-            $table->string('HPV')->nullable();
-            $table->string('PCV')->nullable();
-            $table->string('covid19_brand')->nullable();
-            $table->string('primary')->nullable();
-            $table->string('booster')->nullable();
+            $table->string('M')->nullable();
+
+            $table->string('I')->nullable();
+            $table->string('D')->nullable();
+            $table->string('A')->nullable();
+            $table->string('S')->nullable();
             $table->timestamps();
             $table->foreign('obgyne_id')
                     ->references('id')
@@ -161,6 +157,26 @@ return new class extends Migration
                     ->onDelete('cascade');
         });
         
+        Schema::create('immunizations', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('obgyne_id');
+            $table->string('TT_1')->nullable();
+            $table->string('TT_2')->nullable();
+            $table->string('TT_3')->nullable();
+            $table->string('TT_4')->nullable();
+            $table->string('TT_5')->nullable();
+            $table->string('flu')->nullable();
+            $table->string('Pneumo')->nullable();
+            $table->string('hepa_b')->nullable();
+            $table->timestamps();
+            $table->foreign('obgyne_id')
+                    ->references('id')
+                    ->on('obgyne')
+                    ->onDelete('cascade');
+        });
+
+
+
         Schema::create('consultation_pediatrics', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('patient_id');

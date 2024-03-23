@@ -28,7 +28,6 @@
                         <span class="title">Admin Panel</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="{{route('home')}}">
                         <span class="icon">
@@ -94,6 +93,24 @@
                     </a>
                 </li>
                 @endcannot
+                <li>
+                    <a href="{{route('feedback')}}">
+                        <span class="icon">
+                            <ion-icon name="folder-open-outline"></ion-icon>
+                        </span>
+                        <span class="title">feedback</span>
+                    </a>
+                </li>
+                @can('admin')
+                <li>
+                    <a href="{{route('audit')}}">
+                        <span class="icon">
+                            <ion-icon name="folder-open-outline"></ion-icon>
+                        </span>
+                        <span class="title">Audit Trail</span>
+                    </a>
+                </li>
+                @endcan
                 <li>
                     <form method="POST" action="{{ route('logout') }}">
                     @csrf
@@ -184,7 +201,8 @@
                     <th scope="col">Doctor Name</th>
                     <th scope="col">Start Time</th>
                     <th scope="col">End Time</th>
-                    <th scope="col">Action</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -200,24 +218,16 @@
                     
                     <td>
                     <button type="button" class="btn btn-success"><a href="{{route('schedule.editSchedule', ['schedule' => $schedule])}}">Edit</a></button>
-                    <button onclick="openModal2()">
-                        Delete
-                    </button>
-                        <!-- DELETE Modal -->
-                        <div class="modal2" id="myModal2">
-                          <div class="modal2-content2">
-                            <span class="close2" onclick="closeModal2()">&times;</span>
-                            <form method="post" action="{{route('schedule.deleteSchedule', ['schedule' => $schedule])}}" class="form">
+                    </td>
+                    @can('admin')
+                    <td>
+                            <form method="post" class="cancelForm" action="{{route('schedule.deleteSchedule', ['schedule' => $schedule])}}">
                                     @csrf
                                     @method('delete')
-                                <div class="modal-footer">
-                                    <button type="submit" valaue="Delete" class="btn btn-primary">Delete</button>
-                                </div>
+                                    <button type="submit" valaue="Delete" class="save1">Delete</button>
                                 </form>
-                          </div>
-                        </div>
-        <!-- END DELETE MODAL -->
                     </td>
+                    @endcan
                 </tr>
                 @endforeach
                 @endforeach
@@ -232,7 +242,18 @@
 
     <!-- =========== Scripts =========  -->
     <script src="{{ asset('javascript/main.js') }}"></script>
+    <script>
+  
 
+    document.querySelectorAll(".cancelForm").forEach(function(form) {
+        form.addEventListener("submit", function(event) {
+            var confirmation = confirm("Are you sure you want to delete this schedule?");
+            if (!confirmation) {
+                event.preventDefault();
+            }
+        });
+    });
+</script>
     <!-- ====== ionicons ======= -->
     
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
