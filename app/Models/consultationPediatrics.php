@@ -10,7 +10,7 @@ use Spatie\Activitylog\LogOptions;
 class consultationPediatrics extends Model
 {
     use HasFactory, LogsActivity;
-    protected $table = 'consultation_pediatrics';
+    protected $table = 'consultation';
 
     protected $primaryKey = 'id';
 

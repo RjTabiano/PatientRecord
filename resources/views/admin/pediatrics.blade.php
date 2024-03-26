@@ -154,7 +154,9 @@
                   <input type="submit" class="custom-button" name="submit" value="Upload">
               </form>
     <header>Pediatrics Form</header>
-      <form method="post" action="{{ route('patient.store', ['patient' => $patient]) }}" class="form">
+    <button type="button" class="collapsible">Patient Information</button>
+    <div class="content">
+    <form method="post" action="{{ route('patient.store', ['patient' => $patient]) }}" class="form_record">
         @csrf
         @method('post')
         <div class="column">
@@ -165,47 +167,50 @@
         
         <div class="input-box"> 
             <label >Age</label>
-            <input class="form-control"style="width:100%" type="number" name="age" placeholder="Enter Age" value="<?php echo !empty($response['Age:']) ? $response['Age:'] : ''; ?>" required />
+            <input class="" type="number" name="age" placeholder="Enter Age" value="{{$pediatrics->age}}" required />
           </div>
         <div class="input-box">
             <label >Birth Date</label>
-            <input class="form-control" style="width:100%" type="date" name="birthdate" value="<?php echo !empty($response['Birthdate:']) ? $response['Birthdate:'] : ''; ?>" placeholder="Enter birth date"/>
+            <input class=""  type="date" name="birthdate" value="{{$pediatrics->birthdate}}" placeholder="Enter birth date"/>
           </div>
         </div>
         <div class="input-box address">
           <label  >Address</label>
-          <input class="form-control" style="width:100%" type="text" name="address" placeholder="Enter address"  value="<?php echo !empty($response['Address:']) ? $response['Address:'] : ''; ?>" required /><br>
+          <input class="" type="text" name="address" placeholder="Enter address"  value="{{$pediatrics->address}}" required /><br>
           <div class="input-box">
             <label >Mother's Name</label>
-            <input class="form-control" style="width:100%" type="text" name="mother_name" placeholder="Enter Name" value="<?php echo !empty($response["Mother's name:"]) ? $response["Mother's name:"] : ''; ?>" required />
+            <input class=""  type="text" name="mother_name" placeholder="Enter Name" value="{{$pediatrics->mother_name}}" required />
           </div>
           <div class="input-box">
             <label>Mother's Phone Number</label>
-            <input class="form-control" style="width:100%" type="number" name="mother_phone" placeholder="Enter phone number" value="<?php echo !empty($response['Phone:']) ? $response['Phone:'] : ''; ?>" required />
+            <input class="" type="number" name="mother_phone" placeholder="Enter phone number" value="{{$pediatrics->mother_phone}}" required />
           </div>
           <div class="input-box">
             <label>Father's Name</label>
-            <input class="form-control" style="width:100%" type="text" name="father_name" value="<?php echo !empty($response["Father's name:"]) ? $response["Father's name:"] : ''; ?>" placeholder="Enter Name" required />
+            <input class="" type="text" name="father_name" value="{{$pediatrics->father_name}}" placeholder="Enter Name" required />
           </div>
           <div class="input-box">
             <label>Father's Phone Number</label>
-            <input class="form-control" style="width:100%" type="number" name="father_phone"  placeholder="Enter phone number" value="<?php echo !empty($response['Phone:']) ? $response['Phone:'] : ''; ?>" required />
+            <input class="" type="number" name="father_phone"  placeholder="Enter phone number" value="{{$pediatrics->father_phone}}" required />
           </div>
         </div>
         <div class="gender-box">
-            <h5>Gender</h5>
-            <div class="gender-option">
-                <div class="gender">
-                    <input type="radio" id="check-male" name="sex" value="male" <?php echo (!empty($response['Sex:']) && strtolower($response['Sex:']) === 'male') ? 'checked' : ''; ?>/>
-                    <label for="check-male">Male</label>
-                </div>
-                <div class="gender">
-                    <input type="radio" id="check-female" name="sex" value="female" <?php echo (!empty($response['Sex:']) && strtolower($response['Sex:']) === 'female') ? 'checked' : ''; ?>/>
-                    <label for="check-female">Female</label>
-                </div>
-            </div>
+        <h5>Gender</h5>
+        <div class="gender-option">
+            <select name="sex">
+                <option value="male" {{ $pediatrics->sex === 'male' ? 'selected' : '' }}>Male</option>
+                <option value="female" {{ $pediatrics->sex === 'female' ? 'selected' : '' }}>Female</option>
+            </select>
         </div>
-        <table class="vaccine_table">
+    </div>
+        <button style="width:100%" type="submit">Save</button>
+    </form>
+</div>
+    </div>
+    <button type="button" class="collapsible">Vaccine</button>
+      <div class="content">
+      <form>
+      <table class="vaccine_table">
           <tr>
             <th >Vaccine</th>
             <th>Dose 1</th>
@@ -343,9 +348,13 @@
             <td><input type="checkbox" name="Flu[]" value="Booster 2"></td>
           </tr>
           </table>
-       
+         
+        <button style="width:100%" type="submit">Save</button>
+      </form>
     </div>
-        <div class="input-box">
+    <button type="button" class="collapsible">Pediatrics Consultation</button>
+    <div class="content">
+    <div class="input-box">
           <label for="">P.E./History:</label>
           <textarea name="history" style="width: 100;%" id="history" cols="30" rows="10"></textarea>
         </div>
@@ -353,8 +362,10 @@
           <label for="">Orders:</label>
           <textarea name="orders" style="width: 100;%" id="orders" cols="30" rows="10"></textarea>
         </div>
-        <button style="width:100%" type="submit">Submit</button>
-      </form>
+         
+        <button style="width:100%" type="submit">Save</button>
+    </div>
+    
 
 
     <!-- =========== CONTAINER =========  -->

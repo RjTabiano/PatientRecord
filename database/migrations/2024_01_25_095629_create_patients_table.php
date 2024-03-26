@@ -177,7 +177,7 @@ return new class extends Migration
 
 
 
-        Schema::create('consultation_pediatrics', function (Blueprint $table) {
+        Schema::create('consultation', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('patient_id');
             $table->longText('consultation')->nullable();

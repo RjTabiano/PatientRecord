@@ -36,6 +36,10 @@ class Patient extends Model
         return $this->hasMany(consultationPediatrics::class);
     }
     
+    public function pediatricsConsultation(){
+        return $this->hasMany(pediatricsConsultation::class);
+    }
+
     public function appointment(){
         return $this->hasMany(Appointment::class);
     }

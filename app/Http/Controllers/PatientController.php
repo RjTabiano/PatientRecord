@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\ObgyneHistory;
 use App\Models\Immunizations;
+use App\Models\pediatricsConsultation;
 use Illuminate\Support\Facades\Http;
 use Aws\S3\S3Client; 
 use DOMDocument;
@@ -39,7 +40,8 @@ class PatientController extends Controller
     }
 
     public function createPediatrics(Patient $patient){
-        return view('admin.pediatrics', ['patient' => $patient]);
+        $pediatrics = $patient->patientRecord()->latest()->first();
+        return view('admin.pediatrics', ['patient' => $patient], ['pediatrics' => $pediatrics]);
     }
 
     public function createObgyne(Patient $patient){
@@ -214,40 +216,15 @@ class PatientController extends Controller
         $newPatientRecord->mother_phone = $request->input("mother_phone");
         $newPatientRecord->father_name = $request->input("father_name");
         $newPatientRecord->father_phone = $request->input("father_phone");
-        $history = $request->input("history");
-        $orders = $request->input("orders");
-
-        $dom = new DOMDocument();
-        $dom->loadHTML($history,9);
-        $images = $dom->getElementsByTagName('img');
-        foreach ($images as $key => $img) {
-            $data = base64_decode(explode(',',explode(';',$img->getAttribute('src'))[1])[1]);
-            $image_name = "/uplade/" . time(). $key.'png';
-            file_put_contents(public_path().$image_name,$data);
-
-            $img->removeAttribute('src');
-            $img->setAttribute('src',$image_name);
-        }
-        $description = $dom->saveHTML();
-
-        $newPatientRecord->history = $history;
-
-        $dom2 = new DOMDocument();
-        $dom2->loadHTML($orders,9);
-        $images2 = $dom2->getElementsByTagName('img');
-        foreach ($images2 as $key2 => $img2) {
-            $data2 = base64_decode(explode(',',explode(';',$img2->getAttribute('src'))[1])[1]);
-            $image_name2 = "/uplade/" . time(). $key2.'png';
-            file_put_contents(public_path().$image_name2,$data2);
-
-            $img2->removeAttribute('src');
-            $img2->setAttribute('src',$image_name2);
-        }
-        $description2 = $dom2->saveHTML();
-        $newPatientRecord->orders = $orders;
-
         $newPatientRecord->save();
         
+     
+
+
+        return view('admin.viewRecord', ['patient' => $patient]);
+    }
+
+    public function storeVaccine(Patient $patient, Request $request) {
         $newVaccine = new Vaccine();
         $newVaccine->patient_record_id = $newPatientRecord->id;
         $newVaccine->BCG = $request->input("BCG");
@@ -267,18 +244,52 @@ class PatientController extends Controller
         $newVaccine->Flu = $request->input("Flu");
         $newVaccine->save();
 
-
         return view('admin.viewRecord', ['patient' => $patient]);
+
     }
 
-    public function storeObgyne(Patient $patient, Request $request){
-        $data = $request->validate([
-            'name' => 'required',
-            'email'  => 'required',
-           
-        ]);
+    public function storeConsultationPedia(Patient $patient, Request $request) {
+         
+        $newConsultationPedia = new pediatricsConsultation;
+        $history = $request->input("history");
+        $orders = $request->input("orders");
 
-     
+        $dom = new DOMDocument();
+        $dom->loadHTML($history,9);
+        $images = $dom->getElementsByTagName('img');
+        foreach ($images as $key => $img) {
+            $data = base64_decode(explode(',',explode(';',$img->getAttribute('src'))[1])[1]);
+            $image_name = "/uplade/" . time(). $key.'png';
+            file_put_contents(public_path().$image_name,$data);
+
+            $img->removeAttribute('src');
+            $img->setAttribute('src',$image_name);
+        }
+        $description = $dom->saveHTML();
+
+        $newConsultationPedia->history = $history;
+
+        $dom2 = new DOMDocument();
+        $dom2->loadHTML($orders,9);
+        $images2 = $dom2->getElementsByTagName('img');
+        foreach ($images2 as $key2 => $img2) {
+            $data2 = base64_decode(explode(',',explode(';',$img2->getAttribute('src'))[1])[1]);
+            $image_name2 = "/uplade/" . time(). $key2.'png';
+            file_put_contents(public_path().$image_name2,$data2);
+
+            $img2->removeAttribute('src');
+            $img2->setAttribute('src',$image_name2);
+        }
+        $description2 = $dom2->saveHTML();
+        $newConsultationPedia->orders = $orders;
+
+        return view('admin.viewRecord', ['patient' => $patient]);
+
+    }
+
+    public function storeObgyne(Patient $patient, Request $request)
+    {
+
         $newObgyne = new Obgyne();
         $newObgyne->patient_id = $patient->id;
         $newObgyne->type = $request->input("type");
@@ -292,19 +303,27 @@ class PatientController extends Controller
         $newObgyne->emergency_contact_no = $request->input("emergency_contact_no");
         $newObgyne->save();
 
-        $newHistory = new MedicalHistory();
-        $newHistory->obgyne_id = $newObgyne->id;
-        $newHistory->Hypertension = $request->input("Hypertension");
-        $newHistory->Asthma = $request->input("Asthma");
-        $newHistory->Thyroid_Disease = $request->input("Thyroid_Disease");
-        $newHistory->Allergy = $request->input("Allergy");
-        $newHistory->social_history = $request->input("social_history");
-        $newHistory->Family_History = $request->input("Family_History");
-        $newHistory->save();
+        return redirect(route('patient.patient_record_history'))->with('success', 'Added Successfully');
+    }
 
-        
+    public function storeMedicalHistory(Patient $patient, Request $request)
+    {
+        $MedicalHistory = new MedicalHistory();
+        $MedicalHistory->obgyne_id = $newObgyne->id;
+        $MedicalHistory->Hypertension = $request->input("Hypertension");
+        $MedicalHistory->Asthma = $request->input("Asthma");
+        $MedicalHistory->Thyroid_Disease = $request->input("Thyroid_Disease");
+        $MedicalHistory->Allergy = $request->input("Allergy");
+        $MedicalHistory->social_history = $request->input("social_history");
+        $MedicalHistory->Family_History = $request->input("Family_History");
+        $MedicalHistory->save();
 
+        return redirect(route('patient.patient_record_history'))->with('success', 'Added Successfully');
 
+    }
+
+    public function storeBaselineDiagnostic(Patient $patient, Request $request)
+    {
         $newBaselineDiagnostics = new BaselineDiagnostics();
         $newBaselineDiagnostics->obgyne_id = $newObgyne->id;
         $newBaselineDiagnostics->date = $request->input("date");
@@ -330,7 +349,13 @@ class PatientController extends Controller
         $newBaselineDiagnostics->EDD_by_eutz = $request->input("EDD_by_eutz");
         $newBaselineDiagnostics->Other = $request->input("Other");
         $newBaselineDiagnostics->save();
+        
+        return redirect(route('patient.patient_record_history'))->with('success', 'Added Successfully');
 
+    }
+
+    public function storeObgyneHistory(Patient $patient, Request $request)
+    {
         $newObgyneHistory = new ObgyneHistory();
         $newObgyneHistory->obgyne_id = $newObgyne->id;
         $newObgyneHistory->gravidity = $request->input("gravidity");
@@ -344,6 +369,11 @@ class PatientController extends Controller
         $newObgyneHistory->S = $request->input("S");
         $newObgyneHistory->save();
 
+        return redirect(route('patient.patient_record_history'))->with('success', 'Added Successfully');
+    }
+
+    public function storeImmunizations(Patient $patient, Request $request)
+    {
         $newImmunizations = new Immunizations();
         $newImmunizations->obgyne_id = $newObgyne->id;
         $newImmunizations->TT_1 = $request->input("TT_1");
@@ -357,7 +387,25 @@ class PatientController extends Controller
         $newImmunizations->save();
 
         return redirect(route('patient.patient_record_history'))->with('success', 'Added Successfully');
+
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public function viewRecords(User $user){
         

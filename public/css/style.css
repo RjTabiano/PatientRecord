@@ -564,7 +564,7 @@ header {
   text-align: center;
 }
 
-.form {
+.form:not(.form_record) {
   display: grid;
   grid-gap: 20px;
 }
@@ -672,7 +672,7 @@ tr:hover {
 }
 
 
-.form {
+.form:not(.form_record) {
   max-width: 600px;
   margin: 20px auto;
   background-color: #fff;
@@ -800,9 +800,7 @@ tr:hover {
   margin-left: 30px;
 }
 
-.form-control{
-  padding-left: 30px;
-}
+
 
 .custom-button {
   background-color: #007bff;
@@ -879,7 +877,7 @@ a.btn{
     margin-bottom: 20px;
 }
 
-.form {
+.form:not(.form_record) {
     max-width: 500px;
     margin: 0 auto;
 }
@@ -957,4 +955,92 @@ button[type="submit"]:active {
 
 .scrollable-body {
   margin-top: 30px; /* Adjust this value to match the height of the table header */
+}
+
+
+/* COLLAPSIBLE */
+
+.collapsible {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+  background-color: #ccc;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+.collapsible:after {
+  content: '\02795'; /* Unicode character for "plus" sign (+) */
+  font-size: 13px;
+  color: white;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
 }

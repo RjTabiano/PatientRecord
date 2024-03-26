@@ -4,31 +4,25 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\Activitylog\Traits\LogsActivity;
-use Spatie\Activitylog\LogOptions;
 
-class Booking extends Model
+class pediatricsConsultation extends Model
 {
     use HasFactory, LogsActivity;
-
-    protected $table = 'booking';
+    protected $table = 'pediatrics_consultation';
 
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'service',
-        'date',
-        'time',
-        'phone_number',
-        'status'
+        'history',
+        'orders',
     ];
 
-   
-
+    public function patient(){
+        return $this->belongsTo(Patient::class);
+    }
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-        ->logOnly(['service', 'date']);
+        ->logOnly(['date', 'time']);
     }
-    
 }
