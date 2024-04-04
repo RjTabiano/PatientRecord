@@ -390,9 +390,45 @@ class PatientController extends Controller
 
     }
 
+    public function add_patientView(){
+        return view('admin.add_patient');
+    }
+
+    public function add_patient(Request $request){
 
 
+        $rules = [
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:6',
+        ];
+    
+        $messages = [
+            'name.required' => 'Name is required.',
+            'email.required' => 'Email is required.',
+            'email.email' => 'Invalid email format.',
+            'email.unique' => 'Email already exists.',
+            'password.required' => 'Password is required.',
+            'password.min' => 'Password must be at least 6 characters long.',
+        ];
 
+
+        $validatedData = $request->validate($rules, $messages);
+        $newUser = new User();
+        $newUser->name = $validatedData['name'];
+        $newUser->email = $validatedData['email'];
+        $newUser->password = bcrypt($validatedData['password']);
+        $newUser->save();
+
+        
+        $newPatient = new Patient();
+        $newPatient->user_id = $newUser->id;
+        $newPatient->name = $newUser->name;
+        $newPatient->email = $newUser->email;
+        $newPatient->save();
+
+        return redirect(route('addPatientView'))->with('success', 'User created successfully.');
+    }
 
 
 

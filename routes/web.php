@@ -63,6 +63,9 @@ Route::get('/patient/{patient}/pediatrics', [PatientController::class, 'createPe
 Route::get('/patient/{patient}/obgyne', [PatientController::class, 'createObgyne'])->middleware(['auth', 'admin'])->name('patient.obgyne');
 Route::put('/patient/{patient}/pediatrics/upload', [PatientController::class, 'uploadImagePedia'])->middleware(['auth', 'admin'])->name('scanner.uploadP');
 Route::put('/patient/{patient}/obgyne/upload', [PatientController::class, 'uploadImageOb'])->middleware(['auth', 'admin'])->name('scanner.uploadO');
+Route::post('/addPatientView/addPatient', [PatientController::class, 'add_patient'])->middleware(['auth', 'admin'])->name('addPatient');
+Route::get('/addPatientView', [PatientController::class, 'add_patientView'])->middleware(['auth', 'admin'])->name('addPatientView');
+
 
 Route::post('/patient/{patient}/store', [PatientController::class, 'store'])->middleware(['auth', 'admin'])->name('patient.store');
 Route::post('/patient/storePatients', [PatientController::class, 'store_patients'])->middleware(['auth', 'admin'])->name('patient.storePatients');

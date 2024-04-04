@@ -276,84 +276,118 @@
             <div class="tooltip">FBS
                 <span class="tooltiptext">BLABLABLABLABLABLAL</span>
             </div>
-                <input type="text" id="DPT" name="FBS" value="<?php echo !empty($response['FBS:']) ? $response['FBS:'] : ''; ?>">
+                <input type="text" id="DPT" name="FBS" value="">
             </div>
 
             <div class="form-group">
-                <label for="Hgb">Hct</label>
+            <div class="tooltip">Hgb
+                <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+            </div>
                 <input type="text" id="Hct" name="Hgb" value="<?php echo !empty($response['Hgb:']) ? $response['Hgb:'] : ''; ?>">
             </div>
 
             <div class="form-group">
-                <label for="Hct">Hct</label>
+            <div class="tooltip">Hct
+                <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+            </div>
                 <input type="text" id="WBC" name="Hct" value="<?php echo !empty($response['Hct:']) ? $response['Hct:'] : ''; ?>">
             </div>
 
             <div class="form-group">
-                <label for="WBC">WBC</label>
+            <div class="tooltip">WBC
+                <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+            </div>
                 <input type="text" id="Blood_Type" name="WBC" value="<?php echo !empty($response['WBC:']) ? $response['WBC:'] : ''; ?>">
             </div>
 
             <div class="form-group">
-                <label for="Platelet">Platelet</label>
+            <div class="tooltip">Platelet
+                <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+            </div>
                 <input type="text" id="FBS" name="Platelet" value="<?php echo !empty($response['FBS:']) ? $response['FBS:'] : ''; ?>">
             </div>
 
             <div class="form-group">
-                <label for="HIV">HIV</label>
+            <div class="tooltip">HIV
+                <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+            </div>
                 <input type="text" id="HBsAg" name="HIV" value="<?php echo !empty($response['HIV:']) ? $response['HIV:'] : ''; ?>">
             </div>
 
             <div class="form-group">
-                <label for="first_hr">1st hr</label>
+            <div class="tooltip">1st hr
+                <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+            </div>
                 <input type="text" id="VDRL" name="first_hr" value="<?php echo !empty($response['1st hr.:']) ? $response['1st hr.:'] : ''; ?>">
             </div>
 
             <div class="form-group">
-                <label for="second_hr">2nd hr</label>
+            <div class="tooltip">2nd hr
+                <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+            </div>
                 <input type="text" id="HiV" name="second_hr" value="<?php echo !empty($response['2nd hr.:']) ? $response['2nd hr.:'] : ''; ?>">
             </div>
 
             <div class="form-group">
-                <label for="HBsAg">HBsAg</label>
+            <div class="tooltip">HBsAg
+                <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+            </div>
                 <input type="text" id="75g_OTT" name="HBsAg" value="<?php echo !empty($response['HBsAg:']) ? $response['HBsAg:'] : ''; ?>">
             </div>
 
             <div class="form-group">
-                <label for="RPR">RPR</label>
+            <div class="tooltip">RPR
+                <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+            </div>
                 <input type="text" id="Urinalysis" name="RPR" value="<?php echo !empty($response['RPR/VDRL']) ? $response['RPR/VDRL'] : ''; ?>">
             </div>
 
             <div class="form-group">
-                <label for="protein">protein</label>
+            <div class="tooltip">Protein
+                <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+            </div>
                 <input type="text" id="Other" name="protein" value="<?php echo !empty($response['PROTEIN:']) ? $response['PROTEIN:'] : ''; ?>">
             </div>
             <div class="form-group">
-                <label for="sugar">sugar</label>
+            <div class="tooltip">Sugar
+                <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+            </div>
                 <input type="text" id="Other" name="sugar" value="<?php echo !empty($response['SUGAR:']) ? $response['SUGAR:'] : ''; ?>">
             </div>
             <div class="form-group">
-                <label for="LMP">LMP</label>
+            <div class="tooltip">LMP
+                <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+            </div>
                 <input type="text" id="Other" name="LMP" value="<?php echo !empty($response['LMP:']) ? $response['LMP:'] : ''; ?>">
             </div>
             <div class="form-group">
-                <label for="PMP">PMP</label>
+            <div class="tooltip">PMP
+                <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+            </div>
                 <input type="text" id="Other" name="PMP" value="<?php echo !empty($response['PMP:']) ? $response['PMP:'] : ''; ?>">
             </div>
             <div class="form-group">
-                <label for="AOG">AOG</label>
+            <div class="tooltip">AOG
+                <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+            </div>
                 <input type="text" id="Other" name="AOG" value="<?php echo !empty($response['AOG:']) ? $response['AOG:'] : ''; ?>">
             </div>
             <div class="form-group">
-                <label for="early_ultrasound">Early Ultrasound</label>
+            <div class="tooltip">Early Ultrasound
+                <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+            </div>
                 <input type="text" id="Other" name="early_ultrasound" value="<?php echo !empty($response['ULTRASOUND']) ? $response['ULTRASOUND'] : ''; ?>">
             </div>
             <div class="form-group">
-                <label for="AOG_by_eutz">AOG by eutz</label>
+            <div class="tooltip">AOG By EUTZ
+                <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+            </div>
                 <input type="text" id="Other" name="AOG_by_eutz" value="<?php echo !empty($response['AOG by EUTZ:']) ? $response['AOG by EUTZ:'] : ''; ?>">
             </div>
             <div class="form-group">
-                <label for="EDD_by_eutz">EDD by eutz</label>
+            <div class="tooltip">EDD By EUTZ
+                <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+            </div>
                 <input type="text" id="Other" name="EDD_by_eutz" value="<?php echo !empty($response['EDD by EUTZ:']) ? $response['EDD by EUTZ:'] : ''; ?>">
             </div>
             <div class="form-group">
@@ -366,17 +400,23 @@
     <div class="content">
         <form>
             <div class="form-group">
-                <label for="g">Gravitiy</label>
+            <div class="tooltip">Gravidity
+                <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+            </div>
                 <input type="text" id="gravitiy" name="g" value="<?php echo !empty($response['G']) ? $response['G'] : ''; ?>">
             </div>
 
             <div class="form-group">
-                <label for="parity">Parity</label>
+            <div class="tooltip">Parity
+                <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+            </div>
                 <input type="text" id="parity" name="parity" value="<?php echo !empty($response['G']) ? $response['G'] : ''; ?>">
             </div>
 
             <div class="form-group">
-                <label for="OB_score">OB Score</label>
+            <div class="tooltip">OB Score
+                <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+            </div>
                 <input type="text" id="OB_score" name="OB_score" value="<?php echo !empty($response['EDD by EUTZ:']) ? $response['EDD by EUTZ:'] : ''; ?>">
             </div>
 
@@ -386,32 +426,41 @@
             </div>
 
             <div class="form-group">
-                <label for="M">M</label>
+            <div class="tooltip">M
+                <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+            </div>
                 <input type="text" id="Blood_Type" name="M" value="<?php echo !empty($response['M']) ? $response['M'] : ''; ?>">
             </div>
 
             <div class="form-group">
-                <label for="I">I</label>
+            <div class="tooltip">I
+                <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+            </div>
                 <input type="text" id="I" name="I" value="<?php echo !empty($response['I']) ? $response['I'] : ''; ?>">
             </div>
 
             <div class="form-group">
-                <label for="D">D</label>
+            <div class="tooltip">D
+                <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+            </div>
                 <input type="text" id="PMP" name="D" value="<?php echo !empty($response['D']) ? $response['D'] : ''; ?>">
             </div>
             <div class="form-group">
-                <label for="A">A</label>
+            <div class="tooltip">A
+                <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+            </div>
                 <input type="text" id="EDD" name="A" value="<?php echo !empty($response['A']) ? $response['A'] : ''; ?>">
             </div>
             <div class="form-group">
-                <label for="S">S</label>
+            <div class="tooltip">S
+                <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+            </div>
                 <input type="text" id="early_ultrasound" name="S" value="<?php echo !empty($response['S']) ? $response['S'] : ''; ?>">
             </div>
                 <button type="submit">Submit</button>
       </form>
     </div>
    
-
     <!-- =========== CONTAINER =========  -->
 
 

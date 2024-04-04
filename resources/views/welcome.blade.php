@@ -16,7 +16,6 @@
   <title>The Queen's Clinic</title>
 </head>
     
-
 <body>
 @if(Session::has('success'))
     <script>

@@ -14,7 +14,6 @@
       rel="stylesheet"
     />
 </head>
-
 <body>
     <!-- =============== Navigation ================ -->
     <div class="container">
@@ -150,6 +149,7 @@
 
     <!-- =========== CONTAINER =========  -->
     <header class="heading">Patient Records</header>
+        <button><a href="{{ route('addPatientView') }}">Add Patient</a></button>
         <div class="table-wrapper">
             <p class = "instruction"><b>Note: Click user to add Patient Record</b></p>
             <table class="fl-table">

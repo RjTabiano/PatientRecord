@@ -163,7 +163,6 @@
         <input type="hidden" name="type" value="Pediatrics"/>
           <div class="input-box">
             
-          
         
         <div class="input-box"> 
             <label >Age</label>

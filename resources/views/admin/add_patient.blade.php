@@ -123,6 +123,7 @@
                 </li>
             </ul>
         </div>
+
         <!-- ========================= Main ==================== -->
         <div class="main">
             <div class="topbar">
@@ -145,116 +146,52 @@
 
 
     <!-- =========== CONTAINER =========  -->
-    <h1 class="heading">Schedule</h1>
-    <button class="modals" onclick="openModal()">
-        Add
-    </button>
-        
-        <!-- ADD Modal -->
-        <div class="modal" id="myModal">
-          <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <form method="post" action="{{route('schedule.storeSchedule')}}" class="form">
-                        @csrf
-                        @method('post')
-                        <select name="doctor_id"class="form-select" aria-label="Default select example">
-                            <option disabled selected required>Select Doctor</option>
-                            @foreach($userDoctors as $doctor)
-                                @foreach($doctor->doctor as $doctorer)
-                                <option  value="{{$doctorer['id']}}">{{$doctor->name}}
-                                </option>
-                                @endforeach
-                            @endforeach
-                        </select>
-                        <div class="input-box">
-                            <select name="day"class="form-select" aria-label="Default select example">
-                                <option disabled selected required>Select Day</option>
-                                    <option  value="Monday">Monday</option>
-                                    <option  value="Tuesday">Tuesday</option>
-                                    <option  value="Wednesday">Wednesday</option>
-                                    <option  value="Thursday">Thursday</option>
-                                    <option  value="Friday">Friday</option>
-                                    <option  value="Saturday">Saturday</option>
-                                    <option  value="Sunday">Sunday</option>
-                            </select>
-                        </div>
-                        <div class="input-box">
-                            <label for="start_time">Start Time:</label>
-                            <input name="start_time" type="time" />
-                            <label for="end_time">End Time:</label>
-                            <input name="end_time"type="time" />
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">Add Schedule</button>
-                        </div>
-                    </form>
-          </div>
+
+    <form method="post" action="{{route('addPatient')}}" class="form">
+                    @csrf
+                    @method('post')
+                    <div class="input-box">
+                        <label for="name">Full Name</label>
+                        <input type="text" name="name" placeholder="Enter full name" required />
+                    </div>
+                    <div class="input-box">
+                        <label for="email">Email Address</label>
+                        <input type="text" name="email" placeholder="Enter email address" required />
+                    </div>
+                    <div class="input-box">
+                                <label for="password">Password</label>
+                                <input type="password" name="password" placeholder="password" required />
+                            </div>
+                            <div class="input-box">
+                                <label for="password">Confirm Password</label>
+                                <input type="password" placeholder="password" required />
+                            </div>        
+                    <button type="submit">Submit</button>
+                </form>    
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
         </div>
-        <!-- END ADD Modal -->
-        <div class="table_container">
-        <div class="row">
-            <div class="col-12">
-            <table class="table table-bordered">
-                <thead>
-                <tr>
-                    <th scope="col">Doctor Name</th>
-                    <th scope="col">Start Time</th>
-                    <th scope="col">End Time</th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($userDoctors as $doctor)
-                    @foreach($doctor->schedule as $schedule)
-                <tr>
-                    
-                    <td>{{$doctor->name}}</td>
-                    
-                    <td>{{$schedule->start_time}}</td>
-                    
-                    <td>{{$schedule->end_time}}</td>
-                    
-                    <td>
-                    <button type="button" class="btn btn-success"><a href="{{route('schedule.editSchedule', ['schedule' => $schedule])}}">Edit</a></button>
-                    </td>
-                    @can('admin')
-                    <td>
-                            <form method="post" class="cancelForm" action="{{route('schedule.deleteSchedule', ['schedule' => $schedule])}}">
-                                    @csrf
-                                    @method('delete')
-                                    <button type="submit" valaue="Delete" class="save1">Delete</button>
-                                </form>
-                    </td>
-                    @endcan
-                </tr>
+    @endif
+
+    @if($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
                 @endforeach
-                @endforeach
-                </tbody>
-                   
-            </table>
+            </ul>
+        </div>
+    @endif          
+
+    <!-- ======================================================== CONTAINER  ========================================  -->
 
 
-
-    <!-- =========== CONTAINER =========  -->
-
-
-    <!-- =========== Scripts =========  -->
+    <!-- ========================================================  Scripts   ========================================  -->
     <script src="{{ asset('javascript/main.js') }}"></script>
-    <script>
-  
 
-    document.querySelectorAll(".cancelForm").forEach(function(form) {
-        form.addEventListener("submit", function(event) {
-            var confirmation = confirm("Are you sure you want to delete this schedule?");
-            if (!confirmation) {
-                event.preventDefault();
-            }
-        });
-    });
-</script>
-    <!-- ====== ionicons ======= -->
-    
+    <!-- ========================================================  ionicons  ==========================================-->
+
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
