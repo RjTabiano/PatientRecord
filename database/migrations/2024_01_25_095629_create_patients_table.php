@@ -27,9 +27,11 @@ return new class extends Migration
             $table->increments('id');
             $table->unsignedInteger('patient_id');
             $table->string('type');
+            $table->string('first_name');
+            $table->string('last_name');
             $table->date('birthdate')->nullable();
             $table->string('sex');
-            $table->integer('age');
+            $table->integer('age')->nullable();
             $table->string('address');
             $table->string('mother_name');
             $table->bigInteger('mother_phone')->nullable();;
@@ -73,7 +75,9 @@ return new class extends Migration
             $table->increments('id');
             $table->string('type');
             $table->unsignedInteger('patient_id');
-            $table->integer('age');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->integer('age')->nullable();
             $table->date('birthdate')->nullable();
             $table->text('civil_status');
             $table->string('address');

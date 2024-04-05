@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\PatientRecord;
 use App\Models\Patient;
 use App\Models\Obgyne;
+use App\Models\Booking;
 
 class UserInfoController extends Controller
 {
@@ -45,4 +46,13 @@ class UserInfoController extends Controller
         return view('user.user_consultation_history');
     }
 
+
+    public function cancel_myBooking(Booking $book, Request $request) {
+        $status = $request->input("status");
+        $book->update([
+            'status' => $status
+        ]);
+
+        return redirect(route('myAppointment'));
+    }
 }

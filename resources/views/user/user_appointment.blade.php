@@ -77,6 +77,7 @@
                     <th scope="col">Date</th>
                     <th scope="col">Time</th>
                     <th scope="col">Status</th>
+                    <th scope="col">Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -87,6 +88,18 @@
                     <td>{{$book->date}}</td>
                     <td>{{$book->time}}</td>
                     <td>{{$book->status}}</td>
+                    <td>
+                    @if($book->status != "Cancelled")
+                                        
+                                                <form class="cancelForm" method="put" action="{{ route('cancelAppointment', ['book' => $book]) }}">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" name="status" value="Cancelled">
+                                                    <button class="save1" type="submit">Cancel</button>
+                                                </form>
+                                            
+                    @endif
+                    </td>
                     </tr>
                 @endforeach
                 </tbody>

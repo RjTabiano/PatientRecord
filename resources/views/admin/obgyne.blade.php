@@ -161,8 +161,9 @@
         @method('post')
         <div class="input-box">
           <input type="hidden" name="type" value="Obgyne" />
-          <label>Full Name</label>
-          <input type="text" placeholder="Enter full name" name="name" value="<?php echo !empty($response["Patient's Name: (Surname, First Name, Middle Name)"]) ? $response["Patient's Name: (Surname, First Name, Middle Name)"] : ''; ?>" required />
+          <label>Name</label>
+          <input type="text" placeholder="Enter Last Name" name="last_name" value="" required />
+          <input type="text" placeholder="Enter First Name" name="first_name" value="" required />
         </div>
 
         <div class="input-box">
@@ -171,10 +172,10 @@
         </div>
 
         <div class="column">
-          <div class="input-box">
-            <label>Age</label>
-            <input type="number" placeholder="Enter Age" name="age" value="<?php echo !empty($response["Age:"]) ? $response["Age:"] : ''; ?>" required />
-          </div>
+            <div class="input-box">
+                <label >Birth Date</label>
+                <input class=""  type="date" name="birthdate" value="" placeholder="Enter birth date"/>
+            </div>
           <div class="gender-box">
             <h3>Civil Status</h3>
             <div class="gender-option">

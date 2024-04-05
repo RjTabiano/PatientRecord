@@ -160,45 +160,45 @@
         @csrf
         @method('post')
         <div class="column">
-        <input type="hidden" name="type" value="Pediatrics"/>
           <div class="input-box">
             
-        
-        <div class="input-box"> 
-            <label >Age</label>
-            <input class="" type="number" name="age" placeholder="Enter Age" value="{{$pediatrics->age}}" required />
-          </div>
+        <div class="input-box">
+          <input type="hidden" name="type" value="Pediatrics" />
+          <label>Name</label>
+          <input type="text" placeholder="Enter Last Name" name="last_name" value="" required />
+          <input type="text" placeholder="Enter First Name" name="first_name" value="" required />
+        </div>
         <div class="input-box">
             <label >Birth Date</label>
-            <input class=""  type="date" name="birthdate" value="{{$pediatrics->birthdate}}" placeholder="Enter birth date"/>
-          </div>
+            <input class=""  type="date" name="birthdate" value="{{ isset($pediatrics->birthdate) ? $pediatrics->birthdate : '' }}" placeholder="Enter birth date"/>
+        </div>
         </div>
         <div class="input-box address">
           <label  >Address</label>
-          <input class="" type="text" name="address" placeholder="Enter address"  value="{{$pediatrics->address}}" required /><br>
+          <input class="" type="text" name="address" placeholder="Enter address"  value="{{ isset($pediatrics->address) ? $pediatrics->address : '' }}" required /><br>
           <div class="input-box">
-            <label >Mother's Name</label>
-            <input class=""  type="text" name="mother_name" placeholder="Enter Name" value="{{$pediatrics->mother_name}}" required />
+            <label >Mother's Name (Last Name, First Name)</label>
+            <input class=""  type="text" name="mother_name" placeholder="Enter Name" value="{{ isset($pediatrics->mother_name) ? $pediatrics->mother_name : '' }}" required />
           </div>
           <div class="input-box">
             <label>Mother's Phone Number</label>
-            <input class="" type="number" name="mother_phone" placeholder="Enter phone number" value="{{$pediatrics->mother_phone}}" required />
+            <input class="" type="number" name="mother_phone" placeholder="Enter phone number" value="{{ isset($pediatrics->mother_phone) ? $pediatrics->mother_phone : '' }}" required />
           </div>
           <div class="input-box">
-            <label>Father's Name</label>
-            <input class="" type="text" name="father_name" value="{{$pediatrics->father_name}}" placeholder="Enter Name" required />
+            <label>Father's Name (Last Name, First Name)</label>
+            <input class="" type="text" name="father_name" value="{{ isset($pediatrics->father_name) ? $pediatrics->father_name : '' }}" placeholder="Enter Name" required />
           </div>
           <div class="input-box">
             <label>Father's Phone Number</label>
-            <input class="" type="number" name="father_phone"  placeholder="Enter phone number" value="{{$pediatrics->father_phone}}" required />
+            <input class="" type="number" name="father_phone"  placeholder="Enter phone number" value="{{ isset($pediatrics->father_phone) ? $pediatrics->father_phone : '' }}" required />
           </div>
         </div>
         <div class="gender-box">
         <h5>Gender</h5>
         <div class="gender-option">
             <select name="sex">
-                <option value="male" {{ $pediatrics->sex === 'male' ? 'selected' : '' }}>Male</option>
-                <option value="female" {{ $pediatrics->sex === 'female' ? 'selected' : '' }}>Female</option>
+                <option value="male" {{ isset($pediatrics->sex) && $pediatrics->sex === 'male' ? 'selected' : '' }}>Male</option>
+                <option value="female" {{ isset($pediatrics->sex) && $pediatrics->sex === 'female' ? 'selected' : '' }}>Female</option>
             </select>
         </div>
     </div>

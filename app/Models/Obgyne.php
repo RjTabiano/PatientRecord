@@ -17,6 +17,9 @@ class Obgyne extends Model
 
     protected $fillable = [
         'type',
+        'last_name',
+        'first_name',
+        'birthdate',
         'age',
         'civil_status',
         'address',

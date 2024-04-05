@@ -208,18 +208,16 @@ class PatientController extends Controller
         $newPatientRecord = new PatientRecord();
         $newPatientRecord->patient_id = $patient->id;
         $newPatientRecord->type = $request->input("type");
+        $newPatientRecord->last_name = $request->input("last_name");
+        $newPatientRecord->first_name = $request->input("first_name");
         $newPatientRecord->birthdate = $request->input("birthdate");
         $newPatientRecord->sex = $request->input("sex");
-        $newPatientRecord->age = $request->input("age");
         $newPatientRecord->address = $request->input("address");
         $newPatientRecord->mother_name = $request->input("mother_name");
         $newPatientRecord->mother_phone = $request->input("mother_phone");
         $newPatientRecord->father_name = $request->input("father_name");
         $newPatientRecord->father_phone = $request->input("father_phone");
         $newPatientRecord->save();
-        
-     
-
 
         return view('admin.viewRecord', ['patient' => $patient]);
     }
@@ -293,7 +291,9 @@ class PatientController extends Controller
         $newObgyne = new Obgyne();
         $newObgyne->patient_id = $patient->id;
         $newObgyne->type = $request->input("type");
-        $newObgyne->age = $request->input("age");
+        $newObgyne->last_name = $request->input("last_name");
+        $newObgyne->first_name = $request->input("first_name");
+        $newObgyne->birthdate = $request->input("birthdate");
         $newObgyne->civil_status = $request->input("civil_status");
         $newObgyne->address = $request->input("address");
         $newObgyne->contact_number = $request->input("contact_number");
