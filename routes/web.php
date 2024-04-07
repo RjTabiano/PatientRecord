@@ -59,6 +59,9 @@ Route::get('/audit', [AuditController::class, 'audit'])->middleware(['auth', 'ad
 
 Route::get('/patientRecords', [PatientController::class, 'patient_record_history'])->middleware(['auth', 'admin'])->name('patient.patient_record_history');
 Route::get('/searchUser', [PatientController::class, 'search_user'])->middleware(['auth', 'admin'])->name('searchUser');
+Route::get('/patientRecords/{patient}/inactive', [PatientController::class, 'move_inactive'])->middleware(['auth', 'admin'])->name('moveInactive');
+
+
 
 Route::get('/addConsultation', [PatientController::class, 'add_consultation'])->middleware(['auth', 'admin'])->name('patient.addConsultation');
 

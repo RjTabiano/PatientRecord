@@ -13,6 +13,7 @@ use App\Models\consultationPediatrics;
 use App\Models\BaselineDiagnostics;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\InactiveUser;
 use App\Models\ObgyneHistory;
 use App\Models\Immunizations;
 use App\Models\pediatricsConsultation;
@@ -389,6 +390,18 @@ class PatientController extends Controller
         return redirect(route('patient.patient_record_history'))->with('success', 'Added Successfully');
 
     }
+
+
+    public function move_inactive(User $user)
+    {
+        InactiveUser::create($user->toArray());
+
+        $user->delete();
+
+        return redirect()->route('admin.patient_record_history')->with('success', 'User moved to inactive list successfully.');
+    }
+
+
 
     public function add_patientView(){
         return view('admin.add_patient');

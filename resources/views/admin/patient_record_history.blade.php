@@ -157,7 +157,7 @@
                 <tr>
                     <th>Full Name</th>
                     <th>Email</th>
-                    <th>Contact Number</th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -165,7 +165,13 @@
                     <tr>
                         <td onclick="window.location='{{route('patient.viewRecords', ['user' => $user])}}'" style="cursor: pointer;">{{$user->name}}</td>
                         <td onclick="window.location='{{route('patient.viewRecords', ['user' => $user])}}'" style="cursor: pointer;">{{$user->email}}</td>
-                        
+                        <td>
+                            <form action="{{ route('', $user) }}" method="POST">
+                                @csrf
+                                @method('POST')
+                                <button type="submit">Move to Inactive</button>
+                            </form>
+                    </td>
                     </tr>
                     @endforeach
              </tbody>
