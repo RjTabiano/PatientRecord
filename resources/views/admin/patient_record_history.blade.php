@@ -166,7 +166,7 @@
                         <td onclick="window.location='{{route('patient.viewRecords', ['user' => $user])}}'" style="cursor: pointer;">{{$user->name}}</td>
                         <td onclick="window.location='{{route('patient.viewRecords', ['user' => $user])}}'" style="cursor: pointer;">{{$user->email}}</td>
                         <td>
-                            <form action="{{ route('', $user) }}" method="POST">
+                            <form action="{{ route('moveInactive', $user) }}" method="POST">
                                 @csrf
                                 @method('POST')
                                 <button type="submit">Move to Inactive</button>

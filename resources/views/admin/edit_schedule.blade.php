@@ -46,7 +46,6 @@
                     </a>
                 </li>
                 @endcan
-
                 <li>
                     <a href="{{route('patient.patient_record_history')}}">
                         <span class="icon">

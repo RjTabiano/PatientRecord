@@ -207,6 +207,7 @@
                                     </div>
                                 </div>
                                 <button id="publishButton" data-patient-id="{{ $patient->patient_id }}">Publish</button>
+                                <button id="printButton" >Print</button>
     <section class="overlay"></section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script>
@@ -248,8 +249,21 @@
             });
         }
     </script>
+    <script>
+        document.getElementById('printButton').addEventListener('click', function() {
+            var patientView = document.querySelector('.patient-view');
 
+            html2canvas(patientView).then(function(canvas) {
+                var imageData = canvas.toDataURL('image/png');
 
+                var downloadLink = document.createElement('a');
+                downloadLink.href = imageData;
+                downloadLink.download = 'patient_info.png';
+
+                downloadLink.click();
+            });
+        });
+    </script>
 
     <!-- =========== CONTAINER =========  -->
 

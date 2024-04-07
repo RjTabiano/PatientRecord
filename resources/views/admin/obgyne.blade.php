@@ -258,7 +258,6 @@
                 <label for="date">date</label>
                 <input type="date" id="CBC_HgB" name="date" value="<?php echo !empty($response['Date:']) ? $response['Date:'] : ''; ?>">
             </div>
-
             <div class="form-group">
                 <label for="blood_type">Blood Type</label>
                 <select id="blood_type" name="blood_type">
