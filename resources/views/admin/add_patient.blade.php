@@ -145,7 +145,7 @@
         </div>
 
 
-    <!-- =========== CONTAINER =========  -->
+    <!-- =========== CONTAINER ==========  -->
     <form method="post" action="{{route('addPatient')}}" class="form">
                     @csrf
                     @method('post')

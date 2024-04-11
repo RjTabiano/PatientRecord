@@ -144,7 +144,7 @@
 
         </div>
 
-    <!-- =========== CONTAINER =========  -->
+    <!-- =========== CONTAINER ==========  -->
     <h1 class="heading">Booking List</h1>
     <br>
     <div class="table_container">

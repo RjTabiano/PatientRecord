@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{ asset('css/login-signup.css') }}" />
     <title>Sign in & Sign up Form</title>
   </head>
+  
   <body>
     <div class="container">
       <div class="forms-container">

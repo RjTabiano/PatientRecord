@@ -145,7 +145,7 @@
 
         </div>
 
-    <!-- =========== CONTAINER =========  -->
+    <!-- ============ CONTAINER =========  -->
     <header>OCR Scanner (Optional)</header>
     <form action="{{ route('scanner.uploadO', ['patient' => $patient]) }}" method="post" accept="image/*" enctype="multipart/form-data">
                 @csrf
