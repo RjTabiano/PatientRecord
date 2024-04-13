@@ -190,10 +190,10 @@
         </table>
 
 
-    <!-- =========== END CONTAINER =========  -->
+    <!-- ============ END CONTAINER =========  -->
 
 
-    <!-- =========== Scripts =========  -->
+    <!-- =========== Scripts =========-->
     <script src="{{ asset('javascript/main.js') }}"></script>
 
     <!-- ====== ionicons ======= -->

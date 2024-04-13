@@ -15,7 +15,7 @@
     />
 </head>
 <body>
-    <!-- ================ Navigation ================ -->
+    <!-- ================= Navigation ================ -->
     <div class="container">
         <div class="navigation">
             <ul>
@@ -178,7 +178,6 @@
                     <th>Full Name</th>
                     <th>Email</th>
                     <th></th>
-                    <th>Email</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -211,7 +210,7 @@
                 </tbody>
             </table>
     </div>
-    <!-- =========== CONTAINER =========  -->
+    <!-- =========== CONTAINER ==========  -->
     <!-- =========== Scripts =========  -->
     <script src="{{ asset('javascript/main.js') }}"></script>
     <!-- ====== ionicons ======= -->

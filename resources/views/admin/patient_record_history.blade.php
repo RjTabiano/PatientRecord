@@ -125,7 +125,7 @@
             </ul>
         </div>
 
-        <!-- ========================= Main ==================== -->
+        <!-- ====================== Main ==================== -->
         <div class="main">
             <div class="topbar">
                 <div class="toggle">
@@ -168,18 +168,19 @@
                         <td onclick="window.location='{{route('patient.viewRecords', ['user' => $user])}}'" style="cursor: pointer;">{{$user->name}}</td>
                         <td onclick="window.location='{{route('patient.viewRecords', ['user' => $user])}}'" style="cursor: pointer;">{{$user->email}}</td>
                         <td>
-                            <form action="{{ route('moveInactive', $user) }}" method="POST">
+                            <form action="{{ route('moveInactive', ['user' => $user]) }}" method="POST">
                                 @csrf
                                 @method('POST')
                                 <button type="submit">Move to Inactive</button>
                             </form>
                     </td>
+                    
                     </tr>
                     @endforeach
              </tbody>
             </table>
         </div>
-    <!-- =========== CONTAINER =========  -->
+    <!-- =========== CONTAINER ==========  -->
 
 
     <!-- =========== Scripts =========  -->

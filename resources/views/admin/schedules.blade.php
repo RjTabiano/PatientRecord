@@ -236,7 +236,7 @@
 
 
 
-    <!-- =========== CONTAINER =========  -->
+    <!-- =========== CONTAINER ==========  -->
 
     <!-- =========== Scripts =========  -->
     <script src="{{ asset('javascript/main.js') }}"></script>
