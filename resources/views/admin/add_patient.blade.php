@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="" href="{{ asset('images/logocircle.png') }}" />
     
-   <title>The Queen's</title>
+   <title>The Queen's Clinic</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link
       href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
@@ -51,7 +51,7 @@
                         <span class="icon">
                             <ion-icon name="newspaper-outline"></ion-icon>
                         </span>
-                        <span class="title">Patient Records</span>
+                        <span class="title">Add Patient Accounts</span>
                     </a>
                 </li>
                 <li>
@@ -78,7 +78,7 @@
                         <span class="icon">
                             <ion-icon name="book-outline"></ion-icon>
                         </span>
-                        <span class="title">Booking</span>
+                        <span class="title">Patient's Schedule</span>
                     </a>
                 </li>
                 @endcannot
@@ -88,7 +88,7 @@
                         <span class="icon">
                             <ion-icon name="calendar-number-outline"></ion-icon>
                         </span>
-                        <span class="title">Schedule</span>
+                        <span class="title">Doctor's Schedule</span>
                     </a>
                 </li>
                 @endcannot
@@ -97,7 +97,7 @@
                         <span class="icon">
                             <ion-icon name="folder-open-outline"></ion-icon>
                         </span>
-                        <span class="title">feedback</span>
+                        <span class="title">Feedback</span>
                     </a>
                 </li>
                 @can('admin')
@@ -131,13 +131,6 @@
                     <ion-icon name="menu-outline"></ion-icon>
                 </div>
 
-                <div class="search">
-                    <label>
-                        <input type="text" placeholder="Search here">
-                        <ion-icon name="search-outline"></ion-icon>
-                    </label>
-                </div>
-
                 <div class="user">
                     
                 </div>
@@ -146,9 +139,15 @@
 
 
     <!-- =========== CONTAINER =========  -->
+    <br><br><br>
+    <header>
+      <h3>Add Patient Records</h3>
+    </header>
+    <br>
     <form method="post" action="{{route('addPatient')}}" class="form">
                     @csrf
                     @method('post')
+                    <br>
                     <div class="input-box">
                         <label for="name">Full Name</label>
                         <input type="text" name="name" placeholder="Enter full name" required />
@@ -165,7 +164,7 @@
                                 <label for="password">Confirm Password</label>
                                 <input type="password" placeholder="password" required />
                             </div>        
-                    <button type="submit">Submit</button>
+                            <button type="submit">Submit</button>
                 </form>    
     @if(session('success'))
         <div class="alert alert-success">

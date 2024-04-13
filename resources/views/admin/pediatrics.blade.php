@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="" href="{{ asset('images/logocircle.png') }}" />
     
-   <title>The Queen's</title>
+   <title>The Queen's Clinic</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link
       href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
@@ -53,7 +53,7 @@
                         <span class="icon">
                             <ion-icon name="newspaper-outline"></ion-icon>
                         </span>
-                        <span class="title">Patient Records</span>
+                        <span class="title">Add Patient Accounts</span>
                     </a>
                 </li>
                 <li>
@@ -80,7 +80,7 @@
                         <span class="icon">
                             <ion-icon name="book-outline"></ion-icon>
                         </span>
-                        <span class="title">Booking</span>
+                        <span class="title">Patient's Schedule</span>
                     </a>
                 </li>
                 @endcannot
@@ -90,7 +90,7 @@
                         <span class="icon">
                             <ion-icon name="calendar-number-outline"></ion-icon>
                         </span>
-                        <span class="title">Schedule</span>
+                        <span class="title">Doctor's Schedule</span>
                     </a>
                 </li>
                 @endcannot
@@ -99,7 +99,7 @@
                         <span class="icon">
                             <ion-icon name="folder-open-outline"></ion-icon>
                         </span>
-                        <span class="title">feedback</span>
+                        <span class="title">Feedback</span>
                     </a>
                 </li>
                 @can('admin')
@@ -131,82 +131,84 @@
                 <div class="toggle">
                     <ion-icon name="menu-outline"></ion-icon>
                 </div>
-
-                <div class="search">
-                    <label>
-                        <input type="text" placeholder="Search here">
-                        <ion-icon name="search-outline"></ion-icon>
-                    </label>
-                </div>
-
                 <div class="user">
                     
                 </div>
 
         </div>
-
+        <br><br>
     <!-- =========== CONTAINER =========  -->
-    <header>OCR Scanner (Optional)</header>
-    <form action="{{ route('scanner.uploadP', ['patient' => $patient]) }}" method="post" accept="image/*" enctype="multipart/form-data">
+    <header class="heading">OCR Scanner (Optional)</header>
+    <br>
+    <table style="margin: 0 auto;  width:20%">
+    <tr>
+        <td>
+            <form action="{{ route('scanner.uploadP', ['patient' => $patient]) }}" method="post" accept="image/*" enctype="multipart/form-data">
                 @csrf
-               @method('PUT')
-                  <input type="file" class="form-control" name="image" accept="image/*">
-                  <input type="submit" class="custom-button" name="submit" value="Upload">
-              </form>
-    <header>Pediatrics Form</header>
-    <button type="button" class="collapsible">Patient Information</button>
+                @method('PUT')
+                <input type="file" class="form-control" name="image" accept="image/*">
+                <br>
+                <input type="submit" class="custom-button" name="submit" value="Upload">
+            </form>
+        </td>
+    </tr>
+</table>
+
+              <br><br>
+    <header class="heading">Pediatrics Forms</header>
+    <button type="button" class="collapsible">&nbspPatient Information</button>
     <div class="content">
     <form method="post" action="{{ route('patient.store', ['patient' => $patient]) }}" class="form_record">
         @csrf
         @method('post')
-        <div class="column">
+          <div class="column">
+            <div class="input-box">
+          <br>   
           <div class="input-box">
-            
-        <div class="input-box">
-          <input type="hidden" name="type" value="Pediatrics" />
-          <label>Name</label>
-          <input type="text" placeholder="Enter Last Name" name="last_name" value="" required />
-          <input type="text" placeholder="Enter First Name" name="first_name" value="" required />
-        </div>
-        <div class="input-box">
-            <label >Birth Date</label>
-            <input class=""  type="date" name="birthdate" value="{{ isset($pediatrics->birthdate) ? $pediatrics->birthdate : '' }}" placeholder="Enter birth date"/>
-        </div>
-        </div>
-        <div class="input-box address">
-          <label  >Address</label>
-          <input class="" type="text" name="address" placeholder="Enter address"  value="{{ isset($pediatrics->address) ? $pediatrics->address : '' }}" required /><br>
-          <div class="input-box">
-            <label >Mother's Name (Last Name, First Name)</label>
-            <input class=""  type="text" name="mother_name" placeholder="Enter Name" value="{{ isset($pediatrics->mother_name) ? $pediatrics->mother_name : '' }}" required />
+            <input type="hidden" name="type" value="Pediatrics" />
+            <label>&nbspName</label>
+            <input type="text" placeholder="Enter Last Name" name="last_name" value="" required />
+            <input type="text" placeholder="Enter First Name" name="first_name" value="" required />
           </div>
           <div class="input-box">
-            <label>Mother's Phone Number</label>
-            <input class="" type="number" name="mother_phone" placeholder="Enter phone number" value="{{ isset($pediatrics->mother_phone) ? $pediatrics->mother_phone : '' }}" required />
+              <label >&nbspBirth Date</label>
+              <input class=""  type="date" name="birthdate" value="{{ isset($pediatrics->birthdate) ? $pediatrics->birthdate : '' }}" placeholder="Enter birth date"/>
           </div>
+          </div>
+          <div class="input-box address">
+            <div class="input-box">
+            <label  >&nbspAddress</label>
+            <input class="" type="text" name="address" placeholder="Enter address"  value="{{ isset($pediatrics->address) ? $pediatrics->address : '' }}" required /><br>
+            </div>
+            <div class="input-box">
+              <label >&nbspMother's Name (Last Name, First Name)</label>
+              <input class=""  type="text" name="mother_name" placeholder="Enter Name" value="{{ isset($pediatrics->mother_name) ? $pediatrics->mother_name : '' }}" required />
+            </div>
+            <div class="input-box">
+              <label>&nbspMother's Phone Number</label>
+              <input class="" type="number" name="mother_phone" placeholder="Enter phone number" value="{{ isset($pediatrics->mother_phone) ? $pediatrics->mother_phone : '' }}" required />
+            </div>
+            <div class="input-box">
+              <label>&nbspFather's Name (Last Name, First Name)</label>
+              <input class="" type="text" name="father_name" value="{{ isset($pediatrics->father_name) ? $pediatrics->father_name : '' }}" placeholder="Enter Name" required />
+            </div>
+            <div class="input-box">
+              <label>&nbspFather's Phone Number</label>
+              <input class="" type="number" name="father_phone"  placeholder="Enter phone number" value="{{ isset($pediatrics->father_phone) ? $pediatrics->father_phone : '' }}" required />
+            </div>
+          </div>        
           <div class="input-box">
-            <label>Father's Name (Last Name, First Name)</label>
-            <input class="" type="text" name="father_name" value="{{ isset($pediatrics->father_name) ? $pediatrics->father_name : '' }}" placeholder="Enter Name" required />
-          </div>
-          <div class="input-box">
-            <label>Father's Phone Number</label>
-            <input class="" type="number" name="father_phone"  placeholder="Enter phone number" value="{{ isset($pediatrics->father_phone) ? $pediatrics->father_phone : '' }}" required />
-          </div>
-        </div>
-        <div class="gender-box">
-        <h5>Gender</h5>
-        <div class="gender-option">
-            <select name="sex">
-                <option value="male" {{ isset($pediatrics->sex) && $pediatrics->sex === 'male' ? 'selected' : '' }}>Male</option>
-                <option value="female" {{ isset($pediatrics->sex) && $pediatrics->sex === 'female' ? 'selected' : '' }}>Female</option>
-            </select>
-        </div>
+              <label>Gender</label>
+              <select name="sex">
+                  <option value="male" {{ isset($pediatrics->sex) && $pediatrics->sex === 'male' ? 'selected' : '' }}>Male</option>
+                  <option value="female" {{ isset($pediatrics->sex) && $pediatrics->sex === 'female' ? 'selected' : '' }}>Female</option>
+              </select>
+      </div>
+      <button type="submit">Submit</button>
+     </form>
+      </div>
     </div>
-        <button style="width:100%" type="submit">Save</button>
-    </form>
-</div>
-    </div>
-    <button type="button" class="collapsible">Vaccine</button>
+    <button type="button" class="collapsible">&nbspVaccine</button>
       <div class="content">
       <form>
       <table class="vaccine_table">
@@ -348,11 +350,12 @@
           </tr>
           </table>
          
-        <button style="width:100%" type="submit">Save</button>
+          <button type="submit">Save</button>
       </form>
     </div>
     <button type="button" class="collapsible">Pediatrics Consultation</button>
     <div class="content">
+      <br>
     <div class="input-box">
           <label for="">P.E./History:</label>
           <textarea name="history" style="width: 100;%" id="history" cols="30" rows="10"></textarea>
@@ -362,8 +365,9 @@
           <textarea name="orders" style="width: 100;%" id="orders" cols="30" rows="10"></textarea>
         </div>
          
-        <button style="width:100%" type="submit">Save</button>
+        <button type="submit">Save</button>
     </div>
+    <br>
     
 
 

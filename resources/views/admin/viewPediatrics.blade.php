@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="" href="{{ asset('images/logocircle.png') }}" />
     
-   <title>The Queen's</title>
+   <title>The Queen's Clinic</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link
       href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
@@ -53,7 +53,7 @@
                         <span class="icon">
                             <ion-icon name="newspaper-outline"></ion-icon>
                         </span>
-                        <span class="title">Patient Records</span>
+                        <span class="title">Add Patient Accounts</span>
                     </a>
                 </li>
                 <li>
@@ -80,7 +80,7 @@
                         <span class="icon">
                             <ion-icon name="book-outline"></ion-icon>
                         </span>
-                        <span class="title">Booking</span>
+                        <span class="title">Patient's Schedule</span>
                     </a>
                 </li>
                 @endcannot
@@ -90,7 +90,7 @@
                         <span class="icon">
                             <ion-icon name="calendar-number-outline"></ion-icon>
                         </span>
-                        <span class="title">Schedule</span>
+                        <span class="title">Doctor's Schedule</span>
                     </a>
                 </li>
                 @endcannot
@@ -99,7 +99,7 @@
                         <span class="icon">
                             <ion-icon name="folder-open-outline"></ion-icon>
                         </span>
-                        <span class="title">feedback</span>
+                        <span class="title">Feedback</span>
                     </a>
                 </li>
                 @can('admin')
@@ -133,81 +133,78 @@
                     <ion-icon name="menu-outline"></ion-icon>
                 </div>
 
-                <div class="search">
-                    <label>
-                        <input type="text" placeholder="Search here">
-                        <ion-icon name="search-outline"></ion-icon>
-                    </label>
-                </div>
-
                 <div class="user">
                     
                 </div>
 
         </div>
-
-
     <!-- =========== CONTAINER =========  -->
+    <div class="container" style="margin: 0 50px;">
     <div class="patient-view">
-                                    <h1>Patient Information</h1>
-                                    <div class="info-box">
-                                        <label>Type:</label>
-                                        <span>{{ $patient->type }}</span>
-                                    </div>
-                                    <div class="info-box">
-                                        <label>Birth Date:</label>
-                                        <span>{{ $patient->birthdate }}</span>
-                                    </div>
-                                    <div class="info-box">
-                                        <label>Age:</label>
-                                        <span>{{ $patient->age }}</span>
-                                    </div>
-                                    <div class="info-box">
-                                        <label>Gender:</label>
-                                        <span>{{ $patient->sex }}</span>
-                                    </div>
-                                    <div class="info-box">
-                                        <label>Address:</label>
-                                        <span>{{ $patient->address }}</span>
-                                    </div>
-                                    <div class="info-box">
-                                        <label>Mother's Name:</label>
-                                        <span>{{ $patient->mother_name }}</span>
-                                    </div>
-                                    <div class="info-box">
-                                        <label>Mother's Phone Number:</label>
-                                        <span>{{ $patient->mother_phone }}</span>
-                                    </div>
-                                    <div class="info-box">
-                                        <label>Father's Name:</label>
-                                        <span>{{ $patient->father_name }}</span>
-                                    </div>
-                                    <div class="info-box">
-                                        <label>Father's Phone Number:</label>
-                                        <span>{{ $patient->father_phone }}</span>
-                                    </div>
-                                   
-                                        <div class="info-box">
-                                            <label>Vaccines:</label>
-                                            <ul>
-                                                @foreach($bcgVaccine as $vaccine)
-                                                   
-                                                    <li>{{ $vaccine->BCG }} </li>
-                                                    
-                                                @endforeach
-                                            </ul>
-                                        </div>
-                                    <div class="info-box">
-                                        <label>P.E./History:</label>
-                                        <span></span>
-                                    </div>
-                                    <div class="info-box">
-                                        <label>Orders:</label>
-                                        <span></span>
-                                    </div>
-                                </div>
-                                <button id="publishButton" data-patient-id="{{ $patient->patient_id }}">Publish</button>
-                                <button id="printButton" >Print</button>
+    <h1 class="h1-print">Patient Information</h1>
+    <table class="patient-info-table">
+        <tr>
+            <td class="view-label">Type:</td>
+            <td class="view-label-info">{{ $patient->type }}</td>
+        </tr>
+        <tr>
+            <td class="view-label">Birth Date:</td>
+            <td class="view-label-info">{{ $patient->birthdate }}</td>
+        </tr>
+        <tr>
+            <td class="view-label">Age:</td>
+            <td class="view-label-info">{{ $patient->age }}</td>
+        </tr>
+        <tr>
+            <td class="view-label">Gender:</td>
+            <td class="view-label-info">{{ $patient->sex }}</td>
+        </tr>
+        <tr>
+            <td class="view-label">Address:</td>
+            <td class="view-label-info">{{ $patient->address }}</td>
+        </tr>
+        <tr>
+            <td class="view-label">Mother's Name:</td>
+            <td class="view-label-info">{{ $patient->mother_name }}</td>
+        </tr>
+        <tr>
+            <td class="view-label">Mother's Phone Number:</td>
+            <td class="view-label-info">{{ $patient->mother_phone }}</td>
+        </tr>
+        <tr>
+            <td class="view-label">Father's Name:</td>
+            <td class="view-label-info">{{ $patient->father_name }}</td>
+        </tr>
+        <tr>
+            <td class="view-label">Father's Phone Number:</td>
+            <td class="view-label-info">{{ $patient->father_phone }}</td>
+        </tr>
+        <tr>
+            <td class="view-label">Vaccines:</td>
+            <td class="view-label-info">
+                <ul>
+                    @foreach($bcgVaccine as $vaccine)
+                        <li>{{ $vaccine->BCG }}</li>
+                    @endforeach
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td class="view-label">P.E./History:</td>
+            <td class="view-label-info"></td>
+        </tr>
+        <tr>
+            <td class="view-label">Orders:</td>
+            <td class="view-label-info"></td>
+        </tr>
+    </table>
+    <br><br>
+</div>
+<div class="containeer">
+        <button id="publishButton" data-patient-id="{{ $patient->patient_id }}" class="custom-button">Publish</button>
+        <button id="printButton" class="custom-button">Print</button>
+    </div>
+
     <section class="overlay"></section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script>
