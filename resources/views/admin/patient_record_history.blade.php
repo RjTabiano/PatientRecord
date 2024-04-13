@@ -125,7 +125,7 @@
             </ul>
         </div>
 
-        <!-- ========================= Main ==================== -->
+        <!-- ====================== Main ==================== -->
         <div class="main">
             <div class="topbar">
                 <div class="toggle">
@@ -146,10 +146,10 @@
                 </div>
 
         </div>
-
+ 
     <!-- =========== CONTAINER =========  -->
     <header class="heading">Patient Records</header>
-        <button><a href="{{ route('addPatientView') }}">Add Patient</a></button>
+        <a href="{{ route('addPatientView') }}" class="btn btn-md btn-primary">Add Patient</a>
         <div class="table-wrapper">
             <p class = "instruction"><b>Note: Click user to add Patient Record</b></p>
             <table class="fl-table">
@@ -166,12 +166,13 @@
                         <td onclick="window.location='{{route('patient.viewRecords', ['user' => $user])}}'" style="cursor: pointer;">{{$user->name}}</td>
                         <td onclick="window.location='{{route('patient.viewRecords', ['user' => $user])}}'" style="cursor: pointer;">{{$user->email}}</td>
                         <td>
-                            <form action="{{ route('moveInactive', $user) }}" method="POST">
+                            <form action="{{ route('moveInactive', ['user' => $user]) }}" method="POST">
                                 @csrf
                                 @method('POST')
                                 <button type="submit">Move to Inactive</button>
                             </form>
                     </td>
+                    
                     </tr>
                     @endforeach
              </tbody>

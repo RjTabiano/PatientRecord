@@ -220,7 +220,7 @@ class PatientController extends Controller
         $newPatientRecord->father_phone = $request->input("father_phone");
         $newPatientRecord->save();
 
-        return view('admin.viewRecord', ['patient' => $patient]);
+        return view('admin.pediatrics', ['patient' => $patient]);
     }
 
     public function storeVaccine(Patient $patient, Request $request) {
@@ -243,7 +243,7 @@ class PatientController extends Controller
         $newVaccine->Flu = $request->input("Flu");
         $newVaccine->save();
 
-        return view('admin.viewRecord', ['patient' => $patient]);
+        return view('admin.pediatrics', ['patient' => $patient]);
 
     }
 
@@ -282,7 +282,7 @@ class PatientController extends Controller
         $description2 = $dom2->saveHTML();
         $newConsultationPedia->orders = $orders;
 
-        return view('admin.viewRecord', ['patient' => $patient]);
+        return view('admin.pediatrics', ['patient' => $patient]);
 
     }
 
@@ -398,7 +398,7 @@ class PatientController extends Controller
 
         $user->delete();
 
-        return redirect()->route('admin.patient_record_history')->with('success', 'User moved to inactive list successfully.');
+        return redirect()->route('patient.patient_record_history')->with('success', 'User moved to inactive list successfully.');
     }
 
 

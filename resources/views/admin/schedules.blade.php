@@ -144,7 +144,7 @@
         </div>
 
 
-    <!-- =========== CONTAINER =========  -->
+    <!-- ============ CONTAINER =========  -->
     <h1 class="heading">Schedule</h1>
     <button class="modals" onclick="openModal()">
         Add
