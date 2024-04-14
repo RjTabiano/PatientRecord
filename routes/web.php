@@ -56,10 +56,11 @@ Route::post('/feedback/storeFeedback', [FeedbackController::class, 'store_feedba
 
 Route::get('/audit', [AuditController::class, 'audit'])->middleware(['auth', 'admin'])->name('audit');
 
-
+Route::get('/InactiveUsers', [PatientController::class, 'inactive_users'])->middleware(['auth', 'admin'])->name('inactiveUsers');
 Route::get('/patientRecords', [PatientController::class, 'patient_record_history'])->middleware(['auth', 'admin'])->name('patient.patient_record_history');
 Route::get('/searchUser', [PatientController::class, 'search_user'])->middleware(['auth', 'admin'])->name('searchUser');
-Route::post('/patientRecords/{user}/inactive', [PatientController::class, 'move_inactive'])->middleware(['auth', 'admin'])->name('moveInactive');
+Route::get('/patientRecords/{user}/inactive', [PatientController::class, 'move_inactive'])->middleware(['auth', 'admin'])->name('moveInactive');
+Route::get('/patientRecords/{user}/active', [PatientController::class, 'move_active'])->middleware(['auth', 'admin'])->name('moveActive');
 
 
 

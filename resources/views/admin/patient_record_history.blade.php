@@ -110,6 +110,14 @@
                         <span class="title">Audit Trail</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{route('inactiveUsers')}}">
+                        <span class="icon">
+                            <ion-icon name="folder-open-outline"></ion-icon>
+                        </span>
+                        <span class="title">Inactive Archive</span>
+                    </a>
+                </li>
                 @endcan
                 <li>
                     <form method="POST" action="{{ route('logout') }}">
@@ -169,18 +177,26 @@
                         <td onclick="window.location='{{route('patient.viewRecords', ['user' => $user])}}'" style="cursor: pointer;">{{$user->name}}</td>
                         <td onclick="window.location='{{route('patient.viewRecords', ['user' => $user])}}'" style="cursor: pointer;">{{$user->email}}</td>
                         <td>
-                            <form action="{{ route('moveInactive', ['user' => $user]) }}" method="POST">
-                                @csrf
-                                @method('POST')
-                                <button class="button-inactive" type="submit">Move to Inactive</button>
-                            </form>
-                    </td>
-                    
+                                <form action="{{ route('moveInactive', ['user' => $user]) }}" class="form-button">
+                                    @csrf
+                                    @method('PUT')
+                                    <button type="submit" class="deactivate-button">Deactivate</button>
+                                </form>
+                        </td>
                     </tr>
                     @endforeach
              </tbody>
             </table>
         </div>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
     <!-- =========== CONTAINER ==========  -->
 
 

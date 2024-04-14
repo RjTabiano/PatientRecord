@@ -164,7 +164,7 @@
                                 <label for="password">Confirm Password</label>
                                 <input type="password" placeholder="password" required />
                             </div>        
-                            <button type="submit">Submit</button>
+                            <button type="submit" class="submit-button">Submit</button>
                 </form>    
     @if(session('success'))
         <div class="alert alert-success">

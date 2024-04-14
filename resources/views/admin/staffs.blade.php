@@ -169,7 +169,7 @@
                                 <label for="password">Confirm Password</label>
                                 <input type="password" placeholder="password" required />
                             </div>        
-                    <button type="submit">Submit</button>
+                    <button type="submit" class="submit-button">Submit</button>
                         
                 </form>    
 

@@ -157,104 +157,98 @@
     <header>Obgyne Form</header>
     <button type="button" class="collapsible">Patient Information</button>
     <div class="content">
-    <form method="post" action="{{route('patient.storeObgyne' , ['patient' => $patient])}}">
+    <form method="post" action="{{route('patient.storeObgyne' , ['patient' => $patient])}}" class="gridForm">
         @csrf
         @method('post')
-        <div class="input-box">
+        <div class="grid-input name">
           <input type="hidden" name="type" value="Obgyne" />
           <label>Name</label>
           <input type="text" placeholder="Enter Last Name" name="last_name" value="" required />
           <input type="text" placeholder="Enter First Name" name="first_name" value="" required />
         </div>
 
-        <div class="input-box">
+        <div class="grid-input">
           <label>Email Address</label>
           <input type="text" placeholder="Enter email address" name="email" value="<?php echo !empty($response["Email:"]) ? $response["Email:"] : ''; ?>" required />
         </div>
-
-        <div class="column">
-            <div class="input-box">
-                <label >Birth Date</label>
-                <input class=""  type="date" name="birthdate" value="" placeholder="Enter birth date"/>
-            </div>
-          <div class="gender-box">
-            <h3>Civil Status</h3>
-            <div class="gender-option">
-                <select name="civil_status">
+        <div class="grid-input">
+            <label >Birth Date</label>
+            <input class=""  type="date" name="birthdate" value="" placeholder="Enter birth date"/>
+        </div>
+        <div class="grid-input">
+        <h3>Civil Status</h3>
+            <select name="civil_status">
                 <option value="Single">Single</option>
                 <option value="Married" >Married</option>
                 <option value="Widowed" >Widowed</option>
                 <option value="Separated" >Separated</option>
-                </select>
-            </div>
-            </div>
+            </select>
         </div>
-        
-        <div class="input-box address">
+        <div class="grid-input">
           <label class="form-control" >Address</label>
           <input class="form-control" type="text" placeholder="Enter address" name="address" value="<?php echo !empty($response['Address:']) ? $response['Address:'] : ''; ?>" required />
-          <div class="input-box">
+        </div>
+        <div class="grid-input">
             <label class="form-control">Contact Number</label>
             <input class="form-control" type="number" placeholder="Enter contact number" name="contact_number" value="<?php echo !empty($response['Contact No.:']) ? $response['Contact No.:'] : ''; ?>" required />
-          </div>
-          <div class="input-box">
+        </div>
+        <div class="grid-input">
             <label class="form-control">Occupation</label>
             <input class="form-control" type="text" placeholder="Enter occupation" name="occupation" value="<?php echo !empty($response['Occupation:']) ? $response['Occupation:'] : ''; ?>" required />
-          </div>
-          <div class="input-box">
+        </div>
+        <div class="grid-input">
             <label class="form-control" >Religion</label>
             <input class="form-control" type="text" placeholder="Enter religion" name="religion" value="<?php echo !empty($response['Religion:']) ? $response['Religion:'] : ''; ?>" required />
-          </div>
-          <div class="input-box">
+        </div>
+          <div class="grid-input">
             <label class="form-control" >Referred by:</label>
             <input class="form-control" type="text" placeholder="Referred by:" name="referred_by" value="<?php echo !empty($response['Referred By:']) ? $response['Referred By:'] : ''; ?>" required />
           </div>
-          <div class="input-box">
+          <div class="grid-input">
             <label class="form-control" >Emergency Contact Number: </label>
             <input class="form-control" type="number" placeholder="" name="emergency_contact_no" value="<?php echo !empty($response["Person to notify in case of Emergency / Contact No.:"]) ? $response["Person to notify in case of Emergency / Contact No.:"] : ''; ?>" required />
           </div>
-        </div>
-        <button type="submit">Submit</button>
+        <button type="submit" class="submit-grid">Submit</button>
         </form>
     </div>
     <button type="button" class="collapsible">Medical History</button>
     <div class="content">
-        <form>
+        <form class="gridForm">
             @csrf
             @method('post')
-                <div class="form-group">
+            <div class="grid-input">
                 <label for="Hypertension">Hypertension</label>
                 <input type="checkbox" id="Hypertension" name="Hypertension" value="Hypertension" <?php echo (!empty($response['Hypertension']) && strtolower($response['Hypertension']) === 'SELECTED') ? 'checked' : ''; ?> >
             </div>
-                <div class="form-group">
+            <div class="grid-input">
                 <label for="Asthma">Asthma</label>
                 <input type="checkbox" id="Hypertension" name="Asthma" value="Asthma" <?php echo (!empty($response['Hypertension']) && strtolower($response['Hypertension']) === 'SELECTED') ? 'checked' : ''; ?>>
             </div>
-
-            <div class="form-group">
+            <div class="grid-input">
                 <label for="Thyroid_disease">Thyroid Disease</label>
                 <input type="checkbox" id="Bronchial_Asthma" name="Thyroid_disease" value="Thyroid Disease" <?php echo (!empty($response['Thyroid Disease']) && strtolower($response['Thyroid Disease']) === 'SELECTED') ? 'checked' : ''; ?> >
             </div>
 
-            <div class="form-group">
+            <div class="grid-input">
                 <label for="Allergy">Allergy</label>
                 <input type="text" id="Thyroid_Disease" name="Allergy" value="<?php echo !empty($response['Allergy:']) ? $response['Allergy:'] : ''; ?>">
             </div>
 
-            <div class="form-group">
+            <div class="grid-input">
                 <label for="social_history">Social History</label>
                 <input type="text" id="Heart_Disease" name="social_history" >
             </div>
 
-            <div class="form-group">
+            <div class="grid-input">
                 <label for="Family_History">Family History</label>
                 <input type="text" id="Previous_Surgery" name="Family_History" value="<?php echo !empty($response['Family History:']) ? $response['Family History:'] : ''; ?>">
             </div>
+            <button type="submit" class="submit-grid">Submit</button>
         </form>
     </div>
     <button type="button" class="collapsible">Baseline Diagnostics</button>
     <div class="content">
-        <form>
+        <form class="gridForm">
             <div class="form-group">
                 <label for="date">date</label>
                 <input type="date" id="CBC_HgB" name="date" value="<?php echo !empty($response['Date:']) ? $response['Date:'] : ''; ?>">
@@ -395,11 +389,12 @@
                 <label for="Other">Other</label>
                 <input type="text" id="Other" name="Other" value="<?php echo !empty($response['Others']) ? $response['Others'] : ''; ?>">
             </div>
+            <button type="submit" class="submit-grid">Submit</button>
         </form>
     </div>
     <button type="button" class="collapsible">Obgyne History</button>
     <div class="content">
-        <form>
+        <form class="gridForm">
             <div class="form-group">
             <div class="tooltip">Gravidity
                 <span class="tooltiptext">BLABLABLABLABLABLAL</span>
@@ -421,7 +416,7 @@
                 <input type="text" id="OB_score" name="OB_score" value="<?php echo !empty($response['EDD by EUTZ:']) ? $response['EDD by EUTZ:'] : ''; ?>">
             </div>
 
-            <div class="form-group">
+            <div class="grid-input name">
                 <label for="table">Table</label>
                 <textarea name="table" style="width: 100;%" id="history" cols="30" rows="10"></textarea>
             </div>
@@ -458,7 +453,7 @@
             </div>
                 <input type="text" id="early_ultrasound" name="S" value="<?php echo !empty($response['S']) ? $response['S'] : ''; ?>">
             </div>
-                <button type="submit">Submit</button>
+        <button type="submit" class="submit-grid">Submit</button>
       </form>
     </div>
    

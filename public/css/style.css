@@ -577,14 +577,6 @@ body {
 /* ------------------ END OF MODAL 2---------- */
 
 
-.form_container {
-  max-width: 600px;
-  margin-left: 19px;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
 
 header {
   font-size: 24px;
@@ -592,27 +584,26 @@ header {
   text-align: center;
 }
 
-.form:not(.form_record) {
-  display: grid;
-  grid-gap: 20px;
-}
+
 
 .input-box {
   margin-bottom: 20px;
-  margin-left: 20%;
-  margin-right: 20%;
+
   display: flex;
   flex-flow: row wrap;
   align-items: stretch;
   flex-direction: column;
-  
+  width: 100%;
 }
+
+
 
 label {
   font-weight: bold;
 }
 
 input[type="text"],
+input[type="password"],
 input[type="number"],
 input[type="date"],
 textarea,
@@ -624,18 +615,6 @@ select {
   box-sizing: border-box;
 }
 
-  .button-inactive{
-  background-color: #ffab03;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 15px;
-  padding-right: 15px;
-  cursor: pointer;
-  font-size: 15px;
-}
 
 #table-border {
   border: 1px solid #000;
@@ -655,7 +634,7 @@ select {
 }
 
 button[type="submit"]:hover {
-  background-color: #0056b3;
+  background-color: #62aeff;
 }
 
 .vaccine_container {
@@ -717,11 +696,20 @@ table {
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-th, td {
-  padding: 12px 12px;
-  text-align: center;
+
+th {
+  padding: 12px 15px;
+  text-align: left;
   border-bottom: 1px solid #f2f2f2;
 }
+
+td {
+  padding: 20px 10px;
+  text-align: left;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+
 th {
   background-color: #2630c0;
   -webkit-text-fill-color: white;
@@ -748,25 +736,11 @@ h1-print {
 }
 
 
-.form:not(.form_record) {
-  max-width: 600px;
-  margin: 20px auto;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
+
 
 .input-box label {
   display: block;
   font-weight: bold;
-}
-
-.input-box input {
-  width: 100%;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
 }
 
 .gender-box {
@@ -967,10 +941,6 @@ a.btn{
     margin-bottom: 20px;
 }
 
-.form:not(.form_record) {
-    max-width: 500px;
-    margin: 0 auto;
-}
 
 .input-box {
     margin-bottom: 20px;
@@ -990,6 +960,73 @@ textarea {
 }
 
 
+.submit-grid {
+  grid-column: span 2;
+  background-color: #0056b3;
+  color: #fff;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 10px 10px;
+  font-size: 20px;
+}
+
+
+.submit-button {
+  background-color: #0056b3;
+  color: #fff;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 10px 10px;
+  font-size: 20px;
+}
+
+.deactivate-button {
+  background-color: #0056b3;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 20px;
+  width: 100%;
+}
+
+
+.form-vaccine {
+  width: 100%;
+
+}
+
+.gridForm {
+  padding: 10px;
+  display: grid;
+  gap: 15px;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+  margin-inline: auto;
+}
+
+.name {
+  grid-column-start: 1;
+}
+
+.form {
+  max-width: 600px;
+  margin: 5px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.form-button {
+  margin: 0;
+}
 
 .uncon1[type="submit"] {
   padding: 10px 20px;
@@ -1055,16 +1092,19 @@ button[type="submit"]:active {
   color: #fff;
   cursor: pointer;
   padding: 18px;
-  margin-left: 19px;
   width: 100%;
   border: none;
+  border-bottom: 1px solid black;
   text-align: left;
   outline: none;
   font-size: 15px;
+
 }
 
 /* Style the collapsible content. Note: hidden by default */
 .content {
+  display:grid;
+  place-items: center; 
   padding: 0 18px;
   background-color: white;
   max-height: 0;
