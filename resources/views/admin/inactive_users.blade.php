@@ -110,14 +110,6 @@
                         <span class="title">Audit Trail</span>
                     </a>
                 </li>
-                <li>
-                    <a href="{{route('inactiveUsers')}}">
-                        <span class="icon">
-                            <ion-icon name="folder-open-outline"></ion-icon>
-                        </span>
-                        <span class="title">Inactive Archive</span>
-                    </a>
-                </li>
                 @endcan
                 <li>
                     <form method="POST" action="{{ route('logout') }}">
@@ -156,10 +148,8 @@
         </div>
  
     <!-- =========== CONTAINER =========  -->
-    <header class="heading">Patient Records</header>
-        <a href="{{ route('addPatientView') }}" class="btn btn-md btn-primary">Add Patient</a>
+    <header class="heading">Inactive Users</header>
         <div class="table-wrapper">
-            <p class = "instruction"><b>Note: Click user to add Patient Record</b></p>
             <table class="fl-table">
                 <thead>
                 <tr>
@@ -171,17 +161,8 @@
                 <tbody>
                 @foreach($users as $user)
                     <tr>
-                        <td onclick="window.location='{{route('patient.viewRecords', ['user' => $user])}}'" style="cursor: pointer;">{{$user->name}}</td>
-                        <td onclick="window.location='{{route('patient.viewRecords', ['user' => $user])}}'" style="cursor: pointer;">{{$user->email}}</td>
-                        @if($user->is_active == 'active')
-                        <td>
-                                <form action="{{ route('moveInactive', ['user' => $user]) }}" >
-                                    @csrf
-                                    @method('PUT')
-                                    <button type="submit">Deactivate</button>
-                                </form>
-                        </td>
-                        @else
+                        <td>{{$user->name}}</td>
+                        <td>{{$user->email}}</td>
                         <td>
                                 <form action="{{ route('moveActive', ['user' => $user]) }}">
                                     @csrf
@@ -189,7 +170,6 @@
                                     <button type="submit">Activate</button>
                                 </form>
                         </td>
-                        @endif
                     </tr>
                     @endforeach
              </tbody>

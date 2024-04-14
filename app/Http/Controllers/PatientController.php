@@ -26,9 +26,17 @@ class PatientController extends Controller
     
 
     public function patient_record_history(){
-        $users = User::where('usertype', '=' , 'user')->get();
+        $users = User::where('usertype', '=', 'user')
+             ->where('is_active', '=', 'active')
+             ->get();
         return view('admin.patient_record_history', ['users' => $users]);
-        
+    }
+
+    public function inactive_users(){
+        $users = User::where('usertype', '=', 'user')
+             ->where('is_active', '=', 'inactive')
+             ->get();
+        return view('admin.inactive_users', ['users' => $users]);
     }
 
     public function search_user(Request $request){
@@ -394,14 +402,22 @@ class PatientController extends Controller
 
     public function move_inactive(User $user)
     {
-        InactiveUser::create($user->toArray());
-
-        $user->delete();
-
-        return redirect()->route('patient.patient_record_history')->with('success', 'User moved to inactive list successfully.');
+        $is_active = "inactive";
+        $user->update([
+            'is_active' => $is_active
+        ]);
+        return redirect(route('patient.patient_record_history'))->with('success', 'User moved to inactive list successfully.');
     }
 
-
+    public function move_active(User $user)
+    {
+        $is_active = "active";
+        $user->update([
+            'is_active' => $is_active
+        ]);
+        $new = $user->is_active;
+        return redirect(route('inactiveUsers'))->with('success', 'User moved to active list successfully.');
+    }
 
     public function add_patientView(){
         return view('admin.add_patient');
