@@ -33,7 +33,7 @@
                     </a>
                 </li>
                 @can('admin')
-                <li>
+                <li class="active">
                     <a href="{{route('accounts')}}">
                         <span class="icon">
                             <ion-icon name="people-outline"></ion-icon>
@@ -135,8 +135,7 @@
                 </div>
                 <div class="user">
                 </div>
-        </div>
-        <br><br><br><br><br>
+        </div>  
         <h1 class="heading">Accounts</h1>
                 <div class="dropdown">
                     <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">

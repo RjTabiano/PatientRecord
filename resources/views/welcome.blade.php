@@ -69,13 +69,10 @@
   <main class="l-main">
     <!--===== HOME =====-->
     <section class="home" id="home">
-      <div class="home__container bd-grid">
-        <h1 class="home__title"><span>Welcome to <br>The Queen's <br> Clinic</span><br></h1>
-        <div class="home__scroll">
-          <a href="#about" class="home__scroll-link"><i class='bx bx-up-arrow-alt'></i>Scroll down</a>
-        </div>
-        <img src="{{ asset('images/logo1.png') }}" alt="" class="home__img">
-      </div>
+        <div class="home__container bd-grid">
+        <h1 class="home__title"><span>Welcome to <br> The Queens <br> Clinic</span><br></h1>
+        <img src="{{ asset('images/logo1.png') }}" alt="" class="home__img" style="max-width: 100%; height: auto;">
+    </div>
     </section>
 
     <!--===== ABOUT =====-->
@@ -101,73 +98,93 @@
 
     <!--===== PORTFOLIO =====-->
     <section class="portfolio section" id="products">
-      <h2 class="section-title">Doctors</h2>
-      <div class="portfolio__container bd-grid">
+    <h2 class="section-title">Doctors</h2>
+    <div class="portfolio__container bd-grid">
         <div class="portfolio__img">
-          <img src="{{ asset('images/1.jpg') }}" alt="">
-          <div class="portfolio__link">
-            <a href="" class="portfolio__link-name"><b><br><a href="login.html" target="_blank"><button>Schedule Now!</button></a></b>
-          </div>
+            <img src="{{ asset('images/1.jpg') }}" alt="">
+            <div class="portfolio__link">
+                <a href="login.html" target="_blank" class="portfolio__link-name">
+                    <button class="blue-button">Schedule Now!</button>
+                </a>
+            </div>
         </div>
         <div class="portfolio__img">
-          <img src="{{ asset('images/2.jpg') }}" alt="">
-          <div class="portfolio__link">
-            <a href="" class="portfolio__link-name"><b><br><a href="login.html" target="_blank"><button>Schedule Now!</button></b></a>
-          </div>
+            <img src="{{ asset('images/2.jpg') }}" alt="">
+            <div class="portfolio__link">
+                <a href="login.html" target="_blank" class="portfolio__link-name">
+                    <button class="blue-button">Schedule Now!</button>
+                </a>
+            </div>
         </div>
         <div class="portfolio__img">
-          <img src="{{ asset('images/3.jpg') }}" alt="">
-          <div class="portfolio__link">
-            <a href="" class="portfolio__link-name"><b><br><a href="login.html" target="_blank"><button>Schedule Now!</button></a></b>
-          </div>
+            <img src="{{ asset('images/3.jpg') }}" alt="">
+            <div class="portfolio__link">
+                <a href="login.html" target="_blank" class="portfolio__link-name">
+                    <button class="blue-button">Schedule Now!</button>
+                </a>
+            </div>
         </div>
         <div class="portfolio__img">
-          <img src="{{ asset('images/Intern.jpg') }}" alt="">
-          <div class="portfolio__link">
-            <a href="" class="portfolio__link-name"><b><br><a href="login.html" target="_blank"><button>Schedule Now!</button></b></a>
-          </div>
+            <img src="{{ asset('images/Intern.jpg') }}" alt="">
+            <div class="portfolio__link">
+                <a href="login.html" target="_blank" class="portfolio__link-name">
+                    <button class="blue-button">Schedule Now!</button>
+                </a>
+            </div>
         </div>
         <div class="portfolio__img">
-          <img src="{{ asset('images/Erness.jpg') }}" alt="">
-          <div class="portfolio__link">
-            <a href="" class="portfolio__link-name"><b><br><a href="login.html" target="_blank"><button>Schedule Now!</button></b></a>
-          </div>
+            <img src="{{ asset('images/Erness.jpg') }}" alt="">
+            <div class="portfolio__link">
+                <a href="login.html" target="_blank" class="portfolio__link-name">
+                    <button class="blue-button">Schedule Now!</button>
+                </a>
+            </div>
         </div>
         <div class="portfolio__img">
-          <img src="{{ asset('images/Derma.jpg') }}" alt="">
-          <div class="portfolio__link">
-            <a href="" class="portfolio__link-name"><b><br><a href="login.html" target="_blank"><button>Schedule Now!</button></b></a>
-          </div>
+            <img src="{{ asset('images/Derma.jpg') }}" alt="">
+            <div class="portfolio__link">
+                <a href="login.html" target="_blank" class="portfolio__link-name">
+                    <button class="blue-button">Schedule Now!</button>
+                </a>
+            </div>
         </div>
-      </div>
-    </section>
+    </div>
+</section>
         
     <!--===== PORTFOLIOS =====-->
     <section class="portfolios section" id="services">
-      <h2 class="section-title">Services</h2>
-      <div class="portfolios__container bd-grid">
-      <div class="portfolio__img">
-      <img src="{{ asset('images/Consull.png') }}" alt="">
-      <div class="portfolio__link">
-        <a href="" class="portfolio__link-name"><b><br><a href="login.html" target="_blank"><button>Schedule Now!</button></a></b>
-      </div>
-      <h2 class="h22">Consultation</h2>
+    <h2 class="section-title">Available Services</h2>
+    <div class="portfolios__container bd-grid">
+        <div class="portfolio__img">
+            <img src="{{ asset('images/Consull.png') }}" alt="">
+            <div class="portfolio__link">
+                <a href="login.html" target="_blank" class="portfolio__link-name">
+                    <button class="blue-button">Schedule Now!</button>
+                </a>
+            </div>
+            <h2 class="h22">Consultation</h2>
+        </div>
+        <div class="portfolio__img">
+            <img src="{{ asset('images/infer.jpg') }}" alt="">
+            <div class="portfolio__link">
+                <a href="login.html" target="_blank" class="portfolio__link-name">
+                    <button class="blue-button">Schedule Now!</button>
+                </a>
+            </div>
+            <h2 class="h22">Pediatrics</h2>
+        </div>
+        <div class="portfolio__img">
+            <img src="{{ asset('images/obyy.jpg') }}" alt="">
+            <div class="portfolio__link">
+                <a href="login.html" target="_blank" class="portfolio__link-name">
+                    <button class="blue-button">Schedule Now!</button>
+                </a>
+            </div>
+            <h2 class="h22">Obygyne</h2>
+        </div>
     </div>
-    <div class="portfolio__img">
-      <img src="{{ asset('images/infer.jpg') }}" alt="">
-      <div class="portfolio__link">
-        <a href="" class="portfolio__link-name"><b><br><a href="login.html" target="_blank"><button>Schedule Now!</button></a></b>
-      </div>
-      <h2 class="h22">Pediatrics</h2>
-    </div>
-    <div class="portfolio__img">
-      <img src="{{ asset('images/obyy.jpg') }}" alt="">
-      <div class="portfolio__link">
-        <a href="" class="portfolio__link-name"><b><br><a href="login.html" target="_blank"><button>Schedule Now!</button></a></b>
-      </div>
-      <h2 class="h22">Obygyn</h2>
-    </div>
-  </section>
+</section>
+
         
     <!--===== CONTACT 
     <section class="contact section" id="contact">
@@ -199,32 +216,39 @@
   <!--===== FOOTER =====-->
   <footer class="footer section">
     <div class="footer__container bd-grid">
+    <div class="footer__data">
+    <a href="#about" class="footer__title about-link" style="text-align: left;"><b>ABOUT US</b></a>
+      <p class="footer__text"></p>
+    </div>
       <div class="footer__data">
-        <h2 class="footer__title">About Us <br> <br>
-         The Obstetrics and Gynecology (OBGYN) clinic is dedicated to the healthcare of women, focusing on reproductive health, pregnancy, and childbirth. Services provided include routine gynecological examinations, prenatal care, family planning, fertility consultations, and managing various women's health issues.</h2>
-        <p class="footer__text"></p>
-      </div>
-      <div class="footer__data">
-        <h2 class="footer__title">CONTACT</h2>
+      <h2 class="footer__title"style="text-align: left;"><b>BUSINESS HOURS</b></h2>
         <ul>
-          <h2 class="footer__title">Business hours: Monday to Sunday 9:00 am - 5:00 pm</h2>
+          <h4 class="footer__title" style="color: white; text-align: left; font-size: 12px; font-weight: normal;">Monday to Sunday 9:00 am - 5:00 pm</h3>
+          <br>
+          <h2 class="footer__title"style="text-align: left;"><b>ADDRESS</b></h2>
+          <li>
+              <a href="https://www.google.com/maps/place/The+Queens+OBGYN,+Pediatrics,+and+Surgery+Clinic/@14.7337321,121.0499644,17z/data=!3m1!4b1!4m6!3m5!1s0x3397b192d7ba560f:0xf162619ab0e1610c!8m2!3d14.7337269!4d121.0525393!16s%2Fg%2F11qpvt1zrw?entry=ttu" target="_blank" class="footer__link" style="color: white; text-align: left; font-size: 12px; font-weight: normal;">
+                  <span style="border-bottom: 1px solid rgba(255, 255, 255, 0.5);">1190C Quirino Highway Novaliches, <br>
+                  Quezon City, Philippines</span>
+              </a>
+          </li>
+
         
-          
-          <li><a href="https://www.google.com/maps/place/The+Queens+OBGYN,+Pediatrics,+and+Surgery+Clinic/@14.7337321,121.0499644,17z/data=!3m1!4b1!4m6!3m5!1s0x3397b192d7ba560f:0xf162619ab0e1610c!8m2!3d14.7337269!4d121.0525393!16s%2Fg%2F11qpvt1zrw?entry=ttu" target="_blank" class="footer__link">Address: 1190C Quirino Highway Novaliches, 
-            Quezon City, Philippines</a></li>
-          
-            <br>
-            <h2 class="footer__title"><a href= "mailto: samwanasenrazon@gmail.com" class="footer__title">Send Email now</a></h2>
-          <h2 class="footer__title">Contact: 0926-0993874</h2>
+            <br><br>
+            <h2 class="footer__title"style="text-align: left;"><b>BUSINESS HOURS</b></h2>
+          <h2 class="footer__title" style="color: white; text-align: left; font-size: 12px; font-weight: normal;">0926-0993874</h2>
         </ul>
       </div>
 
       <div class="footer__data">
-        <h2 class="footer__title">FOLLOW</h2>
-        <a href="https://www.facebook.com/thequeensobgyn" target="_blank" class="footer__social"><i class='bx bxl-facebook'></i></a><br>
-        <h2 class="footer__title">Newsletter</h2>
-        <h2 class="footer__title">This month, we focus on Vision Correction, shedding light on key aspects and providing valuable insights. Stay informed and take charge of your health!  </h2>
-      </div>
+    <h2 class="footer__title"style="text-align: left;"><b>FOLLOW</b></h2>
+      <a href="https://www.facebook.com/thequeensobgyn" target="_blank" class="footer__social" style="color: white;"><i class='bx bxl-facebook'></i></a>
+      <a href="https://www.instagram.com/thequeensclinic/?hl=en" target="_blank" class="footer__social" style="color: white;"><i class='bx bxl-instagram'></i></a>
+        <br><br>
+      <div class="fixed-message-button">
+              <a href="mailto:samwanasenrazon@gmail.com" class="message-button" style="color: white;"><i class='bx bx-message'></i><b> Email Us</b></a>
+          </div>
+    </div>
 
     </div>
   </footer>

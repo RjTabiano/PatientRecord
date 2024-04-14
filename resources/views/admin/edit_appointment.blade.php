@@ -13,7 +13,7 @@
       href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
       rel="stylesheet"
     />
-</head>
+</head> 
 <body>
     <!-- ================== Navigation =============== -->
     <div class="container">
@@ -144,7 +144,8 @@
 
         </div>
     <!-- =========== CONTAINER =========  -->
-
+    <br>
+    <h1 class="heading">Edit Appointments</h1>
     <form method="post" action="{{route('appointment.updateAppointment', ['appointment' => $appointment])}}" class="form">
                         @csrf
                         @method('post')

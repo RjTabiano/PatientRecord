@@ -13,7 +13,7 @@
       href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
       rel="stylesheet"
     />
-</head>
+</head> 
 <body>
     <!-- =============== Navigation ================ -->
     <div class="container">
@@ -136,7 +136,7 @@
 
 
     <!-- =========== CONTAINER =========  -->
-    <br><br>
+    <br>
     <h1 class="heading">Feedback</h1>
     <br>
     <form method="post" action="{{route('storeFeedback')}}" class="form">
@@ -150,7 +150,7 @@
                         <label for="">Description:</label>
                         <textarea name="description" id="history" cols="30" rows="10" placeholder="We'd like to hear your feedback" ></textarea>
                     </div>
-                    <button type="submit">Submit</button>
+                    <button class="submit"type="submit">Submit</button>
                 </form>
     <!-- =========== CONTAINER =========  -->
 

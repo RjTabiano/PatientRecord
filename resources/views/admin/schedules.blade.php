@@ -143,12 +143,12 @@
 
         </div>
 
-    <br><br><br><br><br>
+    <br>
     <!-- =========== CONTAINER =========  -->
-    <h1 class="heading">Schedule</h1>
+    <h1 class="heading">Doctor's Schedule</h1>
     <button class="modals" onclick="openModal()">
-        Add
-    </button>
+        Add Schedule
+    </button> 
         
         <!-- ADD Modal -->
         <div class="modal" id="myModal">

@@ -13,7 +13,7 @@
       href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
       rel="stylesheet"
     />
-</head>
+</head> 
 <body>
     <!-- =============== Navigation ================ -->
     <div class="container">
@@ -138,10 +138,8 @@
                         </label>
                     </form>
                 </div>
-                <div class="user">
-                    
+                <div class="user">                    
                 </div>
-
         </div>
 
 
@@ -151,7 +149,7 @@
     <div class="table_container">
         <div class="row">
             <div class="col-12">
-            <table class="table table-bordered">
+            <table id="table-border"class="table table-bordered">
                 <thead>
                 <tr>
                     <th scope="col">Event</th>
@@ -170,6 +168,7 @@
             </table>
 </div>
 </div>
+<br><br>
 
    
     <!-- =========== CONTAINER =========  -->

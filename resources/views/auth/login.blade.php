@@ -27,7 +27,7 @@
                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
                 <div class="input-field">
-                    <i class="fas fa-lock"></i>
+                    <i class="fas fa-lock"></i> 
                     <input type="password" name="password" placeholder="Password" required/>
                     <x-input-error :messages="$errors->get('password')" class="mt-2" />
                 </div>

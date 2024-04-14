@@ -139,7 +139,7 @@
     <br><br>
     <!-- =========== CONTAINER =========  -->
     <header>OCR Scanner (Optional)</header>
-    <br>
+    <br> 
     <table style="margin: 0 auto;  width:10%">
     <tr>
         <td>
@@ -275,7 +275,7 @@
 
             <div class="form-group">
             <div class="tooltip">FBS
-                <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+                <span class="tooltiptext">Fasting Blood Sugar - This is the level of glucose in the blood after fasting for at least 8 hours. It is commonly used to diagnose and monitor diabetes mellitus.</span>
             </div>
                 <input type="text" id="DPT" name="FBS" value="">
             </div>

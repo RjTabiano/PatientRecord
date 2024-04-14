@@ -145,9 +145,9 @@
         </div>
 
     <!-- =========== CONTAINER =========  -->
-    <br><br><br><br><br>
-    <h1 class="heading">Patient's Schedule</h1>
     <br>
+    <h1 class="heading">Patient's Schedule</h1>
+    <br> 
     <div class="table_container">
         <div class="row">
             <div class="col-12">

@@ -10,7 +10,7 @@
 }
 
 :root {
-  --blue: hsl(236, 67%, 45%);
+  --blue: #2630c0;
   --white: #fff;
   --gray: #f5f5f5;
   --black1: #222;
@@ -88,6 +88,34 @@ body {
 .navigation ul li a .icon ion-icon {
   font-size: 1.75rem;
 }
+
+
+/* Fixed Message Button Styles */
+.fixed-message-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999; /* Ensure it's above other content */
+}
+
+.message-button {
+  display: inline-block;
+  background-color: #007bff; /* Your desired button color */
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease; /* Add smooth transition effect */
+}
+
+.message-button:hover {
+  background-color: #0056b3; /* Change color on hover if desired */
+}
+
+.about-link:hover {
+  color: #ffa500;
+}
+
 
 .navigation ul li a .title {
   position: relative;
@@ -596,18 +624,35 @@ select {
   box-sizing: border-box;
 }
 
-button[type="submit"] {
-  background-color: #0056b3;
+  .button-inactive{
+  background-color: #ffab03;
   color: #fff;
-  margin-bottom: 20px;
-  padding: 10px 50px;
   border: none;
   border-radius: 4px;
-  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 15px;
 }
 
+#table-border {
+  border: 1px solid #000;
+}
+
+.submit {
+  background-color: #0056b3;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  cursor: pointer;
+  font-size: 15px;
+}
 
 button[type="submit"]:hover {
   background-color: #0056b3;
@@ -673,8 +718,8 @@ table {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 th, td {
-  padding: 12px 15px;
-  text-align: left;
+  padding: 12px 12px;
+  text-align: center;
   border-bottom: 1px solid #f2f2f2;
 }
 th {
@@ -686,7 +731,7 @@ tr {
 }
 
 tr:hover {
-  background-color: #60a8ff;
+  background-color: #7cb7ff;
 }
 
 .view-label {
@@ -948,7 +993,7 @@ textarea {
 
 .uncon1[type="submit"] {
   padding: 10px 20px;
-  background-color: orange;
+  background-color: #ffa500;
   color: white;
   border: none;
   border-radius: 5px;
@@ -1006,7 +1051,7 @@ button[type="submit"]:active {
 /* COLLAPSIBLE */
 
 .collapsible {
-  background-color: hsl(245, 60%, 41%);
+  background-color: #2630c0;
   color: #fff;
   cursor: pointer;
   padding: 18px;

@@ -89,7 +89,7 @@
                             <ion-icon name="calendar-number-outline"></ion-icon>
                         </span>
                         <span class="title">Doctor's Schedule</span>
-                    </a>
+                    </a> 
                 </li>
                 @endcannot
                 <li>
@@ -139,7 +139,7 @@
 
 
     <!-- =========== CONTAINER =========  -->
-    <br><br><br>
+    <br>
     <header>
       <h3>Add Patient Records</h3>
     </header>

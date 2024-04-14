@@ -13,7 +13,7 @@
       href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
       rel="stylesheet"
     />
-</head>
+</head> 
 <body>
     <!-- ============== Navigation ================== -->
     <div class="container">
@@ -137,13 +137,9 @@
                         <ion-icon name="search-outline"></ion-icon>
                     </label>
                 </div>
-
                 <div class="user">
-                    
                 </div>
-
         </div>
-        <br><br><br><br><br>
         <h1 class="heading">Appointments</h1>
     <button class="modals" onclick="openModal()">
         Add Appointment

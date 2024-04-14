@@ -13,7 +13,7 @@
       href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
       rel="stylesheet"
     />
-</head>
+</head> 
 <body>
     <!-- ================ Navigation ================== -->
     <div class="container">
@@ -147,9 +147,10 @@
 
     <!-- =========== CONTAINER =========  -->
     <h1 class="heading">Consultation Record</h1>
-                <div>
-                    {!! $consultationPediatrics->consultation !!}
-                </div>
+            <div style="text-align: center;">
+                {!! $consultationPediatrics->consultation !!}
+            </div>
+
     </div>
     <section class="overlay"></section>
     <!-- =========== CONTAINER =========  -->

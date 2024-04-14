@@ -146,13 +146,14 @@
                 </div>
 
         </div>
-        <br><br><br><br><br>
+        <br>
     <!-- =========== CONTAINER =========  -->
-    <header class="heading">Add Patient Record Accounts</header>
-    <button class="modals"> <a href="{{ route('addPatientView') }}">Add Patient</a></button>
+    <header class="heading">Add Patient Record</header>
+    <br>
+     <a href="{{ route('addPatientView') }}"style ="margin-left:2.5%; "class="btn btn-md btn-primary">Add Patient</a>
         <div class="table-wrapper">
-            <br>
-            <p class = "instruction"><b>Note: Click user to add Patient Record</b></p>
+            <br><br>
+            <p class="instruction">Note: Click user to add Patient Record</p>
             <br>
             <table class="fl-table">
                 <thead>
@@ -171,7 +172,7 @@
                             <form action="{{ route('moveInactive', ['user' => $user]) }}" method="POST">
                                 @csrf
                                 @method('POST')
-                                <button type="submit">Move to Inactive</button>
+                                <button class="button-inactive" type="submit">Move to Inactive</button>
                             </form>
                     </td>
                     
