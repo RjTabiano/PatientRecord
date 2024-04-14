@@ -175,23 +175,13 @@
                     <tr>
                         <td onclick="window.location='{{route('patient.viewRecords', ['user' => $user])}}'" style="cursor: pointer;">{{$user->name}}</td>
                         <td onclick="window.location='{{route('patient.viewRecords', ['user' => $user])}}'" style="cursor: pointer;">{{$user->email}}</td>
-                        @if($user->is_active == 'active')
                         <td>
-                                <form action="{{ route('moveInactive', ['user' => $user]) }}" >
+                                <form action="{{ route('moveInactive', ['user' => $user]) }}" class="form-button">
                                     @csrf
                                     @method('PUT')
-                                    <button type="submit">Deactivate</button>
+                                    <button type="submit" class="deactivate-button">Deactivate</button>
                                 </form>
                         </td>
-                        @else
-                        <td>
-                                <form action="{{ route('moveActive', ['user' => $user]) }}">
-                                    @csrf
-                                    @method('PUT')
-                                    <button type="submit">Activate</button>
-                                </form>
-                        </td>
-                        @endif
                     </tr>
                     @endforeach
              </tbody>

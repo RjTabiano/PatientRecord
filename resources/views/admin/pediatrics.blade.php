@@ -199,12 +199,12 @@
                     <option value="female" {{ isset($pediatrics->sex) && $pediatrics->sex === 'female' ? 'selected' : '' }}>Female</option>
                 </select>
             </div>
-          <button type="submit" class="submit-grid">Submit</button>
+          <button type="submit" class="submit-grid">Save</button>
       </form>
     </div>
     <button type="button" class="collapsible">&nbspVaccine</button>
       <div class="content">
-      <form>
+      <form class="form-vaccine">
       <table class="vaccine_table">
           <tr>
             <th >Vaccine</th>
@@ -343,8 +343,9 @@
             <td><input type="checkbox" name="Flu[]" value="Booster 2"></td>
           </tr>
           </table>
-         
-          <button type="submit">Save</button>
+          <div class="input-box">
+            <button type="submit" class="submit-button ">Save</button>
+          </div>
       </form>
     </div>
     <button type="button" class="collapsible">Pediatrics Consultation</button>
@@ -359,7 +360,7 @@
           <textarea name="orders" style="width: 100;%" id="orders" cols="30" rows="10"></textarea>
         </div>
          
-        <button type="submit">Save</button>
+        <button type="submit" class="submit-button">Save</button>
     </div>
     <br>
     
