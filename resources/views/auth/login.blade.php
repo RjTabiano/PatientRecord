@@ -47,6 +47,7 @@
               <input type="email" name="email" placeholder="Email" required/>
               <x-input-error :messages="$errors->get('email')" class="mt-2" />
             </div>
+            <br><br>
             <div class="input-field">
               <i class="fas fa-lock"></i>
               <input type="password" name="password" placeholder="Password" required/>

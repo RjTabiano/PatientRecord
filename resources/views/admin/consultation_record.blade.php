@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="" href="{{ asset('images/logocircle.png') }}" />
     
-   <title>The Queen's</title>
+   <title>The Queen's Clinic</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link
       href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
@@ -50,7 +50,7 @@
                         <span class="icon">
                             <ion-icon name="newspaper-outline"></ion-icon>
                         </span>
-                        <span class="title">Patient Records</span>
+                        <span class="title">Add Patient Accounts</span>
                     </a>
                 </li>
 
@@ -78,7 +78,7 @@
                         <span class="icon">
                             <ion-icon name="book-outline"></ion-icon>
                         </span>
-                        <span class="title">Booking</span>
+                        <span class="title">Patient's Schedule</span>
                     </a>
                 </li>
                 @endcannot
@@ -88,7 +88,7 @@
                         <span class="icon">
                             <ion-icon name="calendar-number-outline"></ion-icon>
                         </span>
-                        <span class="title">Schedule</span>
+                        <span class="title">Doctor's Schedule</span>
                     </a>
                 </li>
                 @endcannot
@@ -97,7 +97,7 @@
                         <span class="icon">
                             <ion-icon name="folder-open-outline"></ion-icon>
                         </span>
-                        <span class="title">feedback</span>
+                        <span class="title">Feedback</span>
                     </a>
                 </li>
                 @can('admin')
@@ -144,7 +144,7 @@
         </div>
         
     <!-- =========== CONTAINER =========  -->
-
+    <br><br><br><br><br>
     <h1 class="heading">Patient Consultation Records</h1>
     <div class="btn_c">
         <a href="{{route('patient.addConsultation')}}" class="btn btn-md btn-primary">Add Consultation Record</a>
@@ -158,6 +158,7 @@
                     <th scope="col"></th>
                     <th scope="col"></th>
                     <th scope="col"></th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
@@ -168,10 +169,10 @@
                     @endforeach
                     <td>{{$consultationPediatric->created_by}}</td>
                     <td>
-                        <a href="/patient/show/{{$consultationPediatric->id}}" class="btn btn-sucess">Show</a>
+                        <a href="/patient/show/{{$consultationPediatric->id}}" class="btn btn-sucess"><ion-icon name="eye-sharp"></ion-icon></a>
                         </td>
                         <td>
-                        <a href="{{route('patient.edit_consultationRecord', ['consultationPediatrics' => $consultationPediatric], ['patient' => $patient])}}" class="btn btn-info">Edit</a>
+                        <a href="{{route('patient.edit_consultationRecord', ['consultationPediatrics' => $consultationPediatric], ['patient' => $patient])}}" class="btn btn-info"><ion-icon name="create-outline"></ion-icon></a>
                     </td>
                     @can('admin')
                     <td>
@@ -179,7 +180,7 @@
                     <form class="confirmationForm" method="post" action="{{route('patient.deleteConsultation', ['consultationPediatrics' => $consultationPediatric])}}">
                                     @csrf
                                     @method('delete')
-                                    <button class="save1" type="submit" valaue="Delete" >Delete</button>
+                                    <button class="save1" type="submit" value="Delete" ><ion-icon name="trash-sharp"></ion-icon></button>
                                 </form>
                     </td>
                     @endcan

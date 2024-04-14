@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="" href="{{ asset('images/logocircle.png') }}" />
     
-   <title>The Queen's</title>
+   <title>The Queen's Clinic</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link
       href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
@@ -51,7 +51,7 @@
                         <span class="icon">
                             <ion-icon name="newspaper-outline"></ion-icon>
                         </span>
-                        <span class="title">Patient Records</span>
+                        <span class="title">Add Patient Accounts</span>
                     </a>
                 </li>
 
@@ -79,7 +79,7 @@
                         <span class="icon">
                             <ion-icon name="book-outline"></ion-icon>
                         </span>
-                        <span class="title">Booking</span>
+                        <span class="title">Patient's Schedule</span>
                     </a>
                 </li>
                 @endcannot
@@ -89,7 +89,7 @@
                         <span class="icon">
                             <ion-icon name="calendar-number-outline"></ion-icon>
                         </span>
-                        <span class="title">Schedule</span>
+                        <span class="title">Doctor's Schedule</span>
                     </a>
                 </li>
                 @endcannot
@@ -98,7 +98,7 @@
                         <span class="icon">
                             <ion-icon name="folder-open-outline"></ion-icon>
                         </span>
-                        <span class="title">feedback</span>
+                        <span class="title">Feedback</span>
                     </a>
                 </li>
                 @can('admin')
@@ -154,12 +154,14 @@
                 </div>
 
         </div>
- 
+        <br><br><br><br><br>
     <!-- =========== CONTAINER =========  -->
-    <header class="heading">Patient Records</header>
-        <a href="{{ route('addPatientView') }}" class="btn btn-md btn-primary">Add Patient</a>
+    <header class="heading">Add Patient Record Accounts</header>
+    <button class="modals"> <a href="{{ route('addPatientView') }}">Add Patient</a></button>
         <div class="table-wrapper">
+            <br>
             <p class = "instruction"><b>Note: Click user to add Patient Record</b></p>
+            <br>
             <table class="fl-table">
                 <thead>
                 <tr>

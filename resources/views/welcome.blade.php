@@ -38,7 +38,7 @@
         <li class="nav__item"><a href="#services" class="nav__link">Services</a></li>
         @if (Route::has('login'))
             @auth
-                <li class="nav__item"><a href="{{route('services')}}" class="nav__link">Book Now!</a></li>
+                <li class="nav__item"><a href="{{route('services')}}" class="nav__link">Schedule Now!</a></li>
                 @cannot('user')
                   <li class="nav__item"><a href="{{route('home')}}" class="nav__link">Admin Panel</a></li>
                 @endcan
@@ -106,37 +106,37 @@
         <div class="portfolio__img">
           <img src="{{ asset('images/1.jpg') }}" alt="">
           <div class="portfolio__link">
-            <a href="" class="portfolio__link-name"><b><br><a href="login.html" target="_blank"><button>Book Now!</button></a></b>
+            <a href="" class="portfolio__link-name"><b><br><a href="login.html" target="_blank"><button>Schedule Now!</button></a></b>
           </div>
         </div>
         <div class="portfolio__img">
           <img src="{{ asset('images/2.jpg') }}" alt="">
           <div class="portfolio__link">
-            <a href="" class="portfolio__link-name"><b><br><a href="login.html" target="_blank"><button>Book Now!</button></b></a>
+            <a href="" class="portfolio__link-name"><b><br><a href="login.html" target="_blank"><button>Schedule Now!</button></b></a>
           </div>
         </div>
         <div class="portfolio__img">
           <img src="{{ asset('images/3.jpg') }}" alt="">
           <div class="portfolio__link">
-            <a href="" class="portfolio__link-name"><b><br><a href="login.html" target="_blank"><button>Book Now!</button></a></b>
+            <a href="" class="portfolio__link-name"><b><br><a href="login.html" target="_blank"><button>Schedule Now!</button></a></b>
           </div>
         </div>
         <div class="portfolio__img">
           <img src="{{ asset('images/Intern.jpg') }}" alt="">
           <div class="portfolio__link">
-            <a href="" class="portfolio__link-name"><b><br><a href="login.html" target="_blank"><button>Book Now!</button></b></a>
+            <a href="" class="portfolio__link-name"><b><br><a href="login.html" target="_blank"><button>Schedule Now!</button></b></a>
           </div>
         </div>
         <div class="portfolio__img">
           <img src="{{ asset('images/Erness.jpg') }}" alt="">
           <div class="portfolio__link">
-            <a href="" class="portfolio__link-name"><b><br><a href="login.html" target="_blank"><button>Book Now!</button></b></a>
+            <a href="" class="portfolio__link-name"><b><br><a href="login.html" target="_blank"><button>Schedule Now!</button></b></a>
           </div>
         </div>
         <div class="portfolio__img">
           <img src="{{ asset('images/Derma.jpg') }}" alt="">
           <div class="portfolio__link">
-            <a href="" class="portfolio__link-name"><b><br><a href="login.html" target="_blank"><button>Book Now!</button></b></a>
+            <a href="" class="portfolio__link-name"><b><br><a href="login.html" target="_blank"><button>Schedule Now!</button></b></a>
           </div>
         </div>
       </div>
@@ -149,21 +149,21 @@
       <div class="portfolio__img">
       <img src="{{ asset('images/Consull.png') }}" alt="">
       <div class="portfolio__link">
-        <a href="" class="portfolio__link-name"><b><br><a href="login.html" target="_blank"><button>Book Now!</button></a></b>
+        <a href="" class="portfolio__link-name"><b><br><a href="login.html" target="_blank"><button>Schedule Now!</button></a></b>
       </div>
       <h2 class="h22">Consultation</h2>
     </div>
     <div class="portfolio__img">
       <img src="{{ asset('images/infer.jpg') }}" alt="">
       <div class="portfolio__link">
-        <a href="" class="portfolio__link-name"><b><br><a href="login.html" target="_blank"><button>Book Now!</button></a></b>
+        <a href="" class="portfolio__link-name"><b><br><a href="login.html" target="_blank"><button>Schedule Now!</button></a></b>
       </div>
       <h2 class="h22">Pediatrics</h2>
     </div>
     <div class="portfolio__img">
       <img src="{{ asset('images/obyy.jpg') }}" alt="">
       <div class="portfolio__link">
-        <a href="" class="portfolio__link-name"><b><br><a href="login.html" target="_blank"><button>Book Now!</button></a></b>
+        <a href="" class="portfolio__link-name"><b><br><a href="login.html" target="_blank"><button>Schedule Now!</button></a></b>
       </div>
       <h2 class="h22">Obygyn</h2>
     </div>
