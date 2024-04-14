@@ -167,7 +167,7 @@
                                 <label for="password">Confirm Password</label>
                                 <input type="password" placeholder="password" required />
                             </div>        
-                <button type="submit" class="btn btn-primary">Add Doctor</button>
+                <button type="submit" class="submit-button">Add Doctor</button>
 
 
     <!-- =========== CONTAINER =========  -->
