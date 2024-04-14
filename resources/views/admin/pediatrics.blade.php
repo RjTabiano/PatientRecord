@@ -158,55 +158,49 @@
     <header class="heading">Pediatrics Forms</header>
     <button type="button" class="collapsible">&nbspPatient Information</button>
     <div class="content">
-    <form method="post" action="{{ route('patient.store', ['patient' => $patient]) }}" class="form_record">
-        @csrf
-        @method('post')
-          <div class="column">
-            <div class="input-box">
-          <br>   
-          <div class="input-box">
-            <input type="hidden" name="type" value="Pediatrics" />
-            <label>&nbspName</label>
-            <input type="text" placeholder="Enter Last Name" name="last_name" value="" required />
-            <input type="text" placeholder="Enter First Name" name="first_name" value="" required />
-          </div>
-          <div class="input-box">
-              <label >&nbspBirth Date</label>
-              <input class=""  type="date" name="birthdate" value="{{ isset($pediatrics->birthdate) ? $pediatrics->birthdate : '' }}" placeholder="Enter birth date"/>
-          </div>
-          </div>
-          <div class="input-box address">
-            <div class="input-box">
-            <label  >&nbspAddress</label>
-            <input class="" type="text" name="address" placeholder="Enter address"  value="{{ isset($pediatrics->address) ? $pediatrics->address : '' }}" required /><br>
+      <form method="post" action="{{ route('patient.store', ['patient' => $patient]) }}" class="gridForm">
+          @csrf
+          @method('post')
+              <br>   
+              <div class="grid-input name">
+                <input type="hidden" name="type" value="Pediatrics" />
+                <label>&nbspName</label>
+                <input type="text" placeholder="Enter Last Name" name="last_name" value="" required />
+                <input type="text" placeholder="Enter First Name" name="first_name" value="" required />
+              </div>
+              <div class="grid-input">
+                  <label >&nbspBirth Date</label>
+                  <input class=""  type="date" name="birthdate" value="{{ isset($pediatrics->birthdate) ? $pediatrics->birthdate : '' }}" placeholder="Enter birth date"/>
+              </div>
+              <div class="grid-input">
+                <label  >&nbspAddress</label>
+                <input class="" type="text" name="address" placeholder="Enter address"  value="{{ isset($pediatrics->address) ? $pediatrics->address : '' }}" required /><br>
+              </div>
+              <div class="grid-input">
+                <label >&nbspMother's Name (Last Name, First Name)</label>
+                <input class=""  type="text" name="mother_name" placeholder="Enter Name" value="{{ isset($pediatrics->mother_name) ? $pediatrics->mother_name : '' }}" required />
+              </div>
+              <div class="grid-input">
+                <label>&nbspMother's Phone Number</label>
+                <input class="" type="number" name="mother_phone" placeholder="Enter phone number" value="{{ isset($pediatrics->mother_phone) ? $pediatrics->mother_phone : '' }}" required />
+              </div>
+              <div class="grid-input">
+                <label>&nbspFather's Name (Last Name, First Name)</label>
+                <input class="" type="text" name="father_name" value="{{ isset($pediatrics->father_name) ? $pediatrics->father_name : '' }}" placeholder="Enter Name" required />
+              </div>
+              <div class="grid-input">
+                <label>&nbspFather's Phone Number</label>
+                <input class="" type="number" name="father_phone"  placeholder="Enter phone number" value="{{ isset($pediatrics->father_phone) ? $pediatrics->father_phone : '' }}" required />
+              </div>
+            <div class="grid-input">
+                <label>Gender</label>
+                <select name="sex">
+                    <option value="male" {{ isset($pediatrics->sex) && $pediatrics->sex === 'male' ? 'selected' : '' }}>Male</option>
+                    <option value="female" {{ isset($pediatrics->sex) && $pediatrics->sex === 'female' ? 'selected' : '' }}>Female</option>
+                </select>
             </div>
-            <div class="input-box">
-              <label >&nbspMother's Name (Last Name, First Name)</label>
-              <input class=""  type="text" name="mother_name" placeholder="Enter Name" value="{{ isset($pediatrics->mother_name) ? $pediatrics->mother_name : '' }}" required />
-            </div>
-            <div class="input-box">
-              <label>&nbspMother's Phone Number</label>
-              <input class="" type="number" name="mother_phone" placeholder="Enter phone number" value="{{ isset($pediatrics->mother_phone) ? $pediatrics->mother_phone : '' }}" required />
-            </div>
-            <div class="input-box">
-              <label>&nbspFather's Name (Last Name, First Name)</label>
-              <input class="" type="text" name="father_name" value="{{ isset($pediatrics->father_name) ? $pediatrics->father_name : '' }}" placeholder="Enter Name" required />
-            </div>
-            <div class="input-box">
-              <label>&nbspFather's Phone Number</label>
-              <input class="" type="number" name="father_phone"  placeholder="Enter phone number" value="{{ isset($pediatrics->father_phone) ? $pediatrics->father_phone : '' }}" required />
-            </div>
-          </div>        
-          <div class="input-box">
-              <label>Gender</label>
-              <select name="sex">
-                  <option value="male" {{ isset($pediatrics->sex) && $pediatrics->sex === 'male' ? 'selected' : '' }}>Male</option>
-                  <option value="female" {{ isset($pediatrics->sex) && $pediatrics->sex === 'female' ? 'selected' : '' }}>Female</option>
-              </select>
-      </div>
-      <button type="submit">Submit</button>
-     </form>
-      </div>
+          <button type="submit" class="submit-grid">Submit</button>
+      </form>
     </div>
     <button type="button" class="collapsible">&nbspVaccine</button>
       <div class="content">
