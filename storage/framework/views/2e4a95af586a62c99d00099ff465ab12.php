@@ -12,7 +12,7 @@
     <link
       href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
       rel="stylesheet"
-    />
+    /> 
 </head>
 <body>
     <!-- =============== Navigation ================ -->
@@ -144,11 +144,10 @@
         </div>
         
     <!-- =========== CONTAINER =========  -->
-    <br><br><br><br><br>
     <h1 class="heading">Patient Consultation Records</h1>
     <div class="btn_c">
         <a href="<?php echo e(route('patient.addConsultation')); ?>" class="btn btn-md btn-primary">Add Consultation Record</a>
-        <table >
+        <table>
             <br><br>
             <thead>
                 <br>

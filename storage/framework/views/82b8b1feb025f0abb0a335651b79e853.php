@@ -7,18 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="" href="<?php echo e(asset('images/logocircle.png')); ?>" />
     
-   <title>The Queen's</title>
+   <title>The Queen's Clinic</title>
     <link rel="stylesheet" href="<?php echo e(asset('css/style.css')); ?>">
     <link
       href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
       rel="stylesheet"
     />
-</head>
-
+</head> 
 <body>
-    <!-- =============== Navigation ================ -->
+    <!-- ============== Navigation ================== -->
     <div class="container">
-        <div class="navigation">
+        <div class="navigation"> 
             <ul>
                 <li>
                     <a href="<?php echo e(route('home')); ?>">
@@ -47,19 +46,11 @@
                 </li>
                 <?php endif; ?>
                 <li>
-                    <a href="<?php echo e(route('scanner')); ?>">
-                        <span class="icon">
-                            <ion-icon name="people-outline"></ion-icon>
-                        </span>
-                        <span class="title">OCR Scanner</span>
-                    </a>
-                </li>
-                <li>
                     <a href="<?php echo e(route('patient.patient_record_history')); ?>">
                         <span class="icon">
                             <ion-icon name="newspaper-outline"></ion-icon>
                         </span>
-                        <span class="title">Patient Records</span>
+                        <span class="title">Add Patient Accounts</span>
                     </a>
                 </li>
 
@@ -87,7 +78,7 @@
                         <span class="icon">
                             <ion-icon name="book-outline"></ion-icon>
                         </span>
-                        <span class="title">Booking</span>
+                        <span class="title">Patient's Schedule</span>
                     </a>
                 </li>
                 <?php endif; ?>
@@ -97,10 +88,39 @@
                         <span class="icon">
                             <ion-icon name="calendar-number-outline"></ion-icon>
                         </span>
-                        <span class="title">Schedule</span>
+                        <span class="title">Doctor's Schedule</span>
                     </a>
                 </li>
                 <?php endif; ?>
+                <li>
+                    <a href="<?php echo e(route('feedback')); ?>">
+                        <span class="icon">
+                            <ion-icon name="folder-open-outline"></ion-icon>
+                        </span>
+                        <span class="title">Feedback</span>
+                    </a>
+                </li>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('admin')): ?>
+                <li>
+                    <a href="<?php echo e(route('audit')); ?>">
+                        <span class="icon">
+                            <ion-icon name="folder-open-outline"></ion-icon>
+                        </span>
+                        <span class="title">Audit Trail</span>
+                    </a>
+                </li>
+                <?php endif; ?>
+                <li>
+                    <form method="POST" action="<?php echo e(route('logout')); ?>">
+                    <?php echo csrf_field(); ?>
+                    <a href="<?php echo e(route('logout')); ?>" class="nav-link" 
+                    onclick="event.preventDefault();
+                            this.closest('form').submit();">
+                        <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
+                        <span class="title">Logout</span>
+                    </a>
+                    </form>
+                </li>
             </ul>
         </div>
 
@@ -117,16 +137,12 @@
                         <ion-icon name="search-outline"></ion-icon>
                     </label>
                 </div>
-
                 <div class="user">
-                    
                 </div>
-
         </div>
-    <br>
         <h1 class="heading">Appointments</h1>
-    <button onclick="openModal()">
-        Add
+    <button class="modals" onclick="openModal()">
+        Add Appointment
     </button>
     <div class="modal" id="myModal">
   <div class="modal-content">
@@ -170,7 +186,7 @@
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary">Add Appointment</button>
                         </div>
-                            
+
                     </form>
   </div>
 </div>
@@ -185,15 +201,13 @@
                     <th scope="col">With Doctor</th>
                     <th scope="col">Date</th>
                     <th scope="col">Time</th>
-                    <th scope="col">Action</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
                 </tr>
                 </thead>
-                <tbody>
-                    
+                <tbody>      
                 <?php $__currentLoopData = $doctors; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $doctor): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    
                         <?php $__currentLoopData = $doctor->appointment; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $appointment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            
                 <tr>
                     <td><?php echo e($appointment->patient['name']); ?></td>
                     <td><?php echo e($doctor->name); ?></td>
@@ -201,44 +215,36 @@
                     <td><?php echo e($appointment->time); ?></td>
                     <td>
                     <button type="button" class="btn btn-success"><a href="<?php echo e(route('appointment.editAppointment', ['appointment' => $appointment])); ?>">Edit</a></button>
-                    <button  type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteSchedule-<?php echo e($appointment); ?>">
-                        <i class="far fa-trash-alt">Delete</i>
-                        </button>
-                        <!-- Modal -->
-                        <div class="modal fade" id="deleteSchedule-<?php echo e($appointment); ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                          <div class="modal-dialog">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                              </div>
-                              <div class="modal-body">
-                                <form method="post" action="<?php echo e(route('appointment.deleteAppointment', ['appointment' => $appointment])); ?>" class="form">
+                    </td>
+                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('admin')): ?>
+                    <td>
+                                <form class="cancelForm" method="post" action="<?php echo e(route('appointment.deleteAppointment', ['appointment' => $appointment])); ?>" >
                                       <?php echo csrf_field(); ?>
                                       <?php echo method_field('delete'); ?>
-                                  <div class="modal-footer">
-                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                      <button type="submit" valaue="Delete" class="btn btn-primary">Delete</button>
-                                  </div>
+                                      <button type="submit" valaue="Delete" class="save1">Delete</button>
                                 </form>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <!-- END Modal -->
-                    </td>
-                </tr>
-                            
-                       
+                            </td>
+                            <?php endif; ?>
+                        </tr>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
-
             </table>
-           
+</div>
+</div>
     <!-- =========== Scripts =========  -->
     <script src="<?php echo e(asset('javascript/main.js')); ?>"></script>
-
+    <script>
+  
+    document.querySelectorAll(".cancelForm").forEach(function(form) {
+        form.addEventListener("submit", function(event) {
+            var confirmation = confirm("Are you sure you want to deleete this user?");
+            if (!confirmation) {
+                event.preventDefault();
+            }
+        });
+    });
+</script>
     <!-- ====== ionicons ======= -->
     
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

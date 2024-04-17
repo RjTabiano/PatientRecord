@@ -7,14 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="" href="<?php echo e(asset('images/logocircle.png')); ?>" />
     
-   <title>The Queen's</title>
+   <title>The Queen's Clinic</title>
     <link rel="stylesheet" href="<?php echo e(asset('css/style.css')); ?>">
     <link
       href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
       rel="stylesheet"
     />
 </head>
-
 <body>
     <!-- =============== Navigation ================ -->
     <div class="container">
@@ -47,19 +46,11 @@
                 </li>
                 <?php endif; ?>
                 <li>
-                    <a href="<?php echo e(route('scanner')); ?>">
-                        <span class="icon">
-                        <ion-icon name="scan-circle-outline"></ion-icon>
-                        </span>
-                        <span class="title">OCR Scanner</span>
-                    </a>
-                </li>
-                <li>
                     <a href="<?php echo e(route('patient.patient_record_history')); ?>">
                         <span class="icon">
                             <ion-icon name="newspaper-outline"></ion-icon>
                         </span>
-                        <span class="title">Patient Records</span>
+                        <span class="title">Add Patient Accounts</span>
                     </a>
                 </li>
 
@@ -87,7 +78,7 @@
                         <span class="icon">
                             <ion-icon name="book-outline"></ion-icon>
                         </span>
-                        <span class="title">Booking</span>
+                        <span class="title">Patient's Schedule</span>
                     </a>
                 </li>
                 <?php endif; ?>
@@ -97,11 +88,28 @@
                         <span class="icon">
                             <ion-icon name="calendar-number-outline"></ion-icon>
                         </span>
-                        <span class="title">Schedule</span>
+                        <span class="title">Doctor's Schedule</span>
                     </a>
                 </li>
                 <?php endif; ?>
-              
+                <li>
+                    <a href="<?php echo e(route('feedback')); ?>">
+                        <span class="icon">
+                            <ion-icon name="folder-open-outline"></ion-icon>
+                        </span>
+                        <span class="title">Feedback</span>
+                    </a>
+                </li>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('admin')): ?>
+                <li>
+                    <a href="<?php echo e(route('audit')); ?>">
+                        <span class="icon">
+                            <ion-icon name="folder-open-outline"></ion-icon>
+                        </span>
+                        <span class="title">Audit Trail</span>
+                    </a>
+                </li>
+                <?php endif; ?>
                 <li>
                     <form method="POST" action="<?php echo e(route('logout')); ?>">
                     <?php echo csrf_field(); ?>
@@ -136,10 +144,10 @@
 
         </div>
 
-
     <!-- =========== CONTAINER =========  -->
-    <h1 class="heading">Booking List</h1>
     <br>
+    <h1 class="heading">Patient's Schedule</h1>
+    <br> 
     <div class="table_container">
         <div class="row">
             <div class="col-12">
@@ -195,6 +203,7 @@
                                                 </form>
                                             
                     <?php endif; ?>
+                    </td>
                     </tr>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -205,7 +214,6 @@
         </div>
     </div>
     <!-- =========== CONTAINER =========  -->
-
 
     <!-- =========== Scripts =========  -->
     <script src="<?php echo e(asset('javascript/main.js')); ?>"></script>
