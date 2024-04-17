@@ -143,12 +143,12 @@
     <table style="margin: 0 auto;  width:20%">
     <tr>
         <td>
-            <form action="{{ route('scanner.uploadP', ['patient' => $patient]) }}" method="post" accept="image/*" enctype="multipart/form-data">
+            <form id="uploadForm" action="{{ route('scanner.uploadP', ['patient' => $patient]) }}" method="post" accept="image/*" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <input type="file" class="form-control" name="image" accept="image/*">
                 <br>
-                <input type="submit" class="custom-button" name="submit" value="Upload">
+                <input type="submit" class="custom-button" name="submit" >
             </form>
         </td>
     </tr>
@@ -165,8 +165,8 @@
               <div class="grid-input name">
                 <input type="hidden" name="type" value="Pediatrics" />
                 <label>&nbspName</label>
-                <input type="text" placeholder="Enter Last Name" name="last_name" value="" required />
-                <input type="text" placeholder="Enter First Name" name="first_name" value="" required />
+                <input type="text" placeholder="Enter Last Name" name="last_name" value="{{ isset($pediatrics->last_name) ? $pediatrics->last_name : '' }}" required />
+                <input type="text" placeholder="Enter First Name" name="first_name"  value="{{ isset($pediatrics->first_name) ? $pediatrics->first_name : '' }}" required />
               </div>
               <div class="grid-input">
                   <label >&nbspBirth Date</label>
@@ -199,12 +199,9 @@
                     <option value="female" {{ isset($pediatrics->sex) && $pediatrics->sex === 'female' ? 'selected' : '' }}>Female</option>
                 </select>
             </div>
-          <button type="submit" class="submit-grid">Save</button>
-      </form>
     </div>
     <button type="button" class="collapsible">&nbspVaccine</button>
       <div class="content">
-      <form class="form-vaccine">
       <table class="vaccine_table">
           <tr>
             <th >Vaccine</th>
@@ -343,10 +340,6 @@
             <td><input type="checkbox" name="Flu[]" value="Booster 2"></td>
           </tr>
           </table>
-          <div class="input-box">
-            <button type="submit" class="submit-button ">Save</button>
-          </div>
-      </form>
     </div>
     <button type="button" class="collapsible">Pediatrics Consultation</button>
     <div class="content">
@@ -359,9 +352,11 @@
           <label for="">Orders:</label>
           <textarea name="orders" style="width: 100;%" id="orders" cols="30" rows="10"></textarea>
         </div>
-         
-        <button type="submit" class="submit-button">Save</button>
-    </div>
+        <button type="submit" class="submit-grid">Submit</button>
+
+        </form>
+        
+     </div>
     <br>
     
 
@@ -371,6 +366,7 @@
 
     <!-- =========== Scripts =========  -->
     <script src="{{ asset('javascript/main.js') }}"></script>
+    
 
     <!-- ====== ionicons ======= -->
     

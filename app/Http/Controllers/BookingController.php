@@ -53,9 +53,8 @@ class BookingController extends Controller
     ];
 
     $validatedData = $request->validate($rules);
-    $selectedTime =
-    $allSchedules = Schedule::all();
     
+    $allSchedules = Schedule::all();
     $isWithinDoctorSchedule = false;
     foreach ($allSchedules as $schedule) {
         $startTime = Carbon::parse($schedule->start_time);
@@ -70,6 +69,14 @@ class BookingController extends Controller
 
     if (!$isWithinDoctorSchedule) {
         return back()->withErrors(['error' => 'Selected time is not within any doctor\'s schedule.'])->withInput();
+    }
+
+    $existingBooking = Booking::where('date', $request->input("date"))
+                                ->where('time', $request->input("time"))
+                                ->first();
+
+    if ($existingBooking) {
+        return back()->withErrors(['error' => 'Selected date and time are already booked by another user. Please choose a different time.'])->withInput();
     }
 
     try {
