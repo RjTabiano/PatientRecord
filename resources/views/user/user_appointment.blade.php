@@ -38,7 +38,7 @@
         <li class="nav__item"><a href="#services" class="nav__link">Services</a></li>
         @if (Route::has('login'))
             @auth
-                <li class="nav__item"><a href="{{route('services')}}" class="nav__link">Book Now!</a></li>
+                <li class="nav__item"><a href="{{route('services')}}" class="nav__link">Schedule Now!</a></li>
                 @cannot('user')
                   <li class="nav__item"><a href="{{route('home')}}" class="nav__link">Admin Panel</a></li>
                 @endcan

@@ -27,15 +27,6 @@
                         <span class="title">Admin Panel</span>
                     </a>
                 </li>
-
-                <li>
-                    <a href="{{route('home')}}">
-                        <span class="icon">
-                            <ion-icon name="home-outline"></ion-icon>
-                        </span>
-                        <span class="title">Home</span>
-                    </a>
-                </li>
                 @can('admin')
                 <li>
                     <a href="{{route('accounts')}}">
@@ -111,6 +102,14 @@
                         <span class="title">Audit Trail</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{route('inactiveUsers')}}">
+                        <span class="icon">
+                            <ion-icon name="folder-open-outline"></ion-icon>
+                        </span>
+                        <span class="title">Inactive Archive</span>
+                    </a>
+                </li>
                 @endcan
                 <li>
                     <form method="POST" action="{{ route('logout') }}">
@@ -179,6 +178,7 @@
                     <th>Email</th>
                     <th></th>
                     <th></th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody style="height: 200x; overflow-y: scroll;">
@@ -189,10 +189,10 @@
                             <td>{{$patient->name}}</td>
                             <td>{{$patient->email}}</td>
                             <td>
-                                <a href="{{route('patient.viewPediatrics', ['patient' => $patientRecords['id']])}}">View</a>
+                                <a href="{{route('patient.viewPediatrics', ['patient' => $patientRecords['id']])}}"class="btn btn-sucess"><ion-icon name="eye-sharp"></ion-icon></a>
                             </td>
                             <td>
-                                <a href="{{route('patient.update', ['patient' => $patient])}}">Edit</a>
+                                <a href="{{route('patient.update', ['patient' => $patient])}}"class="btn btn-info"><ion-icon name="create-outline"></ion-icon></a>
                             </td>
                             @can('admin')
                             <td>
@@ -200,7 +200,7 @@
                                     @csrf
                                     @method('delete')
 
-                                    <button type="submit" value="Delete" class="save1">Delete</button>
+                                    <button type="submit" value="Delete" class="save1"><ion-icon name="trash-outline"></ion-icon></button>
                                 </form>
                             </td>
                             @endcan
