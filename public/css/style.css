@@ -960,6 +960,11 @@ textarea {
     resize: vertical;
 }
 
+.span-2 {
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
 
 .submit-grid {
   grid-column: span 2;
@@ -1104,8 +1109,6 @@ button[type="submit"]:active {
 
 /* Style the collapsible content. Note: hidden by default */
 .content {
-  display:grid;
-  place-items: center; 
   padding: 0 18px;
   background-color: white;
   max-height: 0;

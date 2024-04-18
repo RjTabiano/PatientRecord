@@ -228,10 +228,6 @@ class PatientController extends Controller
         $newPatientRecord->father_phone = $request->input("father_phone");
         $newPatientRecord->save();
 
-        return view('admin.pediatrics', ['patient' => $patient]);
-    }
-
-    public function storeVaccine(Patient $patient, Request $request) {
         $newVaccine = new Vaccine();
         $newVaccine->patient_record_id = $newPatientRecord->id;
         $newVaccine->BCG = $request->input("BCG");
@@ -251,12 +247,7 @@ class PatientController extends Controller
         $newVaccine->Flu = $request->input("Flu");
         $newVaccine->save();
 
-        return view('admin.pediatrics', ['patient' => $patient]);
 
-    }
-
-    public function storeConsultationPedia(Patient $patient, Request $request) {
-         
         $newConsultationPedia = new pediatricsConsultation;
         $history = $request->input("history");
         $orders = $request->input("orders");
@@ -289,6 +280,14 @@ class PatientController extends Controller
         }
         $description2 = $dom2->saveHTML();
         $newConsultationPedia->orders = $orders;
+
+        return view('admin.pediatrics', ['patient' => $patient]);
+    }
+
+
+    public function storeConsultationPedia(Patient $patient, Request $request) {
+         
+        
 
         return view('admin.pediatrics', ['patient' => $patient]);
 
