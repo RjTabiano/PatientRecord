@@ -14,8 +14,8 @@
       rel="stylesheet"
     />
 </head>
-<body>
-    <!-- =============== Navigation ================ -->
+<body> 
+    <!-- ================= Navigation ================ -->
     <div class="container">
         <div class="navigation">
             <ul>
@@ -27,7 +27,6 @@
                         <span class="title">Admin Panel</span>
                     </a>
                 </li>
-                
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('admin')): ?>
                 <li>
                     <a href="<?php echo e(route('accounts')); ?>">
@@ -38,6 +37,7 @@
                     </a>
                 </li>
                 <?php endif; ?>
+
                 <li>
                     <a href="<?php echo e(route('patient.patient_record_history')); ?>">
                         <span class="icon">
@@ -90,11 +90,7 @@
                         <span class="icon">
                             <ion-icon name="folder-open-outline"></ion-icon>
                         </span>
-<<<<<<< Updated upstream
                         <span class="title">Feedback</span>
-=======
-                         <span class="title">Feedback</span>
->>>>>>> Stashed changes
                     </a>
                 </li>
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('admin')): ?>
@@ -104,8 +100,6 @@
                             <ion-icon name="folder-open-outline"></ion-icon>
                         </span>
                         <span class="title">Audit Trail</span>
-<<<<<<< Updated upstream
-=======
                     </a>
                 </li>
                 <li>
@@ -114,7 +108,6 @@
                             <ion-icon name="folder-open-outline"></ion-icon>
                         </span>
                         <span class="title">Inactive Archive</span>
->>>>>>> Stashed changes
                     </a>
                 </li>
                 <?php endif; ?>
@@ -124,7 +117,11 @@
                     <a href="<?php echo e(route('logout')); ?>" class="nav-link" 
                     onclick="event.preventDefault();
                             this.closest('form').submit();">
-                        <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
+                            
+                        <span class="icon">
+                        <ion-icon name="log-out-outline"></ion-icon>
+                        </span>
+                        
                         <span class="title">Logout</span>
                     </a>
                     </form>
@@ -139,124 +136,99 @@
                 </div>
 
                 <div class="search">
-                    <form action="<?php echo e(route('searchBooking')); ?>" method="GET">
-                        <label>
-                            <input type="text" name="search" placeholder="Search here">
-                            <ion-icon name="search-outline"></ion-icon>
-                        </label>
-                    </form>
+                    <label>
+                        <input type="text" placeholder="Search here">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </label>
                 </div>
+
                 <div class="user">
                     
                 </div>
 
         </div>
 
+
     <!-- =========== CONTAINER =========  -->
-    <br>
-    <h1 class="heading">Patient's Schedule</h1>
-    <br> 
-    <div class="table_container">
-        <div class="row">
-            <div class="col-12">
-            <div style="height: 600px; overflow-y: auto;">
-            <table class="table table-bordered">
-                <thead >
-                <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Service</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Time</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Confirmation</th>
-                    <th scope="col"></th>
-                </tr>
-                </thead>
-                <tbody class="scrollable-body">
-                <?php $__currentLoopData = $booking; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $book): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <?php $__currentLoopData = $book->booking; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $booked): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>                    
-                <tr>
-                    <td><?php echo e($book->name); ?></td>
-                    <td><?php echo e($booked->service); ?></td>
-                    <td><?php echo e($booked->date); ?></td>
-                    <td><?php echo e($booked->time); ?></td>
-                    <td><?php echo e($booked->status); ?></td>
-                    <?php if($booked->status == "Unconfirmed" || $booked->status == "Cancelled"): ?>
-                    <td>     
-                            <form class="confirmationForm" method="put" action="<?php echo e(route('confirmBooking', ['booking' => $booked])); ?>">
-                                <?php echo csrf_field(); ?>
-                                <input type="hidden" name="status" value="Confirmed"></input>
-                                <button class="but1" type="submit">Confirm</button>
-                            </form>
-                    </div>
-                    <!-- =========== END CONFIRM MODAL  =========  -->
-                    </td>
-                    <?php else: ?>
-                    <td>
-                            <form class="unconfirmForm" method="put" action="<?php echo e(route('confirmBooking', ['booking' => $booked])); ?>">
-                                <?php echo csrf_field(); ?>
-                                <input type="hidden" name="status" value="Unconfirmed"></input>
-                                <button class="uncon1" type="submit">Unconfirm</button>
-                            </form>
-                    </td>
-                    <?php endif; ?>
-                    <td>
-                    <?php if($booked->status != "Cancelled"): ?>
-                                        
-                                                <form class="cancelForm" method="put" action="<?php echo e(route('confirmBooking', ['booking' => $booked])); ?>">
-                                                    <?php echo csrf_field(); ?>
-                                                    <?php echo method_field('PUT'); ?>
-                                                    <input type="hidden" name="status" value="Cancelled">
-                                                    <button class="save1" type="submit">Cancel</button>
-                                                </form>
-                                            
-                    <?php endif; ?>
-                    </td>
-                    </tr>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                </tbody>
-            </table>
-</div>
+    <header class="heading">Patient Records</header>
+        <?php if($errors->any()): ?>
+        <ul>
+            <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <li><?php echo e($error); ?></li>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        </ul>
+        <?php endif; ?>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Add Patient Record
+            </button>
+            
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="<?php echo e(route('patient.pediatrics', ['patient' => $patient])); ?>">Pediatrics</a>
+                <a class="dropdown-item" href="<?php echo e(route('patient.obgyne', ['patient' => $patient])); ?>">Obgyne</a>
             </div>
         </div>
-    </div>
-    <!-- =========== CONTAINER =========  -->
+        <div class="table-wrapper">  
+            
+            <table>
+                <thead>
+                <tr>
+                    <th>Record</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
 
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody style="height: 200x; overflow-y: scroll;">
+                    <div style="height: auto; width: 100%;">
+                        <?php $__currentLoopData = $patient->patientRecord; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $patientRecords): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <tr>
+                            <td><?php echo e($patientRecords['type']); ?></td>
+                            <td><?php echo e($patient->name); ?></td>
+                            <td><?php echo e($patient->email); ?></td>
+                            <td>
+                                <a href="<?php echo e(route('patient.viewPediatrics', ['patient' => $patientRecords['id']])); ?>"class="btn btn-sucess"><ion-icon name="eye-sharp"></ion-icon></a>
+                            </td>
+                            <td>
+                                <a href="<?php echo e(route('patient.update', ['patient' => $patient])); ?>"class="btn btn-info"><ion-icon name="create-outline"></ion-icon></a>
+                            </td>
+                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('admin')): ?>
+                            <td>
+                                <form class="cancelForm" method="post" action="<?php echo e(route('patient.delete', ['patient' => $patient])); ?>">
+                                    <?php echo csrf_field(); ?>
+                                    <?php echo method_field('delete'); ?>
+
+                                    <button type="submit" value="Delete" class="save1"><ion-icon name="trash-outline"></ion-icon></button>
+                                </form>
+                            </td>
+                            <?php endif; ?>
+                        </tr>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </div>
+                </tbody>
+            </table>
+    </div>
+    <!-- =========== CONTAINER ==========  -->
     <!-- =========== Scripts =========  -->
     <script src="<?php echo e(asset('javascript/main.js')); ?>"></script>
+    <!-- ====== ionicons ======= -->
     <script>
-    document.querySelectorAll(".confirmationForm").forEach(function(form) {
-        form.addEventListener("submit", function(event) {
-            var confirmation = confirm("Are you sure you want to confirm this booking?");
-            if (!confirmation) {
-                event.preventDefault();
-            }
-        });
-    });
-
-    document.querySelectorAll(".unconfirmForm").forEach(function(form) {
-        form.addEventListener("submit", function(event) {
-            var confirmation = confirm("Are you sure you want to unconfirm this booking?");
-            if (!confirmation) {
-                event.preventDefault();
-            }
-        });
-    });
-
+  
     document.querySelectorAll(".cancelForm").forEach(function(form) {
         form.addEventListener("submit", function(event) {
-            var confirmation = confirm("Are you sure you want to cancel this booking?");
+            var confirmation = confirm("Are you sure you want to delete this record?");
             if (!confirmation) {
                 event.preventDefault();
             }
         });
     });
 </script>
-    <!-- ====== ionicons ======= -->
-    
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
-</html><?php /**PATH C:\xampp\htdocs\PatientRecord\resources\views/admin/booking.blade.php ENDPATH**/ ?>
+</html><?php /**PATH C:\xampp\htdocs\PatientRecord\resources\views/admin/viewRecord.blade.php ENDPATH**/ ?>

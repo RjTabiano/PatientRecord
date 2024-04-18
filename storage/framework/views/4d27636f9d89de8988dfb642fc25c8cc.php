@@ -27,14 +27,6 @@
                         <span class="title">Admin Panel</span>
                     </a>
                 </li>
-                <li>
-                    <a href="<?php echo e(route('home')); ?>">
-                        <span class="icon">
-                            <ion-icon name="home-outline"></ion-icon>
-                        </span>
-                        <span class="title">Home</span>
-                    </a>
-                </li>
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('admin')): ?>
                 <li>
                     <a href="<?php echo e(route('accounts')); ?>">

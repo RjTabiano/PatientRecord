@@ -27,14 +27,7 @@
                         <span class="title">Admin Panel</span>
                     </a>
                 </li>
-                <li>
-                    <a href="<?php echo e(route('home')); ?>">
-                        <span class="icon">
-                            <ion-icon name="home-outline"></ion-icon>
-                        </span>
-                        <span class="title">Home</span>
-                    </a>
-                </li>
+                
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('admin')): ?>
                 <li>
                     <a href="<?php echo e(route('accounts')); ?>">
@@ -97,7 +90,11 @@
                         <span class="icon">
                             <ion-icon name="folder-open-outline"></ion-icon>
                         </span>
+<<<<<<< Updated upstream
                         <span class="title">Feedback</span>
+=======
+                         <span class="title">Feedback</span>
+>>>>>>> Stashed changes
                     </a>
                 </li>
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('admin')): ?>
@@ -109,6 +106,17 @@
                         <span class="title">Audit Trail</span>
                     </a>
                 </li>
+<<<<<<< Updated upstream
+=======
+                <li>
+                    <a href="<?php echo e(route('inactiveUsers')); ?>">
+                        <span class="icon">
+                            <ion-icon name="folder-open-outline"></ion-icon>
+                        </span>
+                        <span class="title">Inactive Archive</span>
+                    </a>
+                </li>
+>>>>>>> Stashed changes
                 <?php endif; ?>
                 <li>
                     <form method="POST" action="<?php echo e(route('logout')); ?>">
