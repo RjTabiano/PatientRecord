@@ -141,17 +141,72 @@
     <br>
     <table style="margin: 0 auto;  width:20%">
     <tr>
-        <td>
-            <form id="uploadForm" action="{{ route('scanner.uploadP', ['patient' => $patient]) }}" method="post" accept="image/*" enctype="multipart/form-data">
+        <td style="text-align: center;">
+            <form id="uploadForm" action="{{ route('scanner.uploadP', ['patient' => $patient]) }}" method="post" accept="image/*" enctype="multipart/form-data" >
                 @csrf
                 @method('PUT')
                 <input type="file" class="form-control" name="image" accept="image/*">
-                <br>
+                <br><br>
                 <input type="submit" class="custom-button" name="submit" >
             </form>
         </td>
     </tr>
+
 </table>
+   
+    <div style="text-align: center;" class="show-result">
+      <button class="custom-button" onclick="toggleOCRResult()">Show OCR Result</button>
+    </div>
+
+
+    <div class="OCRresult" style="display: none;">
+        <div class="grid-input name">
+                <label>&nbspName</label>
+                <input class="input-readonly" value="<?php echo !empty($response['AOG by EUTZ:']) ? $response['AOG by EUTZ:'] : ''; ?>" readonly />
+              </div>
+              <div class="grid-input">
+                  <label >&nbspBirth Date</label>
+                  <input class="input-readonly" type="date" value="<?php echo !empty($response['AOG by EUTZ:']) ? $response['AOG by EUTZ:'] : ''; ?>" readonly/>
+              </div>
+              <div class="grid-input">
+                <label  >&nbspAddress</label>
+                <input class="input-readonly" value="<?php echo !empty($response['AOG by EUTZ:']) ? $response['AOG by EUTZ:'] : ''; ?>" readonly /><br>
+              </div>
+              <div class="grid-input">
+                <label >&nbspMother's Name (Last Name, First Name)</label>
+                <input class="input-readonly" value="<?php echo !empty($response['AOG by EUTZ:']) ? $response['AOG by EUTZ:'] : ''; ?>" readonly />
+              </div>
+              <div class="grid-input">
+                <label>&nbspMother's Phone Number</label>
+                <input class="input-readonly" value="<?php echo !empty($response['AOG by EUTZ:']) ? $response['AOG by EUTZ:'] : ''; ?>" readonly />
+              </div>
+              <div class="grid-input">
+                <label>&nbspFather's Name (Last Name, First Name)</label>
+                <input class="input-readonly" value="<?php echo !empty($response['AOG by EUTZ:']) ? $response['AOG by EUTZ:'] : ''; ?>" readonly />
+              </div>
+              <div class="grid-input">
+                <label>&nbspFather's Phone Number</label>
+                <input class="input-readonly" value="<?php echo !empty($response['AOG by EUTZ:']) ? $response['AOG by EUTZ:'] : ''; ?>" readonly />
+              </div>
+            <div class="grid-input">
+                <label>Gender</label>
+                <input class="input-readonly" value="<?php echo !empty($response['AOG by EUTZ:']) ? $response['AOG by EUTZ:'] : ''; ?>" readonly />
+            </div>
+            <div class="grid-input">
+              <label>Vaccines</label>
+              <textarea value="<?php echo !empty($response['AOG by EUTZ:']) ? $response['AOG by EUTZ:'] : ''; ?>" readonly></textarea>
+            </div>
+            <div class="grid-input">
+              <label>P.E./History</label>
+              <textarea value="<?php echo !empty($response['AOG by EUTZ:']) ? $response['AOG by EUTZ:'] : ''; ?>" readonly></textarea>
+            </div>
+            <div class="grid-input">
+              <label>Orders</label>
+              <textarea value="<?php echo !empty($response['AOG by EUTZ:']) ? $response['AOG by EUTZ:'] : ''; ?>" readonly></textarea>
+            </div>
+    </div>
+
+
 
               <br><br>
     <header class="heading">Pediatrics Forms</header>
@@ -164,8 +219,8 @@
               <div class="grid-input name">
                 <input type="hidden" name="type" value="Pediatrics" />
                 <label>&nbspName</label>
-                <input type="text" placeholder="Enter Last Name" name="last_name" value="{{ isset($pediatrics->last_name) ? $pediatrics->last_name : '' }}" required />
                 <input type="text" placeholder="Enter First Name" name="first_name"  value="{{ isset($pediatrics->first_name) ? $pediatrics->first_name : '' }}" required />
+                <input type="text" placeholder="Enter Last Name" name="last_name" value="{{ isset($pediatrics->last_name) ? $pediatrics->last_name : '' }}" required />
               </div>
               <div class="grid-input">
                   <label >&nbspBirth Date</label>
@@ -365,7 +420,16 @@
 
     <!-- =========== Scripts =========  -->
     <script src="{{ asset('javascript/main.js') }}"></script>
-    
+    <script>
+        function toggleOCRResult() {
+            var OCRresult = document.querySelector('.OCRresult');
+            if (OCRresult.style.display === "none") {
+                OCRresult.style.display = "grid";
+            } else {
+                OCRresult.style.display = "none";
+            }
+        }
+    </script>
 
     <!-- ====== ionicons ======= -->
     
