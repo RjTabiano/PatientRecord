@@ -28,15 +28,6 @@
                         <span class="title">Admin Panel</span>
                     </a>
                 </li>
-
-                <li>
-                    <a href="{{route('home')}}">
-                        <span class="icon">
-                            <ion-icon name="home-outline"></ion-icon>
-                        </span>
-                        <span class="title">Home</span>
-                    </a>
-                </li>
                 @can('admin')
                 <li>
                     <a href="{{route('accounts')}}">
@@ -111,6 +102,14 @@
                         <span class="title">Audit Trail</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{route('inactiveUsers')}}">
+                        <span class="icon">
+                            <ion-icon name="folder-open-outline"></ion-icon>
+                        </span>
+                        <span class="title">Inactive Archive</span>
+                    </a>
+                </li>
                 @endcan
                 <li>
                     <form method="POST" action="{{ route('logout') }}">
@@ -157,9 +156,9 @@
     <header>Obgyne Form</header>
     <button type="button" class="collapsible">Patient Information</button>
     <div class="content">
-    <form method="post" action="{{route('patient.storeObgyne' , ['patient' => $patient])}}" class="gridForm">
-        @csrf
-        @method('post')
+    <form class="gridForm">
+         @csrf
+         @method('post')
         <div class="grid-input name">
           <input type="hidden" name="type" value="Obgyne" />
           <label>Name</label>
@@ -208,14 +207,10 @@
             <label class="form-control" >Emergency Contact Number: </label>
             <input class="form-control" type="number" placeholder="" name="emergency_contact_no" value="<?php echo !empty($response["Person to notify in case of Emergency / Contact No.:"]) ? $response["Person to notify in case of Emergency / Contact No.:"] : ''; ?>" required />
           </div>
-        <button type="submit" class="submit-grid">Submit</button>
-        </form>
     </div>
     <button type="button" class="collapsible">Medical History</button>
-    <div class="content">
-        <form class="gridForm">
-            @csrf
-            @method('post')
+    <div class="content gridForm">
+ 
             <div class="grid-input">
                 <label for="Hypertension">Hypertension</label>
                 <input type="checkbox" id="Hypertension" name="Hypertension" value="Hypertension" <?php echo (!empty($response['Hypertension']) && strtolower($response['Hypertension']) === 'SELECTED') ? 'checked' : ''; ?> >
@@ -243,12 +238,9 @@
                 <label for="Family_History">Family History</label>
                 <input type="text" id="Previous_Surgery" name="Family_History" value="<?php echo !empty($response['Family History:']) ? $response['Family History:'] : ''; ?>">
             </div>
-            <button type="submit" class="submit-grid">Submit</button>
-        </form>
     </div>
     <button type="button" class="collapsible">Baseline Diagnostics</button>
-    <div class="content">
-        <form class="gridForm">
+    <div class="content gridForm">
             <div class="form-group">
                 <label for="date">date</label>
                 <input type="date" id="CBC_HgB" name="date" value="<?php echo !empty($response['Date:']) ? $response['Date:'] : ''; ?>">
@@ -389,12 +381,9 @@
                 <label for="Other">Other</label>
                 <input type="text" id="Other" name="Other" value="<?php echo !empty($response['Others']) ? $response['Others'] : ''; ?>">
             </div>
-            <button type="submit" class="submit-grid">Submit</button>
-        </form>
     </div>
     <button type="button" class="collapsible">Obgyne History</button>
-    <div class="content">
-        <form class="gridForm">
+    <div class="content gridForm">
             <div class="form-group">
             <div class="tooltip">Gravidity
                 <span class="tooltiptext">BLABLABLABLABLABLAL</span>
@@ -453,7 +442,7 @@
             </div>
                 <input type="text" id="early_ultrasound" name="S" value="<?php echo !empty($response['S']) ? $response['S'] : ''; ?>">
             </div>
-        <button type="submit" class="submit-grid">Submit</button>
+            <button type="submit" class="submit-grid">Submit</button>
       </form>
     </div>
    

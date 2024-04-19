@@ -28,15 +28,6 @@
                         <span class="title">Admin Panel</span>
                     </a>
                 </li>
-
-                <li>
-                    <a href="{{route('home')}}">
-                        <span class="icon">
-                            <ion-icon name="home-outline"></ion-icon>
-                        </span>
-                        <span class="title">Home</span>
-                    </a>
-                </li>
                 @can('admin')
                 <li>
                     <a href="{{route('accounts')}}">
@@ -109,6 +100,14 @@
                             <ion-icon name="folder-open-outline"></ion-icon>
                         </span>
                         <span class="title">Audit Trail</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('inactiveUsers')}}">
+                        <span class="icon">
+                            <ion-icon name="folder-open-outline"></ion-icon>
+                        </span>
+                        <span class="title">Inactive Archive</span>
                     </a>
                 </li>
                 @endcan
@@ -344,11 +343,11 @@
     <button type="button" class="collapsible">Pediatrics Consultation</button>
     <div class="content">
       <br>
-    <div class="input-box">
+    <div class="span-grid">
           <label for="">P.E./History:</label>
           <textarea name="history" style="width: 100;%" id="history" cols="30" rows="10"></textarea>
         </div>
-        <div class="input-box">
+        <div class="span-grid">
           <label for="">Orders:</label>
           <textarea name="orders" style="width: 100;%" id="orders" cols="30" rows="10"></textarea>
         </div>

@@ -26,15 +26,6 @@
                         <span class="title">Admin Panel</span>
                     </a>
                 </li>
-
-                <li>
-                    <a href="{{route('home')}}">
-                        <span class="icon">
-                            <ion-icon name="home-outline"></ion-icon>
-                        </span>
-                        <span class="title">Home</span>
-                    </a>
-                </li>
                 @can('admin')
                 <li>
                     <a href="{{route('accounts')}}">
@@ -97,7 +88,7 @@
                         <span class="icon">
                             <ion-icon name="folder-open-outline"></ion-icon>
                         </span>
-                        <span class="title">Feedback</span>
+                         <span class="title">Feedback</span>
                     </a>
                 </li>
                 @can('admin')
@@ -107,6 +98,14 @@
                             <ion-icon name="folder-open-outline"></ion-icon>
                         </span>
                         <span class="title">Audit Trail</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('inactiveUsers')}}">
+                        <span class="icon">
+                            <ion-icon name="folder-open-outline"></ion-icon>
+                        </span>
+                        <span class="title">Inactive Archive</span>
                     </a>
                 </li>
                 @endcan

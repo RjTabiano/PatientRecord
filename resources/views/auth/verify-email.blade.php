@@ -24,6 +24,7 @@
         .lkj {
             background-color: #ffffff;
             padding: 30px;
+            margin-top: -20px;
             border-radius: 10px;
             text-align: center;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -64,9 +65,6 @@
     </style>
 </head>
 <body>
-    <div class="BGBG">
-<img src="{{ asset('images/FIREE.JPG') }}" alt="Queen's Clinic Logo" style="width: 100px; height: 100px;">
-</div>
 <div class="container">
         <div class="lkj">
             <div class="imga">
