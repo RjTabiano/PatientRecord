@@ -311,11 +311,6 @@ class PatientController extends Controller
         $newObgyne->emergency_contact_no = $request->input("emergency_contact_no");
         $newObgyne->save();
 
-        return redirect(route('patient.patient_record_history'))->with('success', 'Added Successfully');
-    }
-
-    public function storeMedicalHistory(Patient $patient, Request $request)
-    {
         $MedicalHistory = new MedicalHistory();
         $MedicalHistory->obgyne_id = $newObgyne->id;
         $MedicalHistory->Hypertension = $request->input("Hypertension");
@@ -326,12 +321,6 @@ class PatientController extends Controller
         $MedicalHistory->Family_History = $request->input("Family_History");
         $MedicalHistory->save();
 
-        return redirect(route('patient.patient_record_history'))->with('success', 'Added Successfully');
-
-    }
-
-    public function storeBaselineDiagnostic(Patient $patient, Request $request)
-    {
         $newBaselineDiagnostics = new BaselineDiagnostics();
         $newBaselineDiagnostics->obgyne_id = $newObgyne->id;
         $newBaselineDiagnostics->date = $request->input("date");
@@ -357,13 +346,7 @@ class PatientController extends Controller
         $newBaselineDiagnostics->EDD_by_eutz = $request->input("EDD_by_eutz");
         $newBaselineDiagnostics->Other = $request->input("Other");
         $newBaselineDiagnostics->save();
-        
-        return redirect(route('patient.patient_record_history'))->with('success', 'Added Successfully');
 
-    }
-
-    public function storeObgyneHistory(Patient $patient, Request $request)
-    {
         $newObgyneHistory = new ObgyneHistory();
         $newObgyneHistory->obgyne_id = $newObgyne->id;
         $newObgyneHistory->gravidity = $request->input("gravidity");
@@ -377,11 +360,6 @@ class PatientController extends Controller
         $newObgyneHistory->S = $request->input("S");
         $newObgyneHistory->save();
 
-        return redirect(route('patient.patient_record_history'))->with('success', 'Added Successfully');
-    }
-
-    public function storeImmunizations(Patient $patient, Request $request)
-    {
         $newImmunizations = new Immunizations();
         $newImmunizations->obgyne_id = $newObgyne->id;
         $newImmunizations->TT_1 = $request->input("TT_1");
@@ -393,6 +371,36 @@ class PatientController extends Controller
         $newImmunizations->Pneumo = $request->input("Pneumo");
         $newImmunizations->hepa_b = $request->input("hepa_b");
         $newImmunizations->save();
+
+        return redirect(route('patient.patient_record_history'))->with('success', 'Added Successfully');
+    }
+
+    public function storeMedicalHistory(Patient $patient, Request $request)
+    {
+        
+
+        return redirect(route('patient.patient_record_history'))->with('success', 'Added Successfully');
+
+    }
+
+    public function storeBaselineDiagnostic(Patient $patient, Request $request)
+    {
+        
+        
+        return redirect(route('patient.patient_record_history'))->with('success', 'Added Successfully');
+
+    }
+
+    public function storeObgyneHistory(Patient $patient, Request $request)
+    {
+        
+
+        return redirect(route('patient.patient_record_history'))->with('success', 'Added Successfully');
+    }
+
+    public function storeImmunizations(Patient $patient, Request $request)
+    {
+       
 
         return redirect(route('patient.patient_record_history'))->with('success', 'Added Successfully');
 
@@ -496,8 +504,7 @@ class PatientController extends Controller
         $patient = PatientRecord::with('Vaccine')->find($patient);
         if ($patient && $patient->type == 'Pediatrics') {
             $bcgVaccine = $patient->vaccine;
-    
-    
+
             return view('admin.viewPediatrics', ['patient' => $patient], ['bcgVaccine' => $bcgVaccine]);
         }
     
