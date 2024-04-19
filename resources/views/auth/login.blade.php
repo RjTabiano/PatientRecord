@@ -40,23 +40,23 @@
             <div class="input-field">
               <i class="fas fa-user"></i>
               <input type="text" name="name" placeholder="Username" required/>
-              <x-input-error :messages="$errors->get('name')" class="mt-2" />
+              <x-input-error :messages="$errors->get('name')" class="error-login" />
             </div>
             <div class="input-field">
               <i class="fas fa-envelope"></i>
               <input type="email" name="email" placeholder="Email" required/>
-              <x-input-error :messages="$errors->get('email')" class="mt-2" />
+              <x-input-error :messages="$errors->get('email')" class="error-login" />
             </div>
             <br><br>
             <div class="input-field">
               <i class="fas fa-lock"></i>
               <input type="password" name="password" placeholder="Password" required/>
-              <x-input-error :messages="$errors->get('password')" class="mt-2" />
+              <x-input-error :messages="$errors->get('password')" class="error-register" />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
               <input type="password" name="password_confirmation" placeholder="Confirm Password"required/>
-              <x-input-error :messages="$errors->get('password_confirmation')"   class="mt-2" />
+              <x-input-error :messages="$errors->get('password_confirmation')"   class="error-register" />
             </div>
             <input type="submit" class="btn" value="{{ __('Register') }}" />
           </form>
