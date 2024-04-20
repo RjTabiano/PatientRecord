@@ -203,6 +203,7 @@
             <div class="grid-input span-2">
                 <h1 class="">Medical History</h1>
             </div>
+
             <div class="grid-input">
                 <div class="tooltip">Blood Type
                     <span class="tooltiptext"></span>
@@ -769,7 +770,7 @@
             <div class="tooltip">Gravidity
                 <span class="tooltiptext">BLABLABLABLABLABLAL</span>
             </div>
-                <input type="text" id="gravitiy" name="g" value="<?php echo !empty($response['G']) ? $response['G'] : ''; ?>">
+                <input type="text" id="gravitiy" name="gravidity" value="<?php echo !empty($response['G']) ? $response['G'] : ''; ?>">
             </div>
 
             <div class="grid-input">
