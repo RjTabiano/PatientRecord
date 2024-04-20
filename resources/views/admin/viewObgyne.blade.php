@@ -182,180 +182,73 @@
                     <label>&nbspEmergency Contact Number</label>
                     <input class="input-readonly" value="{{ $patient->emergency_contact_no }}" readonly />
                 </div>
-
-                <!-- ======= Medical History ========= -->  
-                @if($patient->MedicalHistory)
-                    <div class="grid-input span-2">
-                        <h1 class="">Medical History</h1>
-                    </div>
-
-
-                    <div class="grid-input">
-                    <label>Medical History</label>
-                        @foreach($patient->MedicalHistory as $medHistory)
-                        <input class="input-readonly" value="{{ $medHistory->Hypertension }} {{ $medHistory->Thyroid_disease }} {{ $medHistory->Allergy }}" readonly />
-                        @endforeach
-                    </div>
                 
 
-                    <div class="grid-input">
-                        <label>Social History</label>
-                            @foreach($patient->MedicalHistory as $medHistory)
-                            <input class="input-readonly" value="{{ $medHistory->social_history }}" readonly />
-                            @endforeach
-                    </div>
+                @foreach($patient->MedicalHistory as $x)
+                    @if($x)
+                <!-- ======= Medical History ========= -->  
+                    @if($patient->MedicalHistory)
+                        <div class="grid-input span-2">
+                            <h1 class="">Medical History</h1>
+                        </div>
 
-                    <div class="grid-input">
-                        <label>Family History</label>
+
+                        <div class="grid-input">
+                            <label>Medical History</label>
                             @foreach($patient->MedicalHistory as $medHistory)
-                            <input class="input-readonly" value="{{ $medHistory->Family_History }}" readonly />
+                            <input class="input-readonly" value="{{ $medHistory->Hypertension }} {{ $medHistory->Thyroid_disease }} {{ $medHistory->Allergy }}" readonly />
                             @endforeach
-                    </div>
-                @else
+                        </div>
+                    
+
+                        <div class="grid-input">
+                            <label>Social History</label>
+                                @foreach($patient->MedicalHistory as $medHistory)
+                                <input class="input-readonly" value="{{ $medHistory->social_history }}" readonly />
+                                @endforeach
+                        </div>
+
+                        <div class="grid-input">
+                            <label>Family History</label>
+                                @foreach($patient->MedicalHistory as $medHistory)
+                                <input class="input-readonly" value="{{ $medHistory->Family_History }}" readonly />
+                                @endforeach
+                        </div>
+                    @endif
                 @endif
-
+                @endforeach
 
                 <!-- ======= Baseline Diagnostics ========= -->     
-                
-            
-                
-                @if($patient->BaselineDiagnostics)
-                <div class="grid-input span-2">
-                    <h1 class="">Baseline Diagnostics</h1>
-                </div>
+                @foreach($patient->BaselineDiagnostics as $x)
+                    @if($x)
+                        @if($patient->BaselineDiagnostics)
+                        <div class="grid-input span-2">
+                            <h1 class="">Baseline Diagnostics</h1>
+                        </div>
 
-                    @foreach($patient->BaselineDiagnostics as $diag)
-                        <div class="grid-input">
-                            <label>Blood Type</label>
-                            <input class="input-readonly" value="{{ $diag->blood_type }}" readonly />
-                        </div>
-                        <div class="grid-input">
-                            <label>FBS</label>
-                            <input class="input-readonly" value="{{ $diag->FBS }}" readonly />
-                        </div>
-                        <div class="grid-input">
-                            <label>Hgb</label>
-                            <input class="input-readonly" value="{{ $diag->Hgb }}" readonly />
-                        </div>
-                        <div class="grid-input">
-                            <label>Hct</label>
-                            <input class="input-readonly" value="{{ $diag->Hct }}" readonly />
-                        </div>
-                        <div class="grid-input">
-                            <label>WBC</label>
-                            <input class="input-readonly" value="{{ $diag->WBC }}" readonly />
-                        </div>
-                        <div class="grid-input">
-                            <label>Platelet</label>
-                            <input class="input-readonly" value="{{ $diag->Platelet }}" readonly />
-                        </div>
-                        <div class="grid-input">
-                            <label>HIV</label>
-                            <input class="input-readonly" value="{{ $diag->HIV }}" readonly />
-                        </div>
-                        <div class="grid-input">
-                            <label>First Hr</label>
-                            <input class="input-readonly" value="{{ $diag->first_hr }}" readonly />
-                        </div>
-                        <div class="grid-input">
-                            <label>Second Hr</label>
-                            <input class="input-readonly" value="{{ $diag->second_hr }}" readonly />
-                        </div>
-                        <div class="grid-input">
-                            <label>HBsAg</label>
-                            <input class="input-readonly" value="{{ $diag->HBsAg }}" readonly />
-                        </div>
-                        <div class="grid-input">
-                            <label>RPR</label>
-                            <input class="input-readonly" value="{{ $diag->RPR }}" readonly />
-                        </div>
-                        <div class="grid-input">
-                            <label>Protein</label>
-                            <input class="input-readonly" value="{{ $diag->protein }}" readonly />
-                        </div>
-                        <div class="grid-input">
-                            <label>Sugar</label>
-                            <input class="input-readonly" value="{{ $diag->sugar }}" readonly />
-                        </div>
-                        <div class="grid-input">
-                            <label>LMP</label>
-                            <input class="input-readonly" value="{{ $diag->LMP }}" readonly />
-                        </div>
-                        <div class="grid-input">
-                            <label>PMP</label>
-                            <input class="input-readonly" value="{{ $diag->PMP }}" readonly />
-                        </div>
-                        <div class="grid-input">
-                            <label>AOG</label>
-                            <input class="input-readonly" value="{{ $diag->AOG }}" readonly />
-                        </div>
-                        <div class="grid-input">
-                            <label>EDD</label>
-                            <input class="input-readonly" value="{{ $diag->EDD }}" readonly />
-                        </div>
-                        <div class="grid-input">
-                            <label>Early Ultrasound</label>
-                            <input class="input-readonly" value="{{ $diag->early_ultrasound }}" readonly />
-                        </div>
-                        <div class="grid-input">
-                            <label>AOG By EUTZ</label>
-                            <input class="input-readonly" value="{{ $diag->AOG_by_eutz }}" readonly />
-                        </div>
-                        <div class="grid-input">
-                            <label>EDD By EUTZ</label>
-                            <input class="input-readonly" value="{{ $diag->EDD_by_eutz }}" readonly />
-                        </div>
-                        <div class="grid-input">
-                            <label>Other</label>
-                            <input class="input-readonly" value="{{ $diag->Other }}" readonly />
-                        </div>
-                    @endforeach
-                @else
-                    
-                @endif
-
+                        @foreach($patient->BaselineDiagnostics as $diag)
+                            @foreach($diag->getAttributes() as $column => $value)
+                                <div class="grid-input">
+                                    <label>{{ ucfirst(str_replace('_', ' ', $column)) }}</label>
+                                    <input class="input-readonly" value="{{ $value }}" readonly />
+                                </div>
+                            @endforeach
+                        @endforeach
+                        @endif
+                    @endif
+                @endforeach
                 <!-- ======= Obgyne History ========= -->  
                 @if($patient->ObgyneHistory)
                     <div class="grid-input span-2">
                         <h1 class="">Obgyne History</h1>
                     </div>
                     @foreach($patient->ObgyneHistory as $obHistory)
-                        <div class="grid-input">
-                            <label>Gravidity</label>
-                            <input class="input-readonly" value="{{ $obHistory->gravidity }}" readonly />
-                        </div>
-                        <div class="grid-input">
-                            <label>Parity</label>
-                            <input class="input-readonly" value="{{ $obHistory->parity }}" readonly />
-                        </div>
-                        <div class="grid-input">
-                            <label>OB Score</label>
-                            <input class="input-readonly" value="{{ $obHistory->OB_score }}" readonly />
-                        </div>
-                        <div class="grid-input">
-                            <label>Table</label>
-                            <input class="input-readonly" value="{{ $obHistory->table }}" readonly />
-                        </div>
-                        <div class="grid-input">
-                            <label>M</label>
-                            <input class="input-readonly" value="{{ $obHistory->M }}" readonly />
-                        </div>
-                        <div class="grid-input">
-                            <label>I</label>
-                            <input class="input-readonly" value="{{ $obHistory->I }}" readonly />
-                        </div>
-                        <div class="grid-input">
-                            <label>D</label>
-                            <input class="input-readonly" value="{{ $obHistory->D }}" readonly />
-                        </div>
-                        <div class="grid-input">
-                            <label>A</label>
-                            <input class="input-readonly" value="{{ $obHistory->A }}" readonly />
-                        </div>
-                        <div class="grid-input">
-                            <label>S</label>
-                            <input class="input-readonly" value="{{ $obHistory->S }}" readonly />
-                        </div>
+                        @foreach($obHistory->getAttributes() as $column => $value)
+                            <div class="grid-input">
+                                <label>{{ ucfirst($column) }}</label>
+                                <input class="input-readonly" value="{{ $value }}" readonly />
+                            </div>
+                        @endforeach
                     @endforeach
 
                 @else

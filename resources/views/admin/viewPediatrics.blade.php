@@ -148,11 +148,11 @@
                 </div>
                 <div class="grid-input ">
                     <label>&nbspName</label>
-                    <input class="input-readonly" value="{{ $patient->birthdate }}" readonly />
+                    <input class="input-readonly" value="{{ $patient->first_name }} {{ $patient->last_name }}" readonly />
                 </div>
                 <div class="grid-input">
                     <label >&nbspBirth Date</label>
-                    <input class="input-readonly" type="date" value="{{ $patient->age }}" readonly/>
+                    <input class="input-readonly" type="date" value="{{ $patient->birthdate }}" readonly/>
                 </div>
                 <div class="grid-input">
                     <label  >&nbspSex</label>
@@ -380,16 +380,12 @@
                 </table>
 
                 <div class="grid-input span-2">
-                <label>Vaccines</label>
-                <textarea value="" readonly></textarea>
-                </div>
-                <div class="grid-input span-2">
                 <label>P.E./History</label>
-                <textarea value="" readonly></textarea>
+                <textarea  readonly>{{ $patient->history }}</textarea>
                 </div>
                 <div class="grid-input span-2">
                 <label>Orders</label>
-                <textarea value="" readonly></textarea>
+                <textarea readonly>{{ $patient->orders }}</textarea>
                 </div>
 
         </div>
