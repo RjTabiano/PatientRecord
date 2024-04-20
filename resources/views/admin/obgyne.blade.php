@@ -145,7 +145,7 @@
             <form action="{{ route('scanner.uploadP', ['patient' => $patient]) }}" method="post" accept="image/*" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-                <input type="file" class="form-control" name="image" accept="image/*">
+                <input type="file" class="grid-input" name="image" accept="image/*">
                 <br>
                 <input type="submit" class="custom-button" name="submit" value="Upload">
             </form>
@@ -157,13 +157,12 @@
         <button class="custom-button" onclick="toggleOCRResult()">Show OCR Result</button>
     </div>
 
-
+    <!-- ================================================================= OCR RESULT ====================================================================== -->       
     <div class="OCRresult" style="display: none;">
-    <div class="grid-input name">
-          <label>Name</label>
-          <input class="input-readonly" value="" readonly />
+        <div class="grid-input name">
+            <label>Name</label>
+            <input class="input-readonly" value="" readonly />
         </div>
-
         <div class="grid-input">
           <label>Email Address</label>
           <input class="input-readonly" value="" readonly />
@@ -181,25 +180,26 @@
           <input class="input-readonly" value="<?php echo !empty($response['Address:']) ? $response['Address:'] : ''; ?>" readonly />
         </div>
         <div class="grid-input">
-            <label class="form-control">Contact Number</label>
+            <label >Contact Number</label>
             <input class="input-readonly" value="<?php echo !empty($response['Contact No.:']) ? $response['Contact No.:'] : ''; ?>" readonly />
         </div>
         <div class="grid-input">
-            <label class="form-control">Occupation</label>
+            <label >Occupation</label>
             <input class="input-readonly" value="<?php echo !empty($response['Occupation:']) ? $response['Occupation:'] : ''; ?>" readonly/>
         </div>
         <div class="grid-input">
-            <label class="form-control" >Religion</label>
+            <label >Religion</label>
             <input class="input-readonly" value="<?php echo !empty($response['Religion:']) ? $response['Religion:'] : ''; ?>" readonly />
         </div>
-          <div class="grid-input">
-            <label class="form-control" >Referred by:</label>
+        <div class="grid-input">
+            <label >Referred by:</label>
             <input class="input-readonly" value="<?php echo !empty($response['Referred By:']) ? $response['Referred By:'] : ''; ?>" readonly />
-          </div>
-          <div class="grid-input">
-            <label class="form-control" >Emergency Contact Number: </label>
+        </div>
+        <div class="grid-input">
+            <label  >Emergency Contact Number: </label>
             <input class="input-readonly" value="<?php echo !empty($response["Person to notify in case of Emergency / Contact No.:"]) ? $response["Person to notify in case of Emergency / Contact No.:"] : ''; ?>" required />
-          </div>
+        </div>
+         <!-- ======= Medical History ========= -->     
             <div class="grid-input span-2">
                 <h1 class="">Medical History</h1>
             </div>
@@ -331,22 +331,221 @@
             <div class="grid-input">
                 <label for="Other">Other</label>
                 <input class="input-readonly" value="<?php echo !empty($response['Others']) ? $response['Others'] : ''; ?>" readonly />
+            </div>  
+
+            <!-- ======= Baseline Diagnostics ========= -->  
+
+            <div class="grid-input span-2">
+                <h1 class="">Baseline Diagnostics</h1>
+            </div>
+            <div class="grid-input">
+                <label for="blood_type">Blood Type</label>
+                <input class="input-readonly" value="" readonly />
+            </div>
+
+            <div class="grid-input" >
+                <div class="tooltip">FBS
+                    <span class="tooltiptext">Fasting Blood Sugar - This is the level of glucose in the blood after fasting for at least 8 hours. It is commonly used to diagnose and monitor diabetes mellitus.</span>
+                </div>
+                <input class="input-readonly" value="" readonly />
+            </div>
+
+            <div class="grid-input">
+                <div class="tooltip">Hgb
+                    <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+                </div>
+                <input class="input-readonly" value="<?php echo !empty($response['Hgb:']) ? $response['Hgb:'] : ''; ?>" readonly />
+            </div>
+
+            <div class="grid-input">
+                <div class="tooltip">Hct
+                    <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+                </div>
+                <input class="input-readonly" value="<?php echo !empty($response['Hct:']) ? $response['Hct:'] : ''; ?>" readonly />
+            </div>
+
+            <div class="grid-input">
+                <div class="tooltip">WBC
+                    <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+                </div>
+                <input class="input-readonly" value="<?php echo !empty($response['WBC:']) ? $response['WBC:'] : ''; ?>" readonly />
+            </div>
+
+            <div class="grid-input">
+                <div class="tooltip">Platelet
+                    <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+                </div>
+                <input class="input-readonly" value="<?php echo !empty($response['FBS:']) ? $response['FBS:'] : ''; ?>" readonly />
+            </div>
+
+            <div class="grid-input">
+                <div class="tooltip">HIV
+                    <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+                </div>
+                <input class="input-readonly" value="<?php echo !empty($response['HIV:']) ? $response['HIV:'] : ''; ?>" readonly />
+            </div>
+
+            <div class="grid-input">
+                <div class="tooltip">1st hr
+                    <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+                </div>
+                <input class="input-readonly" value="<?php echo !empty($response['1st hr.:']) ? $response['1st hr.:'] : ''; ?>" readonly />
+            </div>
+
+            <div class="grid-input">
+                <div class="tooltip">2nd hr
+                    <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+                </div>
+                <input class="input-readonly" value="<?php echo !empty($response['2nd hr.:']) ? $response['2nd hr.:'] : ''; ?>" readonly />
+            </div>
+
+            <div class="grid-input">
+                <div class="tooltip">HBsAg
+                    <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+                </div>
+                <input class="input-readonly" value="<?php echo !empty($response['HBsAg:']) ? $response['HBsAg:'] : ''; ?>" readonly />
+            </div>
+
+            <div class="grid-input">
+                <div class="tooltip">RPR
+                    <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+                </div>
+                <input class="input-readonly" value="<?php echo !empty($response['RPR/VDRL']) ? $response['RPR/VDRL'] : ''; ?>" readonly />
+            </div>
+
+            <div class="grid-input">
+                <div class="tooltip">Protein
+                    <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+                </div>
+                <input class="input-readonly" value="<?php echo !empty($response['PROTEIN:']) ? $response['PROTEIN:'] : ''; ?>" readonly />
+            </div>
+            <div class="grid-input">
+                <div class="tooltip">Sugar
+                    <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+                </div>
+                <input class="input-readonly" value="<?php echo !empty($response['SUGAR:']) ? $response['SUGAR:'] : ''; ?>" readonly />
+            </div>
+            <div class="grid-input">
+                <div class="tooltip">LMP
+                    <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+                </div>
+                <input class="input-readonly" value="<?php echo !empty($response['LMP:']) ? $response['LMP:'] : ''; ?>" readonly />
+            </div>
+            <div class="grid-input">
+                <div class="tooltip">PMP
+                    <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+                </div>
+                <input class="input-readonly" value="<?php echo !empty($response['PMP:']) ? $response['PMP:'] : ''; ?>" readonly />
+            </div>
+            <div class="grid-input">
+                <div class="tooltip">AOG
+                    <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+                </div>
+                <input class="input-readonly" value="<?php echo !empty($response['AOG:']) ? $response['AOG:'] : ''; ?>" readonly />
+            </div>
+            <div class="grid-input">
+                <div class="tooltip">Early Ultrasound
+                    <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+                </div>
+                <input class="input-readonly"  value="<?php echo !empty($response['ULTRASOUND']) ? $response['ULTRASOUND'] : ''; ?>" readonly />
+            </div>
+            <div class="grid-input">
+                <div class="tooltip">AOG By EUTZ
+                    <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+                </div>
+                <input class="input-readonly" value="<?php echo !empty($response['AOG by EUTZ:']) ? $response['AOG by EUTZ:'] : ''; ?>" readonly />
+            </div>
+            <div class="grid-input">
+                <div class="tooltip">EDD By EUTZ
+                    <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+                </div>
+                <input class="input-readonly" value="<?php echo !empty($response['EDD by EUTZ:']) ? $response['EDD by EUTZ:'] : ''; ?>" readonly />
+            </div>
+            <div class="grid-input">
+                <label for="Other">Other</label>
+                <textarea class="input-readonly" value="<?php echo !empty($response['Others']) ? $response['Others'] : ''; ?>" readonly></textarea>
+            </div>
+
+            <!-- ======= Obgyne History ========= -->  
+
+            <div class="grid-input span-2">
+                <h1 class="">Obgyne History</h1>
+            </div>
+
+            <div class="grid-input">
+                <div class="tooltip">Gravidity
+                    <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+                </div>
+                <input class="input-readonly" value="<?php echo !empty($response['G']) ? $response['G'] : ''; ?>" readonly />
+            </div>
+
+            <div class="grid-input">
+                <div class="tooltip">Parity
+                    <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+                </div>
+                <input class="input-readonly" value="<?php echo !empty($response['G']) ? $response['G'] : ''; ?>" readonly />
+            </div>
+
+            <div class="grid-input">
+                <div class="tooltip">OB Score
+                    <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+                </div>
+                <input class="input-readonly" value="<?php echo !empty($response['EDD by EUTZ:']) ? $response['EDD by EUTZ:'] : ''; ?>" readonly />
+            </div>
+
+            <div class="grid-input name">
+                <label for="table">Table</label>
+                <input class="input-readonly" value="" readonly />
+            </div>
+
+            <div class="grid-input">
+                <div class="tooltip">M
+                    <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+                </div>
+                <input class="input-readonly" value="<?php echo !empty($response['M']) ? $response['M'] : ''; ?>" readonly />
+            </div>
+
+            <div class="grid-input">
+                <div class="tooltip">I
+                    <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+                </div>
+                <input class="input-readonly" value="<?php echo !empty($response['I']) ? $response['I'] : ''; ?>" readonly />
+            </div>
+
+            <div class="grid-input">
+                <div class="tooltip">D
+                    <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+                </div>
+                <input class="input-readonly" value="<?php echo !empty($response['D']) ? $response['D'] : ''; ?>" readonly />
+            </div>
+            <div class="grid-input">
+                <div class="tooltip">A
+                    <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+                </div>
+                <input class="input-readonly" value="<?php echo !empty($response['A']) ? $response['A'] : ''; ?>" readonly />
+            </div>
+            <div class="grid-input">
+                <div class="tooltip">S
+                    <span class="tooltiptext">BLABLABLABLABLABLAL</span>
+                </div>
+                <input class="input-readonly" value="<?php echo !empty($response['S']) ? $response['S'] : ''; ?>" readonly />
             </div>
     </div>
-
+    
+     <!-- ================================================================= FORM ====================================================================== -->     
 
 <br><br>
     <header>Obgyne Form</header>
     <button type="button" class="collapsible">Patient Information</button>
     <div class="content">
-    <form class="gridForm" action="{{ route('patient.storeObgyne', ['patient' => $patient]) }}" >
+    <form method="post" class="gridForm" action="{{ route('patient.storeObgyne', ['patient' => $patient]) }}" >
          @csrf
          @method('post')
         <div class="grid-input name">
           <input type="hidden" name="type" value="Obgyne" />
           <label>Name</label>
           <input type="text" placeholder="Enter First Name" name="first_name" value="{{ isset($pediatrics->first_name) ? $pediatrics->first_name : '' }}" required />
-          <input type="text" placeholder="Enter Last Name" name="last_name" value="{{ isset($pediatrics->last_name) ? $pediatrics->last_name : '' }}" required />
+          <input type="text" placeholder="Enter Last Name" name="last_name" value="{{ isset($pediatrics->last_name) ? $pediatrics->last_name : '' }}" style="margin-top: 10px;" required />
         </div>
 
         <div class="grid-input">
@@ -367,28 +566,28 @@
             </select>
         </div>
         <div class="grid-input">
-          <label class="form-control" >Address</label>
-          <input class="form-control" type="text" placeholder="Enter address" name="address" value="<?php echo !empty($response['Address:']) ? $response['Address:'] : ''; ?>" required />
+          <label  >Address</label>
+          <input  type="text" placeholder="Enter address" name="address" value="<?php echo !empty($response['Address:']) ? $response['Address:'] : ''; ?>" required />
         </div>
         <div class="grid-input">
-            <label class="form-control">Contact Number</label>
-            <input class="form-control" type="number" placeholder="Enter contact number" name="contact_number" value="<?php echo !empty($response['Contact No.:']) ? $response['Contact No.:'] : ''; ?>" required />
+            <label >Contact Number</label>
+            <input  type="number" placeholder="Enter contact number" name="contact_number" value="<?php echo !empty($response['Contact No.:']) ? $response['Contact No.:'] : ''; ?>" required />
         </div>
         <div class="grid-input">
-            <label class="form-control">Occupation</label>
-            <input class="form-control" type="text" placeholder="Enter occupation" name="occupation" value="<?php echo !empty($response['Occupation:']) ? $response['Occupation:'] : ''; ?>" required />
+            <label>Occupation</label>
+            <input type="text" placeholder="Enter occupation" name="occupation" value="<?php echo !empty($response['Occupation:']) ? $response['Occupation:'] : ''; ?>" required />
         </div>
         <div class="grid-input">
-            <label class="form-control" >Religion</label>
-            <input class="form-control" type="text" placeholder="Enter religion" name="religion" value="<?php echo !empty($response['Religion:']) ? $response['Religion:'] : ''; ?>" required />
+            <label>Religion</label>
+            <input type="text" placeholder="Enter religion" name="religion" value="<?php echo !empty($response['Religion:']) ? $response['Religion:'] : ''; ?>" required />
         </div>
           <div class="grid-input">
-            <label class="form-control" >Referred by:</label>
-            <input class="form-control" type="text" placeholder="Referred by:" name="referred_by" value="<?php echo !empty($response['Referred By:']) ? $response['Referred By:'] : ''; ?>" required />
+            <label >Referred by:</label>
+            <input type="text" placeholder="Referred by:" name="referred_by" value="<?php echo !empty($response['Referred By:']) ? $response['Referred By:'] : ''; ?>" required />
           </div>
           <div class="grid-input">
-            <label class="form-control" >Emergency Contact Number: </label>
-            <input class="form-control" type="number" placeholder="" name="emergency_contact_no" value="<?php echo !empty($response["Person to notify in case of Emergency / Contact No.:"]) ? $response["Person to notify in case of Emergency / Contact No.:"] : ''; ?>" required />
+            <label >Emergency Contact Number: </label>
+            <input type="number" placeholder="" name="emergency_contact_no" value="<?php echo !empty($response["Person to notify in case of Emergency / Contact No.:"]) ? $response["Person to notify in case of Emergency / Contact No.:"] : ''; ?>" required />
           </div>
     </div>
     <button type="button" class="collapsible">Medical History</button>
@@ -422,12 +621,12 @@
             </div>
     </div>
     <button type="button" class="collapsible">Baseline Diagnostics</button>
-    <div class="content gridForm">
-            <div class="form-group">
+        <div class="content gridForm">
+            <div class="grid-input">
                 <label for="date">date</label>
                 <input type="date" id="CBC_HgB" name="date" value="<?php echo !empty($response['Date:']) ? $response['Date:'] : ''; ?>">
             </div>
-            <div class="form-group">
+            <div class="grid-input">
                 <label for="blood_type">Blood Type</label>
                 <select id="blood_type" name="blood_type">
                     <option value="A+">A+</option>
@@ -441,146 +640,146 @@
                 </select>
             </div>
 
-            <div class="form-group">
+            <div class="grid-input" >
             <div class="tooltip">FBS
                 <span class="tooltiptext">Fasting Blood Sugar - This is the level of glucose in the blood after fasting for at least 8 hours. It is commonly used to diagnose and monitor diabetes mellitus.</span>
             </div>
                 <input type="text" id="DPT" name="FBS" value="">
             </div>
 
-            <div class="form-group">
+            <div class="grid-input">
             <div class="tooltip">Hgb
                 <span class="tooltiptext">BLABLABLABLABLABLAL</span>
             </div>
                 <input type="text" id="Hct" name="Hgb" value="<?php echo !empty($response['Hgb:']) ? $response['Hgb:'] : ''; ?>">
             </div>
 
-            <div class="form-group">
+            <div class="grid-input">
             <div class="tooltip">Hct
                 <span class="tooltiptext">BLABLABLABLABLABLAL</span>
             </div>
                 <input type="text" id="WBC" name="Hct" value="<?php echo !empty($response['Hct:']) ? $response['Hct:'] : ''; ?>">
             </div>
 
-            <div class="form-group">
+            <div class="grid-input">
             <div class="tooltip">WBC
                 <span class="tooltiptext">BLABLABLABLABLABLAL</span>
             </div>
                 <input type="text" id="Blood_Type" name="WBC" value="<?php echo !empty($response['WBC:']) ? $response['WBC:'] : ''; ?>">
             </div>
 
-            <div class="form-group">
+            <div class="grid-input">
             <div class="tooltip">Platelet
                 <span class="tooltiptext">BLABLABLABLABLABLAL</span>
             </div>
                 <input type="text" id="FBS" name="Platelet" value="<?php echo !empty($response['FBS:']) ? $response['FBS:'] : ''; ?>">
             </div>
 
-            <div class="form-group">
+            <div class="grid-input">
             <div class="tooltip">HIV
                 <span class="tooltiptext">BLABLABLABLABLABLAL</span>
             </div>
                 <input type="text" id="HBsAg" name="HIV" value="<?php echo !empty($response['HIV:']) ? $response['HIV:'] : ''; ?>">
             </div>
 
-            <div class="form-group">
+            <div class="grid-input">
             <div class="tooltip">1st hr
                 <span class="tooltiptext">BLABLABLABLABLABLAL</span>
             </div>
                 <input type="text" id="VDRL" name="first_hr" value="<?php echo !empty($response['1st hr.:']) ? $response['1st hr.:'] : ''; ?>">
             </div>
 
-            <div class="form-group">
+            <div class="grid-input">
             <div class="tooltip">2nd hr
                 <span class="tooltiptext">BLABLABLABLABLABLAL</span>
             </div>
                 <input type="text" id="HiV" name="second_hr" value="<?php echo !empty($response['2nd hr.:']) ? $response['2nd hr.:'] : ''; ?>">
             </div>
 
-            <div class="form-group">
+            <div class="grid-input">
             <div class="tooltip">HBsAg
                 <span class="tooltiptext">BLABLABLABLABLABLAL</span>
             </div>
                 <input type="text" id="75g_OTT" name="HBsAg" value="<?php echo !empty($response['HBsAg:']) ? $response['HBsAg:'] : ''; ?>">
             </div>
 
-            <div class="form-group">
+            <div class="grid-input">
             <div class="tooltip">RPR
                 <span class="tooltiptext">BLABLABLABLABLABLAL</span>
             </div>
                 <input type="text" id="Urinalysis" name="RPR" value="<?php echo !empty($response['RPR/VDRL']) ? $response['RPR/VDRL'] : ''; ?>">
             </div>
 
-            <div class="form-group">
+            <div class="grid-input">
             <div class="tooltip">Protein
                 <span class="tooltiptext">BLABLABLABLABLABLAL</span>
             </div>
                 <input type="text" id="Other" name="protein" value="<?php echo !empty($response['PROTEIN:']) ? $response['PROTEIN:'] : ''; ?>">
             </div>
-            <div class="form-group">
+            <div class="grid-input">
             <div class="tooltip">Sugar
                 <span class="tooltiptext">BLABLABLABLABLABLAL</span>
             </div>
                 <input type="text" id="Other" name="sugar" value="<?php echo !empty($response['SUGAR:']) ? $response['SUGAR:'] : ''; ?>">
             </div>
-            <div class="form-group">
+            <div class="grid-input">
             <div class="tooltip">LMP
                 <span class="tooltiptext">BLABLABLABLABLABLAL</span>
             </div>
                 <input type="text" id="Other" name="LMP" value="<?php echo !empty($response['LMP:']) ? $response['LMP:'] : ''; ?>">
             </div>
-            <div class="form-group">
+            <div class="grid-input">
             <div class="tooltip">PMP
                 <span class="tooltiptext">BLABLABLABLABLABLAL</span>
             </div>
                 <input type="text" id="Other" name="PMP" value="<?php echo !empty($response['PMP:']) ? $response['PMP:'] : ''; ?>">
             </div>
-            <div class="form-group">
+            <div class="grid-input">
             <div class="tooltip">AOG
                 <span class="tooltiptext">BLABLABLABLABLABLAL</span>
             </div>
                 <input type="text" id="Other" name="AOG" value="<?php echo !empty($response['AOG:']) ? $response['AOG:'] : ''; ?>">
             </div>
-            <div class="form-group">
+            <div class="grid-input">
             <div class="tooltip">Early Ultrasound
                 <span class="tooltiptext">BLABLABLABLABLABLAL</span>
             </div>
                 <input type="text" id="Other" name="early_ultrasound" value="<?php echo !empty($response['ULTRASOUND']) ? $response['ULTRASOUND'] : ''; ?>">
             </div>
-            <div class="form-group">
+            <div class="grid-input">
             <div class="tooltip">AOG By EUTZ
                 <span class="tooltiptext">BLABLABLABLABLABLAL</span>
             </div>
                 <input type="text" id="Other" name="AOG_by_eutz" value="<?php echo !empty($response['AOG by EUTZ:']) ? $response['AOG by EUTZ:'] : ''; ?>">
             </div>
-            <div class="form-group">
+            <div class="grid-input">
             <div class="tooltip">EDD By EUTZ
                 <span class="tooltiptext">BLABLABLABLABLABLAL</span>
             </div>
                 <input type="text" id="Other" name="EDD_by_eutz" value="<?php echo !empty($response['EDD by EUTZ:']) ? $response['EDD by EUTZ:'] : ''; ?>">
             </div>
-            <div class="form-group">
+            <div class="grid-input">
                 <label for="Other">Other</label>
                 <input type="text" id="Other" name="Other" value="<?php echo !empty($response['Others']) ? $response['Others'] : ''; ?>">
             </div>
     </div>
     <button type="button" class="collapsible">Obgyne History</button>
     <div class="content gridForm">
-            <div class="form-group">
+            <div class="grid-input">
             <div class="tooltip">Gravidity
                 <span class="tooltiptext">BLABLABLABLABLABLAL</span>
             </div>
                 <input type="text" id="gravitiy" name="g" value="<?php echo !empty($response['G']) ? $response['G'] : ''; ?>">
             </div>
 
-            <div class="form-group">
+            <div class="grid-input">
             <div class="tooltip">Parity
                 <span class="tooltiptext">BLABLABLABLABLABLAL</span>
             </div>
                 <input type="text" id="parity" name="parity" value="<?php echo !empty($response['G']) ? $response['G'] : ''; ?>">
             </div>
 
-            <div class="form-group">
+            <div class="grid-input">
             <div class="tooltip">OB Score
                 <span class="tooltiptext">BLABLABLABLABLABLAL</span>
             </div>
@@ -592,33 +791,33 @@
                 <textarea name="table" style="width: 100;%" id="history" cols="30" rows="10"></textarea>
             </div>
 
-            <div class="form-group">
+            <div class="grid-input">
             <div class="tooltip">M
                 <span class="tooltiptext">BLABLABLABLABLABLAL</span>
             </div>
                 <input type="text" id="Blood_Type" name="M" value="<?php echo !empty($response['M']) ? $response['M'] : ''; ?>">
             </div>
 
-            <div class="form-group">
+            <div class="grid-input">
             <div class="tooltip">I
                 <span class="tooltiptext">BLABLABLABLABLABLAL</span>
             </div>
                 <input type="text" id="I" name="I" value="<?php echo !empty($response['I']) ? $response['I'] : ''; ?>">
             </div>
 
-            <div class="form-group">
+            <div class="grid-input">
             <div class="tooltip">D
                 <span class="tooltiptext">BLABLABLABLABLABLAL</span>
             </div>
                 <input type="text" id="PMP" name="D" value="<?php echo !empty($response['D']) ? $response['D'] : ''; ?>">
             </div>
-            <div class="form-group">
+            <div class="grid-input">
             <div class="tooltip">A
                 <span class="tooltiptext">BLABLABLABLABLABLAL</span>
             </div>
                 <input type="text" id="EDD" name="A" value="<?php echo !empty($response['A']) ? $response['A'] : ''; ?>">
             </div>
-            <div class="form-group">
+            <div class="grid-input">
             <div class="tooltip">S
                 <span class="tooltiptext">BLABLABLABLABLABLAL</span>
             </div>

@@ -220,7 +220,7 @@
                 <input type="hidden" name="type" value="Pediatrics" />
                 <label>&nbspName</label>
                 <input type="text" placeholder="Enter First Name" name="first_name"  value="{{ isset($pediatrics->first_name) ? $pediatrics->first_name : '' }}" required />
-                <input type="text" placeholder="Enter Last Name" name="last_name" value="{{ isset($pediatrics->last_name) ? $pediatrics->last_name : '' }}" required />
+                <input type="text" placeholder="Enter Last Name" name="last_name" value="{{ isset($pediatrics->last_name) ? $pediatrics->last_name : '' }}" style="margin-top: 10px;" required />
               </div>
               <div class="grid-input">
                   <label >&nbspBirth Date</label>
