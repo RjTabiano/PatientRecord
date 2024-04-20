@@ -216,14 +216,14 @@
                     <td>{{$schedule->end_time}}</td>
                     
                     <td>
-                    <button type="button" class="btn btn-success"><a href="{{route('schedule.editSchedule', ['schedule' => $schedule])}}">Edit</a></button>
+                    <a href="{{route('schedule.editSchedule', ['schedule' => $schedule])}}" class="btn btn-md btn-primary"><ion-icon name="create-outline"></ion-icon></a>
                     </td>
                     @can('admin')
                     <td>
                             <form method="post" class="cancelForm" action="{{route('schedule.deleteSchedule', ['schedule' => $schedule])}}">
                                     @csrf
                                     @method('delete')
-                                    <button type="submit" valaue="Delete" class="save1">Delete</button>
+                                    <button type="submit" valaue="Delete" class="save1"><ion-icon name="trash-outline"></ion-icon></button>
                                 </form>
                     </td>
                     @endcan

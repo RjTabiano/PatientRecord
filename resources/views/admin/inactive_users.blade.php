@@ -162,7 +162,7 @@
                         <td>{{$user->name}}</td>
                         <td>{{$user->email}}</td>
                         <td>
-                                <form action="{{ route('moveActive', ['user' => $user]) }}">
+                                <form action="{{ route('moveActive', ['user' => $user]) }}" class="form-button">
                                     @csrf
                                     @method('PUT')
                                     <button type="submit"class=btn>Activate</button>
@@ -187,6 +187,16 @@
 
     <!-- =========== Scripts =========  -->
     <script src="{{ asset('javascript/main.js') }}"></script>
+    <script>
+        document.querySelectorAll(".form-button").forEach(function(form) {
+        form.addEventListener("submit", function(event) {
+            var confirmation = confirm("Are you sure you want to activate this user?");
+            if (!confirmation) {
+                event.preventDefault();
+            }
+        });
+    });
+    </script>
     <!-- ====== ionicons ======= -->
     
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

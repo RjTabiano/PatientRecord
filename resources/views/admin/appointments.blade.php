@@ -92,7 +92,7 @@
                         </span>
                          <span class="title">Feedback</span>
                     </a>
-                </li>
+                </li> 
                 @can('admin')
                 <li>
                     <a href="{{route('audit')}}">
@@ -213,14 +213,14 @@
                     <td>{{$appointment->date}}</td>
                     <td>{{$appointment->time}}</td>
                     <td>
-                    <button type="button" class="btn btn-success"><a href="{{route('appointment.editAppointment', ['appointment' => $appointment])}}">Edit</a></button>
+                    <a href="{{route('appointment.editAppointment', ['appointment' => $appointment])}}" class="btn btn-md btn-primary"><ion-icon name="eye-sharp"></ion-icon></a>
                     </td>
                     @can('admin')
                     <td>
                                 <form class="cancelForm" method="post" action="{{route('appointment.deleteAppointment', ['appointment' => $appointment])}}" >
                                       @csrf
                                       @method('delete')
-                                      <button type="submit" valaue="Delete" class="save1">Delete</button>
+                                      <button type="submit" valaue="Delete" class="save1"><ion-icon name="trash-outline"></ion-icon></button>
                                 </form>
                             </td>
                             @endcan

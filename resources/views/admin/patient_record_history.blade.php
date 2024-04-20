@@ -194,6 +194,16 @@
 
     <!-- =========== Scripts =========  -->
     <script src="{{ asset('javascript/main.js') }}"></script>
+    <script>
+        document.querySelectorAll(".form-button").forEach(function(form) {
+        form.addEventListener("submit", function(event) {
+            var confirmation = confirm("Are you sure you want to deactivate this user?");
+            if (!confirmation) {
+                event.preventDefault();
+            }
+        });
+    });
+    </script>
     <!-- ====== ionicons ======= -->
     
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
