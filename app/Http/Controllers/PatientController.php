@@ -372,7 +372,7 @@ class PatientController extends Controller
         $newImmunizations->hepa_b = $request->input("hepa_b");
         $newImmunizations->save();
 
-        return redirect(route('patient.patient_record_history'))->with('success', 'Added Successfully');
+        return view('admin.pediatrics', ['patient' => $patient]);
     }
 
     public function storeMedicalHistory(Patient $patient, Request $request)
@@ -508,6 +508,11 @@ class PatientController extends Controller
             return view('admin.viewPediatrics', ['patient' => $patient], ['bcgVaccine' => $bcgVaccine]);
         }
     
+        return view('admin.viewObgyne', ['patient' => $patient]);
+    }
+
+    public function viewObgyne($patient) {
+        $patient = Obgyne::with(['MedicalHistory', 'BaselineDiagnostics', 'ObgyneHistory'])->find($patient);
         return view('admin.viewObgyne', ['patient' => $patient]);
     }
 

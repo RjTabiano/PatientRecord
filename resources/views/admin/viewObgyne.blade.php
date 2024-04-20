@@ -155,242 +155,36 @@
                     <input class="input-readonly" type="date" value="{{ $patient->age }}" readonly/>
                 </div>
                 <div class="grid-input">
-                    <label  >&nbspSex</label>
-                    <input class="input-readonly" value="{{ $patient->sex }}" readonly /><br>
+                    <label  >&nbspCivil Status</label>
+                    <input class="input-readonly" value="{{ $patient->civil_status }}" readonly /><br>
                 </div>
                 <div class="grid-input">
                     <label  >&nbspAddress</label>
                     <input class="input-readonly" value="{{ $patient->address }}" readonly /><br>
                 </div>
                 <div class="grid-input">
-                    <label >&nbspMother's Name (Last Name, First Name)</label>
-                    <input class="input-readonly" value="{{ $patient->mother_name }}" readonly />
+                    <label >&nbspContact Number</label>
+                    <input class="input-readonly" value="{{ $patient->contact_number }}" readonly />
                 </div>
                 <div class="grid-input">
-                    <label>&nbspMother's Phone Number</label>
-                    <input class="input-readonly" value="{{ $patient->mother_phone }}" readonly />
+                    <label>&nbspOccupation</label>
+                    <input class="input-readonly" value="{{ $patient->occupation }}" readonly />
                 </div>
                 <div class="grid-input">
-                    <label>&nbspFather's Name (Last Name, First Name)</label>
-                    <input class="input-readonly" value="{{ $patient->father_name }}" readonly />
+                    <label>&nbspReligion</label>
+                    <input class="input-readonly" value="{{ $patient->religion }}" readonly />
                 </div>
                 <div class="grid-input">
-                    <label>&nbspFather's Phone Number</label>
-                    <input class="input-readonly" value="{{ $patient->father_phone }}" readonly />
+                    <label>&nbspReferred by</label>
+                    <input class="input-readonly" value="{{ $patient->referred_by }}" readonly />
+                </div>
+                <div class="grid-input">
+                    <label>&nbspEmergency Contact Number</label>
+                    <input class="input-readonly" value="{{ $patient->emergency_contact_no }}" readonly />
                 </div>
 
                 
-                <table class="vaccine_table span-2">
-                <tr>
-                    <th>Vaccine</th>
-                    <th>Dose</th>
-                </tr>
-                <tr>
-                    <td class="firstTD">BCG</td>
-                    <td class="secondTD">
-                    @foreach($bcgVaccine as $vaccines)
-                        @if($vaccines->BCG)
-                            @foreach($vaccines->BCG as $BCG)
-                            {{$BCG}}
-                            @endforeach
-                        @endif
-                    @endforeach
-                    </td>
-                </tr>
-                <tr>
-                    <td class="firstTD">Hepatitis B:</td>
-                    <td class="secondTD">
-                    @foreach($bcgVaccine as $vaccines)
-                        @if($vaccines->Hepatitis_B)
-                            @foreach($vaccines->Hepatitis_B as $Hepatitis_B)
-                            {{$Hepatitis_B}}
-                            @endforeach
-                        @endif
-                    @endforeach
-                    </td>
-                </tr>
-                <tr>
-                    <td class="firstTD">DPT</td>
-                    <td class="secondTD">
-                    @foreach($bcgVaccine as $vaccines)
-                        @if($vaccines->DPT)
-                            @foreach($vaccines->DPT as $DPT)
-                            {{$DPT}}
-                            @endforeach
-                        @endif
-                    @endforeach
-                    </td>
-                </tr>
-                <tr>
-                    <td class="firstTD">Polio-OPU</td>
-                    <td class="secondTD">
-                    @foreach($bcgVaccine as $vaccines)
-                        @if($vaccines->Polio_OPU)
-                            @foreach($vaccines->Polio_OPU as $Polio_OPU)
-                            {{$Polio_OPU}}
-                            @endforeach
-                        @endif
-                    @endforeach
-                    </td>
-                </tr>
-                <tr>
-                    <td class="firstTD">Polio-IPU</td>
-                    <td class="secondTD">
-                    @foreach($bcgVaccine as $vaccines)
-                        @if($vaccines->Polio_IPU)
-                            @foreach($vaccines->Polio_IPU as $Polio_IPU)
-                                {{$Polio_IPU}}
-                            @endforeach
-                        @endif
-                    @endforeach
-                    </td>
-                </tr>
-                <tr>
-                    <td class="firstTD">HiB</td>
-                    <td class="secondTD">
-                    @foreach($bcgVaccine as $vaccines)
-                        @if($vaccines->HiB)
-                            @foreach($vaccines->HiB as $HiB)
-                            {{$HiB}}
-                            @endforeach
-                        @endif
-                    @endforeach
-                    </td>
-                </tr>
-                <tr>
-                    <td class="firstTD">PCV</td>
-                    <td class="secondTD">
-                    @foreach($bcgVaccine as $vaccines)
-                        @if($vaccines->PCV)
-                            @foreach($vaccines->PCV as $PCV)
-                            {{$PCV}}
-                            @endforeach
-                        @endif
-                    @endforeach
-                    </td>
-                </tr>
-                <tr>
-                    <td class="firstTD">Measles</td>
-                    <td class="secondTD">
-                    @foreach($bcgVaccine as $vaccines)
-                        @if($vaccines->Measles)
-                            @foreach($vaccines->Measles as $Measles)
-                            {{$Measles}}
-                            @endforeach
-                        @endif
-                    @endforeach
-                    </td>
-                </tr>
-                <tr>
-                    <td class="firstTD">Varicella</td>
-                    <td class="secondTD">
-                    @foreach($bcgVaccine as $vaccines)
-                        @if($vaccines->Varicella)
-                            @foreach($vaccines->Varicella as $Varicella)
-                            {{$Varicella}}
-                            @endforeach
-                        @endif
-                    @endforeach
-                    </td>
-                </tr>
-                <tr>
-                    <td class="firstTD">mmra</td>
-                    <td class="secondTD">
-                    @foreach($bcgVaccine as $vaccines)
-                        @if($vaccines->mmra)
-                            @foreach($vaccines->mmra as $mmra)
-                            {{$mmra}}
-                            @endforeach
-                        @endif
-                    @endforeach
-                    </td>
-                </tr>
-                <tr>
-                    <td class="firstTD">Hepatitis A</td>
-                    <td class="secondTD">
-                    @foreach($bcgVaccine as $vaccines)
-                        @if($vaccines->Hepatitis_A)
-                            @foreach($vaccines->Hepatitis_A as $Hepatitis_A)
-                            {{$Hepatitis_A}}
-                            @endforeach
-                        @endif
-                    @endforeach
-                    </td>
-                </tr>
-                <tr>
-                    <td class="firstTD">Meningo</td>
-                    <td class="secondTD">
-                    @foreach($bcgVaccine as $vaccines)
-                        @if($vaccines->Meningo)
-                            @foreach($vaccines->Meningo as $Meningo)
-                            {{$Meningo}}
-                            @endforeach
-                        @endif
-                    @endforeach
-                    </td>
-                </tr>
-                <tr>
-                    <td class="firstTD">Typhoid</td>
-                    <td class="secondTD">
-                    @foreach($bcgVaccine as $vaccines)
-                        @if($vaccines->Typhoid)
-                            @foreach($vaccines->Typhoid as $Typhoid)
-                            {{$Typhoid}}
-                            @endforeach
-                        @endif
-                    @endforeach
-                    </td>
-                </tr>
-                <tr>
-                    <td class="firstTD">Jap. Enceph</td>
-                    <td class="secondTD">
-                    @foreach($bcgVaccine as $vaccines)
-                        @if($vaccines->Jap_Enceph)
-                            @foreach($vaccines->Jap_Enceph as $Jap_Enceph)
-                            {{$Jap_Enceph}}
-                            @endforeach
-                        @endif
-                    @endforeach
-                    </td>
-                </tr>
-                <tr>
-                    <td class="firstTD">HPV</td>
-                    <td class="secondTD">
-                    @foreach($bcgVaccine as $vaccines)
-                        @if($vaccines->HPV)
-                            @foreach($vaccines->HPV as $HPV)
-                            {{$HPV}}
-                            @endforeach
-                        @endif
-                    @endforeach
-                    </td>
-                </tr>
-                <tr>
-                    <td class="firstTD">Flu</td>
-                    <td class="secondTD">
-                    @foreach($bcgVaccine as $vaccines)
-                        @if($vaccines->Flu)
-                            @foreach($vaccines->Flu as $Flu)
-                            {{$Flu}}
-                            @endforeach
-                        @endif
-                    @endforeach
-                    </td>
-                </tr>
-                </table>
-
-                <div class="grid-input span-2">
-                <label>Vaccines</label>
-                <textarea value="" readonly></textarea>
-                </div>
-                <div class="grid-input span-2">
-                <label>P.E./History</label>
-                <textarea value="" readonly></textarea>
-                </div>
-                <div class="grid-input span-2">
-                <label>Orders</label>
-                <textarea value="" readonly></textarea>
-                </div>
+            
 
         </div>
 
