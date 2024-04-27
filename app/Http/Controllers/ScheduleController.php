@@ -15,18 +15,42 @@ class ScheduleController extends Controller
         return view('admin.schedules', ['userDoctors' => $userDoctors]);
     }
 
-    public function store_schedule(Request $request){
-        $newSchedule = new Schedule();
-        $start_time = $request->input("start_time");
-        $newSchedule->doctor_id = $request->input("doctor_id");
-        $newSchedule->day = $request->input("day");
-        $newSchedule->start_time = $start_time;
-        $newSchedule->end_time= $request->input("end_time");
-        $newSchedule->save();
+    public function store_schedule(Request $request)
+    {
+        // Validate the incoming request data
+        $request->validate([
+            'start_time' => 'required',
+            'end_time' => 'required',
+            'doctor_id' => 'required',
+            'day' => 'required',
+        ]);
+
+        // Retrieve the input data
+        $start_time = $request->input('start_time');
+        $end_time = $request->input('end_time');
+        $doctor_id = $request->input('doctor_id');
+        $day = $request->input('day');
         
-        $userDoctors = User::with('doctor')->where('usertype', '=', 'doctor')->get();
-        return view('admin.schedules', ['userDoctors' => $userDoctors]);
+        $existingSchedule = Schedule::where('doctor_id', '=', $doctor_id)
+            ->exists();
+
+        if ($existingSchedule == true) {
+            return redirect()->back()->with('error', 'A schedule with the same day, start time, and end time already exists for this doctor.');
+        }
+
+        // If no existing schedule is found, proceed to create the new schedule
+        $newSchedule = new Schedule();
+        $newSchedule->doctor_id = $doctor_id;
+        $newSchedule->day = $day;
+        $newSchedule->start_time = $start_time;
+        $newSchedule->end_time = $end_time;
+        $newSchedule->save();
+
+        // Redirect back to the schedules page with success message
+        $userDoctors = User::with('doctor')->where('usertype', 'doctor')->get();
+        return redirect()->route('schedule.schedule')->with('success', 'Schedule created successfully.')->with('userDoctors', $userDoctors);
     }
+
 
     public function delete_schedule(Schedule $schedule){
         $schedule->delete();

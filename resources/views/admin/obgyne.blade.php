@@ -142,7 +142,7 @@
     <table style="margin: 0 auto;  width:10%">
     <tr>
         <td>
-            <form action="{{ route('scanner.uploadP', ['patient' => $patient]) }}" method="post" accept="image/*" enctype="multipart/form-data">
+            <form action="{{ route('scanner.uploadO', ['patient' => $patient]) }}" method="post" accept="image/*" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <input type="file" class="grid-input" name="image" accept="image/*">
@@ -161,15 +161,11 @@
     <div class="OCRresult" style="display: none;">
         <div class="grid-input name">
             <label>Name</label>
-            <input class="input-readonly" value="" readonly />
-        </div>
-        <div class="grid-input">
-          <label>Email Address</label>
-          <input class="input-readonly" value="" readonly />
+            <input class="input-readonly" value="<?php echo !empty($response["Patient's Name: (Surname, First Name, Middle Name)"]) ? $response["Patient's Name: (Surname, First Name, Middle Name)"] : ''; ?>" readonly />
         </div>
         <div class="grid-input">
             <label >Birth Date</label>
-            <input class="input-readonly" value="" readonly/>
+            <input class="input-readonly" value="<?php echo !empty($response['Date of Birth:']) ? $response['Date of Birth:'] : ''; ?>" readonly/>
         </div>
         <div class="grid-input">
             <label>Civil Status</label>

@@ -48,6 +48,47 @@ class PatientController extends Controller
         return view('admin.patient_record_history', ['users' => $users]);
     }
 
+
+    public function all_patient_records() {
+
+        $pediatricsRecords = PatientRecord::all();
+
+        $obgyneRecords = Obgyne::all();
+    
+        return view('admin.all_patient_records', [
+            'pediatricsRecords' => $pediatricsRecords,
+            'obgyneRecords' => $obgyneRecords
+        ]);
+
+
+        return view('admin.all_patient_records');
+    }
+
+    public function all_search(Request $request) {
+        $searchQuery = $request->input('search');
+
+        $pediatricsRecordsQuery = PatientRecord::query();
+        $pediatricsRecordsQuery->where(function ($query) use ($searchQuery) {
+            $query->where('first_name', 'like', "%$searchQuery%")
+                ->orWhere('last_name', 'like', "%$searchQuery%")
+                ->orWhere('type', 'like', "%$searchQuery%");
+        });
+        $pediatricsRecords = $pediatricsRecordsQuery->get();
+
+        $obgyneRecordsQuery = Obgyne::query();
+        $obgyneRecordsQuery->where(function ($query) use ($searchQuery) {
+            $query->where('first_name', 'like', "%$searchQuery%")
+                ->orWhere('last_name', 'like', "%$searchQuery%")
+                ->orWhere('type', 'like', "%$searchQuery%");
+        });
+        $obgyneRecords = $obgyneRecordsQuery->get();
+        return view('admin.all_patient_records', [
+            'pediatricsRecords' => $pediatricsRecords,
+            'obgyneRecords' => $obgyneRecords,
+            'searchQuery' => $searchQuery 
+        ]);
+    }
+
     public function createPediatrics(Patient $patient){
         $pediatrics = $patient->patientRecord()->latest()->first();
         return view('admin.pediatrics', ['patient' => $patient], ['pediatrics' => $pediatrics]);
@@ -139,6 +180,8 @@ class PatientController extends Controller
 
     public function uploadImageOb(Patient $patient, Request $request)
     {
+
+
         $request->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
@@ -294,6 +337,11 @@ class PatientController extends Controller
 
         return view('admin.pediatrics', ['patient' => $patient]);
     }
+
+
+
+
+
 
 
     public function storeConsultationPedia(Patient $patient, Request $request) {
