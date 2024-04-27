@@ -177,17 +177,65 @@
                                     <option  value="Saturday">Saturday</option>
                                     <option  value="Sunday">Sunday</option>
                             </select>
+                            
                         </div>
                         <div class="input-box">
                             <label for="start_time">Start Time:</label>
-                            <input name="start_time" type="time" />
+                            <select id="timeSelect" name="start_time">
+                            <option disabled selected required>Select Start Time</option>
+                                <option value="07:00:00">7:00 AM</option>
+                                <option value="07:30:00">7:30 AM</option>
+                                <option value="08:00:00">8:00 AM</option>
+                                <option value="08:30:00">8:30 AM</option>
+                                <option value="09:00:00">9:00 AM</option>
+                                <option value="09:30:00">9:30 AM</option>
+                                <option value="10:00:00">10:00 AM</option>
+                                <option value="10:30:00">10:30 AM</option>
+                                <option value="11:00:00">11:00 AM</option>
+                                <option value="11:30:00">11:30 AM</option>
+                                <option value="12:00:00">12:00 PM</option>
+                                <option value="12:30:00">12:30 PM</option>
+                                <option value="13:00:00">1:00 PM</option>
+                                <option value="13:30:00">1:30 PM</option>
+                                <option value="14:00:00">2:00 PM</option>
+                                <option value="14:30:00">2:30 PM</option>
+                                <option value="15:00:00">3:00 PM</option>
+                                <option value="15:30:00">3:30 PM</option>
+                                <option value="16:00:00">4:00 PM</option>
+                                <option value="16:30:00">4:30 PM</option>
+                                <option value="17:00:00">5:00 PM</option>
+                            </select>
                             <label for="end_time">End Time:</label>
-                            <input name="end_time"type="time" />
+                            <select id="timeSelect" name="end_time">
+                            <option disabled selected required>Select End Time</option>
+                                <option value="07:00:00">7:00 AM</option>
+                                <option value="07:30:00">7:30 AM</option>
+                                <option value="08:00:00">8:00 AM</option>
+                                <option value="08:30:00">8:30 AM</option>
+                                <option value="09:00:00">9:00 AM</option>
+                                <option value="09:30:00">9:30 AM</option>
+                                <option value="10:00:00">10:00 AM</option>
+                                <option value="10:30:00">10:30 AM</option>
+                                <option value="11:00:00">11:00 AM</option>
+                                <option value="11:30:00">11:30 AM</option>
+                                <option value="12:00:00">12:00 PM</option>
+                                <option value="12:30:00">12:30 PM</option>
+                                <option value="13:00:00">1:00 PM</option>
+                                <option value="13:30:00">1:30 PM</option>
+                                <option value="14:00:00">2:00 PM</option>
+                                <option value="14:30:00">2:30 PM</option>
+                                <option value="15:00:00">3:00 PM</option>
+                                <option value="15:30:00">3:30 PM</option>
+                                <option value="16:00:00">4:00 PM</option>
+                                <option value="16:30:00">4:30 PM</option>
+                                <option value="17:00:00">5:00 PM</option>
+                            </select>
                         </div>
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary">Add Schedule</button>
                         </div>
                     </form>
+                    
           </div>
         </div>
         <!-- END ADD Modal -->
@@ -198,6 +246,7 @@
                 <thead>
                 <tr>
                     <th scope="col">Doctor Name</th>
+                    <th scope="col">Day</th>
                     <th scope="col">Start Time</th>
                     <th scope="col">End Time</th>
                     <th scope="col"></th>
@@ -211,6 +260,8 @@
                     
                     <td>{{$doctor->name}}</td>
                     
+                    <td>{{$schedule->day}}</td>
+
                     <td>{{$schedule->start_time}}</td>
                     
                     <td>{{$schedule->end_time}}</td>
@@ -233,7 +284,11 @@
                 </tbody>
                    
             </table>
-
+            @if (session('error'))
+                <div class="alert alert-danger" style="border: 1px solid #dc3545; border-radius: 0.25rem; background-color: #f8d7da; color: #721c24;">
+                    {{ session('error') }}
+                </div>
+            @endif   
 
 
     <!-- =========== CONTAINER ==========  -->

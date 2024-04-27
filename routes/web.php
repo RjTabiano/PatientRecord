@@ -72,6 +72,8 @@ Route::put('/patient/{patient}/pediatrics/upload', [PatientController::class, 'u
 Route::put('/patient/{patient}/obgyne/upload', [PatientController::class, 'uploadImageOb'])->middleware(['auth', 'admin'])->name('scanner.uploadO');
 Route::post('/addPatientView/addPatient', [PatientController::class, 'add_patient'])->middleware(['auth', 'admin'])->name('addPatient');
 Route::get('/addPatientView', [PatientController::class, 'add_patientView'])->middleware(['auth', 'admin'])->name('addPatientView');
+Route::get('/AllPatientRecords', [PatientController::class, 'all_patient_records'])->middleware(['auth', 'admin'])->name('AllPatientRecords');
+Route::get('/searchAll', [PatientController::class, 'all_search'])->middleware(['auth', 'admin'])->name('searchAll');
 
 
 Route::post('/patient/{patient}/store', [PatientController::class, 'store'])->middleware(['auth', 'admin'])->name('patient.store');
@@ -79,8 +81,8 @@ Route::post('/patient/storePatients', [PatientController::class, 'store_patients
 Route::post('/patient/{patient}/storeObgyne', [PatientController::class, 'storeObgyne'])->middleware(['auth', 'admin'])->name('patient.storeObgyne');
 Route::get('/patient/{patient}/edit', [PatientController::class, 'edit'])->middleware(['auth', 'admin'])->name('patient.edit');
 Route::get('/patient/{user}/viewRecords', [PatientController::class, 'viewRecords'])->middleware(['auth', 'admin'])->name('patient.viewRecords');
-Route::get('/patient/{patient}/viewRecords/viewPediatrics', [PatientController::class, 'viewPediatrics'])->middleware(['auth', 'admin'])->name('patient.viewPediatrics');
-Route::get('/patient/{patient}/viewRecords/viewObgyne', [PatientController::class, 'viewObgyne'])->middleware(['auth', 'admin'])->name('patient.viewObgyne');
+Route::get('/{patient}/viewPediatrics', [PatientController::class, 'viewPediatrics'])->middleware(['auth', 'admin'])->name('patient.viewPediatrics');
+Route::get('/{patient}/viewObgyne', [PatientController::class, 'viewObgyne'])->middleware(['auth', 'admin'])->name('patient.viewObgyne');
 
 Route::get('/patient/{patient}/update', [PatientController::class, 'update'])->middleware(['auth', 'admin'])->name('patient.update');
 Route::put('/patient/{patient}/updatePatient', [PatientController::class, 'update_patient'])->middleware(['auth', 'admin'])->name('patient.updatePatient');
@@ -105,6 +107,7 @@ Route::get('/doctor/{doctor}/editDoctor', [DoctorController::class, 'edit_doctor
 Route::get('/accounts', [AccountController::class, 'accounts'])->middleware(['auth', 'admin'])->name('accounts');
 Route::delete('/accounts/{account}/deleteAccount', [AccountController::class, 'delete_account'])->middleware(['auth', 'admin'])->name('deleteAccount');
 Route::get('/searchAccount', [AccountController::class, 'search_account'])->middleware(['auth', 'admin'])->name('searchAccount');
+
 
 Route::get('/staff', [StaffController::class, 'staffs'])->middleware(['auth', 'admin'])->name('staff.staff');
 Route::post('/staff/storeStaff', [StaffController::class, 'store_staff'])->middleware(['auth', 'admin'])->name('staff.storeStaff');
