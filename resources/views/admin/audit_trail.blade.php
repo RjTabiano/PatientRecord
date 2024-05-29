@@ -148,29 +148,30 @@
   
 
     <div class="table_container">
-        <div class="row">
-            <div class="col-12">
-            <table id="table-border"class="table table-bordered">
+    <div class="row">
+        <div class="col-12">
+            <table id="table-border" class="table table-bordered">
                 <thead>
-                <tr>
-                    <th scope="col">Event</th>
-                    <th scope="col">Properties</th>
-                    <th scope="col">Created at</th>
-                    <th scope="col">Created by</th>
-                </tr>
+                    <tr>
+                        <th scope="col">Event</th>
+                        <th scope="col">Properties</th>
+                        <th scope="col">Created at</th>
+                        <th scope="col">Created by</th>
+                    </tr>
                 </thead>
-                <tbody>      
-                @foreach($activityLogs as $activityLog)
-                       
-                <tr>
-                    <td>{{$activityLog->event}}</td>
-                    <td>{{$activityLog->properties}}</td>
-                    <td>{{$activityLog->created_at}}</td>
-                    <td>{{$activityLog->causer_name}}</td>
-                </tr>
-                @endforeach
+                <tbody>
+                    @foreach($activityLogs as $activityLog)
+                        <tr>
+                            <td>{{ $activityLog->event }}</td>
+                            <td>{!! $activityLog->formatted_properties !!}</td>
+                            <td>{{ $activityLog->created_at }}</td>
+                            <td>{{ $activityLog->causer_name }}</td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
+        </div>
+    </div>
 </div>
 </div>
 <br><br>

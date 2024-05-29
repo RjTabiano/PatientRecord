@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="" href="{{ asset('images/logocircle.png') }}" />
     
-   <title>The Queen's Clinic</title>
+    <title>The Queen's Clinic</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link
       href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
@@ -173,22 +173,44 @@
         </div>
     @endif
 
-    @if($errors->any())
-        <div class="alert alert-danger">
+    @if ($errors->any())
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
             <ul>
-                @foreach($errors->all() as $error)
+                @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
                 @endforeach
             </ul>
         </div>
-    @endif          
+    </div>
+    @endif         
 
     <!-- ======================================================== CONTAINER  ========================================  -->
 
 
     <!-- ========================================================  Scripts   ========================================  -->
     <script src="{{ asset('javascript/main.js') }}"></script>
+    <script>
+        window.onload = function() {
+            var modal = document.getElementById("myModal");
+            var span = document.getElementsByClassName("close")[0];
 
+            if(modal) {
+                modal.style.display = "block";
+            }
+
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        }
+    </script>
     <!-- ========================================================  ionicons  ==========================================-->
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

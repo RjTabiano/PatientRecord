@@ -130,7 +130,7 @@
         </div>
         <!-- ========================= Main ==================== -->
         <div class="main">
-            <<div class="topbar">
+            <div class="topbar">
                 <div class="toggle">
                     <ion-icon name="menu-outline"></ion-icon>
                 </div>
@@ -177,38 +177,31 @@
                     <th></th>
                     <th>Full Name</th>
                     <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
+
                 </tr>
                 </thead>
-                <tbody >
-                    <div >
+                <tbody>
+                    <div>
                         @foreach ($patient->patientRecord as $patientRecords)
                         <tr>
                             <td>{{$patientRecords['type']}}</td>
                             <td></td>
                             <td>{{$patient->name}}</td>
-                            <td></td>
-                            <td>
+                            <td class="flex-button" >
                                 <a href="{{route('patient.viewPediatrics', ['patient' => $patientRecords['id']])}}"class="btn btn-sucess"><ion-icon name="eye-sharp"></ion-icon></a>
-                            </td>
-                            <td>
+                           
                                 <a href="{{route('patient.update', ['patient' => $patient])}}"class="btn btn-info"><ion-icon name="create-outline"></ion-icon></a>
-                            </td>
                             @can('admin')
-                            <td>
                                 <form class="cancelForm" method="post" action="{{route('patient.delete', ['patient' => $patient])}}">
                                     @csrf
                                     @method('delete')
 
                                     <button type="submit" value="Delete" class="save1"><ion-icon name="trash-outline"></ion-icon></button>
                                 </form>
-                            </td>
                             @endcan
+                            </td>
                         </tr>
                         @endforeach
-                    </div>
                 </tbody>
             </table>
     </div>
@@ -224,26 +217,20 @@
                     <th>Full Name</th>
                     <th></th>
                     <th></th>
-                    <th></th>
-                    <th></th>
                 </tr>
                 </thead>
                 <tbody >
-                    <div >
                         @foreach ($patient->obgyne as $obgyne)
                         <tr>
                             <td>{{$obgyne['type']}}</td>
                             <td></td>
                             <td>{{$patient->name}}</td>
                             <td></td>
-                            <td>
+                            <td class="flex-button" >
                                 <a href="{{route('patient.viewObgyne', ['patient' => $obgyne['id']])}}"class="btn btn-sucess"><ion-icon name="eye-sharp"></ion-icon></a>
-                            </td>
-                            <td>
+                       
                                 <a href="{{route('patient.update', ['patient' => $patient])}}"class="btn btn-info"><ion-icon name="create-outline"></ion-icon></a>
-                            </td>
                             @can('admin')
-                            <td>
                                 <form class="cancelForm" method="post" action="{{route('patient.delete', ['patient' => $patient])}}">
                                     @csrf
                                     @method('delete')
@@ -254,7 +241,6 @@
                             @endcan
                         </tr>
                         @endforeach
-                    </div>
                 </tbody>
             </table>
     </div>
