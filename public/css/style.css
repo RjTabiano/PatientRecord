@@ -1239,3 +1239,20 @@ button[type="submit"]:active {
   margin-top: 100px; 
   padding: 20px;
 }
+
+
+
+
+.chart-container {
+  width: 70%;
+  margin: auto;
+  background-color: white;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  border-radius: 4px;
+
+}
+
+#bookingChart, #patientChart {
+  padding: 20px;
+}
+

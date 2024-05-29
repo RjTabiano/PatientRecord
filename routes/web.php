@@ -14,6 +14,7 @@ use App\Http\Controllers\AccountController;
 use App\Http\Controllers\UserInfoController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\AuditController;
+use App\Http\Controllers\AnalyticsApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -136,6 +137,11 @@ route::get('/searchBooking', [BookingController::class, 'search_booking'])->midd
 
 
 Route::get('/scanner', [ScannerController::class, 'index'])->middleware(['auth', 'admin'])->name('scanner');
+
+
+Route::get('/analytics-report', [AnalyticsApiController::class, 'report'])->middleware(['auth', 'admin'])->name('report');
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="" href="{{ asset('images/logocircle.png') }}" />
-    
-   <title>The Queen's Clinic</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment"></script>
+    <title>The Queen's Clinic</title>
+    <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link
-      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-</head> 
+</head>
 <body>
     <!-- =============== Navigation ================ -->
     <div class="container">
@@ -29,7 +29,7 @@
                 </li>
                 
                 @can('admin')
-                <li>
+                <li class="active">
                     <a href="{{route('accounts')}}">
                         <span class="icon">
                             <ion-icon name="people-outline"></ion-icon>
@@ -46,7 +46,6 @@
                         <span class="title">Add Patient Accounts</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="{{route('patient.consultations')}}">
                         <span class="icon">
@@ -90,7 +89,7 @@
                         <span class="icon">
                             <ion-icon name="folder-open-outline"></ion-icon>
                         </span>
-                         <span class="title">Feedback</span>
+                        <span class="title">Feedback</span>
                     </a>
                 </li>
                 @can('admin')
@@ -124,94 +123,110 @@
                 </li>
             </ul>
         </div>
-        <!-- ========================= Main ==================== -->
+        <!-- ======================== Main ===================== -->
         <div class="main">
-            <div class="topbar">
-                <div class="toggle">
-                    <ion-icon name="menu-outline"></ion-icon>
-                </div>
-
-                <div class="search">
-                    <form action="{{ route('searchBooking') }}" method="GET">
-                        <label>
-                            <input type="text" name="search" placeholder="Search here">
-                            <ion-icon name="search-outline"></ion-icon>
-                        </label>
-                    </form>
-                </div>
-                <div class="user">                    
-                </div>
+        <h1>Booking Data Per Day</h1>
+        <div class="chart-container">
+            <canvas id="bookingChart"></canvas>
         </div>
 
+        <h1>Pediatrics and Obgyne Patients</h1>
+        <div class="chart-container">
+            <canvas id="patientChart"></canvas>
+        </div>
+        <div>
+        <script>
+            fetch('http://127.0.0.1:8000/api/bookingsData')
+            .then(response => response.json())
+                .then(data => {
+                    const dates = data.map(item => item.date);
+                    const totals = data.map(item => item.total);
 
-    <!-- =========== CONTAINER =========  -->
-  
+                    new Chart(document.getElementById('bookingChart').getContext('2d'), {
+                    type: 'line',
+                    data: {
+                        labels: dates,
+                        datasets: [{
+                            label: 'Booked Patients',
+                            data: totals,
+                            borderColor: 'rgba(255, 252, 127, 1)', 
+                            backgroundColor: 'rgba(250, 249, 127, 1)',
+                            borderWidth: 3,
+                            fill: false
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            x: {
+                                type: 'time',
+                                time: {
+                                    unit: 'day',
+                                    tooltipFormat: 'MMM D',
+                                    displayFormats: {
+                                        day: 'MMM D'
+                                    }
+                                }
+                            },
+                            y: {
+                                beginAtZero: true
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                labels: {
+                                    color: 'black' 
+                                }
+                            }
+                        }
+                    }
+                });
+            });
 
-    <div class="table_container">
-        <div class="row">
-            <div class="col-12">
-            <table id="table-border"class="table table-bordered">
-                <thead>
-                <tr>
-                    <th scope="col">Event</th>
-                    <th scope="col">Properties</th>
-                    <th scope="col">Created at</th>
-                    <th scope="col">Created by</th>
-                </tr>
-                </thead>
-                <tbody>      
-                @foreach($activityLogs as $activityLog)
-                       
-                <tr>
-                    <td>{{$activityLog->event}}</td>
-                    <td>{{$activityLog->properties}}</td>
-                    <td>{{$activityLog->created_at}}</td>
-                    <td>{{$activityLog->causer_name}}</td>
-                </tr>
-                @endforeach
-                </tbody>
-            </table>
-</div>
-</div>
-<br><br>
+            fetch('http://127.0.0.1:8000/api/patientsData')
+            .then(response => response.json())
+            .then(data => {
+                const services = data.map(item => item.service_type);
+                const totals = data.map(item => item.total);
 
-   
-    <!-- =========== CONTAINER =========  -->
-
-    <!-- =========== Scripts =========  -->
-    <script src="{{ asset('javascript/main.js') }}"></script>
-    <script>
-    document.querySelectorAll(".confirmationForm").forEach(function(form) {
-        form.addEventListener("submit", function(event) {
-            var confirmation = confirm("Are you sure you want to confirm this booking?");
-            if (!confirmation) {
-                event.preventDefault();
-            }
-        });
-    });
-
-    document.querySelectorAll(".unconfirmForm").forEach(function(form) {
-        form.addEventListener("submit", function(event) {
-            var confirmation = confirm("Are you sure you want to unconfirm this booking?");
-            if (!confirmation) {
-                event.preventDefault();
-            }
-        });
-    });
-
-    document.querySelectorAll(".cancelForm").forEach(function(form) {
-        form.addEventListener("submit", function(event) {
-            var confirmation = confirm("Are you sure you want to cancel this booking?");
-            if (!confirmation) {
-                event.preventDefault();
-            }
-        });
-    });
-</script>
+                new Chart(document.getElementById('patientChart').getContext('2d'), {
+                    type: 'pie',
+                    data: {
+                        labels: services,
+                        datasets: [{
+                            label: 'Total Patients',
+                            data: totals,
+                            backgroundColor: [
+                                'rgba(0, 128, 0, 1)',
+                                'rgba(4, 59, 92, 1)',
+                                'rgba(205, 209, 228, 1)',
+                                'rgba(205, 209, 228)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderColor: [
+                                'rgba(0, 230, 64, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(178, 222, 39, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 3
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            });
+        </script>
     <!-- ====== ionicons ======= -->
-    
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
-</html>
+</html> 

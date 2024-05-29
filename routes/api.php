@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserApiController;
 use App\Models\Image;
-
+use App\Http\Controllers\AnalyticsApiController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -27,6 +27,10 @@ Route::get('/booked', [UserApiController::class, 'getBooking'])->middleware('aut
 Route::get('/getImage', [UserApiController::class, 'getUserImage'])->middleware('auth:sanctum');
 Route::post('/textMsg', [UserApiController::class, 'text_message']);
 Route::post('/updateUser', [UserApiController::class, 'updateUser'])->middleware('auth:sanctum');
+Route::get('/bookingsData', [AnalyticsApiController::class, 'getBookingData']);
+Route::get('/patientsData', [AnalyticsApiController::class, 'getPatientData']);
+
+
 
 Route::get('/images/{imageId}', function ($imageId) {
     $image = Image::find($imageId);

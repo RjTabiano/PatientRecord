@@ -130,24 +130,21 @@
         </div>
         <!-- ========================= Main ==================== -->
         <div class="main">
-            <div class="topbar">
+            <<div class="topbar">
                 <div class="toggle">
                     <ion-icon name="menu-outline"></ion-icon>
                 </div>
-
                 <div class="search">
-                    <label>
-                        <input type="text" placeholder="Search here">
-                        <ion-icon name="search-outline"></ion-icon>
-                    </label>
+                    <form action="{{ route('searchAll') }}" method="GET">
+                        <label>
+                            <input type="text" name="search" placeholder="Search here">
+                            <ion-icon name="search-outline"></ion-icon>
+                        </label>
+                    </form>
                 </div>
-
                 <div class="user">
-                    
                 </div>
-
-        </div>
-
+        </div>  
 
     <!-- =========== CONTAINER =========  -->
     <header class="heading">Patient Records</header>
