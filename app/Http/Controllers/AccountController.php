@@ -32,7 +32,6 @@ class AccountController extends Controller
 
 
     public function delete_account($account){
-        dd($account);
         DB::table('users')->where('id', '=', $account)->delete();
         return redirect(route('accounts'));
     }

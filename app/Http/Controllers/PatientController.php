@@ -18,6 +18,7 @@ use App\Models\ObgyneHistory;
 use App\Models\Immunizations;
 use App\Models\pediatricsConsultation;
 use Illuminate\Support\Facades\Http;
+use Spatie\ActivityLog\Models\Activity;
 use Aws\S3\S3Client; 
 use DOMDocument;
 
@@ -472,6 +473,9 @@ class PatientController extends Controller
         $user->update([
             'is_active' => $is_active
         ]);
+
+        activity()->log("{$user->name} is moved to inactive.");
+
         return redirect(route('patient.patient_record_history'))->with('success', 'User moved to inactive list successfully.');
     }
 
@@ -538,13 +542,11 @@ class PatientController extends Controller
 
 
 
-    public function viewRecords(User $user){
-        
+    public function viewRecords(Request $request, User $user){
         $user_id = $user->id;
-
+    
         $patient = Patient::where('user_id', $user_id)->first();
-
-
+    
         if (!$patient) {
             $user_name = $user->name;
             $user_email = $user->email;
@@ -555,8 +557,38 @@ class PatientController extends Controller
             $patient->email = $user_email;
             $patient->save();
         }
-        return view('admin.viewRecord', ['patient' => $patient]);
-
+    
+        $sortField = $request->input('sort_field', 'id'); 
+        $sortOrder = $request->input('sort_order', 'asc'); 
+        $filterType = $request->input('filter_type', '');
+    
+        $records = collect();
+    
+        if ($filterType == '1') {
+            $records = $patient->patientRecord()
+                               ->orderBy($sortField, $sortOrder)
+                               ->get();
+        } elseif ($filterType == '2') {
+            $records = $patient->obgyne()
+                               ->orderBy($sortField, $sortOrder)
+                               ->get();
+        } else {
+            $pediatricsQuery = $patient->patientRecord()
+                                       ->select('id', 'type', 'created_at', 'updated_at');
+            $obgyneQuery = $patient->obgyne()
+                                   ->select('id', 'type', 'created_at', 'updated_at');
+            $records = $pediatricsQuery->union($obgyneQuery)
+                                       ->orderBy($sortField, $sortOrder)
+                                       ->get();
+        }
+    
+        return view('admin.viewRecord', [
+            'patient' => $patient,
+            'records' => $records,
+            'sortField' => $sortField,
+            'sortOrder' => $sortOrder,
+            'filterType' => $filterType
+        ]);
     }
 
     public function viewPediatrics($patient) {

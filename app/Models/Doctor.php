@@ -36,6 +36,6 @@ class Doctor extends Model
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-        ->logOnly(['date', 'time']);
+        ->logOnly(['specialization']);
     }
 }

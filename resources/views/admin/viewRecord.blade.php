@@ -166,84 +166,66 @@
             </div>
         </div>
 
+        <form method="GET" action="{{ route('patient.viewRecords', ['user' => $patient->user_id]) }}" class="flex-form">
+            <div>
+                <label for="filter_type">Filter by Type:</label>
+                <select name="filter_type" id="filter_type">
+                    <option value="">Select Type</option>
+                    <option value="1" {{ request('filter_type') == '1' ? 'selected' : '' }}>Pediatrics</option>
+                    <option value="2" {{ request('filter_type') == '2' ? 'selected' : '' }}>Obgyne</option>
+                </select>
+            </div>
+            <div>
+                <label for="sort_field"  style="margin-left: 30px;">Sort by:</label>
+                <div class="flex-form">
+                    <select name="sort_field" id="sort_field">
+                        <option value="id" {{ request('sort_field') == 'id' ? 'selected' : '' }}>ID</option>
+                        <option value="type" {{ request('sort_field') == 'type' ? 'selected' : '' }}>Type</option>
+                    </select>
+                    <select name="sort_order" id="sort_order">
+                        <option value="asc" {{ request('sort_order') == 'asc' ? 'selected' : '' }}>Ascending</option>
+                        <option value="desc" {{ request('sort_order') == 'desc' ? 'selected' : '' }}>Descending</option>
+                    </select>
+                    <button type="submit" class="sort-button">Apply</button>
+                </div>     
+            </div>
+                
+        </form>
 
-        <!-- =========== PEDIATRICS  ==========  -->
         <div class="table-wrapper" style="height: 350px; overflow: auto; padding-bottom: 15px;">  
-            
-            <table style="box-shadow: 5px 10px 8px 10px rgba(0,0,0,0.2); ">
+            <table style="box-shadow: 5px 10px 8px 10px rgba(0,0,0,0.2);">
                 <thead class="fixed">
                 <tr>
-                    <th>Record</th>
+                    <th>ID</th>
+                    <th>Type</th>
                     <th></th>
-                    <th>Full Name</th>
-                    <th></th>
-
                 </tr>
                 </thead>
                 <tbody>
-                    <div>
-                        @foreach ($patient->patientRecord as $patientRecords)
-                        <tr>
-                            <td>{{$patientRecords['type']}}</td>
-                            <td></td>
-                            <td>{{$patient->name}}</td>
-                            <td class="flex-button" >
-                                <a href="{{route('patient.viewPediatrics', ['patient' => $patientRecords['id']])}}"class="btn btn-sucess"><ion-icon name="eye-sharp"></ion-icon></a>
-                           
-                                <a href="{{route('patient.update', ['patient' => $patient])}}"class="btn btn-info"><ion-icon name="create-outline"></ion-icon></a>
+                    @foreach ($records as $record)
+                    <tr>
+                        <td>{{ $record->id }}</td>
+                        <td>{{ $record->type }}</td>
+                        <td class="flex-button" >
+                            @if ($record->type == 'Pediatrics')
+                            <a href="{{ route('patient.viewPediatrics', ['patient' => $record->id]) }}" class="btn btn-sucess"><ion-icon name="eye-sharp"></ion-icon></a>
+                            @elseif ($record->type == 'Obgyne')
+                            <a href="{{ route('patient.viewObgyne', ['patient' => $record->id]) }}" class="btn btn-sucess"><ion-icon name="eye-sharp"></ion-icon></a>
+                            @endif
+                            <a href="{{ route('patient.update', ['patient' => $patient]) }}" class="btn btn-info"><ion-icon name="create-outline"></ion-icon></a>
                             @can('admin')
-                                <form class="cancelForm" method="post" action="{{route('patient.delete', ['patient' => $patient])}}">
-                                    @csrf
-                                    @method('delete')
-
-                                    <button type="submit" value="Delete" class="save1"><ion-icon name="trash-outline"></ion-icon></button>
-                                </form>
+                            <form class="cancelForm" method="post" action="{{ route('patient.delete', ['patient' => $patient]) }}">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" value="Delete" class="save1"><ion-icon name="trash-outline"></ion-icon></button>
+                            </form>
                             @endcan
-                            </td>
-                        </tr>
-                        @endforeach
+                        </td>
+                    </tr>
+                    @endforeach
                 </tbody>
             </table>
-    </div>
-
-    <!-- =========== OBGYNE  ==========  -->
-    <div class="table-wrapper wrapperScroll" style="margin-bottom: 15px;">  
-            
-            <table style="box-shadow: 5px 10px 8px 10px rgba(0,0,0,0.2); padding-bottom: 15px;">
-                <thead class="fixed">
-                <tr>
-                    <th>Record</th>
-                    <th></th>
-                    <th>Full Name</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody >
-                        @foreach ($patient->obgyne as $obgyne)
-                        <tr>
-                            <td>{{$obgyne['type']}}</td>
-                            <td></td>
-                            <td>{{$patient->name}}</td>
-                            <td></td>
-                            <td class="flex-button" >
-                                <a href="{{route('patient.viewObgyne', ['patient' => $obgyne['id']])}}"class="btn btn-sucess"><ion-icon name="eye-sharp"></ion-icon></a>
-                       
-                                <a href="{{route('patient.update', ['patient' => $patient])}}"class="btn btn-info"><ion-icon name="create-outline"></ion-icon></a>
-                            @can('admin')
-                                <form class="cancelForm" method="post" action="{{route('patient.delete', ['patient' => $patient])}}">
-                                    @csrf
-                                    @method('delete')
-
-                                    <button type="submit" value="Delete" class="save1"><ion-icon name="trash-outline"></ion-icon></button>
-                                </form>
-                            </td>
-                            @endcan
-                        </tr>
-                        @endforeach
-                </tbody>
-            </table>
-    </div>
+        </div>
     <!-- =========== CONTAINER ==========  -->
     <!-- =========== Scripts =========  -->
     <script src="{{ asset('javascript/main.js') }}"></script>
@@ -261,6 +243,26 @@
 </script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        $('form').on('submit', function(e){
+            e.preventDefault();
+
+            $.ajax({
+                url: $(this).attr('action'),
+                method: $(this).attr('method'),
+                data: $(this).serialize(),
+                success: function(response){
+                    $('.table-wrapper').html($(response).find('.table-wrapper').html());
+                },
+                error: function(response){
+                    alert('An error occurred while processing your request.');
+                }
+            });
+        });
+    });
+    </script>
 </body>
 
 </html>
