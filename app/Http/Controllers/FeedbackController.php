@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Feedback;
+use Spatie\ActivityLog\Models\Activity;
 use Auth;
+
 class FeedbackController extends Controller
 {
     public function feedback(){
@@ -25,7 +27,7 @@ class FeedbackController extends Controller
         $feedback->user_id = Auth::id();
         
         $feedback->save();
-
+        activity()->log("Created feedback.");
         return redirect()->back()->with('success', 'Feedback submitted successfully!');
     }
 }

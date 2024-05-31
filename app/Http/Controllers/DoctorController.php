@@ -6,6 +6,7 @@ use App\Models\User;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Spatie\ActivityLog\Models\Activity;
 
 
 class DoctorController extends Controller
@@ -31,6 +32,8 @@ class DoctorController extends Controller
             $newUser->save();
             $newUser->doctor()->save($newDoctor);
         }
+        activity()->log("Created doctor's account.");
+
         $doctors = User::with('doctor')->where('usertype', '=', 'doctor')->get();
         return view('admin.doctors', ['doctors' => $doctors]);
     }

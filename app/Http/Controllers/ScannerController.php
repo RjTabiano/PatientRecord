@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Aws\S3\S3Client; 
+use Spatie\ActivityLog\Models\Activity;
 
 class ScannerController extends Controller
 {

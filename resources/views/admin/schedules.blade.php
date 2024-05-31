@@ -284,11 +284,55 @@
                 </tbody>
                    
             </table>
+            
+            <div id="toaster"></div>
+
+            
+            
+            
             @if (session('error'))
-                <div class="alert alert-danger" style="border: 1px solid #dc3545; border-radius: 0.25rem; background-color: #f8d7da; color: #721c24;">
-                    {{ session('error') }}
-                </div>
-            @endif   
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                        showToast("{{ session('error') }}", 'error');
+                });
+
+                function showToast(message, type) {
+                    const toaster = document.getElementById('toaster');
+
+                    const toast = document.createElement('div');
+                    toast.className = 'toast ' + (type === 'error' ? 'toast-error' : 'toast-success');
+
+                    const description = document.createElement('div');
+                    description.className = 'description';
+                    description.textContent = message;
+
+                    const cancelButton = document.createElement('button');
+                    cancelButton.className = 'cancel-button';
+                    cancelButton.textContent = 'Dismiss';
+                    cancelButton.addEventListener('click', () => hideToast(toast));
+
+                    toast.appendChild(description);
+                    toast.appendChild(cancelButton);
+
+                    toaster.appendChild(toast);
+
+                    setTimeout(() => hideToast(toast), 3000); // Hide toast after 3 seconds
+                }
+
+                function hideToast(toast) {
+                    toast.classList.add('hide');
+                    toast.addEventListener('transitionend', () => toast.remove());
+                }
+            </script>
+                @endif
+
+                @if(session('success'))
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            showToast("{{ session('success') }}", 'success');
+                        });
+                    </script>
+                @endif 
 
 
     <!-- =========== CONTAINER ==========  -->
@@ -306,7 +350,8 @@
             }
         });
     });
-</script>
+    </script>
+   
     <!-- ====== ionicons ======= -->
     
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

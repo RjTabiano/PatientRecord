@@ -109,15 +109,53 @@
           </div>
       </form>
         </div>
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+        <div id="toaster"></div>
+
+    @if ($errors->any())
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                @foreach ($errors->all() as $error)
+                    showToast("{{ $error }}", 'error');
+                @endforeach
+            });
+
+            function showToast(message, type) {
+                const toaster = document.getElementById('toaster');
+
+                const toast = document.createElement('div');
+                toast.className = 'toast ' + (type === 'error' ? 'toast-error' : 'toast-success');
+
+                const description = document.createElement('div');
+                description.className = 'description';
+                description.textContent = message;
+
+                const cancelButton = document.createElement('button');
+                cancelButton.className = 'cancel-button';
+                cancelButton.textContent = 'Dismiss';
+                cancelButton.addEventListener('click', () => hideToast(toast));
+
+                toast.appendChild(description);
+                toast.appendChild(cancelButton);
+
+                toaster.appendChild(toast);
+
+                setTimeout(() => hideToast(toast), 3000); // Hide toast after 3 seconds
+            }
+
+            function hideToast(toast) {
+                toast.classList.add('hide');
+                toast.addEventListener('transitionend', () => toast.remove());
+            }
+        </script>
+    @endif
+
+    @if(session('success'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                showToast("{{ session('success') }}", 'success');
+            });
+        </script>
+    @endif
     </section>
   </main>
   <script src="{{ asset('javascript/js.js') }}"></script>

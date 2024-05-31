@@ -4,12 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\Activitylog\Traits\LogsActivity;
-use Spatie\Activitylog\LogOptions;
+
 
 class Vaccine extends Model
 {
-    use HasFactory, LogsActivity;
+    use HasFactory;
 
     protected $table = 'vaccines';
 
@@ -56,9 +55,5 @@ class Vaccine extends Model
     public function patientRecord(){
         return $this->belongsTo(PatientRecord::class);
     }
-    public function getActivitylogOptions(): LogOptions
-    {
-        return LogOptions::defaults()
-        ->logOnly(['date', 'time']);
-    }
+
 }

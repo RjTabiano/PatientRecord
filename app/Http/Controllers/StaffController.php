@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Staff;
 use App\Models\User;
+use Spatie\ActivityLog\Models\Activity;
 
 class StaffController extends Controller
 {
@@ -31,6 +32,8 @@ class StaffController extends Controller
             $newUser->save();
             $newUser->staff()->save($newStaff);
         }
+        activity()->log("{$newUser->name} staff account created.");
+
         $staffs = User::with('staff')->where('usertype', '=', 'staff')->get();
         return view('admin.staffs', ['staffs' => $staffs]);
     }

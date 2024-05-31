@@ -7,6 +7,7 @@ use App\Models\Doctor;
 use App\Models\User;
 use App\Models\Schedule;
 use Carbon\Carbon;
+use Spatie\ActivityLog\Models\Activity;
 
 class ScheduleController extends Controller
 {

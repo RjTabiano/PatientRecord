@@ -187,15 +187,15 @@
     <script>
   
 
-    document.querySelectorAll(".cancelForm").forEach(function(form) {
-        form.addEventListener("submit", function(event) {
-            var confirmation = confirm("Are you sure you want to delete this account?");
-            if (!confirmation) {
-                event.preventDefault();
-            }
+        document.querySelectorAll(".cancelForm").forEach(function(form) {
+            form.addEventListener("submit", function(event) {
+                var confirmation = confirm("Are you sure you want to delete this account?");
+                if (!confirmation) {
+                    event.preventDefault();
+                }
+            });
         });
-    });
-</script>
+    </script>
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

@@ -43,7 +43,7 @@
                         <span class="icon">
                             <ion-icon name="newspaper-outline"></ion-icon>
                         </span>
-                        <span class="title">Add Patient Accounts</span>
+                        <span class="title active">Add Patient Accounts</span>
                     </a>
                 </li>
 
@@ -168,7 +168,7 @@
 
         <form method="GET" action="{{ route('patient.viewRecords', ['user' => $patient->user_id]) }}" class="flex-form">
             <div>
-                <label for="filter_type">Filter by Type:</label>
+                <label for="filter_type" class="sort-label" >Filter by Type:</label>
                 <select name="filter_type" id="filter_type">
                     <option value="">Select Type</option>
                     <option value="1" {{ request('filter_type') == '1' ? 'selected' : '' }}>Pediatrics</option>
@@ -176,7 +176,7 @@
                 </select>
             </div>
             <div>
-                <label for="sort_field"  style="margin-left: 30px;">Sort by:</label>
+                <label for="sort_field"  style="margin-left: 30px;" class="sort-label">Sort by:</label>
                 <div class="flex-form">
                     <select name="sort_field" id="sort_field">
                         <option value="id" {{ request('sort_field') == 'id' ? 'selected' : '' }}>ID</option>
@@ -186,7 +186,7 @@
                         <option value="asc" {{ request('sort_order') == 'asc' ? 'selected' : '' }}>Ascending</option>
                         <option value="desc" {{ request('sort_order') == 'desc' ? 'selected' : '' }}>Descending</option>
                     </select>
-                    <button type="submit" class="sort-button">Apply</button>
+                    <button type="submit" class="sort-button button-10">Apply</button>
                 </div>     
             </div>
                 
@@ -196,16 +196,16 @@
             <table style="box-shadow: 5px 10px 8px 10px rgba(0,0,0,0.2);">
                 <thead class="fixed">
                 <tr>
-                    <th>ID</th>
-                    <th>Type</th>
+                    <th class="optimized-spacing-th">ID</th>
+                    <th class="optimized-spacing-th">Type</th>
                     <th></th>
                 </tr>
                 </thead>
                 <tbody>
                     @foreach ($records as $record)
                     <tr>
-                        <td>{{ $record->id }}</td>
-                        <td>{{ $record->type }}</td>
+                        <td class="optimized-spacing-td">{{ $record->id }}</td>
+                        <td class="optimized-spacing-td">{{ $record->type }}</td>
                         <td class="flex-button" >
                             @if ($record->type == 'Pediatrics')
                             <a href="{{ route('patient.viewPediatrics', ['patient' => $record->id]) }}" class="btn btn-sucess"><ion-icon name="eye-sharp"></ion-icon></a>

@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Log;
 use HTTP\Request2;
 use Illuminate\Support\Facades\Http;
+use Spatie\ActivityLog\Models\Activity;
 
 class UserApiController extends Controller
 {

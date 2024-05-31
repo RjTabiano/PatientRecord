@@ -11,6 +11,7 @@ use App\Models\Schedule;
 use App\Models\Patient;
 use App\Models\Appointment;
 use Illuminate\Support\Facades\Validator;
+use Spatie\ActivityLog\Models\Activity;
 
 
 class AppointmentController extends Controller
@@ -56,6 +57,8 @@ class AppointmentController extends Controller
     
             $patients = Patient::all();
             $doctors = User::with('doctor')->where('usertype', '=', 'doctor')->get();
+
+            activity()->log("Created appointment.");
     
             return view('admin.appointments', ['doctors' => $doctors, 'patients' => $patients]);
         } catch (\Exception $e) {
@@ -65,6 +68,8 @@ class AppointmentController extends Controller
 
     public function delete_appointment(Appointment $appointment){
         $appointment->delete();
+        activity()->log("Deleted appointment.");
+
         return redirect(route('appointment.appointment'));
     }
 
@@ -83,6 +88,9 @@ class AppointmentController extends Controller
         
         $patients = Patient::all();
         $doctors = User::with('doctor')->where('usertype', '=', 'doctor')->get();
+
+        activity()->log("Updated appointment.");
+
         return view('admin.appointments', ['doctors' => $doctors], ['patients' => $patients]);
     }
     //asdad/

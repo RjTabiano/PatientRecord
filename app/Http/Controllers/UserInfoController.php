@@ -8,6 +8,7 @@ use App\Models\PatientRecord;
 use App\Models\Patient;
 use App\Models\Obgyne;
 use App\Models\Booking;
+use Spatie\ActivityLog\Models\Activity;
 
 class UserInfoController extends Controller
 {
@@ -53,6 +54,7 @@ class UserInfoController extends Controller
             'status' => $status
         ]);
 
+        activity()->log("Cancelled Booking.");
         return redirect(route('myAppointment'));
     }
 }

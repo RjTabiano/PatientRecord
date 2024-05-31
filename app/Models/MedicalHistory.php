@@ -31,9 +31,5 @@ class MedicalHistory extends Model
     public function obgyne(){
         return $this->belongsTo(Obgyne::class);
     }
-    public function getActivitylogOptions(): LogOptions
-    {
-        return LogOptions::defaults()
-        ->logOnly(['date', 'time']);
-    }
+    
 }

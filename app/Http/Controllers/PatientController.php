@@ -330,8 +330,8 @@ class PatientController extends Controller
 
 
         
-
         
+        activity()->log("Created pediatrics record.");
 
 
         
@@ -432,6 +432,8 @@ class PatientController extends Controller
         $newImmunizations->hepa_b = $request->input("hepa_b");
         $newImmunizations->save();
 
+        activity()->log("Created obgyne record.");
+
         return view('admin.pediatrics', ['patient' => $patient]);
     }
 
@@ -486,6 +488,9 @@ class PatientController extends Controller
             'is_active' => $is_active
         ]);
         $new = $user->is_active;
+
+        activity()->log("{$user->name} is moved to active.");
+
         return redirect(route('inactiveUsers'))->with('success', 'User moved to active list successfully.');
     }
 
@@ -525,6 +530,8 @@ class PatientController extends Controller
         $newPatient->name = $newUser->name;
         $newPatient->email = $newUser->email;
         $newPatient->save();
+
+        activity()->log("{$newUser->name} patient account created.");
 
         return redirect(route('addPatientView'))->with('success', 'User created successfully.');
     }
@@ -616,6 +623,9 @@ class PatientController extends Controller
             $newPatient->email = $request->input("email");
             $newPatient->save();
         }
+
+        activity()->log("Created patient account.");
+
         $patients = Patient::with('patientRecord', 'obgyne')->get();
         return view('admin.patient_record_history', ['patients' => $patients]);
     }

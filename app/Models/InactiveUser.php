@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class InactiveUser extends Model
 {
     use HasFactory;
@@ -25,4 +26,7 @@ class InactiveUser extends Model
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+
+   
 }

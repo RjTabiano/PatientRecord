@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Database\QueryException; 
 use Illuminate\Support\Facades\Http;
 use Carbon\Carbon;
+use Spatie\ActivityLog\Models\Activity;
 
 class BookingController extends Controller
 {
@@ -89,7 +90,10 @@ class BookingController extends Controller
         $booking->phone_number= $request->input("phone_number");
         $booking->status = $default_status;
         $booking->save();
-        
+
+        activity()->log("Booked schedule.");
+
+
         return redirect()->route('welcome')->with('success', 'Booking has been successfully created! Please wait for a confirmation in your number or email.');
     } catch (QueryException $e) {
         Session::flash('error', 'An error occurred while saving the booking. Please try again later.');
@@ -142,6 +146,7 @@ class BookingController extends Controller
             }
         }
         
+        activity()->log("Confirmed booking.");
         return redirect(route('viewBooking'));
     }
 

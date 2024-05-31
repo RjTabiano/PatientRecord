@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Spatie\ActivityLog\Models\Activity;
 
 class RegisteredUserController extends Controller
 {
@@ -45,6 +46,8 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
         Auth::login($user);
+
+        activity()->log("Registered an account.");
 
         return redirect(RouteServiceProvider::HOME);
     }
