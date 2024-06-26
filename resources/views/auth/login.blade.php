@@ -47,7 +47,6 @@
               <input type="email" name="email" placeholder="Email" required/>
               <x-input-error :messages="$errors->get('email')" class="error-login" />
             </div>
-            <br><br>
             <div class="input-field">
               <i class="fas fa-lock"></i>
               <input type="password" name="password" placeholder="Password" required/>
@@ -89,7 +88,45 @@
         </div>
       </div>
     </div>
+    <div id="toaster"></div>
     <script src="{{ asset('javascript/login-signup.js') }}"></script>
+    @if ($errors->any())
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                @foreach ($errors->all() as $error)
+                    showToast("{{ $error }}", 'error');
+                @endforeach
+            });
+
+            function showToast(message, type) {
+                const toaster = document.getElementById('toaster');
+
+                const toast = document.createElement('div');
+                toast.className = 'toast ' + (type === 'error' ? 'toast-error' : 'toast-success');
+
+                const description = document.createElement('div');
+                description.className = 'description';
+                description.textContent = message;
+
+                const cancelButton = document.createElement('button');
+                cancelButton.className = 'cancel-button';
+                cancelButton.textContent = 'Dismiss';
+                cancelButton.addEventListener('click', () => hideToast(toast));
+
+                toast.appendChild(description);
+                toast.appendChild(cancelButton);
+
+                toaster.appendChild(toast);
+
+                setTimeout(() => hideToast(toast), 3000); // Hide toast after 3 seconds
+            }
+
+            function hideToast(toast) {
+                toast.classList.add('hide');
+                toast.addEventListener('transitionend', () => toast.remove());
+            }
+        </script>
+    @endif
   </body>
   
 </html> 
